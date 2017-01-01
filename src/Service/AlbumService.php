@@ -39,8 +39,8 @@ final class AlbumService extends AbstractService
 
         $this->connection->signedCall('album.addTags', array(
             'artist' => $artist,
-            'album' => $album,
-            'tags' => implode(',', $tags),
+            'album'  => $album,
+            'tags'   => implode(',', $tags),
         ), $session, 'POST');
     }
 
@@ -59,10 +59,10 @@ final class AlbumService extends AbstractService
     public function getInfoByMBID($mbid, $autocorrect = false, $username = null, $lang = null)
     {
         return $this->connection->unsignedCall('album.getInfo', array(
-            'mbid' => $mbid,
+            'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
-            'username' => $username,
-            'lang' => $lang,
+            'username'    => $username,
+            'lang'        => $lang,
         ));
     }
 
@@ -82,11 +82,11 @@ final class AlbumService extends AbstractService
     public function getInfo($artist, $album, $autocorrect = false, $username = null, $lang = null)
     {
         return $this->connection->unsignedCall('album.getInfo', array(
-            'artist' => $artist,
-            'album' => $album,
+            'artist'      => $artist,
+            'album'       => $album,
             'autocorrect' => (int) $autocorrect,
-            'username' => $username,
-            'lang' => $lang,
+            'username'    => $username,
+            'lang'        => $lang,
         ));
     }
 
@@ -105,10 +105,10 @@ final class AlbumService extends AbstractService
     public function getTags($artist, $album, $username, $autocorrect = false)
     {
         return $this->connection->unsignedCall('album.getTags', array(
-            'artist' => $artist,
-            'album' => $album,
+            'artist'      => $artist,
+            'album'       => $album,
             'autocorrect' => (int) $autocorrect,
-            'user' => $username,
+            'user'        => $username,
         ));
     }
 
@@ -124,9 +124,9 @@ final class AlbumService extends AbstractService
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
         return $this->connection->unsignedCall('album.getTags', array(
-            'mbid' => $mbid,
+            'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
-            'user' => $username,
+            'user'        => $username,
         ));
     }
 
@@ -144,8 +144,8 @@ final class AlbumService extends AbstractService
     public function getTopTags($artist, $album, $autocorrect = false)
     {
         return $this->connection->unsignedCall('album.getTopTags', array(
-            'artist' => $artist,
-            'album' => $album,
+            'artist'      => $artist,
+            'album'       => $album,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -163,7 +163,7 @@ final class AlbumService extends AbstractService
     public function getTopTagsByMBID($mbid, $autocorrect = false)
     {
         return $this->connection->unsignedCall('album.getTopTags', array(
-            'mbid' => $mbid,
+            'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -182,8 +182,8 @@ final class AlbumService extends AbstractService
     {
         $this->connection->signedCall('album.removeTag', array(
             'artist' => $artist,
-            'album' => $album,
-            'tag' => $tag,
+            'album'  => $album,
+            'tag'    => $tag,
         ), $session, 'POST');
     }
 
@@ -203,7 +203,7 @@ final class AlbumService extends AbstractService
         return $this->connection->unsignedCall('album.search', array(
             'album' => $album,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 }

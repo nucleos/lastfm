@@ -29,7 +29,7 @@ final class ChartService extends AbstractService
     {
         return $this->connection->unsignedCall('chart.getTopArtists', array(
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -47,7 +47,7 @@ final class ChartService extends AbstractService
     {
         return $this->connection->unsignedCall('chart.getTopTags', array(
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -65,7 +65,7 @@ final class ChartService extends AbstractService
     {
         return $this->connection->unsignedCall('chart.getTopTracks', array(
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 }

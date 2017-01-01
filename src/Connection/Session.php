@@ -37,8 +37,8 @@ final class Session implements SessionInterface
      */
     public function __construct($name, $key, $subscriber = 0)
     {
-        $this->name = $name;
-        $this->key = $key;
+        $this->name       = $name;
+        $this->key        = $key;
         $this->subscriber = $subscriber;
     }
 
