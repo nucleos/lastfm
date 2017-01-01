@@ -29,9 +29,9 @@ final class LibraryService extends AbstractService
     public function getArtists($user, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('library.getArtists', array(
-            'user' => $user,
+            'user'  => $user,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 }

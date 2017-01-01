@@ -31,11 +31,11 @@ final class UserService extends AbstractService
     public function getArtistTracks($username, $artist, \DateTime $startTimestamp = null, \DateTime $endTimestamp = null, $page = 1)
     {
         return $this->connection->unsignedCall('user.getArtistTracks', array(
-            'user' => $username,
-            'artist' => $artist,
+            'user'           => $username,
+            'artist'         => $artist,
             'startTimestamp' => $this->toTimestamp($startTimestamp),
-            'endTimestamp' => $this->toTimestamp($endTimestamp),
-            'page' => $page,
+            'endTimestamp'   => $this->toTimestamp($endTimestamp),
+            'page'           => $page,
         ));
     }
 
@@ -54,10 +54,10 @@ final class UserService extends AbstractService
     public function getFriends($username, $recenttracks = false, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getFriends', array(
-            'user' => $username,
+            'user'         => $username,
             'recenttracks' => (int) $recenttracks,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'        => $limit,
+            'page'         => $page,
         ));
     }
 
@@ -91,9 +91,9 @@ final class UserService extends AbstractService
     public function getLovedTracks($username, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getLovedTracks', array(
-            'user' => $username,
+            'user'  => $username,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -114,12 +114,12 @@ final class UserService extends AbstractService
     public function getRecentTracks($username, \DateTime $from = null, \DateTime $to = null, $extended = false, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getRecentTracks', array(
-            'user' => $username,
-            'limit' => $limit,
-            'page' => $page,
+            'user'     => $username,
+            'limit'    => $limit,
+            'page'     => $page,
             'extended' => (int) $extended,
-            'from' => $this->toTimestamp($from),
-            'to' => $this->toTimestamp($to),
+            'from'     => $this->toTimestamp($from),
+            'to'       => $this->toTimestamp($to),
         ));
     }
 
@@ -139,10 +139,10 @@ final class UserService extends AbstractService
     {
         return $this->connection->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'artist',
-            'user' => $username,
-            'tag' => $tag,
-            'limit' => $limit,
-            'page' => $page,
+            'user'        => $username,
+            'tag'         => $tag,
+            'limit'       => $limit,
+            'page'        => $page,
         ));
     }
 
@@ -162,10 +162,10 @@ final class UserService extends AbstractService
     {
         return $this->connection->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'album',
-            'user' => $username,
-            'tag' => $tag,
-            'limit' => $limit,
-            'page' => $page,
+            'user'        => $username,
+            'tag'         => $tag,
+            'limit'       => $limit,
+            'page'        => $page,
         ));
     }
 
@@ -185,10 +185,10 @@ final class UserService extends AbstractService
     {
         return $this->connection->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'track',
-            'user' => $username,
-            'tag' => $tag,
-            'limit' => $limit,
-            'page' => $page,
+            'user'        => $username,
+            'tag'         => $tag,
+            'limit'       => $limit,
+            'page'        => $page,
         ));
     }
 
@@ -207,10 +207,10 @@ final class UserService extends AbstractService
     public function getTopAlbums($username, $period = 'overall', $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getTopAlbums', array(
-            'user' => $username,
+            'user'   => $username,
             'period' => $period,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'  => $limit,
+            'page'   => $page,
         ));
     }
 
@@ -229,10 +229,10 @@ final class UserService extends AbstractService
     public function getTopArtists($username, $period = 'overall', $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getTopArtists', array(
-            'user' => $username,
+            'user'   => $username,
             'period' => $period,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'  => $limit,
+            'page'   => $page,
         ));
     }
 
@@ -249,7 +249,7 @@ final class UserService extends AbstractService
     public function getTopTags($username, $limit = 50)
     {
         return $this->connection->unsignedCall('user.getTopTags', array(
-            'user' => $username,
+            'user'  => $username,
             'limit' => $limit,
         ));
     }
@@ -269,10 +269,10 @@ final class UserService extends AbstractService
     public function getTopTracks($username, $period = 'overall', $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('user.getTopTracks', array(
-            'user' => $username,
+            'user'   => $username,
             'period' => $period,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'  => $limit,
+            'page'   => $page,
         ));
     }
 
@@ -293,7 +293,7 @@ final class UserService extends AbstractService
         return $this->connection->unsignedCall('user.getWeeklyAlbumChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
-            'to' => $this->toTimestamp($to),
+            'to'   => $this->toTimestamp($to),
         ));
     }
 
@@ -314,7 +314,7 @@ final class UserService extends AbstractService
         return $this->connection->unsignedCall('user.getWeeklyArtistChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
-            'to' => $this->toTimestamp($to),
+            'to'   => $this->toTimestamp($to),
         ));
     }
 
@@ -351,7 +351,7 @@ final class UserService extends AbstractService
         return $this->connection->unsignedCall('user.getWeeklyTrackChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
-            'to' => $this->toTimestamp($to),
+            'to'   => $this->toTimestamp($to),
         ));
     }
 }
