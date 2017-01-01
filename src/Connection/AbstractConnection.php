@@ -48,9 +48,9 @@ abstract class AbstractConnection implements ConnectionInterface
             $uri = static::DEFAULT_WS_ENDPOINT;
         }
 
-        $this->apiKey = $apikey;
+        $this->apiKey       = $apikey;
         $this->sharedSecret = $sharedSecret;
-        $this->uri = $uri;
+        $this->uri          = $uri;
     }
 
     /**
@@ -60,7 +60,7 @@ abstract class AbstractConnection implements ConnectionInterface
     {
         // Call parameter
         $callParams = array(
-            'method' => $method,
+            'method'  => $method,
             'api_key' => $this->apiKey,
         );
 
@@ -86,7 +86,7 @@ abstract class AbstractConnection implements ConnectionInterface
     {
         // Call parameter
         $callParameter = array(
-            'method' => $method,
+            'method'  => $method,
             'api_key' => $this->apiKey,
         );
 

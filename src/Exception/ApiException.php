@@ -29,6 +29,6 @@ class ApiException extends \Exception
      */
     public function __toString()
     {
-        return $this->getCode() . ': ' . $this->getMessage();
+        return $this->getCode().': '.$this->getMessage();
     }
 }

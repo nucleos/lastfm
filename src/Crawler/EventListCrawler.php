@@ -56,8 +56,8 @@ final class EventListCrawler extends AbstractCrawler
             $id = preg_replace('/.*\/(\d+)+.*/', '$1', $eventNode->attr('href'));
 
             return array(
-                'title' => $eventNode->text(),
-                'time' => new \DateTime($node->filter('time')->attr('datetime')),
+                'title'   => $eventNode->text(),
+                'time'    => new \DateTime($node->filter('time')->attr('datetime')),
                 'eventId' => $id,
             );
         });
@@ -77,10 +77,10 @@ final class EventListCrawler extends AbstractCrawler
         $node = $this->crawlEventList($username, $year, $page);
 
         $perPage = $this->countListEvents($node);
-        $pages = $this->countListPages($node);
+        $pages   = $this->countListPages($node);
 
         if ($pages) {
-            $node = $this->crawlEventList($username, $year, $pages);
+            $node  = $this->crawlEventList($username, $year, $pages);
             $count = $this->countListEvents($node);
 
             return ($pages - 1) * $perPage + $count;
@@ -118,7 +118,7 @@ final class EventListCrawler extends AbstractCrawler
      */
     private function crawlEventList($username, $year = 2000, $page = 1)
     {
-        $url = 'http://www.last.fm/user/' . $username .'/events/' . $year . '?page=' . $page;
+        $url = 'http://www.last.fm/user/'.$username.'/events/'.$year.'?page='.$page;
 
         return $this->crawl($url);
     }

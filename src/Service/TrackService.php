@@ -38,8 +38,8 @@ final class TrackService extends AbstractService
 
         $this->connection->signedCall('track.addTags', array(
             'artist' => $artist,
-            'track' => $track,
-            'tags' => implode(',', $tags),
+            'track'  => $track,
+            'tags'   => implode(',', $tags),
         ), $session, 'POST');
     }
 
@@ -57,7 +57,7 @@ final class TrackService extends AbstractService
     {
         return $this->connection->unsignedCall('track.getCorrection', array(
             'artist' => $artist,
-            'track' => $track,
+            'track'  => $track,
         ));
     }
 
@@ -76,10 +76,10 @@ final class TrackService extends AbstractService
     public function getInfo($artist, $track, $username = null, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getInfo', array(
-            'artist' => $artist,
-            'track' => $track,
+            'artist'      => $artist,
+            'track'       => $track,
             'autocorrect' => (int) $autocorrect,
-            'username' => $username,
+            'username'    => $username,
         ));
     }
 
@@ -97,9 +97,9 @@ final class TrackService extends AbstractService
     public function getInfoByMBID($mbid, $username = null, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getInfo', array(
-            'mbid' => $mbid,
+            'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
-            'username' => $username,
+            'username'    => $username,
         ));
     }
 
@@ -119,9 +119,9 @@ final class TrackService extends AbstractService
     public function getSimilar($artist, $track, $limit = 10, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getSimilar', array(
-            'artist' => $artist,
-            'track' => $track,
-            'limit' => $limit,
+            'artist'      => $artist,
+            'track'       => $track,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -141,8 +141,8 @@ final class TrackService extends AbstractService
     public function getSimilarByMBID($mbid, $limit = 10, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getSimilar', array(
-            'mbid' => $mbid,
-            'limit' => $limit,
+            'mbid'        => $mbid,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -162,9 +162,9 @@ final class TrackService extends AbstractService
     public function getTags($artist, $track, $username, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getTags', array(
-            'artist' => $artist,
-            'track' => $track,
-            'user' => $username,
+            'artist'      => $artist,
+            'track'       => $track,
+            'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -183,8 +183,8 @@ final class TrackService extends AbstractService
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getTags', array(
-            'mbid' => $mbid,
-            'user' => $username,
+            'mbid'        => $mbid,
+            'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -203,8 +203,8 @@ final class TrackService extends AbstractService
     public function getTopTags($artist, $track, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getTopTags', array(
-            'artist' => $artist,
-            'track' => $track,
+            'artist'      => $artist,
+            'track'       => $track,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -222,7 +222,7 @@ final class TrackService extends AbstractService
     public function getTopTagsByMBID($bdid, $autocorrect = false)
     {
         return $this->connection->unsignedCall('track.getTopTags', array(
-            'bdid' => $bdid,
+            'bdid'        => $bdid,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -240,7 +240,7 @@ final class TrackService extends AbstractService
     {
         $this->connection->signedCall('track.love', array(
             'artist' => $artist,
-            'track' => $track,
+            'track'  => $track,
         ), $session, 'POST');
     }
 
@@ -258,8 +258,8 @@ final class TrackService extends AbstractService
     {
         $this->connection->signedCall('track.removeTag', array(
             'artist' => $artist,
-            'track' => $track,
-            'tag' => $tag,
+            'track'  => $track,
+            'tag'    => $tag,
         ), $session, 'POST');
     }
 
@@ -290,7 +290,7 @@ final class TrackService extends AbstractService
                 if (!array_key_exists($field, $track)) {
                     throw new \InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
                 }
-                $data[$field . '[' . $i . ']'] = $track[$field];
+                $data[$field.'['.$i.']'] = $track[$field];
             }
 
             // Optional fields
@@ -322,7 +322,7 @@ final class TrackService extends AbstractService
         return $this->connection->unsignedCall('track.search', array(
             'track' => $track,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -339,7 +339,7 @@ final class TrackService extends AbstractService
     {
         $this->connection->signedCall('track.love', array(
             'artist' => $artist,
-            'track' => $track,
+            'track'  => $track,
         ), $session, 'POST');
     }
 
@@ -361,13 +361,13 @@ final class TrackService extends AbstractService
     public function updateNowPlaying(SessionInterface $session, $artist, $track, $album = null, $trackNumber = null, $context = null, $mbid = null, $duration = null, $albumArtist = null)
     {
         $this->connection->signedCall('track.updateNowPlaying', array(
-            'artist' => $artist,
-            'track' => $track,
-            'album' => $album,
+            'artist'      => $artist,
+            'track'       => $track,
+            'album'       => $album,
             'trackNumber' => $trackNumber,
-            'context' => $context,
-            'mbid' => $mbid,
-            'duration' => $duration,
+            'context'     => $context,
+            'mbid'        => $mbid,
+            'duration'    => $duration,
             'albumArtist' => $albumArtist,
         ), $session, 'POST');
     }

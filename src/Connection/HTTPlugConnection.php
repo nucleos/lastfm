@@ -41,7 +41,7 @@ final class HTTPlugConnection extends AbstractConnection
     {
         parent::__construct($apikey, $sharedSecret, $uri);
 
-        $this->client = $client;
+        $this->client         = $client;
         $this->messageFactory = $messageFactory;
     }
 
@@ -50,7 +50,7 @@ final class HTTPlugConnection extends AbstractConnection
      */
     public function loadPage($url)
     {
-        $request = $this->messageFactory->createRequest('GET', $url);
+        $request  = $this->messageFactory->createRequest('GET', $url);
         $response = $this->client->sendRequest($request);
 
         return $response->getBody()->getContents();
@@ -63,9 +63,9 @@ final class HTTPlugConnection extends AbstractConnection
     {
         try {
             $params = array_merge($params, array('format' => 'json'));
-            $data = $this->buildParameter($params);
+            $data   = $this->buildParameter($params);
 
-            $request = $this->messageFactory->createRequest($requestMethod, $this->uri, array(), $data);
+            $request  = $this->messageFactory->createRequest($requestMethod, $this->uri, array(), $data);
             $response = $this->client->sendRequest($request);
 
             // Parse response

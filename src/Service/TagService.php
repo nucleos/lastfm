@@ -28,7 +28,7 @@ final class TagService extends AbstractService
     public function getInfo($tag, $lang = null)
     {
         return $this->connection->unsignedCall('tag.getInfo', array(
-            'tag' => $tag,
+            'tag'  => $tag,
             'lang' => $lang,
         ));
     }
@@ -63,9 +63,9 @@ final class TagService extends AbstractService
     public function getTopAlbums($tag, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('tag.getTopAlbums', array(
-            'tag' => $tag,
+            'tag'   => $tag,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -83,9 +83,9 @@ final class TagService extends AbstractService
     public function getTopArtists($tag, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('tag.getTopArtists', array(
-            'tag' => $tag,
+            'tag'   => $tag,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 
@@ -115,9 +115,9 @@ final class TagService extends AbstractService
     public function getTopTracks($tag, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('tag.getTopTracks', array(
-            'tag' => $tag,
+            'tag'   => $tag,
             'limit' => $limit,
-            'page' => $page,
+            'page'  => $page,
         ));
     }
 

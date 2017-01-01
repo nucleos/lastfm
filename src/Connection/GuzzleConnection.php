@@ -51,7 +51,7 @@ final class GuzzleConnection extends AbstractConnection
     protected function call(array $params, $requestMethod = 'GET')
     {
         $params = array_merge($params, array('format' => 'json'));
-        $data = $this->buildParameter($params);
+        $data   = $this->buildParameter($params);
 
         try {
             if ($requestMethod == 'POST') {
@@ -59,7 +59,7 @@ final class GuzzleConnection extends AbstractConnection
                     'body' => $data,
                 ));
             } else {
-                $response = $this->getClient()->request($requestMethod, '?' . $data);
+                $response = $this->getClient()->request($requestMethod, '?'.$data);
             }
 
             // Parse response

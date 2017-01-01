@@ -30,8 +30,8 @@ final class GeoService extends AbstractService
     {
         return $this->connection->unsignedCall('geo.getTopArtists', array(
             'country' => $country,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'   => $limit,
+            'page'    => $page,
         ));
     }
 
@@ -50,10 +50,10 @@ final class GeoService extends AbstractService
     public function getTopTracks($country, $location = null, $limit = 50, $page = 1)
     {
         return $this->connection->unsignedCall('geo.getTopTracks', array(
-            'country' => $country,
+            'country'  => $country,
             'location' => $location,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'    => $limit,
+            'page'     => $page,
         ));
     }
 }
