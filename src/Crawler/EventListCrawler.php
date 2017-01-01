@@ -26,13 +26,12 @@ final class EventListCrawler extends AbstractCrawler
 
         $years = $node->filter('.content-top .secondary-nav-item-link')->each(function (Crawler $node, $i) {
             if ($i > 0) {
-                return $node->text();
+                return (int)trim($node->text());
             }
-
-            return;
         });
 
         sort($years);
+        array_shift($years);
 
         return $years;
     }
@@ -53,14 +52,29 @@ final class EventListCrawler extends AbstractCrawler
         return $node->filter('.events-list-item')->each(function (Crawler $node, $i) {
             $eventNode = $node->filter('.events-list-item-event--title a');
 
-            $id = preg_replace('/.*\/(\d+)+.*/', '$1', $eventNode->attr('href'));
+            $id = preg_replace('/.*\/(\d+)+.*/', '$1', $this->parseUrl($eventNode));
 
             return array(
-                'title'   => $eventNode->text(),
+                'title'   => $this->parseString($eventNode),
                 'time'    => new \DateTime($node->filter('time')->attr('datetime')),
-                'eventId' => $id,
+                'eventId' => (int)$id,
             );
         });
+    }
+
+    /**
+     * Gets the pages for a year.
+     *
+     * @param string $username
+     * @param int    $year
+     *
+     * @return int
+     */
+    public function getYearPages($username, $year)
+    {
+        $node = $this->crawlEventList($username, $year);
+
+        return $this->countListPages($node);
     }
 
     /**
@@ -96,7 +110,9 @@ final class EventListCrawler extends AbstractCrawler
      */
     private function countListPages(Crawler $node)
     {
-        return (int) preg_replace('/.* of /', '', trim($node->filter('.pagination .pages')->text()));
+        $pagination = $this->parseString($node->filter('.pagination .pages'));
+
+        return $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
     }
 
     /**
