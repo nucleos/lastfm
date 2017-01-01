@@ -26,7 +26,7 @@ final class EventListCrawler extends AbstractCrawler
 
         $years = $node->filter('.content-top .secondary-nav-item-link')->each(function (Crawler $node, $i) {
             if ($i > 0) {
-                return (int)trim($node->text());
+                return (int) trim($node->text());
             }
         });
 
@@ -57,7 +57,7 @@ final class EventListCrawler extends AbstractCrawler
             return array(
                 'title'   => $this->parseString($eventNode),
                 'time'    => new \DateTime($node->filter('time')->attr('datetime')),
-                'eventId' => (int)$id,
+                'eventId' => (int) $id,
             );
         });
     }
