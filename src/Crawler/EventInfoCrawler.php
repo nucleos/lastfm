@@ -30,11 +30,12 @@ class EventInfoCrawler extends AbstractCrawler
         return array(
             'title'       => $this->parseString($node->filter('h1.header-title')),
             'image'       => $this->parseImage($node->filter('.event-poster-preview')),
+            'festival'    => $node->filter('.namespace--events_festival_overview')->count() > 0,
             'startDate'   => $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
             'endDate'     => $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
             'description' => $this->parseString($node->filter('.qa-event-description')),
             'url'         => $this->parseString($node->filter('.qa-event-link a')),
-            'eventId'     => $id,
+            'eventId'     => (int)$id,
             'venue'       => $this->readVenues($node),
             'bands'       => $this->readBands($node),
         );
@@ -88,7 +89,7 @@ class EventInfoCrawler extends AbstractCrawler
      */
     private function crawlEvent($id)
     {
-        $url = 'http://www.last.fm/de/festival/'.$id;
+        $url = 'http://www.last.fm/de/event/'.$id;
 
         return $this->crawl($url);
     }
