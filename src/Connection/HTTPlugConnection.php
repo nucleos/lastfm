@@ -70,6 +70,8 @@ final class HTTPlugConnection extends AbstractConnection
 
             // Parse response
             return $this->parseResponse($response);
+        } catch (ApiException $e) {
+            throw $e;
         } catch (\Exception $e) {
             throw new ApiException('Technical error occurred.', 500);
         }

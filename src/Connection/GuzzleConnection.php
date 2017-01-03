@@ -66,6 +66,8 @@ final class GuzzleConnection extends AbstractConnection
             return $this->parseResponse($response);
         } catch (ClientException $e) {
             $this->parseResponse($e->getResponse());
+        } catch (ApiException $e) {
+            throw $e;
         } catch (\Exception $e) {
             throw new ApiException('Technical error occurred.', 500);
         }
