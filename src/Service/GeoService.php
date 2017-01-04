@@ -12,6 +12,7 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class GeoService extends AbstractService
 {
@@ -25,10 +26,11 @@ final class GeoService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopArtists($country, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('geo.getTopArtists', array(
+        return $this->unsignedCall('geo.getTopArtists', array(
             'country' => $country,
             'limit'   => $limit,
             'page'    => $page,
@@ -46,10 +48,11 @@ final class GeoService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracks($country, $location = null, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('geo.getTopTracks', array(
+        return $this->unsignedCall('geo.getTopTracks', array(
             'country'  => $country,
             'location' => $location,
             'limit'    => $limit,

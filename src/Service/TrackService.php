@@ -13,6 +13,7 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class TrackService extends AbstractService
 {
@@ -25,6 +26,7 @@ final class TrackService extends AbstractService
      * @param array            $tags
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function addTags(SessionInterface $session, $artist, $track, array $tags)
     {
@@ -36,7 +38,7 @@ final class TrackService extends AbstractService
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        $this->connection->signedCall('track.addTags', array(
+        $this->signedCall('track.addTags', array(
             'artist' => $artist,
             'track'  => $track,
             'tags'   => implode(',', $tags),
@@ -52,10 +54,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getCorrection($artist, $track)
     {
-        return $this->connection->unsignedCall('track.getCorrection', array(
+        return $this->unsignedCall('track.getCorrection', array(
             'artist' => $artist,
             'track'  => $track,
         ));
@@ -72,10 +75,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfo($artist, $track, $username = null, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getInfo', array(
+        return $this->unsignedCall('track.getInfo', array(
             'artist'      => $artist,
             'track'       => $track,
             'autocorrect' => (int) $autocorrect,
@@ -93,10 +97,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfoByMBID($mbid, $username = null, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getInfo', array(
+        return $this->unsignedCall('track.getInfo', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
@@ -115,10 +120,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getSimilar($artist, $track, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getSimilar', array(
+        return $this->unsignedCall('track.getSimilar', array(
             'artist'      => $artist,
             'track'       => $track,
             'limit'       => $limit,
@@ -137,10 +143,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getSimilarByMBID($mbid, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getSimilar', array(
+        return $this->unsignedCall('track.getSimilar', array(
             'mbid'        => $mbid,
             'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
@@ -156,12 +163,13 @@ final class TrackService extends AbstractService
      * @param bool   $autocorrect
      *
      * @throws ApiException
+     * @throws NotFoundException
      *
      * @return array
      */
     public function getTags($artist, $track, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getTags', array(
+        return $this->unsignedCall('track.getTags', array(
             'artist'      => $artist,
             'track'       => $track,
             'user'        => $username,
@@ -177,12 +185,13 @@ final class TrackService extends AbstractService
      * @param bool   $autocorrect
      *
      * @throws ApiException
+     * @throws NotFoundException
      *
      * @return array
      */
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getTags', array(
+        return $this->unsignedCall('track.getTags', array(
             'mbid'        => $mbid,
             'user'        => $username,
             'autocorrect' => (int) $autocorrect,
@@ -199,10 +208,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags($artist, $track, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getTopTags', array(
+        return $this->unsignedCall('track.getTopTags', array(
             'artist'      => $artist,
             'track'       => $track,
             'autocorrect' => (int) $autocorrect,
@@ -218,10 +228,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTagsByMBID($bdid, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('track.getTopTags', array(
+        return $this->unsignedCall('track.getTopTags', array(
             'bdid'        => $bdid,
             'autocorrect' => (int) $autocorrect,
         ));
@@ -235,10 +246,11 @@ final class TrackService extends AbstractService
      * @param string           $track
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function love(SessionInterface $session, $artist, $track)
     {
-        $this->connection->signedCall('track.love', array(
+        $this->signedCall('track.love', array(
             'artist' => $artist,
             'track'  => $track,
         ), $session, 'POST');
@@ -253,10 +265,11 @@ final class TrackService extends AbstractService
      * @param string           $tag
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function removeTag(SessionInterface $session, $artist, $track, $tag)
     {
-        $this->connection->signedCall('track.removeTag', array(
+        $this->signedCall('track.removeTag', array(
             'artist' => $artist,
             'track'  => $track,
             'tag'    => $tag,
@@ -270,6 +283,7 @@ final class TrackService extends AbstractService
      * @param array            $tracks
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function scrobble(SessionInterface $session, array $tracks)
     {
@@ -303,7 +317,7 @@ final class TrackService extends AbstractService
             ++$i;
         }
 
-        $this->connection->signedCall('album.scrobble', $data, $session, 'POST');
+        $this->signedCall('album.scrobble', $data, $session, 'POST');
     }
 
     /**
@@ -316,10 +330,11 @@ final class TrackService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function search($track, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('track.search', array(
+        return $this->unsignedCall('track.search', array(
             'track' => $track,
             'limit' => $limit,
             'page'  => $page,
@@ -334,10 +349,11 @@ final class TrackService extends AbstractService
      * @param string           $track
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function unlove(SessionInterface $session, $artist, $track)
     {
-        $this->connection->signedCall('track.love', array(
+        $this->signedCall('track.love', array(
             'artist' => $artist,
             'track'  => $track,
         ), $session, 'POST');
@@ -357,10 +373,11 @@ final class TrackService extends AbstractService
      * @param string           $albumArtist
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function updateNowPlaying(SessionInterface $session, $artist, $track, $album = null, $trackNumber = null, $context = null, $mbid = null, $duration = null, $albumArtist = null)
     {
-        $this->connection->signedCall('track.updateNowPlaying', array(
+        $this->signedCall('track.updateNowPlaying', array(
             'artist'      => $artist,
             'track'       => $track,
             'album'       => $album,

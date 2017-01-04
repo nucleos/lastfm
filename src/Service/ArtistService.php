@@ -13,6 +13,7 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class ArtistService extends AbstractService
 {
@@ -25,6 +26,7 @@ final class ArtistService extends AbstractService
      *
      * @throws \InvalidArgumentException
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function addTags(SessionInterface $session, $artist, array $tags)
     {
@@ -36,9 +38,9 @@ final class ArtistService extends AbstractService
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        $this->connection->signedCall('artist.addTags', array(
+        $this->signedCall('artist.addTags', array(
             'artist' => $artist,
-            'tags'   => implode(',', $tags),
+            'tags' => implode(',', $tags),
         ), $session, 'POST');
     }
 
@@ -50,10 +52,11 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getCorrection($artist)
     {
-        return $this->connection->unsignedCall('artist.getCorrection', array(
+        return $this->unsignedCall('artist.getCorrection', array(
             'artist' => $artist,
         ));
     }
@@ -66,10 +69,11 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfo($artist)
     {
-        return $this->connection->unsignedCall('artist.getInfo', array(
+        return $this->unsignedCall('artist.getInfo', array(
             'artist' => $artist,
         ));
     }
@@ -84,12 +88,13 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getSimilar($artist, $limit = 50, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getSimilar', array(
-            'artist'      => $artist,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getSimilar', array(
+            'artist' => $artist,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -104,12 +109,13 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getSimilarByMBID($mbid, $limit = 50, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getSimilar', array(
-            'mbid'        => $mbid,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getSimilar', array(
+            'mbid' => $mbid,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -125,12 +131,13 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTags($artist, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTags', array(
-            'artist'      => $artist,
-            'user'        => $username,
+        return $this->unsignedCall('artist.getTags', array(
+            'artist' => $artist,
+            'user' => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -145,12 +152,13 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTags', array(
-            'mbid'        => $mbid,
-            'user'        => $username,
+        return $this->unsignedCall('artist.getTags', array(
+            'mbid' => $mbid,
+            'user' => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -166,13 +174,14 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopAlbums($artist, $page = 1, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopAlbums', array(
-            'artist'      => $artist,
-            'page'        => $page,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getTopAlbums', array(
+            'artist' => $artist,
+            'page' => $page,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -188,13 +197,14 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopAlbumsByMBID($mbid, $page = 1, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopAlbums', array(
-            'mbid'        => $mbid,
-            'page'        => $page,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getTopAlbums', array(
+            'mbid' => $mbid,
+            'page' => $page,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -208,11 +218,12 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags($artist, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopTags', array(
-                'artist'      => $artist,
+        return $this->unsignedCall('artist.getTopTags', array(
+                'artist' => $artist,
                 'autocorrect' => (int) $autocorrect,
             ));
     }
@@ -226,11 +237,12 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTagsByMBID($mbid, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopTags', array(
-                'mbid'        => $mbid,
+        return $this->unsignedCall('artist.getTopTags', array(
+                'mbid' => $mbid,
                 'autocorrect' => (int) $autocorrect,
             ));
     }
@@ -246,13 +258,14 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracks($artist, $page = 1, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopTracks', array(
-            'artist'      => $artist,
-            'page'        => $page,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getTopTracks', array(
+            'artist' => $artist,
+            'page' => $page,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -268,13 +281,14 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracksByMBID($mbid, $page = 1, $limit = 10, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('artist.getTopTracks', array(
-            'mbid'        => $mbid,
-            'page'        => $page,
-            'limit'       => $limit,
+        return $this->unsignedCall('artist.getTopTracks', array(
+            'mbid' => $mbid,
+            'page' => $page,
+            'limit' => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -287,12 +301,13 @@ final class ArtistService extends AbstractService
      * @param string           $tag
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function removeTag(SessionInterface $session, $artist, $tag)
     {
-        $this->connection->signedCall('artist.removeTag', array(
+        $this->signedCall('artist.removeTag', array(
             'artist' => $artist,
-            'tag'    => $tag,
+            'tag' => $tag,
         ), $session, 'POST');
     }
 
@@ -306,13 +321,14 @@ final class ArtistService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function search($artist, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('artist.search', array(
+        return $this->unsignedCall('artist.search', array(
             'artist' => $artist,
-            'limit'  => $limit,
-            'page'   => $page,
+            'limit' => $limit,
+            'page' => $page,
         ));
     }
 }

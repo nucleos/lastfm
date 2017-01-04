@@ -13,6 +13,7 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class AlbumService extends AbstractService
 {
@@ -26,6 +27,7 @@ final class AlbumService extends AbstractService
      *
      * @throws \InvalidArgumentException
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function addTags(SessionInterface $session, $artist, $album, array $tags)
     {
@@ -37,7 +39,7 @@ final class AlbumService extends AbstractService
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        $this->connection->signedCall('album.addTags', array(
+        $this->signedCall('album.addTags', array(
             'artist' => $artist,
             'album'  => $album,
             'tags'   => implode(',', $tags),
@@ -55,10 +57,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfoByMBID($mbid, $autocorrect = false, $username = null, $lang = null)
     {
-        return $this->connection->unsignedCall('album.getInfo', array(
+        return $this->unsignedCall('album.getInfo', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
@@ -78,10 +81,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfo($artist, $album, $autocorrect = false, $username = null, $lang = null)
     {
-        return $this->connection->unsignedCall('album.getInfo', array(
+        return $this->unsignedCall('album.getInfo', array(
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
@@ -101,10 +105,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTags($artist, $album, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('album.getTags', array(
+        return $this->unsignedCall('album.getTags', array(
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
@@ -123,7 +128,7 @@ final class AlbumService extends AbstractService
      */
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('album.getTags', array(
+        return $this->unsignedCall('album.getTags', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'user'        => $username,
@@ -140,10 +145,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags($artist, $album, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('album.getTopTags', array(
+        return $this->unsignedCall('album.getTopTags', array(
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
@@ -159,10 +165,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTagsByMBID($mbid, $autocorrect = false)
     {
-        return $this->connection->unsignedCall('album.getTopTags', array(
+        return $this->unsignedCall('album.getTopTags', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
         ));
@@ -177,10 +184,11 @@ final class AlbumService extends AbstractService
      * @param string           $tag
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function removeTag(SessionInterface $session, $artist, $album, $tag)
     {
-        $this->connection->signedCall('album.removeTag', array(
+        $this->signedCall('album.removeTag', array(
             'artist' => $artist,
             'album'  => $album,
             'tag'    => $tag,
@@ -197,10 +205,11 @@ final class AlbumService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function search($album, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('album.search', array(
+        return $this->unsignedCall('album.search', array(
             'album' => $album,
             'limit' => $limit,
             'page'  => $page,

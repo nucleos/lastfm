@@ -12,6 +12,7 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class TagService extends AbstractService
 {
@@ -24,10 +25,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfo($tag, $lang = null)
     {
-        return $this->connection->unsignedCall('tag.getInfo', array(
+        return $this->unsignedCall('tag.getInfo', array(
             'tag'  => $tag,
             'lang' => $lang,
         ));
@@ -41,10 +43,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getSimilar($tag)
     {
-        return $this->connection->unsignedCall('tag.getSimilar', array(
+        return $this->unsignedCall('tag.getSimilar', array(
             'tag' => $tag,
         ));
     }
@@ -59,10 +62,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopAlbums($tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('tag.getTopAlbums', array(
+        return $this->unsignedCall('tag.getTopAlbums', array(
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -79,10 +83,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopArtists($tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('tag.getTopArtists', array(
+        return $this->unsignedCall('tag.getTopArtists', array(
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -95,10 +100,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags()
     {
-        return $this->connection->unsignedCall('tag.getTopTags');
+        return $this->unsignedCall('tag.getTopTags');
     }
 
     /**
@@ -111,10 +117,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracks($tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('tag.getTopTracks', array(
+        return $this->unsignedCall('tag.getTopTracks', array(
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -129,10 +136,11 @@ final class TagService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getWeeklyChartList($tag)
     {
-        return $this->connection->unsignedCall('tag.getWeeklyChartList', array(
+        return $this->unsignedCall('tag.getWeeklyChartList', array(
             'tag' => $tag,
         ));
     }

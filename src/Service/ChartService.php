@@ -12,6 +12,7 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class ChartService extends AbstractService
 {
@@ -24,10 +25,11 @@ final class ChartService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopArtists($limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('chart.getTopArtists', array(
+        return $this->unsignedCall('chart.getTopArtists', array(
             'limit' => $limit,
             'page'  => $page,
         ));
@@ -42,10 +44,11 @@ final class ChartService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags($limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('chart.getTopTags', array(
+        return $this->unsignedCall('chart.getTopTags', array(
             'limit' => $limit,
             'page'  => $page,
         ));
@@ -60,10 +63,11 @@ final class ChartService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracks($limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('chart.getTopTracks', array(
+        return $this->unsignedCall('chart.getTopTracks', array(
             'limit' => $limit,
             'page'  => $page,
         ));

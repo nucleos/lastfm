@@ -12,6 +12,7 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class UserService extends AbstractService
 {
@@ -27,10 +28,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getArtistTracks($username, $artist, \DateTime $startTimestamp = null, \DateTime $endTimestamp = null, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getArtistTracks', array(
+        return $this->unsignedCall('user.getArtistTracks', array(
             'user'           => $username,
             'artist'         => $artist,
             'startTimestamp' => $this->toTimestamp($startTimestamp),
@@ -50,10 +52,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getFriends($username, $recenttracks = false, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getFriends', array(
+        return $this->unsignedCall('user.getFriends', array(
             'user'         => $username,
             'recenttracks' => (int) $recenttracks,
             'limit'        => $limit,
@@ -69,10 +72,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getInfo($username)
     {
-        return $this->connection->unsignedCall('user.getInfo', array(
+        return $this->unsignedCall('user.getInfo', array(
             'user' => $username,
         ));
     }
@@ -87,10 +91,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getLovedTracks($username, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getLovedTracks', array(
+        return $this->unsignedCall('user.getLovedTracks', array(
             'user'  => $username,
             'limit' => $limit,
             'page'  => $page,
@@ -110,10 +115,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getRecentTracks($username, \DateTime $from = null, \DateTime $to = null, $extended = false, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getRecentTracks', array(
+        return $this->unsignedCall('user.getRecentTracks', array(
             'user'     => $username,
             'limit'    => $limit,
             'page'     => $page,
@@ -134,10 +140,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getPersonalTagsForArtist($username, $tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'artist',
             'user'        => $username,
             'tag'         => $tag,
@@ -157,10 +164,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getPersonalTagsForAlbum($username, $tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'album',
             'user'        => $username,
             'tag'         => $tag,
@@ -180,10 +188,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getPersonalTagsForTracks($username, $tag, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', array(
             'taggingtype' => 'track',
             'user'        => $username,
             'tag'         => $tag,
@@ -203,10 +212,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopAlbums($username, $period = 'overall', $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getTopAlbums', array(
+        return $this->unsignedCall('user.getTopAlbums', array(
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
@@ -225,10 +235,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopArtists($username, $period = 'overall', $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getTopArtists', array(
+        return $this->unsignedCall('user.getTopArtists', array(
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
@@ -245,10 +256,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTags($username, $limit = 50)
     {
-        return $this->connection->unsignedCall('user.getTopTags', array(
+        return $this->unsignedCall('user.getTopTags', array(
             'user'  => $username,
             'limit' => $limit,
         ));
@@ -265,10 +277,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTopTracks($username, $period = 'overall', $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('user.getTopTracks', array(
+        return $this->unsignedCall('user.getTopTracks', array(
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
@@ -287,10 +300,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getWeeklyAlbumChart($username, \DateTime $from = null, \DateTime $to = null)
     {
-        return $this->connection->unsignedCall('user.getWeeklyAlbumChart', array(
+        return $this->unsignedCall('user.getWeeklyAlbumChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),
@@ -308,10 +322,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getWeeklyArtistChart($username, \DateTime $from = null, \DateTime $to = null)
     {
-        return $this->connection->unsignedCall('user.getWeeklyArtistChart', array(
+        return $this->unsignedCall('user.getWeeklyArtistChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),
@@ -326,10 +341,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getWeeklyChartList($username)
     {
-        return $this->connection->unsignedCall('user.getWeeklyChartList', array(
+        return $this->unsignedCall('user.getWeeklyChartList', array(
             'user' => $username,
         ));
     }
@@ -345,10 +361,11 @@ final class UserService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getWeeklyTrackChart($username, \DateTime $from = null, \DateTime $to = null)
     {
-        return $this->connection->unsignedCall('user.getWeeklyTrackChart', array(
+        return $this->unsignedCall('user.getWeeklyTrackChart', array(
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),

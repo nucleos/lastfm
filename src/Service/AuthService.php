@@ -14,6 +14,7 @@ namespace Core23\LastFm\Service;
 use Core23\LastFm\Connection\Session;
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class AuthService extends AbstractService
 {
@@ -25,10 +26,11 @@ final class AuthService extends AbstractService
      * @return SessionInterface|null
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function createSession($token)
     {
-        $response = $this->connection->signedCall('auth.getSession', array(
+        $response = $this->signedCall('auth.getSession', array(
             'token' => $token,
         ));
 
@@ -45,10 +47,11 @@ final class AuthService extends AbstractService
      * @return string|false
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function createToken()
     {
-        $response = $this->connection->signedCall('auth.getToken');
+        $response = $this->signedCall('auth.getToken');
 
         if ($response) {
             return $response['token'];

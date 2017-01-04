@@ -12,13 +12,16 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\ConnectionInterface;
+use Core23\LastFm\Connection\SessionInterface;
+use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 abstract class AbstractService
 {
     /**
      * @var ConnectionInterface
      */
-    protected $connection;
+    private $connection;
 
     /**
      * AbstractService constructor.
@@ -44,5 +47,54 @@ abstract class AbstractService
         }
 
         return $date->getTimestamp();
+    }
+
+    /**
+     * Calls the API with signed session.
+     *
+     * @param string                $method
+     * @param array                 $params
+     * @param SessionInterface|null $session
+     * @param string                $requestMethod
+     *
+     * @return array
+     *
+     * @throws ApiException
+     * @throws NotFoundException
+     */
+    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET')
+    {
+        try {
+            return $this->connection->signedCall($method,$params,$session,$requestMethod);
+        } catch (ApiException $e) {
+            if ($e->getCode() == 6) {
+                throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Calls the API unsigned.
+     *
+     * @param string $method
+     * @param array  $params
+     * @param string $requestMethod
+     *
+     * @return array
+     *
+     * @throws ApiException
+     * @throws NotFoundException
+     */
+    final protected function unsignedCall($method, array $params = array(), $requestMethod = 'GET')
+    {
+        try {
+            return $this->connection->unsignedCall($method, $params, $requestMethod);
+        } catch (ApiException $e) {
+            if ($e->getCode() == 6) {
+                throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
+            }
+            throw $e;
+        }
     }
 }

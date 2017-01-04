@@ -12,6 +12,7 @@
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 
 final class LibraryService extends AbstractService
 {
@@ -25,10 +26,11 @@ final class LibraryService extends AbstractService
      * @return array
      *
      * @throws ApiException
+     * @throws NotFoundException
      */
     public function getArtists($user, $limit = 50, $page = 1)
     {
-        return $this->connection->unsignedCall('library.getArtists', array(
+        return $this->unsignedCall('library.getArtists', array(
             'user'  => $user,
             'limit' => $limit,
             'page'  => $page,
