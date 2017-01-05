@@ -2,7 +2,7 @@ What is the LastFM PHP library?
 ===============================
 [![Latest Stable Version](https://poser.pugx.org/core23/lastfm-api/v/stable)](https://packagist.org/packages/core23/lastfm-api)
 [![Latest Unstable Version](https://poser.pugx.org/core23/lastfm-api/v/unstable)](https://packagist.org/packages/core23/lastfm-api)
-[![Build Status](http://img.shields.io/travis/core23/LastFm.svg)](http://travis-ci.org/core23/PiwikBundle)
+[![Build Status](http://img.shields.io/travis/core23/lastfm-php-api.svg)](http://travis-ci.org/core23/lastfm-php-api)
 [![License](http://img.shields.io/packagist/l/core23/lastfm-api.svg)](https://packagist.org/packages/core23/lastfm-api)
 
 
