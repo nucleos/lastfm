@@ -33,7 +33,7 @@ class EventInfoCrawler extends AbstractCrawler
             'festival'    => $node->filter('.namespace--events_festival_overview')->count() > 0,
             'startDate'   => $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
             'endDate'     => $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
-            'description' => $this->parseString($node->filter('.qa-event-description')),
+            'description' => $this->parseString($node->filter('.qa-event-description'), true),
             'url'         => $this->parseString($node->filter('.qa-event-link a')),
             'eventId'     => (int) $id,
             'venue'       => $this->readVenues($node),

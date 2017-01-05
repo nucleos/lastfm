@@ -85,9 +85,11 @@ abstract class AbstractCrawler
      *
      * @param Crawler $node
      *
+     * @param bool    $multiline
+     *
      * @return null|string
      */
-    final protected function parseString(Crawler $node)
+    final protected function parseString(Crawler $node, $multiline = false)
     {
         if ($node == null || $node->count() === 0) {
             return;
@@ -96,7 +98,11 @@ abstract class AbstractCrawler
         $content = $node->attr('content');
 
         if (!$content) {
-            $content = $node->text();
+            if ($multiline) {
+                $content = strip_tags($node->html());
+            } else {
+                $content = $node->text();
+            }
         }
 
         return trim($content);
