@@ -40,7 +40,7 @@ final class ArtistService extends AbstractService
 
         $this->signedCall('artist.addTags', array(
             'artist' => $artist,
-            'tags' => implode(',', $tags),
+            'tags'   => implode(',', $tags),
         ), $session, 'POST');
     }
 
@@ -93,8 +93,8 @@ final class ArtistService extends AbstractService
     public function getSimilar($artist, $limit = 50, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getSimilar', array(
-            'artist' => $artist,
-            'limit' => $limit,
+            'artist'      => $artist,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -114,8 +114,8 @@ final class ArtistService extends AbstractService
     public function getSimilarByMBID($mbid, $limit = 50, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getSimilar', array(
-            'mbid' => $mbid,
-            'limit' => $limit,
+            'mbid'        => $mbid,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -136,8 +136,8 @@ final class ArtistService extends AbstractService
     public function getTags($artist, $username, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTags', array(
-            'artist' => $artist,
-            'user' => $username,
+            'artist'      => $artist,
+            'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -157,8 +157,8 @@ final class ArtistService extends AbstractService
     public function getTagsByMBID($mbid, $username, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTags', array(
-            'mbid' => $mbid,
-            'user' => $username,
+            'mbid'        => $mbid,
+            'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -179,9 +179,9 @@ final class ArtistService extends AbstractService
     public function getTopAlbums($artist, $page = 1, $limit = 10, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopAlbums', array(
-            'artist' => $artist,
-            'page' => $page,
-            'limit' => $limit,
+            'artist'      => $artist,
+            'page'        => $page,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -202,9 +202,9 @@ final class ArtistService extends AbstractService
     public function getTopAlbumsByMBID($mbid, $page = 1, $limit = 10, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopAlbums', array(
-            'mbid' => $mbid,
-            'page' => $page,
-            'limit' => $limit,
+            'mbid'        => $mbid,
+            'page'        => $page,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -223,7 +223,7 @@ final class ArtistService extends AbstractService
     public function getTopTags($artist, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopTags', array(
-                'artist' => $artist,
+                'artist'      => $artist,
                 'autocorrect' => (int) $autocorrect,
             ));
     }
@@ -242,7 +242,7 @@ final class ArtistService extends AbstractService
     public function getTopTagsByMBID($mbid, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopTags', array(
-                'mbid' => $mbid,
+                'mbid'        => $mbid,
                 'autocorrect' => (int) $autocorrect,
             ));
     }
@@ -263,9 +263,9 @@ final class ArtistService extends AbstractService
     public function getTopTracks($artist, $page = 1, $limit = 10, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopTracks', array(
-            'artist' => $artist,
-            'page' => $page,
-            'limit' => $limit,
+            'artist'      => $artist,
+            'page'        => $page,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -286,9 +286,9 @@ final class ArtistService extends AbstractService
     public function getTopTracksByMBID($mbid, $page = 1, $limit = 10, $autocorrect = false)
     {
         return $this->unsignedCall('artist.getTopTracks', array(
-            'mbid' => $mbid,
-            'page' => $page,
-            'limit' => $limit,
+            'mbid'        => $mbid,
+            'page'        => $page,
+            'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ));
     }
@@ -307,7 +307,7 @@ final class ArtistService extends AbstractService
     {
         $this->signedCall('artist.removeTag', array(
             'artist' => $artist,
-            'tag' => $tag,
+            'tag'    => $tag,
         ), $session, 'POST');
     }
 
@@ -327,8 +327,8 @@ final class ArtistService extends AbstractService
     {
         return $this->unsignedCall('artist.search', array(
             'artist' => $artist,
-            'limit' => $limit,
-            'page' => $page,
+            'limit'  => $limit,
+            'page'   => $page,
         ));
     }
 }

@@ -35,7 +35,7 @@ class EventInfoCrawler extends AbstractCrawler
             'endDate'     => $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
             'description' => $this->parseString($node->filter('.qa-event-description')),
             'url'         => $this->parseString($node->filter('.qa-event-link a')),
-            'eventId'     => (int)$id,
+            'eventId'     => (int) $id,
             'venue'       => $this->readVenues($node),
             'bands'       => $this->readBands($node),
         );

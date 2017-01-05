@@ -65,7 +65,7 @@ abstract class AbstractService
     final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET')
     {
         try {
-            return $this->connection->signedCall($method,$params,$session,$requestMethod);
+            return $this->connection->signedCall($method, $params, $session, $requestMethod);
         } catch (ApiException $e) {
             if ($e->getCode() == 6) {
                 throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
