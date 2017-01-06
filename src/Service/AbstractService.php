@@ -21,7 +21,7 @@ abstract class AbstractService
     /**
      * @var ConnectionInterface
      */
-    private $connection;
+    protected $connection;
 
     /**
      * AbstractService constructor.

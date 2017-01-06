@@ -50,4 +50,18 @@ interface ConnectionInterface
      * @return string
      */
     public function loadPage($url);
+
+    /**
+     * Get the api key.
+     *
+     * @return string
+     */
+    public function getApiKey();
+
+    /**
+     * Get the shared secret.
+     *
+     * @return string
+     */
+    public function getSharedSecret();
 }

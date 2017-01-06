@@ -98,6 +98,22 @@ abstract class AbstractConnection implements ConnectionInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSharedSecret()
+    {
+        return $this->sharedSecret;
+    }
+
+    /**
      * Performs the webservice call.
      *
      * @param array  $params
