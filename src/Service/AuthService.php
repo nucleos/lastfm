@@ -37,7 +37,6 @@ final class AuthService extends AbstractService
         $this->authUrl = $authUrl;
     }
 
-
     /**
      * Creates a new session from a token.
      *
@@ -89,6 +88,6 @@ final class AuthService extends AbstractService
      */
     public function getAuthUrl($callbackUrl)
     {
-        return $this->authUrl . '?api_key=' . $this->connection->getApiKey() . '&cb=' . $callbackUrl;
+        return $this->authUrl.'?api_key='.$this->connection->getApiKey().'&cb='.$callbackUrl;
     }
 }

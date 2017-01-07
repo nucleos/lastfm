@@ -84,7 +84,6 @@ abstract class AbstractCrawler
      * Parses a string node.
      *
      * @param Crawler $node
-     *
      * @param bool    $multiline
      *
      * @return null|string
