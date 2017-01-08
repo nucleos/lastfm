@@ -18,6 +18,8 @@ abstract class AbstractCrawler
 {
     const URL_PREFIX = 'http://last.fm';
 
+    const NEWLINE = "\n";
+
     /**
      * @var ConnectionInterface
      */
@@ -98,13 +100,16 @@ abstract class AbstractCrawler
 
         if (!$content) {
             if ($multiline) {
-                $content = strip_tags($node->html());
+                $content = $node->html();
+                $content = preg_replace('/<p[^>]*?>/', '', $content);
+                $content = str_replace('</p>', static::NEWLINE, $content);
+                $content = preg_replace('/<br\s?\/?>/i', static::NEWLINE, $content);
             } else {
                 $content = $node->text();
             }
         }
 
-        return trim($content);
+        return trim(strip_tags($content));
     }
 
     /**
