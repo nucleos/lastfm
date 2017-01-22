@@ -60,14 +60,14 @@ abstract class AbstractCrawler
     final protected function parseUrl(Crawler $node, $attr = 'href')
     {
         if ($node == null || $node->count() === 0) {
-            return;
+            return null;
         }
 
         if ($url = $node->attr($attr)) {
             return preg_replace('/^\//', static::URL_PREFIX.'/', $url);
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -93,7 +93,7 @@ abstract class AbstractCrawler
     final protected function parseString(Crawler $node, $multiline = false)
     {
         if ($node == null || $node->count() === 0) {
-            return;
+            return null;
         }
 
         $content = $node->attr('content');
@@ -127,6 +127,6 @@ abstract class AbstractCrawler
             return new \DateTime($content);
         }
 
-        return;
+        return null;
     }
 }

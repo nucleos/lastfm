@@ -43,7 +43,7 @@ abstract class AbstractService
     final protected function toTimestamp(\DateTime $date = null)
     {
         if (null === $date) {
-            return;
+            return null;
         }
 
         return $date->getTimestamp();

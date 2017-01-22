@@ -57,7 +57,7 @@ final class AuthService extends AbstractService
             return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
         }
 
-        return;
+        return null;
     }
 
     /**
