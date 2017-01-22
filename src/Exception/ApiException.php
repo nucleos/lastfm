@@ -11,7 +11,7 @@
 
 namespace Core23\LastFm\Exception;
 
-class ApiException extends \Exception
+final class ApiException extends \Exception
 {
     /**
      * ApiException constructor.

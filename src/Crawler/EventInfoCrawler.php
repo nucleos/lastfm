@@ -13,7 +13,7 @@ namespace Core23\LastFm\Crawler;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class EventInfoCrawler extends AbstractCrawler
+final class EventInfoCrawler extends AbstractCrawler
 {
     /**
      * Get all event information.

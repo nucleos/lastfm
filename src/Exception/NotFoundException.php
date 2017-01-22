@@ -11,6 +11,6 @@
 
 namespace Core23\LastFm\Exception;
 
-class NotFoundException extends \Exception
+final class NotFoundException extends \Exception
 {
 }
