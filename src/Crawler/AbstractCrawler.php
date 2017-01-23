@@ -42,7 +42,7 @@ abstract class AbstractCrawler
      *
      * @return Crawler
      */
-    final protected function crawl($url)
+    final protected function crawl(string $url)
     {
         $content = $this->connection->loadPage($url);
 
@@ -57,7 +57,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseUrl(Crawler $node, $attr = 'href')
+    final protected function parseUrl(Crawler $node, string $attr = 'href')
     {
         if ($node == null || $node->count() === 0) {
             return null;
@@ -90,7 +90,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseString(Crawler $node, $multiline = false)
+    final protected function parseString(Crawler $node, bool $multiline = false)
     {
         if ($node == null || $node->count() === 0) {
             return null;

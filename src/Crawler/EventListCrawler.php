@@ -20,7 +20,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int[]
      */
-    public function getUserYears($username)
+    public function getUserYears(string $username)
     {
         $node = $this->crawlEventList($username);
 
@@ -45,7 +45,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return array
      */
-    public function getEvents($username, $year, $page = 1)
+    public function getEvents(string $username, int $year, int $page = 1)
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -70,7 +70,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int
      */
-    public function getYearPages($username, $year)
+    public function getYearPages(string $username, int $year)
     {
         $node = $this->crawlEventList($username, $year);
 
@@ -86,7 +86,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int
      */
-    public function getYearCount($username, $year, $page = 1)
+    public function getYearCount(string $username, int $year, int $page = 1)
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -132,7 +132,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return Crawler
      */
-    private function crawlEventList($username, $year = 2000, $page = 1)
+    private function crawlEventList(string $username, int $year = 2000, int $page = 1)
     {
         $url = 'http://www.last.fm/user/'.$username.'/events/'.$year.'?page='.$page;
 
