@@ -16,19 +16,19 @@ interface SessionInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName() : string;
 
     /**
      * Returns key.
      *
      * @return string
      */
-    public function getKey();
+    public function getKey() : string;
 
     /**
      * Returns subscriber.
      *
      * @return int
      */
-    public function getSubscriber();
+    public function getSubscriber() : int;
 }

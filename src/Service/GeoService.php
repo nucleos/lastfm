@@ -26,7 +26,7 @@ final class GeoService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopArtists($country, $limit = 50, $page = 1)
+    public function getTopArtists(string $country, int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('geo.getTopArtists', array(
             'country' => $country,
@@ -48,7 +48,7 @@ final class GeoService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopTracks($country, $location = null, $limit = 50, $page = 1)
+    public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('geo.getTopTracks', array(
             'country'  => $country,

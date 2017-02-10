@@ -28,7 +28,7 @@ final class AuthService extends AbstractService
      * @param ConnectionInterface $connection
      * @param string              $authUrl
      */
-    public function __construct(ConnectionInterface $connection, $authUrl = 'http://www.last.fm/api/auth/')
+    public function __construct(ConnectionInterface $connection, string $authUrl = 'http://www.last.fm/api/auth/')
     {
         parent::__construct($connection);
 
@@ -45,7 +45,7 @@ final class AuthService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function createSession($token)
+    public function createSession(string $token)
     {
         $response = $this->signedCall('auth.getSession', array(
             'token' => $token,
@@ -84,7 +84,7 @@ final class AuthService extends AbstractService
      *
      * @return string
      */
-    public function getAuthUrl($callbackUrl)
+    public function getAuthUrl(string $callbackUrl): string
     {
         return $this->authUrl.'?api_key='.$this->connection->getApiKey().'&cb='.$callbackUrl;
     }

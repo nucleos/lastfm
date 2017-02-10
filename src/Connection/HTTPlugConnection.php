@@ -35,7 +35,7 @@ final class HTTPlugConnection extends AbstractConnection
      * @param string         $sharedSecret
      * @param string         $uri
      */
-    public function __construct(HttpClient $client, MessageFactory $messageFactory, $apikey, $sharedSecret, $uri = null)
+    public function __construct(HttpClient $client, MessageFactory $messageFactory, string $apikey, string $sharedSecret, string $uri = null)
     {
         parent::__construct($apikey, $sharedSecret, $uri);
 
@@ -46,7 +46,7 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    public function loadPage($url)
+    public function loadPage(string $url): string
     {
         $request  = $this->messageFactory->createRequest('GET', $url);
         $response = $this->client->sendRequest($request);
@@ -57,7 +57,7 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    protected function call(array $params, $requestMethod = 'GET')
+    protected function call(array $params, string $requestMethod = 'GET'): array
     {
         try {
             $params = array_merge($params, array('format' => 'json'));
@@ -82,7 +82,7 @@ final class HTTPlugConnection extends AbstractConnection
      *
      * @throws ApiException
      */
-    private function parseResponse(ResponseInterface $response)
+    private function parseResponse(ResponseInterface $response): array
     {
         $array = json_decode($response->getBody()->getContents(), true);
 
@@ -100,7 +100,7 @@ final class HTTPlugConnection extends AbstractConnection
      *
      * @return string
      */
-    private function buildParameter(array $parameter)
+    private function buildParameter(array $parameter): string
     {
         return http_build_query($parameter);
     }

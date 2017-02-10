@@ -25,7 +25,7 @@ interface ConnectionInterface
      *
      * @throws ApiException
      */
-    public function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET');
+    public function signedCall(string $method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array;
 
     /**
      * Calls the API unsigned.
@@ -38,7 +38,7 @@ interface ConnectionInterface
      *
      * @throws ApiException
      */
-    public function unsignedCall($method, array $params = array(), $requestMethod = 'GET');
+    public function unsignedCall(string $method, array $params = array(), string $requestMethod = 'GET'): array;
 
     /**
      * Loads a page.
@@ -47,19 +47,19 @@ interface ConnectionInterface
      *
      * @return string
      */
-    public function loadPage($url);
+    public function loadPage(string $url): string;
 
     /**
      * Get the api key.
      *
      * @return string
      */
-    public function getApiKey();
+    public function getApiKey(): string;
 
     /**
      * Get the shared secret.
      *
      * @return string
      */
-    public function getSharedSecret();
+    public function getSharedSecret(): string;
 }

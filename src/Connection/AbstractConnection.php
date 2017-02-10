@@ -40,7 +40,7 @@ abstract class AbstractConnection implements ConnectionInterface
      * @param string $sharedSecret
      * @param string $uri
      */
-    public function __construct($apikey, $sharedSecret, $uri = null)
+    public function __construct(string $apikey, string $sharedSecret, string $uri = null)
     {
         if (null === $uri) {
             $uri = static::DEFAULT_WS_ENDPOINT;
@@ -54,7 +54,7 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET')
+    public function signedCall(string $method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         // Call parameter
         $callParams = array(
@@ -80,7 +80,7 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function unsignedCall($method, array $params = array(), $requestMethod = 'GET')
+    public function unsignedCall(string $method, array $params = array(), string $requestMethod = 'GET'): array
     {
         // Call parameter
         $callParameter = array(
@@ -98,7 +98,7 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -106,7 +106,7 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function getSharedSecret()
+    public function getSharedSecret(): string
     {
         return $this->sharedSecret;
     }
@@ -121,7 +121,7 @@ abstract class AbstractConnection implements ConnectionInterface
      *
      * @throws ApiException
      */
-    abstract protected function call(array $params, $requestMethod = 'GET');
+    abstract protected function call(array $params, string $requestMethod = 'GET'): array;
 
     /**
      * Filter null values.
@@ -130,7 +130,7 @@ abstract class AbstractConnection implements ConnectionInterface
      *
      * @return array
      */
-    private function filterNull($object)
+    private function filterNull(array $object): array
     {
         return array_filter($object, function ($val) {
             return !is_null($val);

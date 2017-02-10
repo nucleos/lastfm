@@ -33,7 +33,7 @@ final class Session implements SessionInterface
      * @param string $key
      * @param int    $subscriber
      */
-    public function __construct($name, $key, $subscriber = 0)
+    public function __construct(string $name, string $key, int $subscriber = 0)
     {
         $this->name       = $name;
         $this->key        = $key;
@@ -43,7 +43,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
@@ -51,7 +51,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getKey()
+    public function getKey() : string
     {
         return $this->key;
     }
@@ -59,7 +59,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getSubscriber()
+    public function getSubscriber() : int
     {
         return $this->subscriber;
     }

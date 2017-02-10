@@ -25,7 +25,7 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopArtists($limit = 50, $page = 1)
+    public function getTopArtists(int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('chart.getTopArtists', array(
             'limit' => $limit,
@@ -44,7 +44,7 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopTags($limit = 50, $page = 1)
+    public function getTopTags(int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('chart.getTopTags', array(
             'limit' => $limit,
@@ -63,7 +63,7 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopTracks($limit = 50, $page = 1)
+    public function getTopTracks(int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('chart.getTopTracks', array(
             'limit' => $limit,

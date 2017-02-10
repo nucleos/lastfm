@@ -26,7 +26,7 @@ final class LibraryService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getArtists($user, $limit = 50, $page = 1)
+    public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('library.getArtists', array(
             'user'  => $user,

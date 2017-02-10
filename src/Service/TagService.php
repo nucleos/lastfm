@@ -25,7 +25,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getInfo($tag, $lang = null)
+    public function getInfo(string $tag, string $lang = null): array
     {
         return $this->unsignedCall('tag.getInfo', array(
             'tag'  => $tag,
@@ -43,7 +43,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getSimilar($tag)
+    public function getSimilar($tag): array
     {
         return $this->unsignedCall('tag.getSimilar', array(
             'tag' => $tag,
@@ -62,7 +62,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopAlbums($tag, $limit = 50, $page = 1)
+    public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('tag.getTopAlbums', array(
             'tag'   => $tag,
@@ -83,7 +83,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopArtists($tag, $limit = 50, $page = 1)
+    public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('tag.getTopArtists', array(
             'tag'   => $tag,
@@ -100,7 +100,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopTags()
+    public function getTopTags(): array
     {
         return $this->unsignedCall('tag.getTopTags');
     }
@@ -117,7 +117,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getTopTracks($tag, $limit = 50, $page = 1)
+    public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
         return $this->unsignedCall('tag.getTopTracks', array(
             'tag'   => $tag,
@@ -136,7 +136,7 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getWeeklyChartList($tag)
+    public function getWeeklyChartList(string $tag): array
     {
         return $this->unsignedCall('tag.getWeeklyChartList', array(
             'tag' => $tag,

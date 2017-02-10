@@ -24,7 +24,7 @@ final class GuzzleConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    public function loadPage($url)
+    public function loadPage(string $url): string
     {
         $response = $this->getClient()->request('GET', $url);
 
@@ -34,7 +34,7 @@ final class GuzzleConnection extends AbstractConnection
     /**
      * @return Client
      */
-    protected function getClient()
+    protected function getClient(): Client
     {
         if (null === $this->client) {
             $this->client = new Client(array('base_uri' => $this->uri));
@@ -46,7 +46,7 @@ final class GuzzleConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    protected function call(array $params, $requestMethod = 'GET')
+    protected function call(array $params, string $requestMethod = 'GET'): array
     {
         $params = array_merge($params, array('format' => 'json'));
         $data   = $this->buildParameter($params);
@@ -78,7 +78,7 @@ final class GuzzleConnection extends AbstractConnection
      *
      * @throws ApiException
      */
-    private function parseResponse(ResponseInterface $response)
+    private function parseResponse(ResponseInterface $response): array
     {
         $array = json_decode($response->getBody()->getContents(), true);
 
@@ -96,7 +96,7 @@ final class GuzzleConnection extends AbstractConnection
      *
      * @return string
      */
-    private function buildParameter(array $parameter)
+    private function buildParameter(array $parameter): string
     {
         return http_build_query($parameter);
     }

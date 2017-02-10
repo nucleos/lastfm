@@ -60,7 +60,7 @@ abstract class AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET')
+    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->signedCall($method, $params, $session, $requestMethod);
@@ -84,7 +84,7 @@ abstract class AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    final protected function unsignedCall($method, array $params = array(), $requestMethod = 'GET')
+    final protected function unsignedCall($method, array $params = array(), $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->unsignedCall($method, $params, $requestMethod);

@@ -42,7 +42,7 @@ abstract class AbstractCrawler
      *
      * @return Crawler
      */
-    final protected function crawl(string $url)
+    final protected function crawl(string $url) : Crawler
     {
         $content = $this->connection->loadPage($url);
 
