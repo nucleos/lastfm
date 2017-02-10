@@ -2,9 +2,13 @@ What is the LastFM PHP library?
 ===============================
 [![Latest Stable Version](https://poser.pugx.org/core23/lastfm-api/v/stable)](https://packagist.org/packages/core23/lastfm-api)
 [![Latest Unstable Version](https://poser.pugx.org/core23/lastfm-api/v/unstable)](https://packagist.org/packages/core23/lastfm-api)
-[![Build Status](http://img.shields.io/travis/core23/lastfm-php-api.svg)](http://travis-ci.org/core23/lastfm-php-api)
-[![License](http://img.shields.io/packagist/l/core23/lastfm-api.svg)](https://packagist.org/packages/core23/lastfm-api)
+[![License](https://poser.pugx.org/core23/lastfm-api/license)](https://packagist.org/packages/core23/lastfm-api)
 
+[![Build Status](https://travis-ci.org/core23/lastfm-php-api.svg)](http://travis-ci.org/core23/lastfm-php-api)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/lastfm-php-api/badges/quality-score.png)](https://scrutinizer-ci.com/g/core23/lastfm-php-api/)
+[![Code Climate](https://codeclimate.com/github/core23/lastfm-php-api/badges/gpa.svg)](https://codeclimate.com/github/core23/lastfm-php-api)
+[![Coverage Status](https://coveralls.io/repos/core23/lastfm-php-api/badge.svg)](https://coveralls.io/r/core23/lastfm-php-api)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/582dff80-204e-4edb-a719-58cede02a0c5/mini.png)](https://insight.sensiolabs.com/projects/582dff80-204e-4edb-a719-58cede02a0c5)
 
 [![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/core23)
 [![Donate to this project using PayPal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://paypal.me/gripp)
