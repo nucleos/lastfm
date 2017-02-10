@@ -43,7 +43,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -51,7 +51,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getKey() : string
+    public function getKey(): string
     {
         return $this->key;
     }
@@ -59,7 +59,7 @@ final class Session implements SessionInterface
     /**
      * {@inheritdoc}
      */
-    public function getSubscriber() : int
+    public function getSubscriber(): int
     {
         return $this->subscriber;
     }

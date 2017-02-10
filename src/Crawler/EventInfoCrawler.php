@@ -20,7 +20,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array
      */
-    public function getEventInfo(int $id) : array
+    public function getEventInfo(int $id): array
     {
         $node     = $this->crawlEvent($id);
         $timeNode = $node->filter('.qa-event-date');
@@ -45,11 +45,11 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array
      */
-    private function readBands(Crawler $node) : array
+    private function readBands(Crawler $node): array
     {
         $bandNode = $node->filter('.grid-items');
 
-        return $bandNode->filter('.grid-items-item')->each(function (Crawler $node, $i) : array{
+        return $bandNode->filter('.grid-items-item')->each(function (Crawler $node, $i): array {
             return array(
                 'image' => $this->parseImage($node->filter('.grid-items-cover-image-image img')),
                 'name'  => $this->parseString($node->filter('.grid-items-item-main-text')),
@@ -63,7 +63,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array
      */
-    private function readVenues(Crawler $node) : array
+    private function readVenues(Crawler $node): array
     {
         $venueNode   = $node->filter('.event-detail');
         $addressNode = $venueNode->filter('.event-detail-address');
@@ -86,7 +86,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return Crawler
      */
-    private function crawlEvent(int $id) : Crawler
+    private function crawlEvent(int $id): Crawler
     {
         $url = 'http://www.last.fm/de/event/'.$id;
 
