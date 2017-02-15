@@ -59,7 +59,7 @@ abstract class AbstractCrawler
      */
     final protected function parseUrl(Crawler $node, string $attr = 'href')
     {
-        if ($node == null || $node->count() === 0) {
+        if (null === $node || 0 === $node->count()) {
             return null;
         }
 
@@ -92,7 +92,7 @@ abstract class AbstractCrawler
      */
     final protected function parseString(Crawler $node, bool $multiline = false)
     {
-        if ($node == null || $node->count() === 0) {
+        if (null === $node || 0 === $node->count()) {
             return null;
         }
 
