@@ -24,11 +24,10 @@ final class EventListCrawler extends AbstractCrawler
     {
         $node = $this->crawlEventList($username);
 
-        $years = $node->filter('.content-top .secondary-nav-item-link')->each(function (Crawler $node, $i): array {
-            if ($i > 0) {
+        $years = $node->filter('.content-top .secondary-nav-item-link')
+            ->each(function (Crawler $node, $i) {
                 return (int) trim($node->text());
-            }
-        });
+            });
 
         sort($years);
         array_shift($years);
