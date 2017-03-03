@@ -63,7 +63,10 @@ final class GuzzleConnection extends AbstractConnection
             // Parse response
             return $this->parseResponse($response);
         } catch (ClientException $e) {
-            return $this->parseResponse($e->getResponse());
+            if ($response = $e->getResponse()) {
+                throw new ApiException('Client exception with empty response occurred.', 500);
+            }
+            return $this->parseResponse($response);
         } catch (ApiException $e) {
             throw $e;
         } catch (\Exception $e) {

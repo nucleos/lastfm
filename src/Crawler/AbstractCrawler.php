@@ -98,7 +98,7 @@ abstract class AbstractCrawler
 
         $content = $node->attr('content');
 
-        if (!$content) {
+        if (null !== $content) {
             if ($multiline) {
                 $content = $node->html();
                 $content = preg_replace('/<p[^>]*?>/', '', $content);
@@ -123,7 +123,7 @@ abstract class AbstractCrawler
     {
         $content = $this->parseString($node);
 
-        if ($content) {
+        if (null !== $content) {
             return new \DateTime($content);
         }
 
