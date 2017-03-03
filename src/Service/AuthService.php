@@ -51,11 +51,7 @@ final class AuthService extends AbstractService
             'token' => $token,
         ));
 
-        if ($response) {
-            return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
-        }
-
-        return null;
+        return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
     }
 
     /**
@@ -70,11 +66,7 @@ final class AuthService extends AbstractService
     {
         $response = $this->signedCall('auth.getToken');
 
-        if ($response) {
-            return $response['token'];
-        }
-
-        return false;
+        return $response['token'];
     }
 
     /**
