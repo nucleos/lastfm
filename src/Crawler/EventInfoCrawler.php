@@ -49,7 +49,7 @@ final class EventInfoCrawler extends AbstractCrawler
     {
         $bandNode = $node->filter('.grid-items');
 
-        return $bandNode->filter('.grid-items-item')->each(function (Crawler $node, $i): array {
+        return $bandNode->filter('.grid-items-item')->each(function (Crawler $node): array {
             return array(
                 'image' => $this->parseImage($node->filter('.grid-items-cover-image-image img')),
                 'name'  => $this->parseString($node->filter('.grid-items-item-main-text')),

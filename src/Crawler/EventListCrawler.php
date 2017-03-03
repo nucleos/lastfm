@@ -25,7 +25,7 @@ final class EventListCrawler extends AbstractCrawler
         $node = $this->crawlEventList($username);
 
         $years = $node->filter('.content-top .secondary-nav-item-link')
-            ->each(function (Crawler $node, $i) {
+            ->each(function (Crawler $node) {
                 return (int) trim($node->text());
             });
 
@@ -48,7 +48,7 @@ final class EventListCrawler extends AbstractCrawler
     {
         $node = $this->crawlEventList($username, $year, $page);
 
-        return $node->filter('.events-list-item')->each(function (Crawler $node, $i): array {
+        return $node->filter('.events-list-item')->each(function (Crawler $node): array {
             $eventNode = $node->filter('.events-list-item-event--title a');
 
             $id = preg_replace('/.*\/(\d+)+.*/', '$1', $this->parseUrl($eventNode));
