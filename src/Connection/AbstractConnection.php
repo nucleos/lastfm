@@ -140,9 +140,9 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * Converts any string or array of strings to UTF8.
      *
-     * @param mixed $object a String or an array
+     * @param string|string[] $object a String or an array
      *
-     * @return mixed UTF8-string or array
+     * @return string|string[] UTF8-string or array
      */
     private function encodeUTF8($object)
     {
