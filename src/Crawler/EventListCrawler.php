@@ -51,12 +51,14 @@ final class EventListCrawler extends AbstractCrawler
         return $node->filter('.events-list-item')->each(function (Crawler $node): array {
             $eventNode = $node->filter('.events-list-item-event--title a');
 
-            $id = preg_replace('/.*\/(\d+)+.*/', '$1', $this->parseUrl($eventNode));
+            $url = $this->parseUrl($eventNode);
+            $id = preg_replace('/.*\/(\d+)+.*/', '$1', $url);
 
             return array(
+                'eventId' => (int) $id,
                 'title'   => $this->parseString($eventNode),
                 'time'    => new \DateTime($node->filter('time')->attr('datetime')),
-                'eventId' => (int) $id,
+                'url'     => $url,
             );
         });
     }
