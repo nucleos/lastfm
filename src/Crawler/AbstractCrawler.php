@@ -98,7 +98,7 @@ abstract class AbstractCrawler
 
         $content = $node->attr('content');
 
-        if (null !== $content) {
+        if (null === $content) {
             if ($multiline) {
                 $content = $node->html();
                 $content = preg_replace('/<p[^>]*?>/', '', $content);
