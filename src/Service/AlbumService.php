@@ -59,7 +59,7 @@ final class AlbumService extends AbstractService
      */
     public function getInfoByMBID(string $mbid, bool $autocorrect = false, $username = null, $lang = null): array
     {
-        return $this->unsignedCall('album.getVenue', array(
+        return $this->unsignedCall('album.getInfo', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
@@ -83,7 +83,7 @@ final class AlbumService extends AbstractService
      */
     public function getInfo($artist, string $album, bool $autocorrect = false, $username = null, $lang = null): array
     {
-        return $this->unsignedCall('album.getVenue', array(
+        return $this->unsignedCall('album.getInfo', array(
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,

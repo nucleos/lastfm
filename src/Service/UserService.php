@@ -74,7 +74,7 @@ final class UserService extends AbstractService
      */
     public function getInfo(string $username): array
     {
-        return $this->unsignedCall('user.getVenue', array(
+        return $this->unsignedCall('user.getInfo', array(
             'user' => $username,
         ));
     }

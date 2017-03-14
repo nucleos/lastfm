@@ -71,7 +71,7 @@ final class ArtistService extends AbstractService
      */
     public function getInfo(string $artist): array
     {
-        return $this->unsignedCall('artist.getVenue', array(
+        return $this->unsignedCall('artist.getInfo', array(
             'artist' => $artist,
         ));
     }

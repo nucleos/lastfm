@@ -27,7 +27,7 @@ final class TagService extends AbstractService
      */
     public function getInfo(string $tag, string $lang = null): array
     {
-        return $this->unsignedCall('tag.getVenue', array(
+        return $this->unsignedCall('tag.getInfo', array(
             'tag'  => $tag,
             'lang' => $lang,
         ));
