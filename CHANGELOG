@@ -1,0 +1,24 @@
+14/03/2017 19:46  0.2.0  First beta release
+3ca764e Created liip/rmt config
+f4c94fa Fixed string parser
+a40b9f7 Added url to event list crawler
+608c059 Use strict comparison
+a023b6d Apply fixes from StyleCI
+b4661d4 Removed useless condition
+ce710c5 Use strict comparison
+f5fa52a Removed useless parameter
+a3bac5d Fixed phpdoc
+509f6b3 Apply fixes from StyleCI
+f9203a3 Fixed cs
+4c511aa Removed useless check in crawler for user event years
+eb6212b Added missing css-selector dependency
+4c3340f Strict type comparison
+b4c8084 Fixed file permissions
+c2ffe9f Updated travis config
+3f976df Updated badges
+dadd525 Apply fixes from StyleCI
+cb50d47 Added PHP 7 type declarations
+634742e Update for PHPUnit 5.7
+6fa2426 Fixed cs
+30f43e9 Updated file header
+326ddf4 Added type declarations to methods

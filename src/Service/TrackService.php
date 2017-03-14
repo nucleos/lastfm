@@ -77,7 +77,7 @@ final class TrackService extends AbstractService
      */
     public function getInfo(string $artist, string $track, $username = null, $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getInfo', array(
+        return $this->unsignedCall('track.getVenue', array(
             'artist'      => $artist,
             'track'       => $track,
             'autocorrect' => (int) $autocorrect,
@@ -99,7 +99,7 @@ final class TrackService extends AbstractService
      */
     public function getInfoByMBID($mbid, $username = null, $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getInfo', array(
+        return $this->unsignedCall('track.getVenue', array(
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
