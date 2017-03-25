@@ -7,10 +7,8 @@
  * file that was distributed with this source code.
  */
 
-$files = array_filter(array(
-    __DIR__.'../../vendor/autoload.php',
-    __DIR__.'../../../vendor/autoload.php',
-), 'file_exists');
-if (count($files) > 0) {
-    require_once current($files);
+if (file_exists($file = __DIR__.'/autoload.php')) {
+    require_once $file;
+} elseif (file_exists($file = __DIR__.'/autoload.php.dist')) {
+    require_once $file;
 }
