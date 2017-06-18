@@ -133,7 +133,7 @@ abstract class AbstractConnection implements ConnectionInterface
     private function filterNull(array $object): array
     {
         return array_filter($object, function ($val) {
-            return !is_null($val);
+            return null !== $val;
         });
     }
 
