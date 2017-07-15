@@ -154,9 +154,11 @@ abstract class AbstractConnection implements ConnectionInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $params
+     *
+     * @return string
      */
-    private function signParams(array $params)
+    private function signParams(array $params): string
     {
         ksort($params);
 
