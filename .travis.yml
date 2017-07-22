@@ -15,10 +15,15 @@ env:
   global:
     - PATH="$HOME/.composer/vendor/bin:$PATH"
     - SYMFONY_DEPRECATIONS_HELPER=weak
+    - TARGET=test
 
 matrix:
   fast_finish: true
   include:
+    - php: 7.1
+      env: TARGET=lint
+    - php: 7.1
+      env: TARGET=phpstan
     - php: 7.0
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 7.1
@@ -41,9 +46,7 @@ install:
 before_script:
  - echo "zend_extension=xdebug.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
-script:
- - composer validate
- - phpunit -c phpunit.xml.dist --coverage-clover build/logs/clover.xml
+script: make $TARGET
 
 after_script:
  - coveralls -v
