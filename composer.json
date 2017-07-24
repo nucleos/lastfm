@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "psr/log": "^1.0",
     "symfony/css-selector": "^2.8 || ^3.2",
     "symfony/dom-crawler": "^2.8 || ^3.2"
