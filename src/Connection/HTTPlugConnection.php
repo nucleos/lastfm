@@ -59,11 +59,11 @@ final class HTTPlugConnection extends AbstractConnection
      */
     protected function call(array $params, string $requestMethod = 'GET'): array
     {
-        try {
-            $params = array_merge($params, array('format' => 'json'));
-            $data   = $this->buildParameter($params);
+        $params  = array_merge($params, array('format' => 'json'));
+        $data    = $this->buildParameter($params);
+        $request = $this->messageFactory->createRequest($requestMethod, $this->uri, array(), $data);
 
-            $request  = $this->messageFactory->createRequest($requestMethod, $this->uri, array(), $data);
+        try {
             $response = $this->client->sendRequest($request);
 
             // Parse response
