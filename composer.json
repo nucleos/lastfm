@@ -31,8 +31,8 @@
   },
   "suggest": {
     "php-http/buzz-adapter": "Buzz HTTP client implementation",
-    "php-http/guzzle6-adapter": "Guzzle HTTP client implementation",
-    "php-http/cache-plugin": "Cache plugin to reduce API usage"
+    "php-http/cache-plugin": "Cache plugin to reduce API usage",
+    "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
   },
   "autoload": {
     "psr-4": {
