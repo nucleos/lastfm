@@ -45,7 +45,7 @@ final class AuthService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function createSession(string $token)
+    public function createSession(string $token): ?SessionInterface
     {
         $response = $this->signedCall('auth.getSession', array(
             'token' => $token,

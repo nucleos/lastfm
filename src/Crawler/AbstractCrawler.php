@@ -55,7 +55,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseUrl(Crawler $node, string $attr = 'href')
+    final protected function parseUrl(Crawler $node, string $attr = 'href'): ?string
     {
         if (null === $node || 0 === $node->count()) {
             return null;
@@ -75,7 +75,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseImage(Crawler $node)
+    final protected function parseImage(Crawler $node): ?string
     {
         return $this->parseUrl($node, 'src');
     }
@@ -88,7 +88,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseString(Crawler $node, bool $multiline = false)
+    final protected function parseString(Crawler $node, bool $multiline = false): ?string
     {
         if (null === $node || 0 === $node->count()) {
             return null;
@@ -117,7 +117,7 @@ abstract class AbstractCrawler
      *
      * @return \DateTime|null
      */
-    final protected function parseDate(Crawler $node)
+    final protected function parseDate(Crawler $node): ?\DateTime
     {
         $content = $this->parseString($node);
 

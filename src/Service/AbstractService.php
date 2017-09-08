@@ -38,7 +38,7 @@ abstract class AbstractService
      *
      * @return int|null
      */
-    final protected function toTimestamp(\DateTime $date = null)
+    final protected function toTimestamp(\DateTime $date = null): ?int
     {
         if (null === $date) {
             return null;
