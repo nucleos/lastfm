@@ -68,6 +68,7 @@ abstract class AbstractService
             if ($e->getCode() == 6) {
                 throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
             }
+
             throw $e;
         }
     }
@@ -92,6 +93,7 @@ abstract class AbstractService
             if ($e->getCode() == 6) {
                 throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
             }
+
             throw $e;
         }
     }
