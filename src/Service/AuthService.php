@@ -65,6 +65,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
                 'exception' => $e,
             ));
         }
+
         return null;
     }
 
