@@ -1,3 +1,29 @@
+14/09/2017 12:38  0.3.0  0.3.0
+92fa554 Apply fixes from StyleCI
+8bcaec1 Fetch exceptions when creating session
+44da4d7 Added type hints
+8f738f9 Apply fixes from StyleCI
+d70aced [travis] Moved phpstan to allow failures
+3b18572 Sorted dependencies
+c1698c5 Recommend using a cache for requests
+538ec65 Improved exception catching
+adf8aad Use latest phpstan version
+f1e6fcc Dropped support for PHP 7.0
+fe6e4f7 Added missing dependency to travis config
+423a211 Sorted dependencies
+2d41d5a Fixed PHPStan runner
+c19a4d9 Added PHPStan checks to travis
+db43d75 Added option to sort composer packages
+1c1b92a Removed HHVM from travis setup
+411099f Dropped support for outdated symfony versions
+672e258 Fixed wrong export-ignore entry
+1edfefd Added missing PHPDoc
+6a5871e Removed Guzzle dependency
+8686527 Improved exception handling
+319f996 Fixed CS
+3c267f4 Revert Init
+9f57a9b Update phpunit config
+d2122a7 Init
 14/03/2017 19:46  0.2.0  First beta release
 3ca764e Created liip/rmt config
 f4c94fa Fixed string parser
