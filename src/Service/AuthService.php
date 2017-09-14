@@ -14,9 +14,14 @@ use Core23\LastFm\Connection\Session;
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
-final class AuthService extends AbstractService
+final class AuthService extends AbstractService implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * @var string
      */
@@ -33,6 +38,7 @@ final class AuthService extends AbstractService
         parent::__construct($connection);
 
         $this->authUrl = $authUrl;
+        $this->logger  = new NullLogger();
     }
 
     /**
@@ -41,17 +47,25 @@ final class AuthService extends AbstractService
      * @param string $token
      *
      * @return SessionInterface|null
-     *
-     * @throws ApiException
-     * @throws NotFoundException
      */
     public function createSession(string $token): ?SessionInterface
     {
-        $response = $this->signedCall('auth.getSession', array(
-            'token' => $token,
-        ));
+        try {
+            $response = $this->signedCall('auth.getSession', array(
+                'token' => $token,
+            ));
 
-        return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
+            return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
+        } catch (ApiException $e) {
+            $this->logger->warning(sprintf('Error getting session for "%s" token.', $token), array(
+                'exception' => $e,
+            ));
+        } catch (NotFoundException $e) {
+            $this->logger->info(sprintf('No session was found for "%s" token.', $token), array(
+                'exception' => $e,
+            ));
+        }
+        return null;
     }
 
     /**
