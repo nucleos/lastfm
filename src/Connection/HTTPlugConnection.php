@@ -46,7 +46,7 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    public function getPageBody(string $url): ?string
+    public function getPageBody(string $url): ? string
     {
         $request  = $this->messageFactory->createRequest('GET', $url);
         $response = $this->client->sendRequest($request);
@@ -61,7 +61,7 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    protected function call(array $params, string $requestMethod = 'GET'): array
+    protected function call(array $params, string $requestMethod = 'GET') : array
     {
         $params  = array_merge($params, array('format' => 'json'));
         $data    = $this->buildParameter($params);

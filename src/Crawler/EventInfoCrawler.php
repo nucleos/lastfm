@@ -20,7 +20,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array|null
      */
-    public function getEventInfo(int $id): ?array
+    public function getEventInfo(int $id): ? array
     {
         $node = $this->crawlEvent($id);
 
@@ -50,7 +50,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array
      */
-    private function readBands(Crawler $node): array
+    private function readBands(Crawler $node) : array
     {
         $bandNode = $node->filter('.grid-items');
 
@@ -91,7 +91,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return Crawler|null
      */
-    private function crawlEvent(int $id): ?Crawler
+    private function crawlEvent(int $id): ? Crawler
     {
         $url = 'http://www.last.fm/de/event/'.$id;
 

@@ -47,14 +47,14 @@ interface ConnectionInterface
      *
      * @return string|null
      */
-    public function getPageBody(string $url): ?string;
+    public function getPageBody(string $url): ? string;
 
     /**
      * Get the api key.
      *
      * @return string
      */
-    public function getApiKey(): string;
+    public function getApiKey() : string;
 
     /**
      * Get the shared secret.

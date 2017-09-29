@@ -48,7 +48,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
      *
      * @return SessionInterface|null
      */
-    public function createSession(string $token): ?SessionInterface
+    public function createSession(string $token): ? SessionInterface
     {
         try {
             $response = $this->signedCall('auth.getSession', array(
@@ -91,7 +91,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
      *
      * @return string
      */
-    public function getAuthUrl(string $callbackUrl): string
+    public function getAuthUrl(string $callbackUrl) : string
     {
         return $this->authUrl.'?api_key='.$this->connection->getApiKey().'&cb='.$callbackUrl;
     }
