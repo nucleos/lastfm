@@ -41,13 +41,13 @@ interface ConnectionInterface
     public function unsignedCall(string $method, array $params = array(), string $requestMethod = 'GET'): array;
 
     /**
-     * Loads a page.
+     * Loads a page and returns the page body.
      *
      * @param string $url
      *
-     * @return string
+     * @return string|null
      */
-    public function loadPage(string $url): string;
+    public function getPageBody(string $url): ?string;
 
     /**
      * Get the api key.

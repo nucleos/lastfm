@@ -18,11 +18,16 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @param int $id
      *
-     * @return array
+     * @return array|null
      */
-    public function getEventInfo(int $id): array
+    public function getEventInfo(int $id): ?array
     {
-        $node     = $this->crawlEvent($id);
+        $node = $this->crawlEvent($id);
+
+        if (null === $node) {
+            return null;
+        }
+
         $timeNode = $node->filter('.qa-event-date');
 
         return array(
@@ -84,9 +89,9 @@ final class EventInfoCrawler extends AbstractCrawler
     /**
      * @param int $id
      *
-     * @return Crawler
+     * @return Crawler|null
      */
-    private function crawlEvent(int $id): Crawler
+    private function crawlEvent(int $id): ?Crawler
     {
         $url = 'http://www.last.fm/de/event/'.$id;
 

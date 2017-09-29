@@ -46,10 +46,14 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    public function loadPage(string $url): string
+    public function getPageBody(string $url): ?string
     {
         $request  = $this->messageFactory->createRequest('GET', $url);
         $response = $this->client->sendRequest($request);
+
+        if ($response->getStatusCode() >= 400) {
+            return null;
+        }
 
         return $response->getBody()->getContents();
     }

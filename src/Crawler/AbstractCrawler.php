@@ -38,13 +38,15 @@ abstract class AbstractCrawler
      *
      * @param string $url
      *
-     * @return Crawler
+     * @return Crawler|null
      */
     final protected function crawl(string $url): Crawler
     {
-        $content = $this->connection->loadPage($url);
+        if ($content = $this->connection->getPageBody($url)) {
+            return new Crawler($content);
+        }
 
-        return new Crawler($content);
+        return null;
     }
 
     /**
