@@ -60,7 +60,7 @@ abstract class AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET') : array
+    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->signedCall($method, $params, $session, $requestMethod);
