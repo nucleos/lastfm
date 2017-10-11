@@ -46,7 +46,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return array|null
      */
-    public function getEvents(string $username, int $year, int $page = 1) : ? array
+    public function getEvents(string $username, int $year, int $page = 1): ? array
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -54,7 +54,7 @@ final class EventListCrawler extends AbstractCrawler
             return null;
         }
 
-        return $node->filter('.events-list-item')->each(function (Crawler $node) : array {
+        return $node->filter('.events-list-item')->each(function (Crawler $node): array {
             $eventNode = $node->filter('.events-list-item-event--title a');
 
             $url = $this->parseUrl($eventNode);
@@ -97,7 +97,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int|null
      */
-    public function getYearCount(string $username, int $year, int $page = 1) : ? int
+    public function getYearCount(string $username, int $year, int $page = 1): ? int
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -123,7 +123,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int
      */
-    private function countListPages(Crawler $node) : int
+    private function countListPages(Crawler $node): int
     {
         $pagination = $this->parseString($node->filter('.pagination .pages'));
 
