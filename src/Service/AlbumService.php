@@ -123,6 +123,9 @@ final class AlbumService extends AbstractService
      * @param bool   $autocorrect
      *
      * @return array
+     *
+     * @throws ApiException
+     * @throws NotFoundException
      */
     public function getTagsByMBID($mbid, string $username, bool $autocorrect = false): array
     {
