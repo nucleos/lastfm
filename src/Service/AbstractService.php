@@ -65,7 +65,7 @@ abstract class AbstractService
         try {
             return $this->connection->signedCall($method, $params, $session, $requestMethod);
         } catch (ApiException $e) {
-            if ($e->getCode() == 6) {
+            if (6 == $e->getCode()) {
                 throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
             }
 
@@ -90,7 +90,7 @@ abstract class AbstractService
         try {
             return $this->connection->unsignedCall($method, $params, $requestMethod);
         } catch (ApiException $e) {
-            if ($e->getCode() == 6) {
+            if (6 == $e->getCode()) {
                 throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
             }
 
