@@ -140,7 +140,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int
      */
-    private function countListEvents(Crawler $node): int
+    private function countListEvents(Crawler $node) : int
     {
         return $node->filter('.events-list-item')->count();
     }
