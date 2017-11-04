@@ -109,7 +109,7 @@ final class EventListCrawler extends AbstractCrawler
         $pages   = $this->countListPages($node);
 
         if ($pages) {
-            $node  = $this->crawlEventList($username, $year, $pages);
+            $node = $this->crawlEventList($username, $year, $pages);
 
             if (null === $node) {
                 return $perPage;

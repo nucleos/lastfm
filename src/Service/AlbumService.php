@@ -31,7 +31,7 @@ final class AlbumService extends AbstractService
     {
         $count = count($tags);
 
-        if ($count === 0) {
+        if (0 === $count) {
             return;
         } elseif ($count > 10) {
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
