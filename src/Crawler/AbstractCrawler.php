@@ -40,7 +40,7 @@ abstract class AbstractCrawler
      *
      * @return Crawler|null
      */
-    final protected function crawl(string $url): Crawler
+    final protected function crawl(string $url): ? Crawler
     {
         if ($content = $this->connection->getPageBody($url)) {
             return new Crawler($content);
@@ -57,7 +57,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseUrl(Crawler $node, string $attr = 'href'): ? string
+    final protected function parseUrl(Crawler $node, string $attr = 'href') : ? string
     {
         if (null === $node || 0 === $node->count()) {
             return null;

@@ -65,10 +65,10 @@ final class TrackService extends AbstractService
     /**
      * Get the metadata for a track on Last.fm using the artist/track name.
      *
-     * @param string $artist
-     * @param string $track
-     * @param null   $username
-     * @param bool   $autocorrect
+     * @param string      $artist
+     * @param string      $track
+     * @param string|null $username
+     * @param bool        $autocorrect
      *
      * @return array
      *
@@ -88,9 +88,9 @@ final class TrackService extends AbstractService
     /**
      * Get the metadata for a track on Last.fm using the musicbrainz id.
      *
-     * @param string $mbid
-     * @param null   $username
-     * @param bool   $autocorrect
+     * @param string      $mbid
+     * @param string|null $username
+     * @param bool        $autocorrect
      *
      * @return array
      *
