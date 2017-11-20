@@ -61,7 +61,7 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    protected function call(array $params, string $requestMethod = 'GET') : array
+    protected function call(array $params, string $requestMethod = 'GET'): array
     {
         $params  = array_merge($params, array('format' => 'json'));
         $data    = $this->buildParameter($params);
