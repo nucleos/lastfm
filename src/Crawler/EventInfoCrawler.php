@@ -50,7 +50,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array
      */
-    private function readBands(Crawler $node): array
+    private function readBands(Crawler $node) : array
     {
         $bandNode = $node->filter('.grid-items');
 
