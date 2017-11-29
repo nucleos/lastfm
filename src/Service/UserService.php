@@ -322,7 +322,7 @@ final class UserService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getWeeklyArtistChart($username, \DateTime $from = null, \DateTime $to = null): array
+    public function getWeeklyArtistChart(string $username, \DateTime $from = null, \DateTime $to = null): array
     {
         return $this->unsignedCall('user.getWeeklyArtistChart', array(
             'user' => $username,
@@ -334,14 +334,14 @@ final class UserService extends AbstractService
     /**
      * Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
      *
-     * @param $username
+     * @param string $username
      *
      * @return array
      *
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function getWeeklyChartList($username): array
+    public function getWeeklyChartList(string $username): array
     {
         return $this->unsignedCall('user.getWeeklyChartList', array(
             'user' => $username,

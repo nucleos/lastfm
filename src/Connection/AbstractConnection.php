@@ -16,7 +16,7 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * Default Endpoint.
      */
-    const DEFAULT_WS_ENDPOINT = 'http://ws.audioscrobbler.com/2.0/';
+    public const DEFAULT_WS_ENDPOINT = 'http://ws.audioscrobbler.com/2.0/';
 
     /**
      * @var string

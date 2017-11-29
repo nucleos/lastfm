@@ -14,9 +14,9 @@ use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler
 {
-    const URL_PREFIX = 'http://last.fm';
+    public const URL_PREFIX  = 'http://last.fm';
 
-    const NEWLINE = "\n";
+    public const NEWLINE = "\n";
 
     /**
      * @var ConnectionInterface
@@ -59,7 +59,7 @@ abstract class AbstractCrawler
      */
     final protected function parseUrl(Crawler $node, string $attr = 'href') : ? string
     {
-        if (null === $node || 0 === $node->count()) {
+        if (0 === $node->count()) {
             return null;
         }
 
@@ -92,7 +92,7 @@ abstract class AbstractCrawler
      */
     final protected function parseString(Crawler $node, bool $multiline = false) : ? string
     {
-        if (null === $node || 0 === $node->count()) {
+        if (0 === $node->count()) {
             return null;
         }
 
