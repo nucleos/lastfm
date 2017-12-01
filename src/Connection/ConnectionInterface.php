@@ -54,7 +54,7 @@ interface ConnectionInterface
      *
      * @return string
      */
-    public function getApiKey() : string;
+    public function getApiKey(): string;
 
     /**
      * Get the shared secret.
