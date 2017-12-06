@@ -23,11 +23,9 @@
     "symfony/dom-crawler": "^2.8.6 || ^3.2 || ^4.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.0",
     "php-http/httplug-bundle": "^1.1",
     "php-http/mock-client": "^0.3",
-    "phpunit/phpunit": "^5.7",
-    "sllh/php-cs-fixer-styleci-bridge": "^2.0"
+    "phpunit/phpunit": "^5.7"
   },
   "suggest": {
     "php-http/buzz-adapter": "Buzz HTTP client implementation",
