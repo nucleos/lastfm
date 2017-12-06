@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -21,11 +23,11 @@ interface ConnectionInterface
      * @param SessionInterface|null $session
      * @param string                $requestMethod
      *
-     * @return array
-     *
      * @throws ApiException
+     *
+     * @return array
      */
-    public function signedCall(string $method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array;
+    public function signedCall(string $method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array;
 
     /**
      * Calls the API unsigned.
@@ -34,11 +36,11 @@ interface ConnectionInterface
      * @param array  $params
      * @param string $requestMethod
      *
-     * @return array
-     *
      * @throws ApiException
+     *
+     * @return array
      */
-    public function unsignedCall(string $method, array $params = array(), string $requestMethod = 'GET'): array;
+    public function unsignedCall(string $method, array $params = [], string $requestMethod = 'GET'): array;
 
     /**
      * Loads a page and returns the page body.
@@ -47,7 +49,7 @@ interface ConnectionInterface
      *
      * @return string|null
      */
-    public function getPageBody(string $url): ? string;
+    public function getPageBody(string $url): ?string;
 
     /**
      * Get the api key.

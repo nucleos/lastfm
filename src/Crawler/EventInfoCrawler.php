@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -20,7 +22,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return array|null
      */
-    public function getEventInfo(int $id): ? array
+    public function getEventInfo(int $id): ?array
     {
         $node = $this->crawlEvent($id);
 
@@ -30,7 +32,7 @@ final class EventInfoCrawler extends AbstractCrawler
 
         $timeNode = $node->filter('.qa-event-date');
 
-        return array(
+        return [
             'title'       => $this->parseString($node->filter('h1.header-title')),
             'image'       => $this->parseImage($node->filter('.event-poster-preview')),
             'festival'    => $node->filter('.namespace--events_festival_overview')->count() > 0,
@@ -42,7 +44,7 @@ final class EventInfoCrawler extends AbstractCrawler
             'eventId'     => $id,
             'venue'       => $this->readVenues($node),
             'bands'       => $this->readBands($node),
-        );
+        ];
     }
 
     /**
@@ -55,11 +57,11 @@ final class EventInfoCrawler extends AbstractCrawler
         $bandNode = $node->filter('.grid-items');
 
         return $bandNode->filter('.grid-items-item')->each(function (Crawler $node): array {
-            return array(
+            return [
                 'image' => $this->parseImage($node->filter('.grid-items-cover-image-image img')),
                 'name'  => $this->parseString($node->filter('.grid-items-item-main-text')),
                 'url'   => $this->parseUrl($node->filter('.grid-items-item-main-text a')),
-            );
+            ];
         });
     }
 
@@ -73,17 +75,17 @@ final class EventInfoCrawler extends AbstractCrawler
         $venueNode   = $node->filter('.event-detail');
         $addressNode = $venueNode->filter('.event-detail-address');
 
-        return array(
+        return [
             'name'      => $this->parseString($venueNode->filter('[itemprop="name"]')),
             'telephone' => $this->parseString($venueNode->filter('.event-detail-tel span')),
             'url'       => $this->parseUrl($venueNode->filter('.event-detail-web a')),
-            'address'   => array(
+            'address'   => [
                 'streetAddress'   => $this->parseString($addressNode->filter('[itemprop="streetAddress"]')),
                 'addressLocality' => $this->parseString($addressNode->filter('[itemprop="addressLocality"]')),
                 'postalCode'      => $this->parseString($addressNode->filter('[itemprop="postalCode"]')),
                 'addressCountry'  => $this->parseString($addressNode->filter('[itemprop="addressCountry"]')),
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -91,7 +93,7 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @return Crawler|null
      */
-    private function crawlEvent(int $id): ? Crawler
+    private function crawlEvent(int $id): ?Crawler
     {
         $url = 'http://www.last.fm/de/event/'.$id;
 

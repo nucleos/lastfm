@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -18,7 +20,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int[]|null
      */
-    public function getUserYears(string $username): ? array
+    public function getUserYears(string $username): ?array
     {
         $node = $this->crawlEventList($username);
 
@@ -46,7 +48,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return array|null
      */
-    public function getEvents(string $username, ? int $year, int $page = 1): ? array
+    public function getEvents(string $username, ?int $year, int $page = 1): ?array
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -60,12 +62,12 @@ final class EventListCrawler extends AbstractCrawler
             $url = $this->parseUrl($eventNode);
             $id = preg_replace('/.*\/(\d+)+.*/', '$1', $url);
 
-            return array(
+            return [
                 'eventId' => (int) $id,
                 'title'   => $this->parseString($eventNode),
                 'time'    => new \DateTime($node->filter('time')->attr('datetime')),
                 'url'     => $url,
-            );
+            ];
         });
     }
 
@@ -77,7 +79,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int|null
      */
-    public function getYearPages(string $username, ? int $year): ? int
+    public function getYearPages(string $username, ?int $year): ?int
     {
         $node = $this->crawlEventList($username, $year);
 
@@ -97,7 +99,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return int|null
      */
-    public function getYearCount(string $username, ? int $year, int $page = 1): ? int
+    public function getYearCount(string $username, ?int $year, int $page = 1): ?int
     {
         $node = $this->crawlEventList($username, $year, $page);
 
@@ -152,7 +154,7 @@ final class EventListCrawler extends AbstractCrawler
      *
      * @return Crawler|null
      */
-    private function crawlEventList(string $username, ? int $year = null, int $page = 1): ? Crawler
+    private function crawlEventList(string $username, ?int $year = null, int $page = 1): ?Crawler
     {
         $url = 'http://www.last.fm/user/'.$username.'/events/'.($year ?: '').'?page='.$page;
 

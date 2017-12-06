@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -20,17 +22,17 @@ final class TagService extends AbstractService
      * @param string $tag
      * @param string $lang
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getInfo(string $tag, string $lang = null): array
     {
-        return $this->unsignedCall('tag.getInfo', array(
+        return $this->unsignedCall('tag.getInfo', [
             'tag'  => $tag,
             'lang' => $lang,
-        ));
+        ]);
     }
 
     /**
@@ -38,16 +40,16 @@ final class TagService extends AbstractService
      *
      * @param string $tag
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getSimilar($tag): array
     {
-        return $this->unsignedCall('tag.getSimilar', array(
+        return $this->unsignedCall('tag.getSimilar', [
             'tag' => $tag,
-        ));
+        ]);
     }
 
     /**
@@ -57,18 +59,18 @@ final class TagService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopAlbums', array(
+        return $this->unsignedCall('tag.getTopAlbums', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
@@ -78,27 +80,27 @@ final class TagService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopArtists', array(
+        return $this->unsignedCall('tag.getTopArtists', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
      * Fetches the top global tags on Last.fm, sorted by popularity (number of times used).
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTags(): array
     {
@@ -112,18 +114,18 @@ final class TagService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopTracks', array(
+        return $this->unsignedCall('tag.getTopTracks', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
@@ -131,15 +133,15 @@ final class TagService extends AbstractService
      *
      * @param string $tag
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getWeeklyChartList(string $tag): array
     {
-        return $this->unsignedCall('tag.getWeeklyChartList', array(
+        return $this->unsignedCall('tag.getWeeklyChartList', [
             'tag' => $tag,
-        ));
+        ]);
     }
 }

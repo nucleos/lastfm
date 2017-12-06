@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -48,22 +50,22 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
      *
      * @return SessionInterface|null
      */
-    public function createSession(string $token): ? SessionInterface
+    public function createSession(string $token): ?SessionInterface
     {
         try {
-            $response = $this->signedCall('auth.getSession', array(
+            $response = $this->signedCall('auth.getSession', [
                 'token' => $token,
-            ));
+            ]);
 
             return new Session($response['session']['name'], $response['session']['key'], $response['session']['subscriber']);
         } catch (ApiException $e) {
-            $this->logger->warning(sprintf('Error getting session for "%s" token.', $token), array(
+            $this->logger->warning(sprintf('Error getting session for "%s" token.', $token), [
                 'exception' => $e,
-            ));
+            ]);
         } catch (NotFoundException $e) {
-            $this->logger->info(sprintf('No session was found for "%s" token.', $token), array(
+            $this->logger->info(sprintf('No session was found for "%s" token.', $token), [
                 'exception' => $e,
-            ));
+            ]);
         }
 
         return null;
@@ -72,10 +74,10 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
     /**
      * Creates a new api token.
      *
-     * @return string|false
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return string|false
      */
     public function createToken()
     {

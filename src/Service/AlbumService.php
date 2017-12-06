@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -27,7 +29,7 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function addTags(SessionInterface $session, string $artist, string $album, array $tags)
+    public function addTags(SessionInterface $session, string $artist, string $album, array $tags): void
     {
         $count = count($tags);
 
@@ -37,11 +39,11 @@ final class AlbumService extends AbstractService
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        $this->signedCall('album.addTags', array(
+        $this->signedCall('album.addTags', [
             'artist' => $artist,
             'album'  => $album,
             'tags'   => implode(',', $tags),
-        ), $session, 'POST');
+        ], $session, 'POST');
     }
 
     /**
@@ -52,19 +54,19 @@ final class AlbumService extends AbstractService
      * @param string $username
      * @param string $lang
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getInfoByMBID(string $mbid, bool $autocorrect = false, $username = null, $lang = null): array
     {
-        return $this->unsignedCall('album.getInfo', array(
+        return $this->unsignedCall('album.getInfo', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
             'lang'        => $lang,
-        ));
+        ]);
     }
 
     /**
@@ -76,20 +78,20 @@ final class AlbumService extends AbstractService
      * @param string $username
      * @param string $lang
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getInfo($artist, string $album, bool $autocorrect = false, $username = null, $lang = null): array
     {
-        return $this->unsignedCall('album.getInfo', array(
+        return $this->unsignedCall('album.getInfo', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
             'lang'        => $lang,
-        ));
+        ]);
     }
 
     /**
@@ -100,19 +102,19 @@ final class AlbumService extends AbstractService
      * @param string $username
      * @param bool   $autocorrect
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTags($artist, string $album, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTags', array(
+        return $this->unsignedCall('album.getTags', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
             'user'        => $username,
-        ));
+        ]);
     }
 
     /**
@@ -122,18 +124,18 @@ final class AlbumService extends AbstractService
      * @param string $username
      * @param bool   $autocorrect
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTagsByMBID($mbid, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTags', array(
+        return $this->unsignedCall('album.getTags', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'user'        => $username,
-        ));
+        ]);
     }
 
     /**
@@ -143,18 +145,18 @@ final class AlbumService extends AbstractService
      * @param string $album
      * @param bool   $autocorrect
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTags($artist, string $album, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTopTags', array(
+        return $this->unsignedCall('album.getTopTags', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
-        ));
+        ]);
     }
 
     /**
@@ -163,17 +165,17 @@ final class AlbumService extends AbstractService
      * @param string $mbid
      * @param bool   $autocorrect
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTagsByMBID($mbid, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTopTags', array(
+        return $this->unsignedCall('album.getTopTags', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
-        ));
+        ]);
     }
 
     /**
@@ -187,13 +189,13 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      */
-    public function removeTag(SessionInterface $session, string $artist, string $album, string $tag)
+    public function removeTag(SessionInterface $session, string $artist, string $album, string $tag): void
     {
-        $this->signedCall('album.removeTag', array(
+        $this->signedCall('album.removeTag', [
             'artist' => $artist,
             'album'  => $album,
             'tag'    => $tag,
-        ), $session, 'POST');
+        ], $session, 'POST');
     }
 
     /**
@@ -203,17 +205,17 @@ final class AlbumService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function search(string $album, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('album.search', array(
+        return $this->unsignedCall('album.search', [
             'album' => $album,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 }

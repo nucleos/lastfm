@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -14,7 +16,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler
 {
-    public const URL_PREFIX  = 'http://last.fm';
+    public const URL_PREFIX = 'http://last.fm';
 
     public const NEWLINE = "\n";
 
@@ -40,7 +42,7 @@ abstract class AbstractCrawler
      *
      * @return Crawler|null
      */
-    final protected function crawl(string $url): ? Crawler
+    final protected function crawl(string $url): ?Crawler
     {
         if ($content = $this->connection->getPageBody($url)) {
             return new Crawler($content);
@@ -57,7 +59,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseUrl(Crawler $node, string $attr = 'href'): ? string
+    final protected function parseUrl(Crawler $node, string $attr = 'href'): ?string
     {
         if (0 === $node->count()) {
             return null;
@@ -77,7 +79,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseImage(Crawler $node): ? string
+    final protected function parseImage(Crawler $node): ?string
     {
         return $this->parseUrl($node, 'src');
     }
@@ -90,7 +92,7 @@ abstract class AbstractCrawler
      *
      * @return null|string
      */
-    final protected function parseString(Crawler $node, bool $multiline = false): ? string
+    final protected function parseString(Crawler $node, bool $multiline = false): ?string
     {
         if (0 === $node->count()) {
             return null;
@@ -119,7 +121,7 @@ abstract class AbstractCrawler
      *
      * @return \DateTime|null
      */
-    final protected function parseDate(Crawler $node): ? \DateTime
+    final protected function parseDate(Crawler $node): ?\DateTime
     {
         $content = $this->parseString($node);
 

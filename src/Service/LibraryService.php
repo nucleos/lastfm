@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -21,17 +23,17 @@ final class LibraryService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('library.getArtists', array(
+        return $this->unsignedCall('library.getArtists', [
             'user'  => $user,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 }

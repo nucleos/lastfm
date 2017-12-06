@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -54,13 +56,13 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function signedCall(string $method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array
+    public function signedCall(string $method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         // Call parameter
-        $callParams = array(
+        $callParams = [
             'method'  => $method,
             'api_key' => $this->apiKey,
-        );
+        ];
 
         // Add session key
         if (null !== $session) {
@@ -80,13 +82,13 @@ abstract class AbstractConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function unsignedCall(string $method, array $params = array(), string $requestMethod = 'GET'): array
+    public function unsignedCall(string $method, array $params = [], string $requestMethod = 'GET'): array
     {
         // Call parameter
-        $callParameter = array(
+        $callParameter = [
             'method'  => $method,
             'api_key' => $this->apiKey,
-        );
+        ];
 
         $params = array_merge($callParameter, $params);
         $params = $this->filterNull($params);
@@ -117,9 +119,9 @@ abstract class AbstractConnection implements ConnectionInterface
      * @param array  $params
      * @param string $requestMethod
      *
-     * @return array
-     *
      * @throws ApiException
+     *
+     * @return array
      */
     abstract protected function call(array $params, string $requestMethod = 'GET'): array;
 
@@ -147,7 +149,7 @@ abstract class AbstractConnection implements ConnectionInterface
     private function encodeUTF8($object)
     {
         if (is_array($object)) {
-            return array_map(array($this, 'encodeUTF8'), $object);
+            return array_map([$this, 'encodeUTF8'], $object);
         }
 
         return mb_convert_encoding($object, 'UTF-8', 'auto');

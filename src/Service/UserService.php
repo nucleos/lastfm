@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -23,20 +25,20 @@ final class UserService extends AbstractService
      * @param \DateTime $endTimestamp
      * @param int       $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getArtistTracks(string $username, string $artist, \DateTime $startTimestamp = null, \DateTime $endTimestamp = null, $page = 1): array
     {
-        return $this->unsignedCall('user.getArtistTracks', array(
+        return $this->unsignedCall('user.getArtistTracks', [
             'user'           => $username,
             'artist'         => $artist,
             'startTimestamp' => $this->toTimestamp($startTimestamp),
             'endTimestamp'   => $this->toTimestamp($endTimestamp),
             'page'           => $page,
-        ));
+        ]);
     }
 
     /**
@@ -47,19 +49,19 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getFriends(string $username, bool $recenttracks = false, $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getFriends', array(
+        return $this->unsignedCall('user.getFriends', [
             'user'         => $username,
             'recenttracks' => (int) $recenttracks,
             'limit'        => $limit,
             'page'         => $page,
-        ));
+        ]);
     }
 
     /**
@@ -67,16 +69,16 @@ final class UserService extends AbstractService
      *
      * @param string $username
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getInfo(string $username): array
     {
-        return $this->unsignedCall('user.getInfo', array(
+        return $this->unsignedCall('user.getInfo', [
             'user' => $username,
-        ));
+        ]);
     }
 
     /**
@@ -86,18 +88,18 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getLovedTracks(string $username, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getLovedTracks', array(
+        return $this->unsignedCall('user.getLovedTracks', [
             'user'  => $username,
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
@@ -110,21 +112,21 @@ final class UserService extends AbstractService
      * @param int       $limit
      * @param int       $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getRecentTracks(string $username, \DateTime $from = null, \DateTime $to = null, $extended = false, $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getRecentTracks', array(
+        return $this->unsignedCall('user.getRecentTracks', [
             'user'     => $username,
             'limit'    => $limit,
             'page'     => $page,
             'extended' => (int) $extended,
             'from'     => $this->toTimestamp($from),
             'to'       => $this->toTimestamp($to),
-        ));
+        ]);
     }
 
     /**
@@ -135,20 +137,20 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getPersonalTagsForArtist(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'artist',
             'user'        => $username,
             'tag'         => $tag,
             'limit'       => $limit,
             'page'        => $page,
-        ));
+        ]);
     }
 
     /**
@@ -159,20 +161,20 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getPersonalTagsForAlbum(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'album',
             'user'        => $username,
             'tag'         => $tag,
             'limit'       => $limit,
             'page'        => $page,
-        ));
+        ]);
     }
 
     /**
@@ -183,20 +185,20 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getPersonalTagsForTracks(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getPersonalTags', array(
+        return $this->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'track',
             'user'        => $username,
             'tag'         => $tag,
             'limit'       => $limit,
             'page'        => $page,
-        ));
+        ]);
     }
 
     /**
@@ -207,19 +209,19 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopAlbums(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getTopAlbums', array(
+        return $this->unsignedCall('user.getTopAlbums', [
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
             'page'   => $page,
-        ));
+        ]);
     }
 
     /**
@@ -230,19 +232,19 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopArtists(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getTopArtists', array(
+        return $this->unsignedCall('user.getTopArtists', [
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
             'page'   => $page,
-        ));
+        ]);
     }
 
     /**
@@ -251,17 +253,17 @@ final class UserService extends AbstractService
      * @param string $username
      * @param int    $limit
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTags(string $username, int $limit = 50): array
     {
-        return $this->unsignedCall('user.getTopTags', array(
+        return $this->unsignedCall('user.getTopTags', [
             'user'  => $username,
             'limit' => $limit,
-        ));
+        ]);
     }
 
     /**
@@ -272,19 +274,19 @@ final class UserService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTracks(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('user.getTopTracks', array(
+        return $this->unsignedCall('user.getTopTracks', [
             'user'   => $username,
             'period' => $period,
             'limit'  => $limit,
             'page'   => $page,
-        ));
+        ]);
     }
 
     /**
@@ -295,18 +297,18 @@ final class UserService extends AbstractService
      * @param \DateTime $from
      * @param \DateTime $to
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getWeeklyAlbumChart(string $username, \DateTime $from = null, \DateTime $to = null): array
     {
-        return $this->unsignedCall('user.getWeeklyAlbumChart', array(
+        return $this->unsignedCall('user.getWeeklyAlbumChart', [
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),
-        ));
+        ]);
     }
 
     /**
@@ -317,18 +319,18 @@ final class UserService extends AbstractService
      * @param \DateTime $from
      * @param \DateTime $to
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getWeeklyArtistChart(string $username, \DateTime $from = null, \DateTime $to = null): array
     {
-        return $this->unsignedCall('user.getWeeklyArtistChart', array(
+        return $this->unsignedCall('user.getWeeklyArtistChart', [
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),
-        ));
+        ]);
     }
 
     /**
@@ -336,16 +338,16 @@ final class UserService extends AbstractService
      *
      * @param string $username
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getWeeklyChartList(string $username): array
     {
-        return $this->unsignedCall('user.getWeeklyChartList', array(
+        return $this->unsignedCall('user.getWeeklyChartList', [
             'user' => $username,
-        ));
+        ]);
     }
 
     /**
@@ -356,17 +358,17 @@ final class UserService extends AbstractService
      * @param \DateTime $from
      * @param \DateTime $to
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getWeeklyTrackChart(string $username, \DateTime $from = null, \DateTime $to = null): array
     {
-        return $this->unsignedCall('user.getWeeklyTrackChart', array(
+        return $this->unsignedCall('user.getWeeklyTrackChart', [
             'user' => $username,
             'from' => $this->toTimestamp($from),
             'to'   => $this->toTimestamp($to),
-        ));
+        ]);
     }
 }

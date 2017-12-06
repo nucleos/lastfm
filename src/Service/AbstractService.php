@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -38,7 +40,7 @@ abstract class AbstractService
      *
      * @return int|null
      */
-    final protected function toTimestamp(\DateTime $date = null): ? int
+    final protected function toTimestamp(\DateTime $date = null): ?int
     {
         if (null === $date) {
             return null;
@@ -55,12 +57,12 @@ abstract class AbstractService
      * @param SessionInterface|null $session
      * @param string                $requestMethod
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
-    final protected function signedCall($method, array $params = array(), SessionInterface $session = null, $requestMethod = 'GET'): array
+    final protected function signedCall($method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->signedCall($method, $params, $session, $requestMethod);
@@ -80,12 +82,12 @@ abstract class AbstractService
      * @param array  $params
      * @param string $requestMethod
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
-    final protected function unsignedCall($method, array $params = array(), $requestMethod = 'GET'): array
+    final protected function unsignedCall($method, array $params = [], $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->unsignedCall($method, $params, $requestMethod);

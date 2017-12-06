@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -20,17 +22,17 @@ final class ChartService extends AbstractService
      * @param int $limit
      * @param int $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopArtists(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopArtists', array(
+        return $this->unsignedCall('chart.getTopArtists', [
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
@@ -39,17 +41,17 @@ final class ChartService extends AbstractService
      * @param int $limit
      * @param int $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTags(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopTags', array(
+        return $this->unsignedCall('chart.getTopTags', [
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 
     /**
@@ -58,16 +60,16 @@ final class ChartService extends AbstractService
      * @param int $limit
      * @param int $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTracks(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopTracks', array(
+        return $this->unsignedCall('chart.getTopTracks', [
             'limit' => $limit,
             'page'  => $page,
-        ));
+        ]);
     }
 }

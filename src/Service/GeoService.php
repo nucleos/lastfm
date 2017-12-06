@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -21,18 +23,18 @@ final class GeoService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopArtists(string $country, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('geo.getTopArtists', array(
+        return $this->unsignedCall('geo.getTopArtists', [
             'country' => $country,
             'limit'   => $limit,
             'page'    => $page,
-        ));
+        ]);
     }
 
     /**
@@ -43,18 +45,18 @@ final class GeoService extends AbstractService
      * @param int    $limit
      * @param int    $page
      *
-     * @return array
-     *
      * @throws ApiException
      * @throws NotFoundException
+     *
+     * @return array
      */
     public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('geo.getTopTracks', array(
+        return $this->unsignedCall('geo.getTopTracks', [
             'country'  => $country,
             'location' => $location,
             'limit'    => $limit,
             'page'     => $page,
-        ));
+        ]);
     }
 }
