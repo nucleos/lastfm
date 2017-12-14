@@ -6,7 +6,6 @@ What is the LastFM PHP library?
 
 [![Build Status](https://travis-ci.org/core23/lastfm-php-api.svg)](http://travis-ci.org/core23/lastfm-php-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/lastfm-php-api/badges/quality-score.png)](https://scrutinizer-ci.com/g/core23/lastfm-php-api/)
-[![Code Climate](https://codeclimate.com/github/core23/lastfm-php-api/badges/gpa.svg)](https://codeclimate.com/github/core23/lastfm-php-api)
 [![Coverage Status](https://coveralls.io/repos/core23/lastfm-php-api/badge.svg)](https://coveralls.io/r/core23/lastfm-php-api)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/582dff80-204e-4edb-a719-58cede02a0c5/mini.png)](https://insight.sensiolabs.com/projects/582dff80-204e-4edb-a719-58cede02a0c5)
 
