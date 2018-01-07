@@ -1,3 +1,46 @@
+07/01/2018 17:52  0.4.0  0.4.0
+d7a0c29 Use global phpunit version when calling RMT
+620c13d Removed PHPUnit from phpstan
+60ac8f2 Fixed wrong PHPDoc
+7d1d26d Use PHPUnit 6
+721027f Moved all translation to xlf
+e93e632 Added missing typecast
+00ec2b9 Ignore PHPUnit warnings when calling phpstan
+6e7162d Added phpstan extension to travis
+a285f24 Removed hard phpunit dependency
+950c6ab Removed version information from phpunit.xml.dist
+53a0c0b Ignore PHPUnit errors when calling phpstan
+48909dc Fixed coveralls build
+d22de24 Sync build config
+f90f1e5 Removed code climate status
+d170aa4 Sync config
+2306a9f Updated travis config for outdated symfony versions
+7e39672 Bumped symfony deps to >=3.4
+4640cb8 Require latest phpstan version
+4f8f86d Fixed CS
+a38e152 Sync config
+0d51856 Sync config
+241ce22 Added .editorconfig
+3e98abc Apply fixes from StyleCI
+f658ab4 Added support for PHP 7.2 and Symfony 3.4 / 4.x
+44ed4d5 Fixed PHPStan issues
+3899b22 Fixed CS
+f2e4741 Fixed PHPUnit path config
+07bacb8 Fixed CS
+cb02597 Cleanup phpstan config
+e35030d Apply fixes from StyleCI
+1fb8795 Force phpstan check when running travis
+933b2b4 PHPStan fixes
+6326b42 Fixed CS
+acf1f22 Fixed CS
+1394bf1 Added missing throws annotation
+3e8a646 Apply fixes from StyleCI
+f10e398 Allow crawling upcoming events
+145a760 Catch possible null pointer exception
+1966efd Apply fixes from StyleCI
+c9fec18 Fixed CS
+f624b71 Detect errors when crawling a page
+8c4ceb2 [travis] Removed xdebug config
 14/09/2017 12:38  0.3.0  0.3.0
 92fa554 Apply fixes from StyleCI
 8bcaec1 Fetch exceptions when creating session
