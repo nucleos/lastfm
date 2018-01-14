@@ -1,52 +1,62 @@
 {
-  "name": "core23/lastfm-api",
-  "type": "library",
-  "description": "Last.fm webservice client for php",
-  "keywords": [
-    "last.fm",
-    "api",
-    "crawler",
-    "webservice client"
-  ],
-  "homepage": "https://core23.de",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Christian Gripp",
-      "email": "mail@core23.de"
+    "name": "core23/lastfm-api",
+    "type": "library",
+    "description": "Last.fm webservice client for php",
+    "keywords": [
+        "last.fm",
+        "api",
+        "crawler",
+        "webservice client"
+    ],
+    "homepage": "https://core23.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Gripp",
+            "email": "mail@core23.de"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "psr/log": "^1.0",
+        "symfony/css-selector": "^3.4 || ^4.0",
+        "symfony/dom-crawler": "^3.4 || ^4.0"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.2",
+        "php-http/httplug-bundle": "^1.1",
+        "php-http/mock-client": "^0.3",
+        "sllh/composer-lint": "^1.0"
+    },
+    "suggest": {
+        "php-http/buzz-adapter": "Buzz HTTP client implementation",
+        "php-http/cache-plugin": "Cache plugin to reduce API usage",
+        "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core23\\LastFm\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Core23\\LastFm\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
-  ],
-  "require": {
-    "php": "^7.1",
-    "psr/log": "^1.0",
-    "symfony/css-selector": "^3.4 || ^4.0",
-    "symfony/dom-crawler": "^3.4 || ^4.0"
-  },
-  "require-dev": {
-    "php-http/httplug-bundle": "^1.1",
-    "php-http/mock-client": "^0.3"
-  },
-  "suggest": {
-    "php-http/buzz-adapter": "Buzz HTTP client implementation",
-    "php-http/cache-plugin": "Cache plugin to reduce API usage",
-    "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
-  },
-  "autoload": {
-    "psr-4": {
-      "Core23\\LastFm\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Core23\\LastFm\\Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.x-dev"
-    }
-  },
-  "config": {
-    "sort-packages": true
-  }
 }
