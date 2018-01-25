@@ -17,10 +17,10 @@ This library provides a wrapper for using the [Last.fm API] inside PHP.
 ### Installation
 
 ```
-php composer.phar require core23/lastfm-api
+composer require core23/lastfm-api
 
-php composer.phar require guzzlehttp/guzzle # if you want to use Guzzle native
-php composer.phar require php-http/guzzle6-adapter # if you want to use HTTPlug with Guzzle
+composer require guzzlehttp/guzzle # if you want to use Guzzle native
+composer require php-http/guzzle6-adapter # if you want to use HTTPlug with Guzzle
 ```
 
 ### Usage
