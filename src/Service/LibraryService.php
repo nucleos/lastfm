@@ -13,6 +13,8 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\AlbumInfo;
+use Core23\LastFm\Model\ArtistInfo;
 
 final class LibraryService extends AbstractService
 {
@@ -26,14 +28,22 @@ final class LibraryService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo[]
      */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('library.getArtists', [
+        $response = $this->unsignedCall('library.getArtists', [
             'user'  => $user,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['artists']['artist'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return ArtistInfo::fromApi($data);
+        }, $response['artists']['artist']);
     }
 }

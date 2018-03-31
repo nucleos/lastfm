@@ -13,6 +13,9 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\ArtistInfo;
+use Core23\LastFm\Model\Song;
+use Core23\LastFm\Model\Tag;
 
 final class ChartService extends AbstractService
 {
@@ -25,14 +28,22 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return ArtistInfo[]
      */
     public function getTopArtists(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopArtists', [
+        $response = $this->unsignedCall('chart.getTopArtists', [
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['artists']['artist'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return ArtistInfo::fromApi($data);
+        }, $response['artists']['artist']);
     }
 
     /**
@@ -44,14 +55,22 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
     public function getTopTags(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopTags', [
+        $response = $this->unsignedCall('chart.getTopTags', [
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['tags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['tags']['tag']);
     }
 
     /**
@@ -63,13 +82,21 @@ final class ChartService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Song[]
      */
     public function getTopTracks(int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('chart.getTopTracks', [
+        $response = $this->unsignedCall('chart.getTopTracks', [
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['tracks']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Song::fromApi($data);
+        }, $response['tracks']['track']);
     }
 }

@@ -13,6 +13,12 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\Album;
+use Core23\LastFm\Model\Artist;
+use Core23\LastFm\Model\Chart;
+use Core23\LastFm\Model\Song;
+use Core23\LastFm\Model\Tag;
+use Core23\LastFm\Model\TagInfo;
 
 final class TagService extends AbstractService
 {
@@ -25,14 +31,20 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return TagInfo|null
      */
-    public function getInfo(string $tag, string $lang = null): array
+    public function getInfo(string $tag, string $lang = null): ?TagInfo
     {
-        return $this->unsignedCall('tag.getInfo', [
+        $response = $this->unsignedCall('tag.getInfo', [
             'tag'  => $tag,
             'lang' => $lang,
         ]);
+
+        if (!isset($response['tag'])) {
+            return null;
+        }
+
+        return TagInfo::fromApi($response['tag']);
     }
 
     /**
@@ -43,13 +55,21 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getSimilar($tag): array
+    public function getSimilar(string $tag): array
     {
-        return $this->unsignedCall('tag.getSimilar', [
+        $response = $this->unsignedCall('tag.getSimilar', [
             'tag' => $tag,
         ]);
+
+        if (!isset($response['similartags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['similartags']['tag']);
     }
 
     /**
@@ -62,15 +82,23 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Album[]
      */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopAlbums', [
+        $response = $this->unsignedCall('tag.getTopAlbums', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['albums']['album'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Album::fromApi($data);
+        }, $response['albums']['album']);
     }
 
     /**
@@ -83,15 +111,23 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Artist[]
      */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopArtists', [
+        $response = $this->unsignedCall('tag.getTopArtists', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['topartists']['artist'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Artist::fromApi($data);
+        }, $response['topartists']['artist']);
     }
 
     /**
@@ -100,11 +136,19 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
     public function getTopTags(): array
     {
-        return $this->unsignedCall('tag.getTopTags');
+        $response = $this->unsignedCall('tag.getTopTags');
+
+        if (!isset($response['toptags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['toptags']['tag']);
     }
 
     /**
@@ -117,15 +161,23 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Song[]
      */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('tag.getTopTracks', [
+        $response = $this->unsignedCall('tag.getTopTracks', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['tracks']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Song::fromApi($data);
+        }, $response['tracks']['track']);
     }
 
     /**
@@ -136,12 +188,20 @@ final class TagService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Chart[]
      */
     public function getWeeklyChartList(string $tag): array
     {
-        return $this->unsignedCall('tag.getWeeklyChartList', [
+        $response = $this->unsignedCall('tag.getWeeklyChartList', [
             'tag' => $tag,
         ]);
+
+        if (!isset($response['weeklychartlist']['chart'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Chart::fromApi($data);
+        }, $response['weeklychartlist']['chart']);
     }
 }

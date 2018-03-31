@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\LastFm\Crawler;
 
 use Core23\LastFm\Connection\ConnectionInterface;
+use Core23\LastFm\Model\Image;
 use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler
@@ -77,11 +78,17 @@ abstract class AbstractCrawler
      *
      * @param Crawler $node
      *
-     * @return null|string
+     * @return null|Image
      */
-    final protected function parseImage(Crawler $node): ?string
+    final protected function parseImage(Crawler $node): ?Image
     {
-        return $this->parseUrl($node, 'src');
+        $src = $this->parseUrl($node, 'src');
+
+        if (!$src) {
+            return null;
+        }
+
+        return new Image($src);
     }
 
     /**

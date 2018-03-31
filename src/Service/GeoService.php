@@ -13,6 +13,8 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\Artist;
+use Core23\LastFm\Model\Song;
 
 final class GeoService extends AbstractService
 {
@@ -26,15 +28,23 @@ final class GeoService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Artist[]
      */
     public function getTopArtists(string $country, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('geo.getTopArtists', [
+        $response = $this->unsignedCall('geo.getTopArtists', [
             'country' => $country,
             'limit'   => $limit,
             'page'    => $page,
         ]);
+
+        if (!isset($response['topartists']['artist'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Artist::fromApi($data);
+        }, $response['topartists']['artist']);
     }
 
     /**
@@ -48,15 +58,23 @@ final class GeoService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Song[]
      */
     public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('geo.getTopTracks', [
+        $response = $this->unsignedCall('geo.getTopTracks', [
             'country'  => $country,
             'location' => $location,
             'limit'    => $limit,
             'page'     => $page,
         ]);
+
+        if (!isset($response['tracks']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Song::fromApi($data);
+        }, $response['tracks']['track']);
     }
 }

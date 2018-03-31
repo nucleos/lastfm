@@ -14,6 +14,9 @@ namespace Core23\LastFm\Service;
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\Song;
+use Core23\LastFm\Model\SongInfo;
+use Core23\LastFm\Model\Tag;
 
 final class TrackService extends AbstractService
 {
@@ -54,14 +57,20 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Song|null
      */
-    public function getCorrection(string $artist, string $track): array
+    public function getCorrection(string $artist, string $track): ?Song
     {
-        return $this->unsignedCall('track.getCorrection', [
+        $response = $this->unsignedCall('track.getCorrection', [
             'artist' => $artist,
             'track'  => $track,
         ]);
+
+        if (!isset($response['corrections']['correction']['track'])) {
+            return null;
+        }
+
+        return Song::fromApi($response['corrections']['correction']['track']);
     }
 
     /**
@@ -75,16 +84,22 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return SongInfo|null
      */
-    public function getInfo(string $artist, string $track, $username = null, $autocorrect = false): array
+    public function getInfo(string $artist, string $track, ?string $username = null, $autocorrect = false): ?SongInfo
     {
-        return $this->unsignedCall('track.getInfo', [
+        $response = $this->unsignedCall('track.getInfo', [
             'artist'      => $artist,
             'track'       => $track,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
         ]);
+
+        if (!isset($response['track'])) {
+            return null;
+        }
+
+        return SongInfo::fromApi($response['track']);
     }
 
     /**
@@ -97,15 +112,21 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return SongInfo|null
      */
-    public function getInfoByMBID($mbid, $username = null, $autocorrect = false): array
+    public function getInfoByMBID(string $mbid, ?string $username = null, $autocorrect = false): ?SongInfo
     {
-        return $this->unsignedCall('track.getInfo', [
+        $response = $this->unsignedCall('track.getInfo', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
         ]);
+
+        if (!isset($response['track'])) {
+            return null;
+        }
+
+        return SongInfo::fromApi($response['track']);
     }
 
     /**
@@ -120,16 +141,24 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return SongInfo[]
      */
-    public function getSimilar($artist, string $track, int $limit = 10, bool $autocorrect = false): array
+    public function getSimilar(string $artist, string $track, int $limit = 10, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getSimilar', [
+        $response = $this->unsignedCall('track.getSimilar', [
             'artist'      => $artist,
             'track'       => $track,
             'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['similartracks']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return SongInfo::fromApi($data);
+        }, $response['similartracks']['track']);
     }
 
     /**
@@ -143,15 +172,23 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return SongInfo[]
      */
-    public function getSimilarByMBID($mbid, int $limit = 10, bool $autocorrect = false): array
+    public function getSimilarByMBID(string $mbid, int $limit = 10, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getSimilar', [
+        $response = $this->unsignedCall('track.getSimilar', [
             'mbid'        => $mbid,
             'limit'       => $limit,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['similartracks']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return SongInfo::fromApi($data);
+        }, $response['similartracks']['track']);
     }
 
     /**
@@ -165,16 +202,24 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getTags($artist, string $track, string $username, bool $autocorrect = false): array
+    public function getTags(string $artist, string $track, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getTags', [
+        $response = $this->unsignedCall('track.getTags', [
             'artist'      => $artist,
             'track'       => $track,
             'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['tags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['tags']['tag']);
     }
 
     /**
@@ -187,15 +232,23 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getTagsByMBID($mbid, string $username, bool $autocorrect = false): array
+    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getTags', [
+        $response = $this->unsignedCall('track.getTags', [
             'mbid'        => $mbid,
             'user'        => $username,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['tags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['tags']['tag']);
     }
 
     /**
@@ -208,15 +261,23 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getTopTags($artist, string $track, bool $autocorrect = false): array
+    public function getTopTags(string $artist, string $track, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getTopTags', [
+        $response = $this->unsignedCall('track.getTopTags', [
             'artist'      => $artist,
             'track'       => $track,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['toptags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['toptags']['tag']);
     }
 
     /**
@@ -228,14 +289,22 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getTopTagsByMBID($bdid, bool $autocorrect = false): array
+    public function getTopTagsByMBID(string $bdid, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('track.getTopTags', [
+        $response = $this->unsignedCall('track.getTopTags', [
             'bdid'        => $bdid,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['toptags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['toptags']['tag']);
     }
 
     /**
@@ -330,19 +399,27 @@ final class TrackService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return SongInfo[]
      */
     public function search(string $track, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('track.search', [
+        $response = $this->unsignedCall('track.search', [
             'track' => $track,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['results']['trackmatches']['track'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return SongInfo::fromApi($data);
+        }, $response['results']['trackmatches']['track']);
     }
 
     /**
-     * Unlove a track for a user profile..
+     * Unlove a track for a user profile.
      *
      * @param SessionInterface $session
      * @param string           $artist

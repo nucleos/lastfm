@@ -11,6 +11,10 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Model\Artist;
+use Core23\LastFm\Model\EventInfo;
+use Core23\LastFm\Model\Venue;
+use Core23\LastFm\Model\VenueAddress;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class EventInfoCrawler extends AbstractCrawler
@@ -20,9 +24,9 @@ final class EventInfoCrawler extends AbstractCrawler
      *
      * @param int $id
      *
-     * @return array|null
+     * @return EventInfo|null
      */
-    public function getEventInfo(int $id): ?array
+    public function getEventInfo(int $id): ?EventInfo
     {
         $node = $this->crawlEvent($id);
 
@@ -32,60 +36,65 @@ final class EventInfoCrawler extends AbstractCrawler
 
         $timeNode = $node->filter('.qa-event-date');
 
-        return [
-            'title'       => $this->parseString($node->filter('h1.header-title')),
-            'image'       => $this->parseImage($node->filter('.event-poster-preview')),
-            'festival'    => $node->filter('.namespace--events_festival_overview')->count() > 0,
-            'startDate'   => $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
-            'endDate'     => $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
-            'description' => $this->parseString($node->filter('.qa-event-description'), true),
-            'website'     => $this->parseString($node->filter('.qa-event-link a')),
-            'url'         => $this->parseUrl($node->filter('link[rel="canonical"]')),
-            'eventId'     => $id,
-            'venue'       => $this->readVenues($node),
-            'bands'       => $this->readBands($node),
-        ];
+        return new EventInfo(
+            $id,
+            $this->parseString($node->filter('h1.header-title')),
+            $this->parseString($node->filter('.qa-event-description'), true),
+            $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
+            $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
+            $this->parseString($node->filter('.qa-event-link a')),
+            $this->parseImage($node->filter('.event-poster-preview')),
+            $this->parseUrl($node->filter('link[rel="canonical"]')),
+            $node->filter('.namespace--events_festival_overview')->count() > 0,
+            $this->readVenues($node),
+            $this->readArtists($node)
+        );
     }
 
     /**
      * @param Crawler $node
      *
-     * @return array
+     * @return Artist[]
      */
-    private function readBands(Crawler $node): array
+    private function readArtists(Crawler $node): array
     {
-        $bandNode = $node->filter('.grid-items');
+        $artistNode = $node->filter('.grid-items');
 
-        return $bandNode->filter('.grid-items-item')->each(function (Crawler $node): array {
-            return [
-                'image' => $this->parseImage($node->filter('.grid-items-cover-image-image img')),
-                'name'  => $this->parseString($node->filter('.grid-items-item-main-text')),
-                'url'   => $this->parseUrl($node->filter('.grid-items-item-main-text a')),
-            ];
+        return $artistNode->filter('.grid-items-item')->each(function (Crawler $node): Artist {
+            $image = $this->parseImage($node->filter('.grid-items-cover-image-image img'));
+
+            return new Artist(
+                $this->parseString($node->filter('.grid-items-item-main-text')),
+                null,
+                $image ? [$image] : [],
+                $this->parseUrl($node->filter('.grid-items-item-main-text a'))
+            );
         });
     }
 
     /**
      * @param Crawler $node
      *
-     * @return array
+     * @return Venue
      */
-    private function readVenues(Crawler $node): array
+    private function readVenues(Crawler $node): Venue
     {
         $venueNode   = $node->filter('.event-detail');
         $addressNode = $venueNode->filter('.event-detail-address');
 
-        return [
-            'name'      => $this->parseString($venueNode->filter('[itemprop="name"]')),
-            'telephone' => $this->parseString($venueNode->filter('.event-detail-tel span')),
-            'url'       => $this->parseUrl($venueNode->filter('.event-detail-web a')),
-            'address'   => [
-                'streetAddress'   => $this->parseString($addressNode->filter('[itemprop="streetAddress"]')),
-                'addressLocality' => $this->parseString($addressNode->filter('[itemprop="addressLocality"]')),
-                'postalCode'      => $this->parseString($addressNode->filter('[itemprop="postalCode"]')),
-                'addressCountry'  => $this->parseString($addressNode->filter('[itemprop="addressCountry"]')),
-            ],
-        ];
+        $adress = new VenueAddress(
+            $this->parseString($addressNode->filter('[itemprop="streetAddress"]')),
+            $this->parseString($addressNode->filter('[itemprop="postalCode"]')),
+            $this->parseString($addressNode->filter('[itemprop="addressLocality"]')),
+            $this->parseString($addressNode->filter('[itemprop="addressCountry"]'))
+        );
+
+        return new Venue(
+            $this->parseString($venueNode->filter('[itemprop="name"]')),
+            $this->parseUrl($venueNode->filter('.event-detail .qa-event-link a')),
+            $this->parseString($venueNode->filter('.event-detail-tel span')),
+            $adress
+        );
     }
 
     /**

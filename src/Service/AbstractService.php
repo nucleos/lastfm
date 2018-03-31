@@ -62,7 +62,7 @@ abstract class AbstractService
      *
      * @return array
      */
-    final protected function signedCall($method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array
+    final protected function signedCall(string $method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->signedCall($method, $params, $session, $requestMethod);
@@ -87,7 +87,7 @@ abstract class AbstractService
      *
      * @return array
      */
-    final protected function unsignedCall($method, array $params = [], $requestMethod = 'GET'): array
+    final protected function unsignedCall(string $method, array $params = [], $requestMethod = 'GET'): array
     {
         try {
             return $this->connection->unsignedCall($method, $params, $requestMethod);

@@ -14,6 +14,9 @@ namespace Core23\LastFm\Service;
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\Album;
+use Core23\LastFm\Model\AlbumInfo;
+use Core23\LastFm\Model\Tag;
 
 final class AlbumService extends AbstractService
 {
@@ -57,16 +60,18 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo
      */
-    public function getInfoByMBID(string $mbid, bool $autocorrect = false, $username = null, $lang = null): array
+    public function getInfoByMBID(string $mbid, bool $autocorrect = false, ?string $username = null, $lang = null): AlbumInfo
     {
-        return $this->unsignedCall('album.getInfo', [
+        $response = $this->unsignedCall('album.getInfo', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
             'lang'        => $lang,
         ]);
+
+        return AlbumInfo::fromApi($response['album']);
     }
 
     /**
@@ -81,17 +86,19 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo
      */
-    public function getInfo($artist, string $album, bool $autocorrect = false, $username = null, $lang = null): array
+    public function getInfo(string $artist, string $album, bool $autocorrect = false, ?string $username = null, ?string $lang = null): AlbumInfo
     {
-        return $this->unsignedCall('album.getInfo', [
+        $response = $this->unsignedCall('album.getInfo', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
             'username'    => $username,
             'lang'        => $lang,
         ]);
+
+        return AlbumInfo::fromApi($response['album']);
     }
 
     /**
@@ -105,16 +112,24 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo[]
      */
-    public function getTags($artist, string $album, string $username, bool $autocorrect = false): array
+    public function getTags(string $artist, string $album, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTags', [
+        $response = $this->unsignedCall('album.getTags', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
             'user'        => $username,
         ]);
+
+        if (!isset($response['tags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['tags']['tag']);
     }
 
     /**
@@ -127,15 +142,23 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo[]
      */
-    public function getTagsByMBID($mbid, string $username, bool $autocorrect = false): array
+    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTags', [
+        $response = $this->unsignedCall('album.getTags', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
             'user'        => $username,
         ]);
+
+        if (!isset($response['tags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['tags']['tag']);
     }
 
     /**
@@ -148,15 +171,23 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Tag[]
      */
-    public function getTopTags($artist, string $album, bool $autocorrect = false): array
+    public function getTopTags(string $artist, string $album, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTopTags', [
+        $response = $this->unsignedCall('album.getTopTags', [
             'artist'      => $artist,
             'album'       => $album,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['toptags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Tag::fromApi($data);
+        }, $response['toptags']['tag']);
     }
 
     /**
@@ -168,14 +199,22 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return AlbumInfo[]
      */
-    public function getTopTagsByMBID($mbid, bool $autocorrect = false): array
+    public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array
     {
-        return $this->unsignedCall('album.getTopTags', [
+        $response = $this->unsignedCall('album.getTopTags', [
             'mbid'        => $mbid,
             'autocorrect' => (int) $autocorrect,
         ]);
+
+        if (!isset($response['toptags']['tag'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return AlbumInfo::fromApi($data);
+        }, $response['toptags']['tag']);
     }
 
     /**
@@ -208,14 +247,22 @@ final class AlbumService extends AbstractService
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return array
+     * @return Album[]
      */
     public function search(string $album, int $limit = 50, int $page = 1): array
     {
-        return $this->unsignedCall('album.search', [
+        $response = $this->unsignedCall('album.search', [
             'album' => $album,
             'limit' => $limit,
             'page'  => $page,
         ]);
+
+        if (!isset($response['results']['albummatches']['album'])) {
+            return [];
+        }
+
+        return array_map(function ($data) {
+            return Album::fromApi($data);
+        }, $response['results']['albummatches']['album']);
     }
 }
