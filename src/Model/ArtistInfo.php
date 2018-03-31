@@ -39,6 +39,16 @@ final class ArtistInfo
     private $playcount;
 
     /**
+     * @var string|null
+     */
+    private $bioSummary;
+
+    /**
+     * @var string|null
+     */
+    private $bioContent;
+
+    /**
      * @var int
      */
     private $tagcount;
@@ -56,6 +66,8 @@ final class ArtistInfo
      * @param Image[]     $image
      * @param null|string $url
      * @param int         $playcount
+     * @param null|string $bioSummary
+     * @param null|string $bioContent
      * @param int         $tagcount
      * @param Tag[]       $tags
      */
@@ -65,16 +77,20 @@ final class ArtistInfo
         array $image,
         ?string $url,
         int $playcount,
+        ?string $bioSummary,
+        ?string $bioContent,
         int $tagcount,
         array $tags
     ) {
-        $this->name      = $name;
-        $this->mbid      = $mbid;
-        $this->image     = $image;
-        $this->url       = $url;
-        $this->playcount = $playcount;
-        $this->tagcount  = $tagcount;
-        $this->tags      = $tags;
+        $this->name       = $name;
+        $this->mbid       = $mbid;
+        $this->image      = $image;
+        $this->url        = $url;
+        $this->playcount  = $playcount;
+        $this->bioSummary = $bioSummary;
+        $this->bioContent = $bioContent;
+        $this->tagcount   = $tagcount;
+        $this->tags       = $tags;
     }
 
     /**
@@ -115,6 +131,22 @@ final class ArtistInfo
     public function getPlaycount(): int
     {
         return $this->playcount;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getBioSummary(): ?string
+    {
+        return $this->bioSummary;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getBioContent(): ?string
+    {
+        return $this->bioContent;
     }
 
     /**
@@ -161,6 +193,8 @@ final class ArtistInfo
             $images,
             $data['url'] ?? null,
             isset($data['playcount']) ? (int) $data['playcount'] : 0,
+            $data['bio']['summary'] ?? null,
+            $data['bio']['content'] ?? null,
             isset($data['tagcount']) ? (int) $data['tagcount'] : 0,
             $tags
         );
