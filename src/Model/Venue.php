@@ -19,7 +19,7 @@ final class Venue
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
@@ -37,11 +37,11 @@ final class Venue
      * Venue constructor.
      *
      * @param string       $name
-     * @param string       $url
+     * @param string|null  $url
      * @param null|string  $telephone
      * @param VenueAddress $address
      */
-    public function __construct(string $name, string $url, ?string $telephone, VenueAddress $address)
+    public function __construct(string $name, ?string $url, ?string $telephone, VenueAddress $address)
     {
         $this->name      = $name;
         $this->url       = $url;
@@ -58,9 +58,9 @@ final class Venue
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }

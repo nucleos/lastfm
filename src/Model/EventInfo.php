@@ -49,7 +49,7 @@ final class EventInfo
     private $image;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
@@ -78,7 +78,7 @@ final class EventInfo
      * @param \DateTime|null $eventEndDate
      * @param null|string    $eventWebsite
      * @param Image|null     $image
-     * @param string         $url
+     * @param string|null    $url
      * @param bool           $festival
      * @param Venue          $venue
      * @param Artist[]       $artists
@@ -91,7 +91,7 @@ final class EventInfo
         ?\DateTime $eventEndDate,
         ?string $eventWebsite,
         ?Image $image,
-        string $url,
+        ?string $url,
         bool $festival,
         Venue $venue,
         array $artists
@@ -166,9 +166,9 @@ final class EventInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }

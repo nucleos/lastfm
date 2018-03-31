@@ -38,8 +38,8 @@ final class EventInfoCrawler extends AbstractCrawler
 
         return new EventInfo(
             $id,
-            $this->parseString($node->filter('h1.header-title')),
-            $this->parseString($node->filter('.qa-event-description'), true) ?? '',
+            $this->parseString($node->filter('h1.header-title')) ?? '',
+            $this->parseString($node->filter('.qa-event-description'), true),
             $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
             $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
             $this->parseString($node->filter('.qa-event-link a')),
@@ -90,7 +90,7 @@ final class EventInfoCrawler extends AbstractCrawler
         );
 
         return new Venue(
-            $this->parseString($venueNode->filter('[itemprop="name"]')),
+            $this->parseString($venueNode->filter('[itemprop="name"]')) ?? '',
             $this->parseUrl($venueNode->filter('.event-detail .qa-event-link a')),
             $this->parseString($venueNode->filter('.event-detail-tel span')),
             $adress
