@@ -129,7 +129,7 @@ final class User
             $data['country'] ?? null,
             $data['age'] ? (int) $data['age'] : null,
             $data['gender'] ?? null,
-            $data['playcount'] ? (int) $data['playcount'] : null,
+            $data['playcount'] ? (int) $data['playcount'] : 0,
             $data['url'] ?? null
         );
     }

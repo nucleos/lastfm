@@ -24,12 +24,12 @@ final class VenueAddress
     private $postalCode;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $city;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $country;
 
@@ -38,10 +38,10 @@ final class VenueAddress
      *
      * @param string|null $street
      * @param string|null $postalCode
-     * @param string      $city
-     * @param string      $country
+     * @param string|null $city
+     * @param string|null $country
      */
-    public function __construct(?string $street, ?string $postalCode, string $city, string $country)
+    public function __construct(?string $street, ?string $postalCode, ?string $city, ?string $country)
     {
         $this->street     = $street;
         $this->postalCode = $postalCode;
@@ -66,17 +66,17 @@ final class VenueAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->country;
     }

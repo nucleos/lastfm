@@ -29,7 +29,7 @@ final class EventInfo
     private $description;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $eventDate;
 
@@ -74,7 +74,7 @@ final class EventInfo
      * @param int            $eventId
      * @param string         $title
      * @param null|string    $description
-     * @param \DateTime      $eventDate
+     * @param \DateTime|null $eventDate
      * @param \DateTime|null $eventEndDate
      * @param null|string    $eventWebsite
      * @param Image|null     $image
@@ -87,7 +87,7 @@ final class EventInfo
         int $eventId,
         string $title,
         ?string $description,
-        \DateTime $eventDate,
+        ?\DateTime $eventDate,
         ?\DateTime $eventEndDate,
         ?string $eventWebsite,
         ?Image $image,
@@ -134,9 +134,9 @@ final class EventInfo
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getEventDate(): \DateTime
+    public function getEventDate(): ?\DateTime
     {
         return $this->eventDate;
     }

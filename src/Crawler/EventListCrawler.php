@@ -65,9 +65,10 @@ final class EventListCrawler extends AbstractCrawler
 
             return new Event(
                 (int) $id,
-                $this->parseString($eventNode),
+                $this->parseString($eventNode) ?? '',
                 new \DateTime($node->filter('time')->attr('datetime')),
-                $url);
+                $url
+            );
         });
     }
 

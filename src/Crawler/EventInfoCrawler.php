@@ -39,7 +39,7 @@ final class EventInfoCrawler extends AbstractCrawler
         return new EventInfo(
             $id,
             $this->parseString($node->filter('h1.header-title')),
-            $this->parseString($node->filter('.qa-event-description'), true),
+            $this->parseString($node->filter('.qa-event-description'), true) ?? '',
             $this->parseDate($timeNode->filter('[itemprop="startDate"]')),
             $this->parseDate($timeNode->filter('[itemprop="endDate"]')),
             $this->parseString($node->filter('.qa-event-link a')),
@@ -64,7 +64,7 @@ final class EventInfoCrawler extends AbstractCrawler
             $image = $this->parseImage($node->filter('.grid-items-cover-image-image img'));
 
             return new Artist(
-                $this->parseString($node->filter('.grid-items-item-main-text')),
+                $this->parseString($node->filter('.grid-items-item-main-text')) ?? '',
                 null,
                 $image ? [$image] : [],
                 $this->parseUrl($node->filter('.grid-items-item-main-text a'))

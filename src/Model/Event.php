@@ -29,19 +29,19 @@ final class Event
     private $eventDate;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $url;
 
     /**
      * Event constructor.
      *
-     * @param int       $eventId
-     * @param string    $title
-     * @param \DateTime $eventDate
-     * @param string    $url
+     * @param int         $eventId
+     * @param string      $title
+     * @param \DateTime   $eventDate
+     * @param string|null $url
      */
-    public function __construct(int $eventId, string $title, \DateTime $eventDate, string $url)
+    public function __construct(int $eventId, string $title, \DateTime $eventDate, ?string $url)
     {
         $this->eventId   = $eventId;
         $this->title     = $title;
@@ -74,9 +74,9 @@ final class Event
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }

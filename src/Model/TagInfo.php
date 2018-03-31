@@ -99,7 +99,7 @@ final class TagInfo
     /**
      * @param array $data
      *
-     * @return Tag
+     * @return TagInfo
      */
     public static function fromApi(array $data): self
     {
