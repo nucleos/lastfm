@@ -21,7 +21,7 @@ abstract class AbstractService
     /**
      * @var ConnectionInterface
      */
-    protected $connection;
+    private $connection;
 
     /**
      * AbstractService constructor.
@@ -31,6 +31,14 @@ abstract class AbstractService
     public function __construct(ConnectionInterface $connection)
     {
         $this->connection = $connection;
+    }
+
+    /**
+     * @return ConnectionInterface
+     */
+    protected function getConnection(): ConnectionInterface
+    {
+        return $this->connection;
     }
 
     /**

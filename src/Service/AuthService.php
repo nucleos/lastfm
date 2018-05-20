@@ -95,6 +95,6 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
      */
     public function getAuthUrl(string $callbackUrl): string
     {
-        return $this->authUrl.'?api_key='.$this->connection->getApiKey().'&cb='.$callbackUrl;
+        return $this->authUrl.'?api_key='.$this->getConnection()->getApiKey().'&cb='.$callbackUrl;
     }
 }

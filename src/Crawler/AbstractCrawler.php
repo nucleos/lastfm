@@ -24,7 +24,7 @@ abstract class AbstractCrawler
     /**
      * @var ConnectionInterface
      */
-    protected $connection;
+    private $connection;
 
     /**
      * AbstractService constructor.
