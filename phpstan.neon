@@ -1,2 +1,11 @@
 parameters:
+    autoload_files:
+        - vendor-bin/test/vendor/autoload.php
+
+    includes:
+        - vendor-bin/phpstan/vendor/phpstan/phpstan-deprecation-rules/rules.neon
+        - vendor-bin/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
+        - vendor-bin/phpstan/vendor/phpstan/phpstan-phpunit/rules.neon
+        - vendor-bin/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
+
     ignoreErrors:
