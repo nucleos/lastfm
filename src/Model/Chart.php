@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Model;
 
+use Core23\LastFm\Exception\ApiException;
+
 final class Chart
 {
     /**
@@ -54,10 +56,20 @@ final class Chart
     /**
      * @param array $data
      *
+     * @throws ApiException
+     *
      * @return Chart
      */
     public static function fromApi(array $data): self
     {
+        if (!$data['from']) {
+            throw new ApiException('Error fetching from date');
+        }
+
+        if (!$data['to']) {
+            throw new ApiException('Error fetching to date');
+        }
+
         return new self(
             \DateTime::createFromFormat('U', $data['from']),
             \DateTime::createFromFormat('U', $data['to'])

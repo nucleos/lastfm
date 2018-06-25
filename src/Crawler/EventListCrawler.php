@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -47,6 +48,8 @@ final class EventListCrawler extends AbstractCrawler
      * @param int|null $year
      * @param int      $page
      *
+     * @throws CrawlException
+     *
      * @return Event[]|null
      */
     public function getEvents(string $username, ?int $year, int $page = 1): ?array
@@ -61,12 +64,27 @@ final class EventListCrawler extends AbstractCrawler
             $eventNode = $node->filter('.events-list-item-event--title a');
 
             $url = $this->parseUrl($eventNode);
-            $id = preg_replace('/.*\/(\d+)+.*/', '$1', $url);
+
+            if (null === $url) {
+                throw new CrawlException('Error parsing event id.');
+            }
+
+            $id = (int) preg_replace('/.*\/(\d+)+.*/', '$1', $url);
+
+            if (0 === $id) {
+                throw new CrawlException('Error parsing event id.');
+            }
+
+            $datetime = $node->filter('time')->attr('datetime');
+
+            if (null === $datetime) {
+                throw new CrawlException('Error parsing datetime.');
+            }
 
             return new Event(
-                (int) $id,
+                $id,
                 $this->parseString($eventNode) ?? '',
-                new \DateTime($node->filter('time')->attr('datetime')),
+                new \DateTime($datetime),
                 $url
             );
         });
