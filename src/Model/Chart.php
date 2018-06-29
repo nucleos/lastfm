@@ -62,17 +62,14 @@ final class Chart
      */
     public static function fromApi(array $data): self
     {
-        if (!$data['from']) {
+        if (false === $fromDate = \DateTime::createFromFormat('U', $data['from'])) {
             throw new ApiException('Error fetching from date');
         }
 
-        if (!$data['to']) {
+        if (false === $toDate = \DateTime::createFromFormat('U', $data['to'])) {
             throw new ApiException('Error fetching to date');
         }
 
-        return new self(
-            \DateTime::createFromFormat('U', $data['from']),
-            \DateTime::createFromFormat('U', $data['to'])
-        );
+        return new self($fromDate, $toDate);
     }
 }
