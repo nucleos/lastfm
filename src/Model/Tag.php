@@ -59,6 +59,14 @@ final class Tag
     }
 
     /**
+     * @return int|null
+     */
+    public function getCount(): ?int
+    {
+        return $this->count;
+    }
+
+    /**
      * @param array $data
      *
      * @return Tag
