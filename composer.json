@@ -18,6 +18,8 @@
     ],
     "require": {
         "php": "^7.1",
+        "ext-json": "*",
+        "ext-pcre": "*",
         "psr/log": "^1.0",
         "symfony/css-selector": "^3.4 || ^4.0",
         "symfony/dom-crawler": "^3.4 || ^4.0"
