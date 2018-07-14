@@ -49,8 +49,6 @@ final class SongInfo
     private $topTags;
 
     /**
-     * SongInfo constructor.
-     *
      * @param string      $name
      * @param null|string $mbid
      * @param int|null    $duration

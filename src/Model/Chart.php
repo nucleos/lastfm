@@ -26,8 +26,6 @@ final class Chart
     private $to;
 
     /**
-     * Chart constructor.
-     *
      * @param \DateTime $from
      * @param \DateTime $to
      */

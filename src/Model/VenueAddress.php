@@ -34,8 +34,6 @@ final class VenueAddress
     private $country;
 
     /**
-     * VenueAddress constructor.
-     *
      * @param string|null $street
      * @param string|null $postalCode
      * @param string|null $city

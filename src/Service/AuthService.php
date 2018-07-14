@@ -30,8 +30,6 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
     private $authUrl;
 
     /**
-     * AuthService constructor.
-     *
      * @param ConnectionInterface $connection
      * @param string              $authUrl
      */

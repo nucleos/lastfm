@@ -39,8 +39,6 @@ final class Album
     private $images;
 
     /**
-     * Album constructor.
-     *
      * @param null|string $name
      * @param Artist|null $artist
      * @param null|string $mbid

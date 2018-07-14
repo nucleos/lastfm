@@ -36,8 +36,6 @@ abstract class AbstractConnection implements ConnectionInterface
     protected $uri;
 
     /**
-     * AbstractConnection constructor.
-     *
      * @param string $apikey
      * @param string $sharedSecret
      * @param string $uri

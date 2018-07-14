@@ -29,8 +29,6 @@ final class Session implements SessionInterface
     private $subscriber;
 
     /**
-     * Session constructor.
-     *
      * @param string $name
      * @param string $key
      * @param int    $subscriber

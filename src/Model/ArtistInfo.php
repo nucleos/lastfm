@@ -59,8 +59,6 @@ final class ArtistInfo
     private $tags;
 
     /**
-     * ArtistInfo constructor.
-     *
      * @param string      $name
      * @param null|string $mbid
      * @param Image[]     $image

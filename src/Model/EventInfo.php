@@ -69,8 +69,6 @@ final class EventInfo
     private $artists;
 
     /**
-     * EventInfo constructor.
-     *
      * @param int            $eventId
      * @param string         $title
      * @param null|string    $description

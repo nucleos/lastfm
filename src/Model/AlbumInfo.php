@@ -64,8 +64,6 @@ final class AlbumInfo
     private $wikiSummary;
 
     /**
-     * AlbumInfo constructor.
-     *
      * @param null|string $name
      * @param Artist|null $artist
      * @param null|string $mbid

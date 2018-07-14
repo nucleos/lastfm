@@ -34,8 +34,6 @@ final class Venue
     private $address;
 
     /**
-     * Venue constructor.
-     *
      * @param string       $name
      * @param string|null  $url
      * @param null|string  $telephone

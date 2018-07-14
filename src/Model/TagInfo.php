@@ -39,8 +39,6 @@ final class TagInfo
     private $wikiSummary;
 
     /**
-     * TagInfo constructor.
-     *
      * @param string      $name
      * @param null|string $url
      * @param int         $total

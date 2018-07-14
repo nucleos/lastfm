@@ -29,8 +29,6 @@ final class Tag
     private $count;
 
     /**
-     * Tag constructor.
-     *
      * @param string      $name
      * @param null|string $url
      * @param int|null    $count

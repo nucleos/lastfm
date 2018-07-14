@@ -19,8 +19,6 @@ final class Image
     private $url;
 
     /**
-     * Image constructor.
-     *
      * @param string $url
      */
     public function __construct(string $url)

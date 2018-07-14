@@ -34,8 +34,6 @@ final class Event
     private $url;
 
     /**
-     * Event constructor.
-     *
      * @param int         $eventId
      * @param string      $title
      * @param \DateTime   $eventDate

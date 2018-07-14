@@ -24,8 +24,6 @@ abstract class AbstractService
     private $connection;
 
     /**
-     * AbstractService constructor.
-     *
      * @param ConnectionInterface $connection
      */
     public function __construct(ConnectionInterface $connection)
