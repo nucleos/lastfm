@@ -35,7 +35,7 @@ final class ArtistService extends AbstractService
      */
     public function addTags(SessionInterface $session, string $artist, array $tags): void
     {
-        $count = count($tags);
+        $count = \count($tags);
 
         if (0 === $count) {
             return;

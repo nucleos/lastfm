@@ -149,7 +149,7 @@ final class SongInfo
         $artist = null;
 
         if (isset($data['artist'])) {
-            if (is_array($data['artist'])) {
+            if (\is_array($data['artist'])) {
                 $artist = Artist::fromApi($data['artist']);
             } else {
                 $artist = new Artist($data['artist'], null, [], null);

@@ -146,7 +146,7 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     private function encodeUTF8($object)
     {
-        if (is_array($object)) {
+        if (\is_array($object)) {
             return array_map([$this, 'encodeUTF8'], $object);
         }
 

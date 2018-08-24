@@ -92,7 +92,7 @@ final class HTTPlugConnection extends AbstractConnection
     {
         $array = json_decode($response->getBody()->getContents(), true);
 
-        if (is_array($array) && array_key_exists('error', $array) && array_key_exists('message', $array)) {
+        if (\is_array($array) && array_key_exists('error', $array) && array_key_exists('message', $array)) {
             throw new ApiException($array['message'], $array['error']);
         }
 

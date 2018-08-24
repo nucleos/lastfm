@@ -33,7 +33,7 @@ final class TrackService extends AbstractService
      */
     public function addTags(SessionInterface $session, string $artist, string $track, array $tags): void
     {
-        $count = count($tags);
+        $count = \count($tags);
 
         if (0 === $count) {
             return;
@@ -356,7 +356,7 @@ final class TrackService extends AbstractService
      */
     public function scrobble(SessionInterface $session, array $tracks): void
     {
-        $count = count($tracks);
+        $count = \count($tracks);
 
         if (0 === $count) {
             return;
