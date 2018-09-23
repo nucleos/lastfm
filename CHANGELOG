@@ -1,3 +1,41 @@
+23/09/2018 13:21  0.5.0  Use models instead of arrays
+3ce6b58 Added php-http/client-implementation dependency
+f5e9e5b Added missing httplug dependencies
+d4dc6bd Made httplug a required dependency
+9e1feb7 Updated .editorconfig
+94af91c Fixed CS
+854e104 TRAVIS: Moved dependencies check to allow failures
+a328f52 Added missing dependencies
+177b7b8 Removed useless PHPDoc
+a863cfa Sync config
+eb5fcab Added composer-require-checker to build
+f60b178 Added mising extensions to composer.json
+a40a1d0 Added missing count getter to Tag
+7b37a5f phpstan findings
+fe7f666 phpstan findings
+00be524 Sync phpstan config
+b53251c phpstan findings
+ab046b3 Require latest phpstan version
+a182b9a Require latest httplug mock
+c3e8224 Created issue templates
+f5c3d67 Closing API
+7027b6d PHPStan findings
+f85782e PHPStan findings
+3a53148 Added missing bio information from api
+c67bb48 Use explicit models instead of anonymous arrays
+5470172 Added type casts
+aef29cc Don't use PHPUnit 7 yet
+c7ce6f2 Improved documentation
+4387c81 Adding stages to travis build
+e481140 Replaced composer.phar with composer in docs
+deb0b22 Ignore vendor-bin when calling lint
+87b587b Use weak vendors mode
+cb7446e Added rmt tool
+f1a4b61 Normalize composer.json file
+4066e0f Cleanup PHPStan ignores
+f3f9e0e Added dev tools via composer-bin plugin
+431da3f Sync config
+99b8fb3 Removed old build config
 07/01/2018 17:52  0.4.0  0.4.0
 d7a0c29 Use global phpunit version when calling RMT
 620c13d Removed PHPUnit from phpstan
