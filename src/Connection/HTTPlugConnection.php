@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\LastFm\Connection;
 
 use Core23\LastFm\Exception\ApiException;
+use Http\Client\Exception;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use Psr\Http\Message\ResponseInterface;
@@ -46,7 +47,11 @@ final class HTTPlugConnection extends AbstractConnection
     }
 
     /**
-     * {@inheritdoc}
+     * @param string $url
+     *
+     * @throws Exception
+     *
+     * @return string|null
      */
     public function getPageBody(string $url): ?string
     {
@@ -77,6 +82,8 @@ final class HTTPlugConnection extends AbstractConnection
         } catch (ApiException $e) {
             throw $e;
         } catch (\Exception $e) {
+            throw new ApiException('Technical error occurred.', 500, $e);
+        } catch (Exception $e) {
             throw new ApiException('Technical error occurred.', 500, $e);
         }
     }
