@@ -9,3 +9,4 @@ parameters:
         - vendor-bin/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
 
     ignoreErrors:
+        - '#PHPDoc tag \@throws with type Http\\Client\\Exception is not subtype of Throwable#'

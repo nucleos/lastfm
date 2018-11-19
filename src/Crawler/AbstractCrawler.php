@@ -109,7 +109,7 @@ abstract class AbstractCrawler
             if ($multiline) {
                 $content = $node->html();
                 $content = (string) preg_replace('/<p[^>]*?>/', '', $content);
-                $content = (string) str_replace('</p>', static::NEWLINE, $content);
+                $content = str_replace('</p>', static::NEWLINE, $content);
                 $content = (string) preg_replace('/<br\s?\/?>/i', static::NEWLINE, $content);
             } else {
                 $content = $node->text();
