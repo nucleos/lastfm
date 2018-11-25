@@ -14,6 +14,7 @@ namespace Core23\LastFm\Service;
 use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Model\NowPlaying;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
@@ -440,29 +441,10 @@ final class TrackService extends AbstractService
      * Share a track twith one or more Last.fm users or other friends.
      *
      * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     * @param string           $album
-     * @param int              $trackNumber
-     * @param string           $context
-     * @param string           $mbid
-     * @param string           $duration
-     * @param string           $albumArtist
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * @param NowPlaying       $nowPlaying
      */
-    public function updateNowPlaying(SessionInterface $session, string $artist, string $track, string $album = null, $trackNumber = null, $context = null, $mbid = null, $duration = null, $albumArtist = null): void
+    public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
-        $this->signedCall('track.updateNowPlaying', [
-            'artist'      => $artist,
-            'track'       => $track,
-            'album'       => $album,
-            'trackNumber' => $trackNumber,
-            'context'     => $context,
-            'mbid'        => $mbid,
-            'duration'    => $duration,
-            'albumArtist' => $albumArtist,
-        ], $session, 'POST');
+        $this->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');
     }
 }
