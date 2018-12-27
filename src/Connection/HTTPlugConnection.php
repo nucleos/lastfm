@@ -84,7 +84,7 @@ final class HTTPlugConnection extends AbstractConnection
         } catch (\Exception $e) {
             throw new ApiException('Technical error occurred.', 500, $e);
         } catch (Exception $e) {
-            throw new ApiException('Technical error occurred.', 500, $e);
+            throw new ApiException('Technical error occurred.', $e->getCode(), $e);
         }
     }
 
