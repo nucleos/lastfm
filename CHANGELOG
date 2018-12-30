@@ -1,3 +1,19 @@
+30/12/2018 21:53  0.6.0  Catch client exception
+c522a61 Fixed phpunit config for release command
+5fbc44d Use correct error code when wrapping client exceptions
+7a840f3 Added platform workaround for php-cs-fixer tool
+b0298f0 Require latest phpunit bridge
+0bfbf8b Travis: Test against PHP 7.3
+285f2be Dropped support for PHP 7.1
+88919ef Created model for "now playing" requests
+eb5d91f Fixed phpstan findings
+b24b96d Fixed phpstan findings
+0a74599 Catched client exceptions
+18313c8 Fixed syntax error in editorconfig
+41ac1da Moved test dependencies to vendor-bin
+afe0203 Removed donation from README
+e6f9451 Updated release config
+805c67d Updated style config
 23/09/2018 13:21  0.5.0  Use models instead of arrays
 3ce6b58 Added php-http/client-implementation dependency
 f5e9e5b Added missing httplug dependencies
