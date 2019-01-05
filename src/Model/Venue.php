@@ -36,7 +36,7 @@ final class Venue
     /**
      * @param string       $name
      * @param string|null  $url
-     * @param null|string  $telephone
+     * @param string|null  $telephone
      * @param VenueAddress $address
      */
     public function __construct(string $name, ?string $url, ?string $telephone, VenueAddress $address)
@@ -64,7 +64,7 @@ final class Venue
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getTelephone(): ?string
     {

@@ -40,10 +40,10 @@ final class TagInfo
 
     /**
      * @param string      $name
-     * @param null|string $url
+     * @param string|null $url
      * @param int         $total
      * @param int         $reach
-     * @param null|string $wikiSummary
+     * @param string|null $wikiSummary
      */
     public function __construct(string $name, ?string $url, int $total, int $reach, ?string $wikiSummary)
     {
@@ -63,7 +63,7 @@ final class TagInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -87,7 +87,7 @@ final class TagInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getWikiSummary(): ?string
     {

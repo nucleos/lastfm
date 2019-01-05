@@ -50,7 +50,7 @@ final class SongInfo
 
     /**
      * @param string      $name
-     * @param null|string $mbid
+     * @param string|null $mbid
      * @param int|null    $duration
      * @param Artist|null $artist
      * @param int         $listeners
@@ -84,7 +84,7 @@ final class SongInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMbid(): ?string
     {

@@ -64,16 +64,16 @@ final class AlbumInfo
     private $wikiSummary;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      * @param Artist|null $artist
-     * @param null|string $mbid
-     * @param null|string $url
+     * @param string|null $mbid
+     * @param string|null $url
      * @param Image[]     $images
      * @param int         $listeners
      * @param int         $playcount
      * @param Song[]      $tracks
      * @param Tag[]       $tags
-     * @param null|string $wikiSummary
+     * @param string|null $wikiSummary
      */
     public function __construct(
         ?string $name,
@@ -100,7 +100,7 @@ final class AlbumInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -116,7 +116,7 @@ final class AlbumInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMbid(): ?string
     {
@@ -124,7 +124,7 @@ final class AlbumInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -172,7 +172,7 @@ final class AlbumInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getWikiSummary(): ?string
     {

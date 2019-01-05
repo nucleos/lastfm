@@ -71,10 +71,10 @@ final class EventInfo
     /**
      * @param int            $eventId
      * @param string         $title
-     * @param null|string    $description
+     * @param string|null    $description
      * @param \DateTime|null $eventDate
      * @param \DateTime|null $eventEndDate
-     * @param null|string    $eventWebsite
+     * @param string|null    $eventWebsite
      * @param Image|null     $image
      * @param string|null    $url
      * @param bool           $festival
@@ -124,7 +124,7 @@ final class EventInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -148,7 +148,7 @@ final class EventInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getEventWebsite(): ?string
     {

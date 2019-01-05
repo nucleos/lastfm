@@ -45,11 +45,11 @@ final class User
 
     /**
      * @param string      $name
-     * @param null|string $country
+     * @param string|null $country
      * @param int|null    $age
-     * @param null|string $gender
+     * @param string|null $gender
      * @param int         $playcount
-     * @param null|string $url
+     * @param string|null $url
      */
     public function __construct(
         string $name,
@@ -76,7 +76,7 @@ final class User
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getCountry(): ?string
     {
@@ -92,7 +92,7 @@ final class User
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getGender(): ?string
     {
@@ -108,7 +108,7 @@ final class User
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {

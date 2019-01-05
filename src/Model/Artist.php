@@ -35,9 +35,9 @@ final class Artist
 
     /**
      * @param string      $name
-     * @param null|string $mbid
+     * @param string|null $mbid
      * @param Image[]     $image
-     * @param null|string $url
+     * @param string|null $url
      */
     public function __construct(string $name, ?string $mbid, array $image, ?string $url)
     {
@@ -56,7 +56,7 @@ final class Artist
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMbid(): ?string
     {
@@ -72,7 +72,7 @@ final class Artist
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {

@@ -56,7 +56,7 @@ abstract class AbstractCrawler
      * @param Crawler $node
      * @param string  $attr
      *
-     * @return null|string
+     * @return string|null
      */
     final protected function parseUrl(Crawler $node, string $attr = 'href'): ?string
     {
@@ -76,7 +76,7 @@ abstract class AbstractCrawler
      *
      * @param Crawler $node
      *
-     * @return null|Image
+     * @return Image|null
      */
     final protected function parseImage(Crawler $node): ?Image
     {
@@ -95,7 +95,7 @@ abstract class AbstractCrawler
      * @param Crawler $node
      * @param bool    $multiline
      *
-     * @return null|string
+     * @return string|null
      */
     final protected function parseString(Crawler $node, bool $multiline = false): ?string
     {

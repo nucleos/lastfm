@@ -39,10 +39,10 @@ final class Album
     private $images;
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      * @param Artist|null $artist
-     * @param null|string $mbid
-     * @param null|string $url
+     * @param string|null $mbid
+     * @param string|null $url
      * @param Image[]     $images
      */
     public function __construct(?string $name, ?Artist $artist, ?string $mbid, ?string $url, array $images)
@@ -55,7 +55,7 @@ final class Album
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -71,7 +71,7 @@ final class Album
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMbid(): ?string
     {
@@ -79,7 +79,7 @@ final class Album
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {

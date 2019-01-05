@@ -60,12 +60,12 @@ final class ArtistInfo
 
     /**
      * @param string      $name
-     * @param null|string $mbid
+     * @param string|null $mbid
      * @param Image[]     $image
-     * @param null|string $url
+     * @param string|null $url
      * @param int         $playcount
-     * @param null|string $bioSummary
-     * @param null|string $bioContent
+     * @param string|null $bioSummary
+     * @param string|null $bioContent
      * @param int         $tagcount
      * @param Tag[]       $tags
      */
@@ -100,7 +100,7 @@ final class ArtistInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getMbid(): ?string
     {
@@ -116,7 +116,7 @@ final class ArtistInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -132,7 +132,7 @@ final class ArtistInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getBioSummary(): ?string
     {
@@ -140,7 +140,7 @@ final class ArtistInfo
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getBioContent(): ?string
     {

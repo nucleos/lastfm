@@ -30,7 +30,7 @@ final class Tag
 
     /**
      * @param string      $name
-     * @param null|string $url
+     * @param string|null $url
      * @param int|null    $count
      */
     public function __construct(string $name, ?string $url, ?int $count)
@@ -49,7 +49,7 @@ final class Tag
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
