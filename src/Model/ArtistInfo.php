@@ -173,13 +173,13 @@ final class ArtistInfo
         $images = [];
         $tags   = [];
 
-        if (array_key_exists('image', $data)) {
+        if (\array_key_exists('image', $data)) {
             foreach ((array) $data['image'] as $image) {
                 $images[] = new Image($image['#text']);
             }
         }
 
-        if (array_key_exists('tags', $data) && array_key_exists('tag', $data['tags'])) {
+        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
             foreach ((array) $data['tags']['tag'] as $tag) {
                 $tags[] = Tag::fromApi($tag);
             }

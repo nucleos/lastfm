@@ -38,7 +38,8 @@ final class TrackService extends AbstractService
 
         if (0 === $count) {
             return;
-        } elseif ($count > 10) {
+        }
+        if ($count > 10) {
             throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
@@ -133,7 +134,6 @@ final class TrackService extends AbstractService
     /**
      * Get the similar tracks for this track on Last.fm, based on listening data.
      *
-     *
      * @param string $artist
      * @param string $track
      * @param int    $limit
@@ -164,7 +164,6 @@ final class TrackService extends AbstractService
 
     /**
      * Get the similar tracks for this track using the musicbrainz id on Last.fm, based on listening data.
-     *
      *
      * @param string $mbid
      * @param int    $limit
@@ -361,7 +360,8 @@ final class TrackService extends AbstractService
 
         if (0 === $count) {
             return;
-        } elseif ($count > 10) {
+        }
+        if ($count > 10) {
             throw new \InvalidArgumentException('A maximum of 50 tracks is allowed');
         }
 
@@ -371,7 +371,7 @@ final class TrackService extends AbstractService
         foreach ($tracks as $track) {
             // Required fields
             foreach (['artist', 'track', 'timestamp'] as $field) {
-                if (!array_key_exists($field, $track)) {
+                if (!\array_key_exists($field, $track)) {
                     throw new \InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
                 }
                 $data[$field.'['.$i.']'] = $track[$field];
@@ -379,7 +379,7 @@ final class TrackService extends AbstractService
 
             // Optional fields
             foreach (['album', 'context', 'streamId', 'chosenByUser', 'trackNumber', 'mbid', 'albumArtist', 'duration'] as $field) {
-                if (array_key_exists($field, $track)) {
+                if (\array_key_exists($field, $track)) {
                     $data[$field.'['.$i.']'] = $track[$field];
                 }
             }

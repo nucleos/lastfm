@@ -103,7 +103,7 @@ final class Album
     {
         $images = [];
 
-        if (array_key_exists('image', $data)) {
+        if (\array_key_exists('image', $data)) {
             foreach ((array) $data['image'] as $image) {
                 $images[] = new Image($image['#text']);
             }

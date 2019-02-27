@@ -75,7 +75,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
      * @throws ApiException
      * @throws NotFoundException
      *
-     * @return string|false
+     * @return false|string
      */
     public function createToken()
     {

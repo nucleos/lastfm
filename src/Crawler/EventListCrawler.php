@@ -33,7 +33,8 @@ final class EventListCrawler extends AbstractCrawler
         $years = $node->filter('.content-top .secondary-nav-item-link')
             ->each(function (Crawler $node) {
                 return (int) trim($node->text());
-            });
+            })
+        ;
 
         sort($years);
         array_shift($years);

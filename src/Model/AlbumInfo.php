@@ -190,19 +190,19 @@ final class AlbumInfo
         $tracks = [];
         $tags   = [];
 
-        if (array_key_exists('image', $data)) {
+        if (\array_key_exists('image', $data)) {
             foreach ((array) $data['image'] as $image) {
                 $images[] = new Image($image['#text']);
             }
         }
 
-        if (array_key_exists('tracks', $data) && array_key_exists('track', $data['tracks'])) {
+        if (\array_key_exists('tracks', $data) && \array_key_exists('track', $data['tracks'])) {
             foreach ((array) $data['tracks']['track'] as $track) {
                 $tracks[] = Song::fromApi($track);
             }
         }
 
-        if (array_key_exists('tags', $data) && array_key_exists('tag', $data['tags'])) {
+        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
             foreach ((array) $data['tags']['tag'] as $tag) {
                 $tags[] = Tag::fromApi($tag);
             }

@@ -393,7 +393,6 @@ final class UserService extends AbstractService
     /**
      * Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
      *
-     *
      * @param string    $username
      * @param \DateTime $from
      * @param \DateTime $to
@@ -422,7 +421,6 @@ final class UserService extends AbstractService
 
     /**
      * Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
-     *
      *
      * @param string    $username
      * @param \DateTime $from
@@ -477,7 +475,6 @@ final class UserService extends AbstractService
 
     /**
      * Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
-     *
      *
      * @param string    $username
      * @param \DateTime $from
