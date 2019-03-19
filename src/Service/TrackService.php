@@ -365,27 +365,7 @@ final class TrackService extends AbstractService
             throw new \InvalidArgumentException('A maximum of 50 tracks is allowed');
         }
 
-        $data = [];
-
-        $i = 0;
-        foreach ($tracks as $track) {
-            // Required fields
-            foreach (['artist', 'track', 'timestamp'] as $field) {
-                if (!\array_key_exists($field, $track)) {
-                    throw new \InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
-                }
-                $data[$field.'['.$i.']'] = $track[$field];
-            }
-
-            // Optional fields
-            foreach (['album', 'context', 'streamId', 'chosenByUser', 'trackNumber', 'mbid', 'albumArtist', 'duration'] as $field) {
-                if (\array_key_exists($field, $track)) {
-                    $data[$field.'['.$i.']'] = $track[$field];
-                }
-            }
-
-            ++$i;
-        }
+        $data = self::buildTrackList($tracks);
 
         $this->signedCall('album.scrobble', $data, $session, 'POST');
     }
@@ -446,5 +426,37 @@ final class TrackService extends AbstractService
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
         $this->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');
+    }
+
+    /**
+     * @param array $tracks
+     *
+     * @return array
+     */
+    private static function buildTrackList(array $tracks): array
+    {
+        $data = [];
+
+        $i = 0;
+        foreach ($tracks as $track) {
+            // Required fields
+            foreach (['artist', 'track', 'timestamp'] as $field) {
+                if (!\array_key_exists($field, $track)) {
+                    throw new \InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
+                }
+                $data[$field.'['.$i.']'] = $track[$field];
+            }
+
+            // Optional fields
+            foreach (['album', 'context', 'streamId', 'chosenByUser', 'trackNumber', 'mbid', 'albumArtist', 'duration'] as $field) {
+                if (\array_key_exists($field, $track)) {
+                    $data[$field.'['.$i.']'] = $track[$field];
+                }
+            }
+
+            ++$i;
+        }
+
+        return $data;
     }
 }
