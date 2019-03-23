@@ -21,8 +21,6 @@ Open a command console, enter your project directory and execute the following c
 
 ```
 composer require core23/lastfm-api
-
-composer require guzzlehttp/guzzle # if you want to use Guzzle native
 composer require php-http/guzzle6-adapter # if you want to use HTTPlug with Guzzle
 ```
 
