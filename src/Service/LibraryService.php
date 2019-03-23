@@ -11,24 +11,12 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
-use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\ArtistInfo;
 
-final class LibraryService extends AbstractService
+final class LibraryService extends AbstractService implements LibraryServiceInterface
 {
     /**
-     * A paginated list of all the artists in a user's library, with play counts and tag counts.
-     *
-     * @param string $user
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo[]
+     * {@inheritdoc}
      */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {

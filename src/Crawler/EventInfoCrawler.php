@@ -17,14 +17,10 @@ use Core23\LastFm\Model\Venue;
 use Core23\LastFm\Model\VenueAddress;
 use Symfony\Component\DomCrawler\Crawler;
 
-final class EventInfoCrawler extends AbstractCrawler
+final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawlerInterface
 {
     /**
-     * Get all event information.
-     *
-     * @param int $id
-     *
-     * @return EventInfo|null
+     * {@inheritdoc}
      */
     public function getEventInfo(int $id): ?EventInfo
     {

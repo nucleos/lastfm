@@ -11,24 +11,13 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Song;
 
-final class GeoService extends AbstractService
+final class GeoService extends AbstractService implements GeoServiceInterface
 {
     /**
-     * Get the most popular artists on Last.fm by country.
-     *
-     * @param string $country
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist[]
+     * {@inheritdoc}
      */
     public function getTopArtists(string $country, int $limit = 50, int $page = 1): array
     {
@@ -48,17 +37,7 @@ final class GeoService extends AbstractService
     }
 
     /**
-     * Get the most popular tracks on Last.fm last week by country.
-     *
-     * @param string $country
-     * @param string $location
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Song[]
+     * {@inheritdoc}
      */
     public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array
     {

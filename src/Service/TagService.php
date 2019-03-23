@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Chart;
@@ -20,18 +18,10 @@ use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Model\TagInfo;
 
-final class TagService extends AbstractService
+final class TagService extends AbstractService implements TagServiceInterface
 {
     /**
-     * Get the metadata for a tag on Last.fm. Includes biography.
-     *
-     * @param string $tag
-     * @param string $lang
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return TagInfo|null
+     * {@inheritdoc}
      */
     public function getInfo(string $tag, string $lang = null): ?TagInfo
     {
@@ -48,14 +38,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
-     *
-     * @param string $tag
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getSimilar(string $tag): array
     {
@@ -73,16 +56,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Get the top albums tagged by this tag, ordered by tag count.
-     *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Album[]
+     * {@inheritdoc}
      */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
@@ -102,16 +76,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Get the top artists tagged by this tag, ordered by tag count.
-     *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist[]
+     * {@inheritdoc}
      */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
@@ -131,12 +96,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Fetches the top global tags on Last.fm, sorted by popularity (number of times used).
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTopTags(): array
     {
@@ -152,16 +112,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Get the top tracks tagged by this tag, ordered by tag count.
-     *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Song[]
+     * {@inheritdoc}
      */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
@@ -181,14 +132,7 @@ final class TagService extends AbstractService
     }
 
     /**
-     * Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
-     *
-     * @param string $tag
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Chart[]
+     * {@inheritdoc}
      */
     public function getWeeklyChartList(string $tag): array
     {

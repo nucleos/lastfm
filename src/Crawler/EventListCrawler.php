@@ -15,12 +15,10 @@ use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
-final class EventListCrawler extends AbstractCrawler
+final class EventListCrawler extends AbstractCrawler implements EventListCrawlerInterface
 {
     /**
-     * @param string $username
-     *
-     * @return int[]|null
+     * {@inheritdoc}
      */
     public function getUserYears(string $username): ?array
     {
@@ -43,15 +41,7 @@ final class EventListCrawler extends AbstractCrawler
     }
 
     /**
-     * Get all events of a user.
-     *
-     * @param string   $username
-     * @param int|null $year
-     * @param int      $page
-     *
-     * @throws CrawlException
-     *
-     * @return Event[]|null
+     * {@inheritdoc}
      */
     public function getEvents(string $username, ?int $year, int $page = 1): ?array
     {
@@ -92,12 +82,7 @@ final class EventListCrawler extends AbstractCrawler
     }
 
     /**
-     * Gets the pages for a year.
-     *
-     * @param string   $username
-     * @param int|null $year
-     *
-     * @return int|null
+     * {@inheritdoc}
      */
     public function getYearPages(string $username, ?int $year): ?int
     {
@@ -111,13 +96,7 @@ final class EventListCrawler extends AbstractCrawler
     }
 
     /**
-     * Gets the event count for a year.
-     *
-     * @param string   $username
-     * @param int|null $year
-     * @param int      $page
-     *
-     * @return int|null
+     * {@inheritdoc}
      */
     public function getYearCount(string $username, ?int $year, int $page = 1): ?int
     {

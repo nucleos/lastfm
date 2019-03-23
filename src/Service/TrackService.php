@@ -12,25 +12,16 @@ declare(strict_types=1);
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\NowPlaying;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
+use InvalidArgumentException;
 
-final class TrackService extends AbstractService
+final class TrackService extends AbstractService implements TrackServiceInterface
 {
     /**
-     * Tag an track using a list of user supplied tags.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     * @param array            $tags
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function addTags(SessionInterface $session, string $artist, string $track, array $tags): void
     {
@@ -40,7 +31,7 @@ final class TrackService extends AbstractService
             return;
         }
         if ($count > 10) {
-            throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
+            throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
         $this->signedCall('track.addTags', [
@@ -51,15 +42,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Check whether the supplied track has a correction to a canonical artist.
-     *
-     * @param string $artist
-     * @param string $track
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Song|null
+     * {@inheritdoc}
      */
     public function getCorrection(string $artist, string $track): ?Song
     {
@@ -76,17 +59,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the metadata for a track on Last.fm using the artist/track name.
-     *
-     * @param string      $artist
-     * @param string      $track
-     * @param string|null $username
-     * @param bool        $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return SongInfo|null
+     * {@inheritdoc}
      */
     public function getInfo(string $artist, string $track, ?string $username = null, $autocorrect = false): ?SongInfo
     {
@@ -105,16 +78,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the metadata for a track on Last.fm using the musicbrainz id.
-     *
-     * @param string      $mbid
-     * @param string|null $username
-     * @param bool        $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return SongInfo|null
+     * {@inheritdoc}
      */
     public function getInfoByMBID(string $mbid, ?string $username = null, $autocorrect = false): ?SongInfo
     {
@@ -132,17 +96,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the similar tracks for this track on Last.fm, based on listening data.
-     *
-     * @param string $artist
-     * @param string $track
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return SongInfo[]
+     * {@inheritdoc}
      */
     public function getSimilar(string $artist, string $track, int $limit = 10, bool $autocorrect = false): array
     {
@@ -163,16 +117,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the similar tracks for this track using the musicbrainz id on Last.fm, based on listening data.
-     *
-     * @param string $mbid
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return SongInfo[]
+     * {@inheritdoc}
      */
     public function getSimilarByMBID(string $mbid, int $limit = 10, bool $autocorrect = false): array
     {
@@ -192,17 +137,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to a track on Last.fm.
-     *
-     * @param string $artist
-     * @param string $track
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTags(string $artist, string $track, string $username, bool $autocorrect = false): array
     {
@@ -223,16 +158,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to a track using the musicbrainz id on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
     {
@@ -252,16 +178,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the top tags for this track on Last.fm, ordered by tag count.
-     *
-     * @param string $artist
-     * @param string $track
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTopTags(string $artist, string $track, bool $autocorrect = false): array
     {
@@ -281,15 +198,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Get the top tags for this track using the musicbrainz id on Last.fm, ordered by tag count.
-     *
-     * @param string $bdid
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTopTagsByMBID(string $bdid, bool $autocorrect = false): array
     {
@@ -308,14 +217,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Love a track for a user profile.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function love(SessionInterface $session, string $artist, string $track): void
     {
@@ -326,15 +228,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Remove a user's tag from a track.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     * @param string           $tag
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function removeTag(SessionInterface $session, string $artist, string $track, string $tag): void
     {
@@ -346,13 +240,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Share a track twith one or more Last.fm users or other friends.
-     *
-     * @param SessionInterface $session
-     * @param array            $tracks
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function scrobble(SessionInterface $session, array $tracks): void
     {
@@ -362,7 +250,7 @@ final class TrackService extends AbstractService
             return;
         }
         if ($count > 10) {
-            throw new \InvalidArgumentException('A maximum of 50 tracks is allowed');
+            throw new InvalidArgumentException('A maximum of 50 tracks is allowed');
         }
 
         $data = self::buildTrackList($tracks);
@@ -371,16 +259,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Search for a track by track name. Returns track matches sorted by relevance.
-     *
-     * @param string $track
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return SongInfo[]
+     * {@inheritdoc}
      */
     public function search(string $track, int $limit = 50, int $page = 1): array
     {
@@ -400,14 +279,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Unlove a track for a user profile.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function unlove(SessionInterface $session, string $artist, string $track): void
     {
@@ -418,10 +290,7 @@ final class TrackService extends AbstractService
     }
 
     /**
-     * Share a track twith one or more Last.fm users or other friends.
-     *
-     * @param SessionInterface $session
-     * @param NowPlaying       $nowPlaying
+     * {@inheritdoc}
      */
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
@@ -442,7 +311,7 @@ final class TrackService extends AbstractService
             // Required fields
             foreach (['artist', 'track', 'timestamp'] as $field) {
                 if (!\array_key_exists($field, $track)) {
-                    throw new \InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
+                    throw new InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
                 }
                 $data[$field.'['.$i.']'] = $track[$field];
             }

@@ -20,7 +20,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 
-final class AuthService extends AbstractService implements LoggerAwareInterface
+final class AuthService extends AbstractService implements LoggerAwareInterface, AuthServiceInterface
 {
     use LoggerAwareTrait;
 
@@ -42,11 +42,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
     }
 
     /**
-     * Creates a new session from a token.
-     *
-     * @param string $token
-     *
-     * @return SessionInterface|null
+     * {@inheritdoc}
      */
     public function createSession(string $token): ?SessionInterface
     {
@@ -70,26 +66,17 @@ final class AuthService extends AbstractService implements LoggerAwareInterface
     }
 
     /**
-     * Creates a new api token.
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return false|string
+     * {@inheritdoc}
      */
-    public function createToken()
+    public function createToken(): ?string
     {
         $response = $this->signedCall('auth.getToken');
 
-        return $response['token'];
+        return $response['token'] ?? null;
     }
 
     /**
-     * Return the auth url.
-     *
-     * @param string $callbackUrl
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getAuthUrl(string $callbackUrl): string
     {

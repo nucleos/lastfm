@@ -12,25 +12,14 @@ declare(strict_types=1);
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\Tag;
 
-final class AlbumService extends AbstractService
+final class AlbumService extends AbstractService implements AlbumServiceInterface
 {
     /**
-     * Tag an album using a list of user supplied tags.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $album
-     * @param string[]         $tags
-     *
-     * @throws \InvalidArgumentException
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function addTags(SessionInterface $session, string $artist, string $album, array $tags): void
     {
@@ -51,17 +40,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the metadata for an album on Last.fm using the musicbrainz id.
-     *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     * @param string $username
-     * @param string $lang
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo
+     * {@inheritdoc}
      */
     public function getInfoByMBID(string $mbid, bool $autocorrect = false, ?string $username = null, $lang = null): AlbumInfo
     {
@@ -76,18 +55,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the metadata for an album on Last.fm using the album name.
-     *
-     * @param string $artist
-     * @param string $album
-     * @param bool   $autocorrect
-     * @param string $username
-     * @param string $lang
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo
+     * {@inheritdoc}
      */
     public function getInfo(string $artist, string $album, bool $autocorrect = false, ?string $username = null, ?string $lang = null): AlbumInfo
     {
@@ -103,17 +71,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to an album on Last.fm.
-     *
-     * @param string $artist
-     * @param string $album
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo[]
+     * {@inheritdoc}
      */
     public function getTags(string $artist, string $album, string $username, bool $autocorrect = false): array
     {
@@ -134,16 +92,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to an album on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo[]
+     * {@inheritdoc}
      */
     public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
     {
@@ -163,16 +112,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the top tags applied to an album on Last.fm.
-     *
-     * @param string $artist
-     * @param string $album
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTopTags(string $artist, string $album, bool $autocorrect = false): array
     {
@@ -192,15 +132,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Get the top tags applied to an album on Last.fm.
-     *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return AlbumInfo[]
+     * {@inheritdoc}
      */
     public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array
     {
@@ -219,15 +151,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Remove a user's tag from an album.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $album
-     * @param string           $tag
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function removeTag(SessionInterface $session, string $artist, string $album, string $tag): void
     {
@@ -239,16 +163,7 @@ final class AlbumService extends AbstractService
     }
 
     /**
-     * Search for an album by name. Returns album matches sorted by relevance.
-     *
-     * @param string $album
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Album[]
+     * {@inheritdoc}
      */
     public function search(string $album, int $limit = 50, int $page = 1): array
     {

@@ -12,26 +12,16 @@ declare(strict_types=1);
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\SessionInterface;
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\ArtistInfo;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
 
-final class ArtistService extends AbstractService
+final class ArtistService extends AbstractService implements ArtistServiceInterface
 {
     /**
-     * Tag an artist using a list of user supplied tags.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string[]         $tags
-     *
-     * @throws \InvalidArgumentException
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function addTags(SessionInterface $session, string $artist, array $tags): void
     {
@@ -51,14 +41,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Check whether the supplied artist has a correction to a canonical artist.
-     *
-     * @param string $artist
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist|null
+     * {@inheritdoc}
      */
     public function getCorrection(string $artist): ?Artist
     {
@@ -74,14 +57,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the metadata for an artist on Last.fm. Includes biography.
-     *
-     * @param string $artist
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return ArtistInfo|null
+     * {@inheritdoc}
      */
     public function getInfo(string $artist): ?ArtistInfo
     {
@@ -97,16 +73,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get all the artists similar to this artist.
-     *
-     * @param string $artist
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist[]
+     * {@inheritdoc}
      */
     public function getSimilar(string $artist, int $limit = 50, bool $autocorrect = false): array
     {
@@ -126,16 +93,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get all the artists similar to this artist using musicbrainz id.
-     *
-     * @param string $mbid
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist[]
+     * {@inheritdoc}
      */
     public function getSimilarByMBID(string $mbid, int $limit = 50, bool $autocorrect = false): array
     {
@@ -155,16 +113,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to an artist on Last.fm.
-     *
-     * @param string $artist
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTags(string $artist, string $username, bool $autocorrect = false): array
     {
@@ -184,16 +133,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the tags applied by an individual user to an artist using musicbrainz id on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
     {
@@ -213,17 +153,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the top albums for an artist on Last.fm, ordered by popularity.
-     *
-     * @param string $artist
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Album[]
+     * {@inheritdoc}
      */
     public function getTopAlbums(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array
     {
@@ -244,17 +174,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the top albums for an artist using musicbrainz id on Last.fm, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Album[]
+     * {@inheritdoc}
      */
     public function getTopAlbumsByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array
     {
@@ -274,17 +194,6 @@ final class ArtistService extends AbstractService
         }, $response['topalbums']['album']);
     }
 
-    /**
-     * Get the top tags for an artist on Last.fm, ordered by popularity.
-     *
-     * @param string $artist
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
-     */
     public function getTopTags(string $artist, bool $autocorrect = false): array
     {
         $response = $this->unsignedCall('artist.getTopTags', [
@@ -302,15 +211,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the top tags for an artist on Last.fm using musicbrainz id, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Tag[]
+     * {@inheritdoc}
      */
     public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array
     {
@@ -329,17 +230,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the top tracks by an artist on Last.fm, ordered by popularity.
-     *
-     * @param string $artist
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Song[]
+     * {@inheritdoc}
      */
     public function getTopTracks(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array
     {
@@ -360,17 +251,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Get the top tracks by an artist on Last.fm using musicbrainz id, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Song[]
+     * {@inheritdoc}
      */
     public function getTopTracksByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array
     {
@@ -391,14 +272,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Remove a user's tag from an artist.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $tag
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * {@inheritdoc}
      */
     public function removeTag(SessionInterface $session, string $artist, string $tag): void
     {
@@ -409,16 +283,7 @@ final class ArtistService extends AbstractService
     }
 
     /**
-     * Search for an artist by name. Returns artist matches sorted by relevance.
-     *
-     * @param string $artist
-     * @param int    $limit
-     * @param int    $page
-     *
-     * @throws ApiException
-     * @throws NotFoundException
-     *
-     * @return Artist[]
+     * {@inheritdoc}
      */
     public function search(string $artist, int $limit = 50, int $page = 1): array
     {
