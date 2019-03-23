@@ -9,7 +9,6 @@
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
@@ -17,6 +16,7 @@ use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\ArtistInfo;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
+use Core23\LastFm\Session\SessionInterface;
 use InvalidArgumentException;
 
 interface ArtistServiceInterface

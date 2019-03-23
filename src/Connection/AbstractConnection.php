@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\LastFm\Connection;
 
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Session\SessionInterface;
 
 abstract class AbstractConnection implements ConnectionInterface
 {

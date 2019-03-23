@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Connection;
+namespace Core23\LastFm\Session;
 
 interface SessionInterface
 {

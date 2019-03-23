@@ -11,11 +11,11 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Model\NowPlaying;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
+use Core23\LastFm\Session\SessionInterface;
 use InvalidArgumentException;
 
 final class TrackService extends AbstractService implements TrackServiceInterface

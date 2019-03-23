@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\Tag;
+use Core23\LastFm\Session\SessionInterface;
 
 final class AlbumService extends AbstractService implements AlbumServiceInterface
 {

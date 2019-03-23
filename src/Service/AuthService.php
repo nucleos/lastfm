@@ -12,10 +12,10 @@ declare(strict_types=1);
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Connection\ConnectionInterface;
-use Core23\LastFm\Connection\Session;
-use Core23\LastFm\Connection\SessionInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Session\Session;
+use Core23\LastFm\Session\SessionInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
