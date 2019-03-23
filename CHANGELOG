@@ -1,3 +1,19 @@
+23/03/2019 14:38  1.0.0  First stable release
+4783075 [BUILD] Sort composer dependencies
+eb39772 [MINOR] Fixed "Removed hard HTTPlug dependency"
+7a84190 [BUILD] Sort composer dependencies
+f52e0b6 [MINOR] Removed hard HTTPlug dependency
+d663c82 [MAJOR] Moved session components to Session namespace
+eab7ff9 [MINOR] Extracted interfaces
+8d0ceab [BUILD] Cleanup phpstan errors
+290d640 [PATCH] Minor internal code refactoring
+2dafa87 [PATCH] Updated CS Fixer config and run
+928e08d [BUILD] Removed useless symfony build
+0bc0150 [BUILD] Updated phpstan version
+0c1a0c3 [BUILD] Fixed symfony test setup
+c5a9f01 [MINOR] Removed support for outdated symfony versions
+62d5714 Updated cs-fixer config
+40aa2c1 Fixed CS
 30/12/2018 21:53  0.6.0  Catch client exception
 c522a61 Fixed phpunit config for release command
 5fbc44d Use correct error code when wrapping client exceptions
