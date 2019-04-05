@@ -30,7 +30,7 @@ final class LibraryService extends AbstractService implements LibraryServiceInte
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return ArtistInfo::fromApi($data);
         }, $response['artists']['artist']);
     }

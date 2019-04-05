@@ -111,7 +111,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['similartracks']['track']);
     }
@@ -131,7 +131,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['similartracks']['track']);
     }
@@ -152,7 +152,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return Tag::fromApi($data);
         }, $response['tags']['tag']);
     }
@@ -172,7 +172,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return Tag::fromApi($data);
         }, $response['tags']['tag']);
     }
@@ -192,7 +192,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -211,7 +211,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -273,7 +273,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return array_map(function ($data) {
+        return array_map(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['results']['trackmatches']['track']);
     }
