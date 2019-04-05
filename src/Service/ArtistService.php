@@ -17,6 +17,7 @@ use Core23\LastFm\Model\ArtistInfo;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use InvalidArgumentException;
 
 final class ArtistService extends AbstractService implements ArtistServiceInterface
 {
@@ -28,11 +29,17 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
         $count = \count($tags);
 
         if (0 === $count) {
-            return;
+            throw new InvalidArgumentException('No tags given');
         }
         if ($count > 10) {
-            throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
+            throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
+
+        array_filter($tags, static function ($tag) {
+            if (null === $tag || !\is_string($tag)) {
+                throw new InvalidArgumentException(sprintf('Invalid tag given'));
+            }
+        });
 
         $this->signedCall('artist.addTags', [
             'artist' => $artist,

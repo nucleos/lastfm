@@ -15,6 +15,7 @@ use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use InvalidArgumentException;
 
 final class AlbumService extends AbstractService implements AlbumServiceInterface
 {
@@ -26,11 +27,18 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
         $count = \count($tags);
 
         if (0 === $count) {
-            return;
+            throw new InvalidArgumentException('No tags given');
         }
+
         if ($count > 10) {
-            throw new \InvalidArgumentException('A maximum of 10 tags is allowed');
+            throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
+
+        array_filter($tags, static function ($tag) {
+            if (null === $tag || !\is_string($tag)) {
+                throw new InvalidArgumentException(sprintf('Invalid tag given'));
+            }
+        });
 
         $this->signedCall('album.addTags', [
             'artist' => $artist,

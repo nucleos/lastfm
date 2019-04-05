@@ -28,11 +28,17 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
         $count = \count($tags);
 
         if (0 === $count) {
-            return;
+            throw new InvalidArgumentException('No tags given');
         }
         if ($count > 10) {
             throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
+
+        array_filter($tags, static function ($tag) {
+            if (null === $tag || !\is_string($tag)) {
+                throw new InvalidArgumentException(sprintf('Invalid tag given'));
+            }
+        });
 
         $this->signedCall('track.addTags', [
             'artist' => $artist,
