@@ -40,22 +40,6 @@ abstract class AbstractService
     }
 
     /**
-     * Formats a date to a timestamp.
-     *
-     * @param \DateTime|null $date
-     *
-     * @return int|null
-     */
-    final protected function toTimestamp(\DateTime $date = null): ?int
-    {
-        if (null === $date) {
-            return null;
-        }
-
-        return $date->getTimestamp();
-    }
-
-    /**
      * Calls the API with signed session.
      *
      * @param string                $method

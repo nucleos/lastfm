@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Filter\Period;
+use Core23\LastFm\Filter\RangeFilter;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Chart;
@@ -19,22 +20,22 @@ use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Model\User;
-use DateTime;
 
 final class UserService extends AbstractService implements UserServiceInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function getArtistTracks(string $username, string $artist, DateTime $startTimestamp = null, DateTime $endTimestamp = null, int $page = 1): array
+    public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getArtistTracks', [
+        $query = null !== $filter ? $filter->getQuery('startTimestamp', 'endTimestamp') : [];
+        $query = array_merge($query, [
             'user'           => $username,
             'artist'         => $artist,
-            'startTimestamp' => $this->toTimestamp($startTimestamp),
-            'endTimestamp'   => $this->toTimestamp($endTimestamp),
             'page'           => $page,
         ]);
+
+        $response = $this->unsignedCall('user.getArtistTracks', $query);
 
         if (!isset($response['artisttracks']['track'])) {
             return [];
@@ -105,16 +106,17 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getRecentTracks(string $username, DateTime $from = null, DateTime $to = null, $extended = false, $limit = 50, int $page = 1): array
+    public function getRecentTracks(string $username, ?RangeFilter $filter = null, $extended = false, $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getRecentTracks', [
+        $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
+        $query = array_merge($query, [
             'user'     => $username,
             'limit'    => $limit,
             'page'     => $page,
             'extended' => (int) $extended,
-            'from'     => $this->toTimestamp($from),
-            'to'       => $this->toTimestamp($to),
         ]);
+
+        $response = $this->unsignedCall('user.getRecentTracks', $query);
 
         if (!isset($response['recenttracks']['track'])) {
             return [];
@@ -276,13 +278,14 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getWeeklyAlbumChart(string $username, DateTime $from = null, DateTime $to = null): array
+    public function getWeeklyAlbumChart(string $username, ?RangeFilter $filter = null): array
     {
-        $response = $this->unsignedCall('user.getWeeklyAlbumChart', [
-            'user' => $username,
-            'from' => $this->toTimestamp($from),
-            'to'   => $this->toTimestamp($to),
+        $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
+        $query = array_merge($query, [
+            'user'     => $username,
         ]);
+
+        $response = $this->unsignedCall('user.getWeeklyAlbumChart', $query);
 
         if (!isset($response['weeklyalbumchart']['album'])) {
             return [];
@@ -296,13 +299,14 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getWeeklyArtistChart(string $username, DateTime $from = null, DateTime $to = null): array
+    public function getWeeklyArtistChart(string $username, ?RangeFilter $filter = null): array
     {
-        $response = $this->unsignedCall('user.getWeeklyArtistChart', [
-            'user' => $username,
-            'from' => $this->toTimestamp($from),
-            'to'   => $this->toTimestamp($to),
+        $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
+        $query = array_merge($query, [
+            'user'     => $username,
         ]);
+
+        $response = $this->unsignedCall('user.getWeeklyArtistChart', $query);
 
         if (!isset($response['weeklyartistchart']['artist'])) {
             return [];
@@ -334,13 +338,14 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getWeeklyTrackChart(string $username, DateTime $from = null, DateTime $to = null): array
+    public function getWeeklyTrackChart(string $username, ?RangeFilter $filter = null): array
     {
-        $response = $this->unsignedCall('user.getWeeklyTrackChart', [
-            'user' => $username,
-            'from' => $this->toTimestamp($from),
-            'to'   => $this->toTimestamp($to),
+        $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
+        $query = array_merge($query, [
+            'user'     => $username,
         ]);
+
+        $response = $this->unsignedCall('user.getWeeklyTrackChart', $query);
 
         if (!isset($response['weeklytrackchart']['track'])) {
             return [];
