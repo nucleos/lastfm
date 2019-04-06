@@ -86,6 +86,23 @@ final class Artist
      */
     public static function fromApi(array $data): self
     {
+        $images = self::createImagesFromApi($data);
+
+        return new self(
+            $data['name'] ?? $data['#text'],
+            $data['mbid'] ?? null,
+            $images,
+            $data['url'] ?? null
+        );
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createImagesFromApi(array $data): array
+    {
         $images = [];
 
         if (\array_key_exists('image', $data)) {
@@ -94,11 +111,6 @@ final class Artist
             }
         }
 
-        return new self(
-            $data['name'] ?? $data['#text'],
-            $data['mbid'] ?? null,
-            $images,
-            $data['url'] ?? null
-        );
+        return $images;
     }
 }

@@ -186,27 +186,9 @@ final class AlbumInfo
      */
     public static function fromApi(array $data): self
     {
-        $images = [];
-        $tracks = [];
-        $tags   = [];
-
-        if (\array_key_exists('image', $data)) {
-            foreach ((array) $data['image'] as $image) {
-                $images[] = new Image($image['#text']);
-            }
-        }
-
-        if (\array_key_exists('tracks', $data) && \array_key_exists('track', $data['tracks'])) {
-            foreach ((array) $data['tracks']['track'] as $track) {
-                $tracks[] = Song::fromApi($track);
-            }
-        }
-
-        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
-            foreach ((array) $data['tags']['tag'] as $tag) {
-                $tags[] = Tag::fromApi($tag);
-            }
-        }
+        $images = self::createImagesFromApi($data);
+        $tracks = self::createTracksFromApi($data);
+        $tags   = self::createTagsFromApi($data);
 
         return new self(
             $data['name'],
@@ -220,5 +202,59 @@ final class AlbumInfo
             $tags,
             $data['wiki']['summary'] ?? null
         );
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createImagesFromApi(array $data): array
+    {
+        $images = [];
+
+        if (\array_key_exists('image', $data)) {
+            foreach ((array) $data['image'] as $image) {
+                $images[] = new Image($image['#text']);
+            }
+        }
+
+        return $images;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createTracksFromApi(array $data): array
+    {
+        $tracks = [];
+
+        if (\array_key_exists('tracks', $data) && \array_key_exists('track', $data['tracks'])) {
+            foreach ((array) $data['tracks']['track'] as $track) {
+                $tracks[] = Song::fromApi($track);
+            }
+        }
+
+        return $tracks;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createTagsFromApi(array $data): array
+    {
+        $tags = [];
+
+        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
+            foreach ((array) $data['tags']['tag'] as $tag) {
+                $tags[] = Tag::fromApi($tag);
+            }
+        }
+
+        return $tags;
     }
 }

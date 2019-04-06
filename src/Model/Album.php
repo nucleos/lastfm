@@ -101,13 +101,7 @@ final class Album
      */
     public static function fromApi(array $data): self
     {
-        $images = [];
-
-        if (\array_key_exists('image', $data)) {
-            foreach ((array) $data['image'] as $image) {
-                $images[] = new Image($image['#text']);
-            }
-        }
+        $images = self::createImagesFromApi($data);
 
         return new self(
             $data['name'],
@@ -116,5 +110,23 @@ final class Album
             $data['url'] ?? null,
             $images
         );
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createImagesFromApi(array $data): array
+    {
+        $images = [];
+
+        if (\array_key_exists('image', $data)) {
+            foreach ((array) $data['image'] as $image) {
+                $images[] = new Image($image['#text']);
+            }
+        }
+
+        return $images;
     }
 }

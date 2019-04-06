@@ -138,13 +138,7 @@ final class SongInfo
      */
     public static function fromApi(array $data): self
     {
-        $tags   = [];
-
-        if (isset($data['toptags']['tag'])) {
-            foreach ((array) $data['toptags']['tag'] as $tag) {
-                $tags[] = Tag::fromApi($tag);
-            }
-        }
+        $tags = self::createTagsFromApi($data);
 
         $artist = null;
 
@@ -165,5 +159,23 @@ final class SongInfo
             isset($data['playcount']) ? (int) $data['playcount'] : 0,
             $tags
         );
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createTagsFromApi(array $data): array
+    {
+        $tags = [];
+
+        if (isset($data['toptags']['tag'])) {
+            foreach ((array) $data['toptags']['tag'] as $tag) {
+                $tags[] = Tag::fromApi($tag);
+            }
+        }
+
+        return $tags;
     }
 }

@@ -170,20 +170,8 @@ final class ArtistInfo
      */
     public static function fromApi(array $data): self
     {
-        $images = [];
-        $tags   = [];
-
-        if (\array_key_exists('image', $data)) {
-            foreach ((array) $data['image'] as $image) {
-                $images[] = new Image($image['#text']);
-            }
-        }
-
-        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
-            foreach ((array) $data['tags']['tag'] as $tag) {
-                $tags[] = Tag::fromApi($tag);
-            }
-        }
+        $images = self::createImagesFromApi($data);
+        $tags   = self::createTagsFromApi($data);
 
         return new self(
             $data['name'],
@@ -196,5 +184,41 @@ final class ArtistInfo
             isset($data['tagcount']) ? (int) $data['tagcount'] : 0,
             $tags
         );
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createImagesFromApi(array $data): array
+    {
+        $images = [];
+
+        if (\array_key_exists('image', $data)) {
+            foreach ((array) $data['image'] as $image) {
+                $images[] = new Image($image['#text']);
+            }
+        }
+
+        return $images;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private static function createTagsFromApi(array $data): array
+    {
+        $tags = [];
+
+        if (\array_key_exists('tags', $data) && \array_key_exists('tag', $data['tags'])) {
+            foreach ((array) $data['tags']['tag'] as $tag) {
+                $tags[] = Tag::fromApi($tag);
+            }
+        }
+
+        return $tags;
     }
 }
