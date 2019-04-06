@@ -11,6 +11,7 @@ namespace Core23\LastFm\Service;
 
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
+use Core23\LastFm\Filter\Period;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Chart;
@@ -158,31 +159,25 @@ interface UserServiceInterface
      * Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
      * @param string $username
-     * @param string $period
+     * @param Period $period
      * @param int    $limit
      * @param int    $page
      *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
      * @return Album[]
      */
-    public function getTopAlbums(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array;
+    public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
      * @param string $username
-     * @param string $period
+     * @param Period $period
      * @param int    $limit
      * @param int    $page
      *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
      * @return Artist[]
      */
-    public function getTopArtists(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array;
+    public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top tags used by this user.
@@ -201,16 +196,13 @@ interface UserServiceInterface
      * Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
      * @param string $username
-     * @param string $period
+     * @param Period $period
      * @param int    $limit
      * @param int    $page
      *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
      * @return SongInfo[]
      */
-    public function getTopTracks(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array;
+    public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.

@@ -11,6 +11,11 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\ScrobbeBuilder;
+use Core23\LastFm\Builder\SimilarTrackBuilder;
+use Core23\LastFm\Builder\TrackInfoBuilder;
+use Core23\LastFm\Builder\TrackTagsBuilder;
+use Core23\LastFm\Builder\TrackTopTagsBuilder;
 use Core23\LastFm\Model\NowPlaying;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
@@ -67,14 +72,9 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getInfo(string $artist, string $track, ?string $username = null, $autocorrect = false): ?SongInfo
+    public function getInfo(TrackInfoBuilder $builder): ?SongInfo
     {
-        $response = $this->unsignedCall('track.getInfo', [
-            'artist'      => $artist,
-            'track'       => $track,
-            'autocorrect' => (int) $autocorrect,
-            'username'    => $username,
-        ]);
+        $response = $this->unsignedCall('track.getInfo', $builder->getQuery());
 
         if (!isset($response['track'])) {
             return null;
@@ -86,32 +86,9 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getInfoByMBID(string $mbid, ?string $username = null, $autocorrect = false): ?SongInfo
+    public function getSimilar(SimilarTrackBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getInfo', [
-            'mbid'        => $mbid,
-            'autocorrect' => (int) $autocorrect,
-            'username'    => $username,
-        ]);
-
-        if (!isset($response['track'])) {
-            return null;
-        }
-
-        return SongInfo::fromApi($response['track']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSimilar(string $artist, string $track, int $limit = 10, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('track.getSimilar', [
-            'artist'      => $artist,
-            'track'       => $track,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('track.getSimilar', $builder->getQuery());
 
         if (!isset($response['similartracks']['track'])) {
             return [];
@@ -125,34 +102,9 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getSimilarByMBID(string $mbid, int $limit = 10, bool $autocorrect = false): array
+    public function getTags(TrackTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getSimilar', [
-            'mbid'        => $mbid,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['similartracks']['track'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['similartracks']['track']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTags(string $artist, string $track, string $username, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('track.getTags', [
-            'artist'      => $artist,
-            'track'       => $track,
-            'user'        => $username,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('track.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
@@ -166,52 +118,9 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
+    public function getTopTags(TrackTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getTags', [
-            'mbid'        => $mbid,
-            'user'        => $username,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['tags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTags(string $artist, string $track, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('track.getTopTags', [
-            'artist'      => $artist,
-            'track'       => $track,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['toptags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTagsByMBID(string $bdid, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('track.getTopTags', [
-            'bdid'        => $bdid,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('track.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
@@ -248,9 +157,9 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function scrobble(SessionInterface $session, array $tracks): void
+    public function scrobble(SessionInterface $session, ScrobbeBuilder $builder): void
     {
-        $count = \count($tracks);
+        $count = $builder->count();
 
         if (0 === $count) {
             return;
@@ -259,9 +168,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             throw new InvalidArgumentException('A maximum of 50 tracks is allowed');
         }
 
-        $data = self::buildTrackList($tracks);
-
-        $this->signedCall('album.scrobble', $data, $session, 'POST');
+        $this->signedCall('album.scrobble', $builder->getQuery(), $session, 'POST');
     }
 
     /**
@@ -301,37 +208,5 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
         $this->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');
-    }
-
-    /**
-     * @param array $tracks
-     *
-     * @return array
-     */
-    private static function buildTrackList(array $tracks): array
-    {
-        $data = [];
-
-        $i = 0;
-        foreach ($tracks as $track) {
-            // Required fields
-            foreach (['artist', 'track', 'timestamp'] as $field) {
-                if (!\array_key_exists($field, $track)) {
-                    throw new InvalidArgumentException(sprintf('Field "%s" not set on entry %s', $field, $i));
-                }
-                $data[$field.'['.$i.']'] = $track[$field];
-            }
-
-            // Optional fields
-            foreach (['album', 'context', 'streamId', 'chosenByUser', 'trackNumber', 'mbid', 'albumArtist', 'duration'] as $field) {
-                if (\array_key_exists($field, $track)) {
-                    $data[$field.'['.$i.']'] = $track[$field];
-                }
-            }
-
-            ++$i;
-        }
-
-        return $data;
     }
 }

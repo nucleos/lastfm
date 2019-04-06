@@ -9,6 +9,12 @@
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\ArtistInfoBuilder;
+use Core23\LastFm\Builder\ArtistTagsBuilder;
+use Core23\LastFm\Builder\ArtistTopAlbumsBuilder;
+use Core23\LastFm\Builder\ArtistTopTagsBuilder;
+use Core23\LastFm\Builder\ArtistTopTracksBuilder;
+use Core23\LastFm\Builder\SimilarArtistBuilder;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
@@ -49,156 +55,56 @@ interface ArtistServiceInterface
     /**
      * Get the metadata for an artist on Last.fm. Includes biography.
      *
-     * @param string $artist
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param ArtistInfoBuilder $builder
      *
      * @return ArtistInfo|null
      */
-    public function getInfo(string $artist): ?ArtistInfo;
+    public function getInfo(ArtistInfoBuilder $builder): ?ArtistInfo;
 
     /**
      * Get all the artists similar to this artist.
      *
-     * @param string $artist
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param SimilarArtistBuilder $builder
      *
      * @return Artist[]
      */
-    public function getSimilar(string $artist, int $limit = 50, bool $autocorrect = false): array;
-
-    /**
-     * Get all the artists similar to this artist using musicbrainz id.
-     *
-     * @param string $mbid
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Artist[]
-     */
-    public function getSimilarByMBID(string $mbid, int $limit = 50, bool $autocorrect = false): array;
+    public function getSimilar(SimilarArtistBuilder $builder): array;
 
     /**
      * Get the tags applied by an individual user to an artist on Last.fm.
      *
-     * @param string $artist
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param ArtistTagsBuilder $builder
      *
      * @return Tag[]
      */
-    public function getTags(string $artist, string $username, bool $autocorrect = false): array;
-
-    /**
-     * Get the tags applied by an individual user to an artist using musicbrainz id on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Tag[]
-     */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array;
+    public function getTags(ArtistTagsBuilder $builder): array;
 
     /**
      * Get the top albums for an artist on Last.fm, ordered by popularity.
      *
-     * @param string $artist
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param ArtistTopAlbumsBuilder $builder
      *
      * @return Album[]
      */
-    public function getTopAlbums(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array;
-
-    /**
-     * Get the top albums for an artist using musicbrainz id on Last.fm, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Album[]
-     */
-    public function getTopAlbumsByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array;
+    public function getTopAlbums(ArtistTopAlbumsBuilder $builder): array;
 
     /**
      * Get the top tags for an artist on Last.fm, ordered by popularity.
      *
-     * @param string $artist
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param ArtistTopTagsBuilder $builder
      *
      * @return Tag[]
      */
-    public function getTopTags(string $artist, bool $autocorrect = false): array;
-
-    /**
-     * Get the top tags for an artist on Last.fm using musicbrainz id, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Tag[]
-     */
-    public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array;
+    public function getTopTags(ArtistTopTagsBuilder $builder): array;
 
     /**
      * Get the top tracks by an artist on Last.fm, ordered by popularity.
      *
-     * @param string $artist
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param ArtistTopTracksBuilder $builder
      *
      * @return Song[]
      */
-    public function getTopTracks(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array;
-
-    /**
-     * Get the top tracks by an artist on Last.fm using musicbrainz id, ordered by popularity.
-     *
-     * @param string $mbid
-     * @param int    $page
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Song[]
-     */
-    public function getTopTracksByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array;
+    public function getTopTracks(ArtistTopTracksBuilder $builder): array;
 
     /**
      * Remove a user's tag from an artist.

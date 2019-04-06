@@ -9,6 +9,11 @@
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\ScrobbeBuilder;
+use Core23\LastFm\Builder\SimilarTrackBuilder;
+use Core23\LastFm\Builder\TrackInfoBuilder;
+use Core23\LastFm\Builder\TrackTagsBuilder;
+use Core23\LastFm\Builder\TrackTopTagsBuilder;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\NowPlaying;
@@ -48,116 +53,38 @@ interface TrackServiceInterface
     /**
      * Get the metadata for a track on Last.fm using the artist/track name.
      *
-     * @param string      $artist
-     * @param string      $track
-     * @param string|null $username
-     * @param bool        $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param TrackInfoBuilder $builder
      *
      * @return SongInfo|null
      */
-    public function getInfo(string $artist, string $track, ?string $username = null, $autocorrect = false): ?SongInfo;
-
-    /**
-     * Get the metadata for a track on Last.fm using the musicbrainz id.
-     *
-     * @param string      $mbid
-     * @param string|null $username
-     * @param bool        $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return SongInfo|null
-     */
-    public function getInfoByMBID(string $mbid, ?string $username = null, $autocorrect = false): ?SongInfo;
+    public function getInfo(TrackInfoBuilder $builder): ?SongInfo;
 
     /**
      * Get the similar tracks for this track on Last.fm, based on listening data.
      *
-     * @param string $artist
-     * @param string $track
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param SimilarTrackBuilder $builder
      *
      * @return SongInfo[]
      */
-    public function getSimilar(string $artist, string $track, int $limit = 10, bool $autocorrect = false): array;
-
-    /**
-     * Get the similar tracks for this track using the musicbrainz id on Last.fm, based on listening data.
-     *
-     * @param string $mbid
-     * @param int    $limit
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return SongInfo[]
-     */
-    public function getSimilarByMBID(string $mbid, int $limit = 10, bool $autocorrect = false): array;
+    public function getSimilar(SimilarTrackBuilder $builder): array;
 
     /**
      * Get the tags applied by an individual user to a track on Last.fm.
      *
-     * @param string $artist
-     * @param string $track
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param TrackTagsBuilder $builder
      *
      * @return Tag[]
      */
-    public function getTags(string $artist, string $track, string $username, bool $autocorrect = false): array;
-
-    /**
-     * Get the tags applied by an individual user to a track using the musicbrainz id on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Tag[]
-     */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array;
+    public function getTags(TrackTagsBuilder $builder): array;
 
     /**
      * Get the top tags for this track on Last.fm, ordered by tag count.
      *
-     * @param string $artist
-     * @param string $track
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param TrackTopTagsBuilder $builder
      *
      * @return Tag[]
      */
-    public function getTopTags(string $artist, string $track, bool $autocorrect = false): array;
-
-    /**
-     * Get the top tags for this track using the musicbrainz id on Last.fm, ordered by tag count.
-     *
-     * @param string $bdid
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return Tag[]
-     */
-    public function getTopTagsByMBID(string $bdid, bool $autocorrect = false): array;
+    public function getTopTags(TrackTopTagsBuilder $builder): array;
 
     /**
      * Love a track for a user profile.
@@ -188,12 +115,9 @@ interface TrackServiceInterface
      * Share a track twith one or more Last.fm users or other friends.
      *
      * @param SessionInterface $session
-     * @param array            $tracks
-     *
-     * @throws ApiException
-     * @throws NotFoundException
+     * @param ScrobbeBuilder   $builder
      */
-    public function scrobble(SessionInterface $session, array $tracks): void;
+    public function scrobble(SessionInterface $session, ScrobbeBuilder $builder): void;
 
     /**
      * Search for a track by track name. Returns track matches sorted by relevance.

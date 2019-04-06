@@ -11,6 +11,12 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\ArtistInfoBuilder;
+use Core23\LastFm\Builder\ArtistTagsBuilder;
+use Core23\LastFm\Builder\ArtistTopAlbumsBuilder;
+use Core23\LastFm\Builder\ArtistTopTagsBuilder;
+use Core23\LastFm\Builder\ArtistTopTracksBuilder;
+use Core23\LastFm\Builder\SimilarArtistBuilder;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\ArtistInfo;
@@ -66,11 +72,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getInfo(string $artist): ?ArtistInfo
+    public function getInfo(ArtistInfoBuilder $builder): ?ArtistInfo
     {
-        $response = $this->unsignedCall('artist.getInfo', [
-            'artist' => $artist,
-        ]);
+        $response = $this->unsignedCall('artist.getInfo', $builder->getQuery());
 
         if (!isset($response['artist'])) {
             return null;
@@ -82,13 +86,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getSimilar(string $artist, int $limit = 50, bool $autocorrect = false): array
+    public function getSimilar(SimilarArtistBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getSimilar', [
-            'artist'      => $artist,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('artist.getSimilar', $builder->getQuery());
 
         if (!isset($response['similarartists']['artist'])) {
             return [];
@@ -102,33 +102,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getSimilarByMBID(string $mbid, int $limit = 50, bool $autocorrect = false): array
+    public function getTags(ArtistTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getSimilar', [
-            'mbid'        => $mbid,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['similarartists']['artist'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['similarartists']['artist']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTags(string $artist, string $username, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('artist.getTags', [
-            'artist'      => $artist,
-            'user'        => $username,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('artist.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
@@ -142,34 +118,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
+    public function getTopAlbums(ArtistTopAlbumsBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTags', [
-            'mbid'        => $mbid,
-            'user'        => $username,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['tags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopAlbums(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array
-    {
-        $response =  $this->unsignedCall('artist.getTopAlbums', [
-            'artist'      => $artist,
-            'page'        => $page,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response =  $this->unsignedCall('artist.getTopAlbums', $builder->getQuery());
 
         if (!isset($response['topalbums']['album'])) {
             return [];
@@ -183,30 +134,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getTopAlbumsByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array
+    public function getTopTags(ArtistTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTopAlbums', [
-            'mbid'        => $mbid,
-            'page'        => $page,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['topalbums']['album'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['topalbums']['album']);
-    }
-
-    public function getTopTags(string $artist, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('artist.getTopTags', [
-            'artist'      => $artist,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('artist.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
@@ -220,54 +150,9 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
     /**
      * {@inheritdoc}
      */
-    public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array
+    public function getTopTracks(ArtistTopTracksBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTopTags', [
-            'mbid'        => $mbid,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['toptags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTracks(string $artist, int $page = 1, int $limit = 10, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('artist.getTopTracks', [
-            'artist'      => $artist,
-            'page'        => $page,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['toptracks']['track'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['toptracks']['track']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTracksByMBID(string $mbid, int $page = 1, int $limit = 10, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('artist.getTopTracks', [
-            'mbid'        => $mbid,
-            'page'        => $page,
-            'limit'       => $limit,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('artist.getTopTracks', $builder->getQuery());
 
         if (!isset($response['toptracks']['track'])) {
             return [];

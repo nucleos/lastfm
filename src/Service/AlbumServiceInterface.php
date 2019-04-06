@@ -9,6 +9,9 @@
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\AlbumInfoBuilder;
+use Core23\LastFm\Builder\AlbumTagsBuilder;
+use Core23\LastFm\Builder\AlbumTopTagsBuilder;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Model\Album;
@@ -36,100 +39,29 @@ interface AlbumServiceInterface
     /**
      * Get the metadata for an album on Last.fm using the musicbrainz id.
      *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     * @param string $username
-     * @param string $lang
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param AlbumInfoBuilder $builder
      *
      * @return AlbumInfo
      */
-    public function getInfoByMBID(
-        string $mbid,
-        bool $autocorrect = false,
-        ?string $username = null,
-        $lang = null
-    ): AlbumInfo;
-
-    /**
-     * Get the metadata for an album on Last.fm using the album name.
-     *
-     * @param string $artist
-     * @param string $album
-     * @param bool   $autocorrect
-     * @param string $username
-     * @param string $lang
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return AlbumInfo
-     */
-    public function getInfo(
-        string $artist,
-        string $album,
-        bool $autocorrect = false,
-        ?string $username = null,
-        ?string $lang = null
-    ): AlbumInfo;
+    public function getInfo(AlbumInfoBuilder $builder): AlbumInfo;
 
     /**
      * Get the tags applied by an individual user to an album on Last.fm.
      *
-     * @param string $artist
-     * @param string $album
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param AlbumTagsBuilder $builder
      *
      * @return AlbumInfo[]
      */
-    public function getTags(string $artist, string $album, string $username, bool $autocorrect = false): array;
-
-    /**
-     * Get the tags applied by an individual user to an album on Last.fm.
-     *
-     * @param string $mbid
-     * @param string $username
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return AlbumInfo[]
-     */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array;
+    public function getTags(AlbumTagsBuilder $builder): array;
 
     /**
      * Get the top tags applied to an album on Last.fm.
      *
-     * @param string $artist
-     * @param string $album
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
+     * @param AlbumTopTagsBuilder $builder
      *
      * @return Tag[]
      */
-    public function getTopTags(string $artist, string $album, bool $autocorrect = false): array;
-
-    /**
-     * Get the top tags applied to an album on Last.fm.
-     *
-     * @param string $mbid
-     * @param bool   $autocorrect
-     *
-     * @throws NotFoundException
-     * @throws ApiException
-     *
-     * @return AlbumInfo[]
-     */
-    public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array;
+    public function getTopTags(AlbumTopTagsBuilder $builder): array;
 
     /**
      * Remove a user's tag from an album.

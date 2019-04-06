@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Filter\Period;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Chart;
@@ -193,11 +194,11 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getTopAlbums(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
+    public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->unsignedCall('user.getTopAlbums', [
             'user'   => $username,
-            'period' => $period,
+            'period' => $period->getValue(),
             'limit'  => $limit,
             'page'   => $page,
         ]);
@@ -214,11 +215,11 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getTopArtists(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
+    public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->unsignedCall('user.getTopArtists', [
             'user'   => $username,
-            'period' => $period,
+            'period' => $period->getValue(),
             'limit'  => $limit,
             'page'   => $page,
         ]);
@@ -254,11 +255,11 @@ final class UserService extends AbstractService implements UserServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getTopTracks(string $username, string $period = 'overall', int $limit = 50, int $page = 1): array
+    public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->unsignedCall('user.getTopTracks', [
             'user'   => $username,
-            'period' => $period,
+            'period' => $period->getValue(),
             'limit'  => $limit,
             'page'   => $page,
         ]);

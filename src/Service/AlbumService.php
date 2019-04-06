@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Builder\AlbumInfoBuilder;
+use Core23\LastFm\Builder\AlbumTagsBuilder;
+use Core23\LastFm\Builder\AlbumTopTagsBuilder;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\Tag;
@@ -50,14 +53,9 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getInfoByMBID(string $mbid, bool $autocorrect = false, ?string $username = null, $lang = null): AlbumInfo
+    public function getInfo(AlbumInfoBuilder $builder): AlbumInfo
     {
-        $response = $this->unsignedCall('album.getInfo', [
-            'mbid'        => $mbid,
-            'autocorrect' => (int) $autocorrect,
-            'username'    => $username,
-            'lang'        => $lang,
-        ]);
+        $response = $this->unsignedCall('album.getInfo', $builder->getQuery());
 
         return AlbumInfo::fromApi($response['album']);
     }
@@ -65,30 +63,9 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getInfo(string $artist, string $album, bool $autocorrect = false, ?string $username = null, ?string $lang = null): AlbumInfo
+    public function getTags(AlbumTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('album.getInfo', [
-            'artist'      => $artist,
-            'album'       => $album,
-            'autocorrect' => (int) $autocorrect,
-            'username'    => $username,
-            'lang'        => $lang,
-        ]);
-
-        return AlbumInfo::fromApi($response['album']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTags(string $artist, string $album, string $username, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('album.getTags', [
-            'artist'      => $artist,
-            'album'       => $album,
-            'autocorrect' => (int) $autocorrect,
-            'user'        => $username,
-        ]);
+        $response = $this->unsignedCall('album.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
@@ -102,33 +79,9 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
     /**
      * {@inheritdoc}
      */
-    public function getTagsByMBID(string $mbid, string $username, bool $autocorrect = false): array
+    public function getTopTags(AlbumTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('album.getTags', [
-            'mbid'        => $mbid,
-            'autocorrect' => (int) $autocorrect,
-            'user'        => $username,
-        ]);
-
-        if (!isset($response['tags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTags(string $artist, string $album, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('album.getTopTags', [
-            'artist'      => $artist,
-            'album'       => $album,
-            'autocorrect' => (int) $autocorrect,
-        ]);
+        $response = $this->unsignedCall('album.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
@@ -136,25 +89,6 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
 
         return array_map(static function ($data) {
             return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTopTagsByMBID(string $mbid, bool $autocorrect = false): array
-    {
-        $response = $this->unsignedCall('album.getTopTags', [
-            'mbid'        => $mbid,
-            'autocorrect' => (int) $autocorrect,
-        ]);
-
-        if (!isset($response['toptags']['tag'])) {
-            return [];
-        }
-
-        return array_map(static function ($data) {
-            return AlbumInfo::fromApi($data);
         }, $response['toptags']['tag']);
     }
 
