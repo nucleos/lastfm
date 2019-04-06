@@ -33,7 +33,7 @@ interface UserServiceInterface
      *
      * @return Song[]
      */
-    public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter=null, int $page = 1): array;
+    public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array;
 
     /**
      * Get a list of the user's friends on Last.fm.
