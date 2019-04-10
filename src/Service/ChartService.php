@@ -31,7 +31,7 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return ArtistInfo::fromApi($data);
         }, $response['artists']['artist']);
     }
@@ -50,7 +50,7 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['tags']['tag']);
     }
@@ -69,7 +69,7 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['tracks']['track']);
     }

@@ -89,4 +89,19 @@ abstract class AbstractService
             throw $e;
         }
     }
+
+    /**
+     * @param callable $callback
+     * @param array    $data
+     *
+     * @return array
+     */
+    final protected function mapToList(callable $callback, array $data): array
+    {
+        if (!isset($data[0])) {
+            $data = [$data];
+        }
+
+        return array_map($callback, $data);
+    }
 }

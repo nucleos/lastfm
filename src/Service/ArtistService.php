@@ -94,7 +94,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['similarartists']['artist']);
     }
@@ -110,7 +110,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['tags']['tag']);
     }
@@ -126,7 +126,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['topalbums']['album']);
     }
@@ -142,7 +142,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -158,7 +158,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['toptracks']['track']);
     }
@@ -189,7 +189,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['results']['artistmatches']['artist']);
     }

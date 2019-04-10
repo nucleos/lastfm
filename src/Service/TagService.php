@@ -50,7 +50,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['similartags']['tag']);
     }
@@ -70,7 +70,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['albums']['album']);
     }
@@ -90,7 +90,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['topartists']['artist']);
     }
@@ -106,7 +106,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -126,7 +126,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['tracks']['track']);
     }
@@ -144,7 +144,7 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Chart::fromApi($data);
         }, $response['weeklychartlist']['chart']);
     }

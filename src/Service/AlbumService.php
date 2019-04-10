@@ -71,7 +71,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['tags']['tag']);
     }
@@ -87,7 +87,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -119,7 +119,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['results']['albummatches']['album']);
     }

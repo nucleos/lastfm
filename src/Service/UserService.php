@@ -41,7 +41,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['artisttracks']['track']);
     }
@@ -62,7 +62,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return User::fromApi($data);
         }, $response['friends']['user']);
     }
@@ -98,7 +98,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['lovedtracks']['track']);
     }
@@ -122,7 +122,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['recenttracks']['track']);
     }
@@ -144,7 +144,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['taggings']['artists']['artist']);
     }
@@ -166,7 +166,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['taggings']['albums']['album']);
     }
@@ -188,7 +188,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['taggings']['tracks']['track']);
     }
@@ -209,7 +209,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['topalbums']['album']);
     }
@@ -230,7 +230,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['topartists']['artist']);
     }
@@ -249,7 +249,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Tag::fromApi($data);
         }, $response['toptags']['tag']);
     }
@@ -270,7 +270,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['toptracks']['track']);
     }
@@ -291,7 +291,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Album::fromApi($data);
         }, $response['weeklyalbumchart']['album']);
     }
@@ -312,7 +312,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['weeklyartistchart']['artist']);
     }
@@ -330,7 +330,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Chart::fromApi($data);
         }, $response['weeklychartlist']['chart']);
     }
@@ -351,7 +351,7 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return SongInfo::fromApi($data);
         }, $response['weeklytrackchart']['track']);
     }

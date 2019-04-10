@@ -31,7 +31,7 @@ final class GeoService extends AbstractService implements GeoServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Artist::fromApi($data);
         }, $response['topartists']['artist']);
     }
@@ -52,7 +52,7 @@ final class GeoService extends AbstractService implements GeoServiceInterface
             return [];
         }
 
-        return array_map(static function ($data) {
+        return $this->mapToList(static function ($data) {
             return Song::fromApi($data);
         }, $response['tracks']['track']);
     }
