@@ -18,14 +18,15 @@ final class ScrobbeBuilder
 
     private function __construct()
     {
+        $this->tracks = [];
     }
 
     /**
      * @return ScrobbeBuilder
      */
-    public function create(): self
+    public static function create(): self
     {
-        $this->tracks = [];
+        return new static();
     }
 
     /**
@@ -36,6 +37,8 @@ final class ScrobbeBuilder
     public function addTrack(TrackBuilder $builder): self
     {
         $this->tracks[] = $builder->getData();
+
+        return $this;
     }
 
     /**

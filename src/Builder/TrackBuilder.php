@@ -18,6 +18,9 @@ final class TrackBuilder
      */
     private $data;
 
+    /**
+     * @param array $data
+     */
     private function __construct(array $data)
     {
         $this->data = $data;
@@ -64,11 +67,11 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $streamId
+     * @param int $streamId
      *
      * @return TrackBuilder
      */
-    public function withStreamId(string $streamId): self
+    public function withStreamId(int $streamId): self
     {
         $this->data['streamId'] = $streamId;
 
@@ -76,23 +79,23 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $chosenByUser
+     * @param bool $choosenByUser
      *
      * @return TrackBuilder
      */
-    public function withChosenByUser(string $chosenByUser): self
+    public function withChosenByUser(bool $choosenByUser): self
     {
-        $this->data['chosenByUser'] = $chosenByUser;
+        $this->data['chosenByUser'] = $choosenByUser ? 1 : 0;
 
         return $this;
     }
 
     /**
-     * @param string $trackNumber
+     * @param int $trackNumber
      *
      * @return TrackBuilder
      */
-    public function withTrackNumber(string $trackNumber): self
+    public function withTrackNumber(int $trackNumber): self
     {
         $this->data['trackNumber'] = $trackNumber;
 
@@ -124,13 +127,13 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $duration
+     * @param int $seconds
      *
      * @return TrackBuilder
      */
-    public function withDuration(string $duration): self
+    public function withDuration(int $seconds): self
     {
-        $this->data['duration'] = $duration;
+        $this->data['duration'] = $seconds;
 
         return $this;
     }

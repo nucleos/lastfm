@@ -56,7 +56,7 @@ final class TrackInfoBuilder
      */
     public function forUsername(string $name): self
     {
-        $this->query['username'] = (int) $name;
+        $this->query['username'] = $name;
 
         return $this;
     }

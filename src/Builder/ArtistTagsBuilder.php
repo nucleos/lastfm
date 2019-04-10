@@ -56,7 +56,7 @@ final class ArtistTagsBuilder
      */
     public function forUsername(string $name): self
     {
-        $this->query['user'] = (int) $name;
+        $this->query['user'] = $name;
 
         return $this;
     }

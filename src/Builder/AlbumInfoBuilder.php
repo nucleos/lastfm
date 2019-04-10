@@ -58,7 +58,7 @@ final class AlbumInfoBuilder
      */
     public function forUsername(string $name): self
     {
-        $this->query['username'] = (int) $name;
+        $this->query['username'] = $name;
 
         return $this;
     }
@@ -70,7 +70,7 @@ final class AlbumInfoBuilder
      */
     public function language(string $name): self
     {
-        $this->query['lang'] = (int) $name;
+        $this->query['lang'] = $name;
 
         return $this;
     }
