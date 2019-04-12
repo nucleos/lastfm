@@ -11,16 +11,31 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\ArtistInfo;
+use Core23\LastFm\Util\ApiHelper;
 
-final class LibraryService extends AbstractService implements LibraryServiceInterface
+final class LibraryService implements LibraryServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('library.getArtists', [
+        $response = $this->client->unsignedCall('library.getArtists', [
             'user'  => $user,
             'limit' => $limit,
             'page'  => $page,
@@ -30,8 +45,11 @@ final class LibraryService extends AbstractService implements LibraryServiceInte
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return ArtistInfo::fromApi($data);
-        }, $response['artists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return ArtistInfo::fromApi($data);
+            },
+            $response['artists']['artist']
+        );
     }
 }

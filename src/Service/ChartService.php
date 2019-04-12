@@ -11,18 +11,33 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\ArtistInfo;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
+use Core23\LastFm\Util\ApiHelper;
 
-final class ChartService extends AbstractService implements ChartServiceInterface
+final class ChartService implements ChartServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function getTopArtists(int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('chart.getTopArtists', [
+        $response = $this->client->unsignedCall('chart.getTopArtists', [
             'limit' => $limit,
             'page'  => $page,
         ]);
@@ -31,9 +46,12 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return ArtistInfo::fromApi($data);
-        }, $response['artists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return ArtistInfo::fromApi($data);
+            },
+            $response['artists']['artist']
+        );
     }
 
     /**
@@ -41,7 +59,7 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
      */
     public function getTopTags(int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('chart.getTopTags', [
+        $response = $this->client->unsignedCall('chart.getTopTags', [
             'limit' => $limit,
             'page'  => $page,
         ]);
@@ -50,9 +68,12 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['tags']['tag']
+        );
     }
 
     /**
@@ -60,7 +81,7 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
      */
     public function getTopTracks(int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('chart.getTopTracks', [
+        $response = $this->client->unsignedCall('chart.getTopTracks', [
             'limit' => $limit,
             'page'  => $page,
         ]);
@@ -69,8 +90,11 @@ final class ChartService extends AbstractService implements ChartServiceInterfac
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['tracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['tracks']['track']
+        );
     }
 }

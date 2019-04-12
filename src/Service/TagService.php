@@ -11,21 +11,36 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\Chart;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Model\TagInfo;
+use Core23\LastFm\Util\ApiHelper;
 
-final class TagService extends AbstractService implements TagServiceInterface
+final class TagService implements TagServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function getInfo(string $tag, string $lang = null): ?TagInfo
     {
-        $response = $this->unsignedCall('tag.getInfo', [
+        $response = $this->client->unsignedCall('tag.getInfo', [
             'tag'  => $tag,
             'lang' => $lang,
         ]);
@@ -42,7 +57,7 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getSimilar(string $tag): array
     {
-        $response = $this->unsignedCall('tag.getSimilar', [
+        $response = $this->client->unsignedCall('tag.getSimilar', [
             'tag' => $tag,
         ]);
 
@@ -50,9 +65,12 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['similartags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['similartags']['tag']
+        );
     }
 
     /**
@@ -60,7 +78,7 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('tag.getTopAlbums', [
+        $response = $this->client->unsignedCall('tag.getTopAlbums', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -70,9 +88,12 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['albums']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['albums']['album']
+        );
     }
 
     /**
@@ -80,7 +101,7 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('tag.getTopArtists', [
+        $response = $this->client->unsignedCall('tag.getTopArtists', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -90,9 +111,12 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['topartists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['topartists']['artist']
+        );
     }
 
     /**
@@ -100,15 +124,18 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getTopTags(): array
     {
-        $response = $this->unsignedCall('tag.getTopTags');
+        $response = $this->client->unsignedCall('tag.getTopTags');
 
         if (!isset($response['toptags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['toptags']['tag']
+        );
     }
 
     /**
@@ -116,7 +143,7 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('tag.getTopTracks', [
+        $response = $this->client->unsignedCall('tag.getTopTracks', [
             'tag'   => $tag,
             'limit' => $limit,
             'page'  => $page,
@@ -126,9 +153,12 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['tracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['tracks']['track']
+        );
     }
 
     /**
@@ -136,7 +166,7 @@ final class TagService extends AbstractService implements TagServiceInterface
      */
     public function getWeeklyChartList(string $tag): array
     {
-        $response = $this->unsignedCall('tag.getWeeklyChartList', [
+        $response = $this->client->unsignedCall('tag.getWeeklyChartList', [
             'tag' => $tag,
         ]);
 
@@ -144,8 +174,11 @@ final class TagService extends AbstractService implements TagServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Chart::fromApi($data);
-        }, $response['weeklychartlist']['chart']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Chart::fromApi($data);
+            },
+            $response['weeklychartlist']['chart']
+        );
     }
 }

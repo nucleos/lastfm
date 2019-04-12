@@ -16,15 +16,30 @@ use Core23\LastFm\Builder\SimilarTrackBuilder;
 use Core23\LastFm\Builder\TrackInfoBuilder;
 use Core23\LastFm\Builder\TrackTagsBuilder;
 use Core23\LastFm\Builder\TrackTopTagsBuilder;
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\NowPlaying;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use Core23\LastFm\Util\ApiHelper;
 use InvalidArgumentException;
 
-final class TrackService extends AbstractService implements TrackServiceInterface
+final class TrackService implements TrackServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -45,7 +60,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             }
         });
 
-        $this->signedCall('track.addTags', [
+        $this->client->signedCall('track.addTags', [
             'artist' => $artist,
             'track'  => $track,
             'tags'   => implode(',', $tags),
@@ -57,7 +72,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function getCorrection(string $artist, string $track): ?Song
     {
-        $response = $this->unsignedCall('track.getCorrection', [
+        $response = $this->client->unsignedCall('track.getCorrection', [
             'artist' => $artist,
             'track'  => $track,
         ]);
@@ -74,7 +89,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function getInfo(TrackInfoBuilder $builder): ?SongInfo
     {
-        $response = $this->unsignedCall('track.getInfo', $builder->getQuery());
+        $response = $this->client->unsignedCall('track.getInfo', $builder->getQuery());
 
         if (!isset($response['track'])) {
             return null;
@@ -88,15 +103,18 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function getSimilar(SimilarTrackBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getSimilar', $builder->getQuery());
+        $response = $this->client->unsignedCall('track.getSimilar', $builder->getQuery());
 
         if (!isset($response['similartracks']['track'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['similartracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return SongInfo::fromApi($data);
+            },
+            $response['similartracks']['track']
+        );
     }
 
     /**
@@ -104,15 +122,18 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function getTags(TrackTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('track.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['tags']['tag']
+        );
     }
 
     /**
@@ -120,15 +141,18 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function getTopTags(TrackTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('track.getTopTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('track.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['toptags']['tag']
+        );
     }
 
     /**
@@ -136,7 +160,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function love(SessionInterface $session, string $artist, string $track): void
     {
-        $this->signedCall('track.love', [
+        $this->client->signedCall('track.love', [
             'artist' => $artist,
             'track'  => $track,
         ], $session, 'POST');
@@ -147,7 +171,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function removeTag(SessionInterface $session, string $artist, string $track, string $tag): void
     {
-        $this->signedCall('track.removeTag', [
+        $this->client->signedCall('track.removeTag', [
             'artist' => $artist,
             'track'  => $track,
             'tag'    => $tag,
@@ -168,7 +192,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             throw new InvalidArgumentException('A maximum of 50 tracks is allowed');
         }
 
-        $this->signedCall('album.scrobble', $builder->getQuery(), $session, 'POST');
+        $this->client->signedCall('album.scrobble', $builder->getQuery(), $session, 'POST');
     }
 
     /**
@@ -176,7 +200,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function search(string $track, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('track.search', [
+        $response = $this->client->unsignedCall('track.search', [
             'track' => $track,
             'limit' => $limit,
             'page'  => $page,
@@ -186,9 +210,12 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['results']['trackmatches']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return SongInfo::fromApi($data);
+            },
+            $response['results']['trackmatches']['track']
+        );
     }
 
     /**
@@ -196,7 +223,7 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function unlove(SessionInterface $session, string $artist, string $track): void
     {
-        $this->signedCall('track.love', [
+        $this->client->signedCall('track.love', [
             'artist' => $artist,
             'track'  => $track,
         ], $session, 'POST');
@@ -207,6 +234,6 @@ final class TrackService extends AbstractService implements TrackServiceInterfac
      */
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
-        $this->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');
+        $this->client->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');
     }
 }

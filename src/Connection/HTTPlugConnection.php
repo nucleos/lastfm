@@ -17,7 +17,7 @@ use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use Psr\Http\Message\ResponseInterface;
 
-final class HTTPlugConnection extends AbstractConnection
+final class HTTPlugConnection implements ConnectionInterface
 {
     /**
      * @var HttpClient
@@ -30,33 +30,36 @@ final class HTTPlugConnection extends AbstractConnection
     private $messageFactory;
 
     /**
+     * @var string
+     */
+    private $endpoint;
+
+    /**
      * Initialize client.
      *
      * @param HttpClient     $client
      * @param MessageFactory $messageFactory
-     * @param string         $apikey
-     * @param string         $sharedSecret
-     * @param string         $uri
+     * @param string         $endpoint
      */
-    public function __construct(HttpClient $client, MessageFactory $messageFactory, string $apikey, string $sharedSecret, string $uri = null)
+    public function __construct(HttpClient $client, MessageFactory $messageFactory, string $endpoint = ConnectionInterface::DEFAULT_ENDPOINT)
     {
-        parent::__construct($apikey, $sharedSecret, $uri);
-
         $this->client         = $client;
         $this->messageFactory = $messageFactory;
+        $this->endpoint       = $endpoint;
     }
 
     /**
-     * @param string $url
-     *
-     * @throws Exception
-     *
-     * @return string|null
+     * {@inheritdoc}
      */
-    public function getPageBody(string $url): ?string
+    public function getPageBody(string $url, string $method = 'GET'): ?string
     {
-        $request  = $this->messageFactory->createRequest('GET', $url);
-        $response = $this->client->sendRequest($request);
+        $request  = $this->messageFactory->createRequest($method, $url);
+
+        try {
+            $response = $this->client->sendRequest($request);
+        } catch (Exception $e) {
+            throw new ApiException('Error fetching page body', $e->getCode(), $e->getMessage());
+        }
 
         if ($response->getStatusCode() >= 400) {
             return null;
@@ -68,11 +71,11 @@ final class HTTPlugConnection extends AbstractConnection
     /**
      * {@inheritdoc}
      */
-    protected function call(array $params, string $requestMethod = 'GET'): array
+    public function call(string $method, array $params = [], string $requestMethod = 'GET'): array
     {
         $params  = array_merge($params, ['format' => 'json']);
         $data    = $this->buildParameter($params);
-        $request = $this->messageFactory->createRequest($requestMethod, $this->uri, [], $data);
+        $request = $this->messageFactory->createRequest($requestMethod, $this->endpoint, [], $data);
 
         try {
             $response = $this->client->sendRequest($request);

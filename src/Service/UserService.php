@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Filter\Period;
 use Core23\LastFm\Filter\RangeFilter;
 use Core23\LastFm\Model\Album;
@@ -20,9 +21,23 @@ use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Model\User;
+use Core23\LastFm\Util\ApiHelper;
 
-final class UserService extends AbstractService implements UserServiceInterface
+final class UserService implements UserServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -35,15 +50,18 @@ final class UserService extends AbstractService implements UserServiceInterface
             'page'           => $page,
         ]);
 
-        $response = $this->unsignedCall('user.getArtistTracks', $query);
+        $response = $this->client->unsignedCall('user.getArtistTracks', $query);
 
         if (!isset($response['artisttracks']['track'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['artisttracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['artisttracks']['track']
+        );
     }
 
     /**
@@ -51,7 +69,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getFriends(string $username, bool $recenttracks = false, $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getFriends', [
+        $response = $this->client->unsignedCall('user.getFriends', [
             'user'         => $username,
             'recenttracks' => (int) $recenttracks,
             'limit'        => $limit,
@@ -62,9 +80,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return User::fromApi($data);
-        }, $response['friends']['user']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return User::fromApi($data);
+            },
+            $response['friends']['user']
+        );
     }
 
     /**
@@ -72,7 +93,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getInfo(string $username): ?User
     {
-        $response =  $this->unsignedCall('user.getInfo', [
+        $response =  $this->client->unsignedCall('user.getInfo', [
             'user' => $username,
         ]);
 
@@ -88,7 +109,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getLovedTracks(string $username, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getLovedTracks', [
+        $response = $this->client->unsignedCall('user.getLovedTracks', [
             'user'  => $username,
             'limit' => $limit,
             'page'  => $page,
@@ -98,9 +119,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['lovedtracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['lovedtracks']['track']
+        );
     }
 
     /**
@@ -116,15 +140,18 @@ final class UserService extends AbstractService implements UserServiceInterface
             'extended' => (int) $extended,
         ]);
 
-        $response = $this->unsignedCall('user.getRecentTracks', $query);
+        $response = $this->client->unsignedCall('user.getRecentTracks', $query);
 
         if (!isset($response['recenttracks']['track'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['recenttracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['recenttracks']['track']
+        );
     }
 
     /**
@@ -132,7 +159,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getPersonalTagsForArtist(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        $response =  $this->unsignedCall('user.getPersonalTags', [
+        $response =  $this->client->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'artist',
             'user'        => $username,
             'tag'         => $tag,
@@ -144,9 +171,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['taggings']['artists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['taggings']['artists']['artist']
+        );
     }
 
     /**
@@ -154,7 +184,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getPersonalTagsForAlbum(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getPersonalTags', [
+        $response = $this->client->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'album',
             'user'        => $username,
             'tag'         => $tag,
@@ -166,9 +196,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['taggings']['albums']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['taggings']['albums']['album']
+        );
     }
 
     /**
@@ -176,7 +209,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getPersonalTagsForTracks(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getPersonalTags', [
+        $response = $this->client->unsignedCall('user.getPersonalTags', [
             'taggingtype' => 'track',
             'user'        => $username,
             'tag'         => $tag,
@@ -188,9 +221,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['taggings']['tracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return SongInfo::fromApi($data);
+            },
+            $response['taggings']['tracks']['track']
+        );
     }
 
     /**
@@ -198,7 +234,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getTopAlbums', [
+        $response = $this->client->unsignedCall('user.getTopAlbums', [
             'user'   => $username,
             'period' => $period->getValue(),
             'limit'  => $limit,
@@ -209,9 +245,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['topalbums']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['topalbums']['album']
+        );
     }
 
     /**
@@ -219,7 +258,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getTopArtists', [
+        $response = $this->client->unsignedCall('user.getTopArtists', [
             'user'   => $username,
             'period' => $period->getValue(),
             'limit'  => $limit,
@@ -230,9 +269,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['topartists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['topartists']['artist']
+        );
     }
 
     /**
@@ -240,7 +282,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getTopTags(string $username, int $limit = 50): array
     {
-        $response = $this->unsignedCall('user.getTopTags', [
+        $response = $this->client->unsignedCall('user.getTopTags', [
             'user'  => $username,
             'limit' => $limit,
         ]);
@@ -249,9 +291,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['toptags']['tag']
+        );
     }
 
     /**
@@ -259,7 +304,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('user.getTopTracks', [
+        $response = $this->client->unsignedCall('user.getTopTracks', [
             'user'   => $username,
             'period' => $period->getValue(),
             'limit'  => $limit,
@@ -270,9 +315,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['toptracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return SongInfo::fromApi($data);
+            },
+            $response['toptracks']['track']
+        );
     }
 
     /**
@@ -285,15 +333,18 @@ final class UserService extends AbstractService implements UserServiceInterface
             'user'     => $username,
         ]);
 
-        $response = $this->unsignedCall('user.getWeeklyAlbumChart', $query);
+        $response = $this->client->unsignedCall('user.getWeeklyAlbumChart', $query);
 
         if (!isset($response['weeklyalbumchart']['album'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['weeklyalbumchart']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['weeklyalbumchart']['album']
+        );
     }
 
     /**
@@ -306,15 +357,18 @@ final class UserService extends AbstractService implements UserServiceInterface
             'user'     => $username,
         ]);
 
-        $response = $this->unsignedCall('user.getWeeklyArtistChart', $query);
+        $response = $this->client->unsignedCall('user.getWeeklyArtistChart', $query);
 
         if (!isset($response['weeklyartistchart']['artist'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['weeklyartistchart']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['weeklyartistchart']['artist']
+        );
     }
 
     /**
@@ -322,7 +376,7 @@ final class UserService extends AbstractService implements UserServiceInterface
      */
     public function getWeeklyChartList(string $username): array
     {
-        $response = $this->unsignedCall('user.getWeeklyChartList', [
+        $response = $this->client->unsignedCall('user.getWeeklyChartList', [
             'user' => $username,
         ]);
 
@@ -330,9 +384,12 @@ final class UserService extends AbstractService implements UserServiceInterface
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Chart::fromApi($data);
-        }, $response['weeklychartlist']['chart']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Chart::fromApi($data);
+            },
+            $response['weeklychartlist']['chart']
+        );
     }
 
     /**
@@ -345,14 +402,17 @@ final class UserService extends AbstractService implements UserServiceInterface
             'user'     => $username,
         ]);
 
-        $response = $this->unsignedCall('user.getWeeklyTrackChart', $query);
+        $response = $this->client->unsignedCall('user.getWeeklyTrackChart', $query);
 
         if (!isset($response['weeklytrackchart']['track'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return SongInfo::fromApi($data);
-        }, $response['weeklytrackchart']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return SongInfo::fromApi($data);
+            },
+            $response['weeklytrackchart']['track']
+        );
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * (c) Christian Gripp <mail@core23.de>
  *
@@ -9,47 +7,56 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Connection;
+namespace Core23\LastFm\Client;
 
+use Core23\LastFm\Connection\ConnectionInterface;
 use Core23\LastFm\Exception\ApiException;
+use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Session\SessionInterface;
 
-abstract class AbstractConnection implements ConnectionInterface
+final class ApiClient implements ApiClientInterface
 {
     /**
-     * Default Endpoint.
+     * @var ConnectionInterface
      */
-    public const DEFAULT_WS_ENDPOINT = 'http://ws.audioscrobbler.com/2.0/';
+    private $connection;
 
     /**
      * @var string
      */
-    protected $apiKey;
+    private $apiKey;
 
     /**
      * @var string
      */
-    protected $sharedSecret;
+    private $sharedSecret;
 
     /**
-     * @var string
+     * @param ConnectionInterface $connection
+     * @param string              $apiKey
+     * @param string              $sharedSecret
      */
-    protected $uri;
-
-    /**
-     * @param string $apikey
-     * @param string $sharedSecret
-     * @param string $uri
-     */
-    public function __construct(string $apikey, string $sharedSecret, string $uri = null)
+    public function __construct(ConnectionInterface $connection, string $apiKey, string $sharedSecret)
     {
-        if (null === $uri) {
-            $uri = static::DEFAULT_WS_ENDPOINT;
-        }
-
-        $this->apiKey       = $apikey;
+        $this->connection   = $connection;
+        $this->apiKey       = $apiKey;
         $this->sharedSecret = $sharedSecret;
-        $this->uri          = $uri;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getApiKey(): string
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSharedSecret(): string
+    {
+        return $this->sharedSecret;
     }
 
     /**
@@ -75,7 +82,7 @@ abstract class AbstractConnection implements ConnectionInterface
         // Sign parameter
         $params['api_sig'] = $this->signParams($params);
 
-        return $this->call($params, $requestMethod);
+        return $this->call($method, $params);
     }
 
     /**
@@ -93,36 +100,8 @@ abstract class AbstractConnection implements ConnectionInterface
         $params = $this->filterNull($params);
         $params = $this->encodeUTF8($params);
 
-        return $this->call($params, $requestMethod);
+        return $this->call($method, $params);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getApiKey(): string
-    {
-        return $this->apiKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSharedSecret(): string
-    {
-        return $this->sharedSecret;
-    }
-
-    /**
-     * Performs the webservice call.
-     *
-     * @param array  $params
-     * @param string $requestMethod
-     *
-     * @throws ApiException
-     *
-     * @return array
-     */
-    abstract protected function call(array $params, string $requestMethod = 'GET'): array;
 
     /**
      * Filter null values.
@@ -133,7 +112,7 @@ abstract class AbstractConnection implements ConnectionInterface
      */
     private function filterNull(array $object): array
     {
-        return array_filter($object, function ($val) {
+        return array_filter($object, static function ($val) {
             return null !== $val;
         });
     }
@@ -170,5 +149,24 @@ abstract class AbstractConnection implements ConnectionInterface
         $signature .= $this->sharedSecret;
 
         return md5($signature);
+    }
+
+    /**
+     * @param string $method
+     * @param array  $params
+     *
+     * @return array
+     */
+    private function call(string $method, array $params): array
+    {
+        try {
+            return $this->connection->call($method, $params);
+        } catch (ApiException $e) {
+            if (6 === (int) $e->getCode()) {
+                throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
+            }
+
+            throw $e;
+        }
     }
 }

@@ -14,14 +14,29 @@ namespace Core23\LastFm\Service;
 use Core23\LastFm\Builder\AlbumInfoBuilder;
 use Core23\LastFm\Builder\AlbumTagsBuilder;
 use Core23\LastFm\Builder\AlbumTopTagsBuilder;
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\AlbumInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use Core23\LastFm\Util\ApiHelper;
 use InvalidArgumentException;
 
-final class AlbumService extends AbstractService implements AlbumServiceInterface
+final class AlbumService implements AlbumServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,7 +58,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
             }
         });
 
-        $this->signedCall('album.addTags', [
+        $this->client->signedCall('album.addTags', [
             'artist' => $artist,
             'album'  => $album,
             'tags'   => implode(',', $tags),
@@ -55,7 +70,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
      */
     public function getInfo(AlbumInfoBuilder $builder): AlbumInfo
     {
-        $response = $this->unsignedCall('album.getInfo', $builder->getQuery());
+        $response = $this->client->unsignedCall('album.getInfo', $builder->getQuery());
 
         return AlbumInfo::fromApi($response['album']);
     }
@@ -65,15 +80,18 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
      */
     public function getTags(AlbumTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('album.getTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('album.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['tags']['tag']
+        );
     }
 
     /**
@@ -81,15 +99,18 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
      */
     public function getTopTags(AlbumTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('album.getTopTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('album.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['toptags']['tag']
+        );
     }
 
     /**
@@ -97,7 +118,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
      */
     public function removeTag(SessionInterface $session, string $artist, string $album, string $tag): void
     {
-        $this->signedCall('album.removeTag', [
+        $this->client->signedCall('album.removeTag', [
             'artist' => $artist,
             'album'  => $album,
             'tag'    => $tag,
@@ -109,7 +130,7 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
      */
     public function search(string $album, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('album.search', [
+        $response = $this->client->unsignedCall('album.search', [
             'album' => $album,
             'limit' => $limit,
             'page'  => $page,
@@ -119,8 +140,11 @@ final class AlbumService extends AbstractService implements AlbumServiceInterfac
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['results']['albummatches']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['results']['albummatches']['album']
+        );
     }
 }

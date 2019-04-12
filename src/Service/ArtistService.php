@@ -17,16 +17,31 @@ use Core23\LastFm\Builder\ArtistTopAlbumsBuilder;
 use Core23\LastFm\Builder\ArtistTopTagsBuilder;
 use Core23\LastFm\Builder\ArtistTopTracksBuilder;
 use Core23\LastFm\Builder\SimilarArtistBuilder;
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Model\Album;
 use Core23\LastFm\Model\Artist;
 use Core23\LastFm\Model\ArtistInfo;
 use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use Core23\LastFm\Util\ApiHelper;
 use InvalidArgumentException;
 
-final class ArtistService extends AbstractService implements ArtistServiceInterface
+final class ArtistService implements ArtistServiceInterface
 {
+    /**
+     * @var ApiClientInterface
+     */
+    private $client;
+
+    /**
+     * @param ApiClientInterface $client
+     */
+    public function __construct(ApiClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -47,7 +62,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             }
         });
 
-        $this->signedCall('artist.addTags', [
+        $this->client->signedCall('artist.addTags', [
             'artist' => $artist,
             'tags'   => implode(',', $tags),
         ], $session, 'POST');
@@ -58,7 +73,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getCorrection(string $artist): ?Artist
     {
-        $response = $this->unsignedCall('artist.getCorrection', [
+        $response = $this->client->unsignedCall('artist.getCorrection', [
             'artist' => $artist,
         ]);
 
@@ -74,7 +89,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getInfo(ArtistInfoBuilder $builder): ?ArtistInfo
     {
-        $response = $this->unsignedCall('artist.getInfo', $builder->getQuery());
+        $response = $this->client->unsignedCall('artist.getInfo', $builder->getQuery());
 
         if (!isset($response['artist'])) {
             return null;
@@ -88,15 +103,18 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getSimilar(SimilarArtistBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getSimilar', $builder->getQuery());
+        $response = $this->client->unsignedCall('artist.getSimilar', $builder->getQuery());
 
         if (!isset($response['similarartists']['artist'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['similarartists']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['similarartists']['artist']
+        );
     }
 
     /**
@@ -104,15 +122,18 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getTags(ArtistTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('artist.getTags', $builder->getQuery());
 
         if (!isset($response['tags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['tags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['tags']['tag']
+        );
     }
 
     /**
@@ -120,15 +141,18 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getTopAlbums(ArtistTopAlbumsBuilder $builder): array
     {
-        $response =  $this->unsignedCall('artist.getTopAlbums', $builder->getQuery());
+        $response =  $this->client->unsignedCall('artist.getTopAlbums', $builder->getQuery());
 
         if (!isset($response['topalbums']['album'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Album::fromApi($data);
-        }, $response['topalbums']['album']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Album::fromApi($data);
+            },
+            $response['topalbums']['album']
+        );
     }
 
     /**
@@ -136,15 +160,18 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getTopTags(ArtistTopTagsBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTopTags', $builder->getQuery());
+        $response = $this->client->unsignedCall('artist.getTopTags', $builder->getQuery());
 
         if (!isset($response['toptags']['tag'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Tag::fromApi($data);
-        }, $response['toptags']['tag']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Tag::fromApi($data);
+            },
+            $response['toptags']['tag']
+        );
     }
 
     /**
@@ -152,15 +179,18 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function getTopTracks(ArtistTopTracksBuilder $builder): array
     {
-        $response = $this->unsignedCall('artist.getTopTracks', $builder->getQuery());
+        $response = $this->client->unsignedCall('artist.getTopTracks', $builder->getQuery());
 
         if (!isset($response['toptracks']['track'])) {
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Song::fromApi($data);
-        }, $response['toptracks']['track']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Song::fromApi($data);
+            },
+            $response['toptracks']['track']
+        );
     }
 
     /**
@@ -168,7 +198,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function removeTag(SessionInterface $session, string $artist, string $tag): void
     {
-        $this->signedCall('artist.removeTag', [
+        $this->client->signedCall('artist.removeTag', [
             'artist' => $artist,
             'tag'    => $tag,
         ], $session, 'POST');
@@ -179,7 +209,7 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
      */
     public function search(string $artist, int $limit = 50, int $page = 1): array
     {
-        $response = $this->unsignedCall('artist.search', [
+        $response = $this->client->unsignedCall('artist.search', [
             'artist' => $artist,
             'limit'  => $limit,
             'page'   => $page,
@@ -189,8 +219,11 @@ final class ArtistService extends AbstractService implements ArtistServiceInterf
             return [];
         }
 
-        return $this->mapToList(static function ($data) {
-            return Artist::fromApi($data);
-        }, $response['results']['artistmatches']['artist']);
+        return ApiHelper::mapList(
+            static function ($data) {
+                return Artist::fromApi($data);
+            },
+            $response['results']['artistmatches']['artist']
+        );
     }
 }

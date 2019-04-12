@@ -12,26 +12,16 @@ declare(strict_types=1);
 namespace Core23\LastFm\Connection;
 
 use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Session\SessionInterface;
 
 interface ConnectionInterface
 {
     /**
-     * Calls the API with signed session.
-     *
-     * @param string                $method
-     * @param array                 $params
-     * @param SessionInterface|null $session
-     * @param string                $requestMethod
-     *
-     * @throws ApiException
-     *
-     * @return array
+     * Default Endpoint.
      */
-    public function signedCall(string $method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array;
+    public const DEFAULT_ENDPOINT = 'http://ws.audioscrobbler.com/2.0/';
 
     /**
-     * Calls the API unsigned.
+     * Calls the API.
      *
      * @param string $method
      * @param array  $params
@@ -41,28 +31,14 @@ interface ConnectionInterface
      *
      * @return array
      */
-    public function unsignedCall(string $method, array $params = [], string $requestMethod = 'GET'): array;
+    public function call(string $method, array $params = [], string $requestMethod = 'GET'): array;
 
     /**
-     * Loads a page and returns the page body.
-     *
      * @param string $url
+     *
+     * @throws ApiException
      *
      * @return string|null
      */
     public function getPageBody(string $url): ?string;
-
-    /**
-     * Get the api key.
-     *
-     * @return string
-     */
-    public function getApiKey(): string;
-
-    /**
-     * Get the shared secret.
-     *
-     * @return string
-     */
-    public function getSharedSecret(): string;
 }

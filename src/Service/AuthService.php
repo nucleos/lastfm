@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Service;
 
-use Core23\LastFm\Connection\ConnectionInterface;
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Exception\ApiException;
 use Core23\LastFm\Exception\NotFoundException;
 use Core23\LastFm\Session\Session;
@@ -20,7 +20,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 
-final class AuthService extends AbstractService implements LoggerAwareInterface, AuthServiceInterface
+final class AuthService implements LoggerAwareInterface, AuthServiceInterface
 {
     use LoggerAwareTrait;
 
@@ -30,13 +30,17 @@ final class AuthService extends AbstractService implements LoggerAwareInterface,
     private $authUrl;
 
     /**
-     * @param ConnectionInterface $connection
-     * @param string              $authUrl
+     * @var ApiClientInterface
      */
-    public function __construct(ConnectionInterface $connection, string $authUrl = 'http://www.last.fm/api/auth/')
-    {
-        parent::__construct($connection);
+    private $client;
 
+    /**
+     * @param ApiClientInterface $connection
+     * @param string             $authUrl
+     */
+    public function __construct(ApiClientInterface $connection, string $authUrl = 'http://www.last.fm/api/auth/')
+    {
+        $this->client  = $connection;
         $this->authUrl = $authUrl;
         $this->logger  = new NullLogger();
     }
@@ -47,7 +51,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface,
     public function createSession(string $token): ?SessionInterface
     {
         try {
-            $response = $this->signedCall('auth.getSession', [
+            $response = $this->client->signedCall('auth.getSession', [
                 'token' => $token,
             ]);
 
@@ -70,7 +74,7 @@ final class AuthService extends AbstractService implements LoggerAwareInterface,
      */
     public function createToken(): ?string
     {
-        $response = $this->signedCall('auth.getToken');
+        $response = $this->client->signedCall('auth.getToken');
 
         return $response['token'] ?? null;
     }
@@ -80,6 +84,6 @@ final class AuthService extends AbstractService implements LoggerAwareInterface,
      */
     public function getAuthUrl(string $callbackUrl): string
     {
-        return $this->authUrl.'?api_key='.$this->getConnection()->getApiKey().'&cb='.$callbackUrl;
+        return $this->authUrl.'?api_key='.$this->client->getApiKey().'&cb='.$callbackUrl;
     }
 }

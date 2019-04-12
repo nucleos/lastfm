@@ -9,31 +9,31 @@
 
 namespace Core23\LastFm\Tests\Service;
 
-use Core23\LastFm\Connection\ConnectionInterface;
+use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Service\AuthService;
 use PHPUnit\Framework\TestCase;
 
 class AuthServiceTest extends TestCase
 {
-    private $connection;
+    private $client;
 
     protected function setUp()
     {
-        $this->connection =  $this->prophesize(ConnectionInterface::class);
+        $this->client =  $this->prophesize(ApiClientInterface::class);
     }
 
     public function testItIsInstantiable(): void
     {
-        $service = new AuthService($this->connection->reveal());
+        $service = new AuthService($this->client->reveal());
 
         $this->assertNotNull($service);
     }
 
     public function testCreateSession(): void
     {
-        $this->connection->signedCall('auth.getSession', [
+        $this->client->signedCall('auth.getSession', [
             'token' => 'user-token',
-        ], null, 'GET')
+        ])
             ->willReturn([
                 'session' => [
                     'name'       => 'FooBar',
@@ -43,7 +43,7 @@ class AuthServiceTest extends TestCase
             ])
         ;
 
-        $service = new AuthService($this->connection->reveal());
+        $service = new AuthService($this->client->reveal());
 
         $result = $service->createSession('user-token');
 
@@ -55,23 +55,23 @@ class AuthServiceTest extends TestCase
 
     public function testCreateToken(): void
     {
-        $this->connection->signedCall('auth.getToken', [], null, 'GET')
+        $this->client->signedCall('auth.getToken')
             ->willReturn([
                 'token' => 'The Token',
             ])
         ;
 
-        $service = new AuthService($this->connection->reveal());
+        $service = new AuthService($this->client->reveal());
         $this->assertSame('The Token', $service->createToken());
     }
 
     public function testGetAuthUrl(): void
     {
-        $this->connection->getApiKey()
+        $this->client->getApiKey()
             ->willReturn('api-key')
         ;
 
-        $service = new AuthService($this->connection->reveal());
+        $service = new AuthService($this->client->reveal());
 
         $this->assertSame('http://www.last.fm/api/auth/?api_key=api-key&cb=https://example.org', $service->getAuthUrl('https://example.org'));
     }
