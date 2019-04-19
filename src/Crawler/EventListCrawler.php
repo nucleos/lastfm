@@ -84,8 +84,8 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
     {
         $url = static::BASE_URL;
         $url .= '?location_0=Germany';
-        $url .= '&location_1='.$location->getLongitude();
-        $url .= '&location_2='.$location->getLatitude();
+        $url .= '&location_1='.$location->getLatitude();
+        $url .= '&location_2='.$location->getLongitude();
         $url .= '&radius='.($radius*1000);
         $url .= '&page='.$page;
 
