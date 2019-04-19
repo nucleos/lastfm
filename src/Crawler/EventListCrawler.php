@@ -55,6 +55,10 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
 
         $lastNode = $node->filter('.pagination .pagination-page')->last();
 
+        if (0 === $lastNode->count()) {
+            return 0;
+        }
+
         return (int) $lastNode->text();
     }
 
