@@ -17,9 +17,9 @@ interface UserEventCrawlerInterface
     /**
      * @param string $username
      *
-     * @return int[]|null
+     * @return int[]
      */
-    public function getUserYears(string $username): ?array;
+    public function getUserYears(string $username): array;
 
     /**
      * Get all events of a user.
@@ -30,9 +30,9 @@ interface UserEventCrawlerInterface
      *
      * @throws CrawlException
      *
-     * @return Event[]|null
+     * @return Event[]
      */
-    public function getEvents(string $username, ?int $year, int $page = 1): ?array;
+    public function getEvents(string $username, ?int $year, int $page = 1): array;
 
     /**
      * Gets the pages for a year.
@@ -40,9 +40,9 @@ interface UserEventCrawlerInterface
      * @param string   $username
      * @param int|null $year
      *
-     * @return int|null
+     * @return int
      */
-    public function getYearPages(string $username, ?int $year): ?int;
+    public function getYearPages(string $username, ?int $year): int;
 
     /**
      * Gets the event count for a year.
@@ -51,7 +51,7 @@ interface UserEventCrawlerInterface
      * @param int|null $year
      * @param int      $page
      *
-     * @return int|null
+     * @return int
      */
-    public function getYearCount(string $username, ?int $year, int $page = 1): ?int;
+    public function getYearCount(string $username, ?int $year, int $page = 1): int;
 }

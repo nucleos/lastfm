@@ -19,12 +19,12 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
     /**
      * {@inheritdoc}
      */
-    public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): ?array
+    public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): array
     {
         $node = $this->crawlUrl($location, $radius, $page);
 
         if (null === $node) {
-            return null;
+            return [];
         }
 
         return $this->crawlEventList($node);
@@ -33,12 +33,12 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
     /**
      * {@inheritdoc}
      */
-    public function getPages(GeoLocation $location, $radius = 100): ?int
+    public function getPages(GeoLocation $location, $radius = 100): int
     {
         $node = $this->crawlUrl($location, $radius);
 
         if (null === $node) {
-            return null;
+            return 0;
         }
 
         $lastNode = $node->filter('.pagination .pagination-page')->last();

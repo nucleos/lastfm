@@ -21,9 +21,9 @@ interface EventListCrawlerInterface
      * @param int         $radius   in KM
      * @param int         $page
      *
-     * @return Event[]|null
+     * @return Event[]
      */
-    public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): ?array;
+    public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): array;
 
     /**
      * Gets the number of pages for a event list.
@@ -33,5 +33,5 @@ interface EventListCrawlerInterface
      *
      * @return int
      */
-    public function getPages(GeoLocation $location, $radius = 100): ?int;
+    public function getPages(GeoLocation $location, $radius = 100): int;
 }

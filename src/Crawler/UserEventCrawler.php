@@ -18,12 +18,12 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
     /**
      * {@inheritdoc}
      */
-    public function getUserYears(string $username): ?array
+    public function getUserYears(string $username): array
     {
         $node = $this->crawlUrl($username);
 
         if (null === $node) {
-            return null;
+            return [];
         }
 
         $years = $node->filter('.content-top .secondary-nav-item-link')
@@ -41,12 +41,12 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
     /**
      * {@inheritdoc}
      */
-    public function getEvents(string $username, ?int $year, int $page = 1): ?array
+    public function getEvents(string $username, ?int $year, int $page = 1): array
     {
         $node = $this->crawlUrl($username, $year, $page);
 
         if (null === $node) {
-            return null;
+            return [];
         }
 
         return $this->crawlEventList($node);
@@ -55,12 +55,12 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
     /**
      * {@inheritdoc}
      */
-    public function getYearPages(string $username, ?int $year): ?int
+    public function getYearPages(string $username, ?int $year): int
     {
         $node = $this->crawlUrl($username, $year);
 
         if (null === $node) {
-            return null;
+            return 0;
         }
 
         return $this->countListPages($node);
@@ -69,12 +69,12 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
     /**
      * {@inheritdoc}
      */
-    public function getYearCount(string $username, ?int $year, int $page = 1): ?int
+    public function getYearCount(string $username, ?int $year, int $page = 1): int
     {
         $node = $this->crawlUrl($username, $year, $page);
 
         if (null === $node) {
-            return null;
+            return 0;
         }
 
         $perPage = $this->countListEvents($node);
