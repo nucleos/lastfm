@@ -9,7 +9,9 @@
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Model\Event;
 use Core23\LastFm\Model\GeoLocation;
+use DateTime;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class EventListCrawler extends AbstractCrawler implements EventListCrawlerInterface
@@ -27,7 +29,17 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
             return [];
         }
 
-        return $this->crawlEventList($node);
+        $resultList = [];
+
+        $node->filter('.page-content section')->each(function (Crawler $node) use (&$resultList) {
+            $headingNode = $node->filter('.group-heading');
+
+            $datetime = new DateTime(trim($headingNode->text()));
+
+            $resultList = array_merge($resultList, $this->crawlEventListGroup($node, $datetime));
+        });
+
+        return $resultList;
     }
 
     /**
@@ -44,6 +56,21 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         $lastNode = $node->filter('.pagination .pagination-page')->last();
 
         return (int) $lastNode->text();
+    }
+
+    /**
+     * @param Crawler  $node
+     * @param DateTime $datetime
+     *
+     * @return array
+     */
+    private function crawlEventListGroup(Crawler $node, DateTime $datetime): array
+    {
+        return $node->filter('.events-list-item')->each(
+            function (Crawler $node) use ($datetime): Event {
+                return $this->parseEvent($node, $datetime);
+            }
+        );
     }
 
     /**

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class UserEventCrawler extends AbstractCrawler implements UserEventCrawlerInterface
@@ -49,7 +50,9 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
             return [];
         }
 
-        return $this->crawlEventList($node);
+        return $node->filter('.events-list-item')->each(function (Crawler $node): Event {
+            return $this->parseEvent($node);
+        });
     }
 
     /**

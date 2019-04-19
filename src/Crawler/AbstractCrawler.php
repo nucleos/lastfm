@@ -18,6 +18,7 @@ use Core23\LastFm\Model\Image;
 use Core23\LastFm\Model\Venue;
 use Core23\LastFm\Model\VenueAddress;
 use DateTime;
+use Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler
@@ -40,63 +41,6 @@ abstract class AbstractCrawler
     }
 
     /**
-     * @param Crawler $node
-     *
-     * @return array
-     */
-    final protected function crawlEventList(Crawler $node): array
-    {
-        $resultList = [];
-
-        $node->filter('.page-content section')->each(function (Crawler $node) use (&$resultList) {
-            $headingNode = $node->filter('.group-heading');
-
-            $datetime = new DateTime(trim($headingNode->text()));
-
-            $resultList = array_merge($resultList, $this->crawlEventListGroup($node, $datetime));
-        });
-
-        return $resultList;
-    }
-
-    /**
-     * @param Crawler  $node
-     * @param DateTime $datetime
-     *
-     * @return array
-     */
-    protected function crawlEventListGroup(Crawler $node, DateTime $datetime): array
-    {
-        return $node->filter('.events-list-item')->each(
-            function (Crawler $node) use ($datetime): Event {
-                $eventNode = $node->filter('.events-list-item-event--title a');
-
-                $url = $this->parseUrl($eventNode);
-
-                if (null === $url) {
-                    throw new CrawlException('Error parsing event id.');
-                }
-
-                $id = (int) preg_replace('/.*\/(\d+)+.*/', '$1', $url);
-
-                if (0 === $id) {
-                    throw new CrawlException('Error parsing event id.');
-                }
-
-                $venue = $this->parseVenue($node->filter('.events-list-item-venue'));
-
-                return new Event(
-                    $id,
-                    $this->parseString($eventNode) ?? '',
-                    $datetime,
-                    $url,
-                    $venue
-                );
-            }
-        );
-    }
-
-    /**
      * Crawles a url.
      *
      * @param string $url
@@ -110,6 +54,71 @@ abstract class AbstractCrawler
         }
 
         return null;
+    }
+
+    /**
+     * @param Crawler  $node
+     * @param DateTime $datetime
+     *
+     * @return Event
+     */
+    final protected function parseEvent(Crawler $node, DateTime $datetime = null): Event
+    {
+        $eventNode = $node->filter('.events-list-item-event--title a');
+
+        $url = $this->parseUrl($eventNode);
+
+        if (null === $url) {
+            throw new CrawlException('Error parsing event id.');
+        }
+
+        $id = (int) preg_replace('/.*\/(\d+)+.*/', '$1', $url);
+
+        if (0 === $id) {
+            throw new CrawlException('Error parsing event id.');
+        }
+
+        if (null === $datetime) {
+            try {
+                $datetime = new DateTime($node->filter('time')->attr('datetime'));
+            } catch (Exception $exception) {
+                throw new CrawlException('Error reading event date', $exception->getCode(), $exception);
+            }
+        }
+
+        $venue = $this->parseVenue($node->filter('.events-list-item-venue'));
+
+        return new Event(
+            $id,
+            $this->parseString($eventNode) ?? '',
+            $datetime,
+            $url,
+            $venue
+        );
+    }
+
+    /**
+     * @param Crawler $node
+     *
+     * @return Venue|null
+     */
+    final protected function parseVenue(Crawler $node): ?Venue
+    {
+        $title   = $this->parseString($node->filter('.events-list-item-venue--title'));
+
+        if (null === $title) {
+            return null;
+        }
+
+        $city    = $this->parseString($node->filter('.events-list-item-venue--city'));
+        $country = $this->parseString($node->filter('.events-list-item-venue--country'));
+
+        return new Venue($title, null, null, new VenueAddress(
+            null,
+            null,
+            $city,
+            $country
+        ));
     }
 
     /**
@@ -197,24 +206,5 @@ abstract class AbstractCrawler
         }
 
         return null;
-    }
-
-    /**
-     * @param Crawler $node
-     *
-     * @return Venue
-     */
-    private function parseVenue(Crawler $node): Venue
-    {
-        $title   = $this->parseString($node->filter('.events-list-item-venue--title'));
-        $city    = $this->parseString($node->filter('.events-list-item-venue--city'));
-        $country = $this->parseString($node->filter('.events-list-item-venue--country'));
-
-        return new Venue($title, null, null, new VenueAddress(
-            null,
-            null,
-            $city,
-            $country
-        ));
     }
 }
