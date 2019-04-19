@@ -15,6 +15,8 @@ use Core23\LastFm\Connection\ConnectionInterface;
 use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 use Core23\LastFm\Model\Image;
+use Core23\LastFm\Model\Venue;
+use Core23\LastFm\Model\VenueAddress;
 use DateTime;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -81,11 +83,14 @@ abstract class AbstractCrawler
                     throw new CrawlException('Error parsing event id.');
                 }
 
+                $venue = $this->parseVenue($node->filter('.events-list-item-venue'));
+
                 return new Event(
                     $id,
                     $this->parseString($eventNode) ?? '',
                     $datetime,
-                    $url
+                    $url,
+                    $venue
                 );
             }
         );
@@ -181,16 +186,35 @@ abstract class AbstractCrawler
      *
      * @param Crawler $node
      *
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    final protected function parseDate(Crawler $node): ?\DateTime
+    final protected function parseDate(Crawler $node): ?DateTime
     {
         $content = $this->parseString($node);
 
         if (null !== $content) {
-            return new \DateTime($content);
+            return new DateTime($content);
         }
 
         return null;
+    }
+
+    /**
+     * @param Crawler $node
+     *
+     * @return Venue
+     */
+    private function parseVenue(Crawler $node): Venue
+    {
+        $title   = $this->parseString($node->filter('.events-list-item-venue--title'));
+        $city    = $this->parseString($node->filter('.events-list-item-venue--city'));
+        $country = $this->parseString($node->filter('.events-list-item-venue--country'));
+
+        return new Venue($title, null, null, new VenueAddress(
+            null,
+            null,
+            $city,
+            $country
+        ));
     }
 }
