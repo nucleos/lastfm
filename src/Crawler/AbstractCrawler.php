@@ -12,7 +12,10 @@ declare(strict_types=1);
 namespace Core23\LastFm\Crawler;
 
 use Core23\LastFm\Connection\ConnectionInterface;
+use Core23\LastFm\Exception\CrawlException;
+use Core23\LastFm\Model\Event;
 use Core23\LastFm\Model\Image;
+use DateTime;
 use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler
@@ -32,6 +35,60 @@ abstract class AbstractCrawler
     public function __construct(ConnectionInterface $connection)
     {
         $this->connection = $connection;
+    }
+
+    /**
+     * @param Crawler|null $node
+     *
+     * @return array
+     */
+    final protected function crawlEventList(Crawler $node): array
+    {
+        $resultList = [];
+
+        $node->filter('.page-content section')->each(function (Crawler $node) use (&$resultList) {
+            $headingNode = $node->filter('.group-heading');
+
+            $datetime = new DateTime(trim($headingNode->text()));
+
+            $resultList = array_merge($resultList, $this->crawlEventListGroup($node, $datetime));
+        });
+
+        return $resultList;
+    }
+
+    /**
+     * @param Crawler  $node
+     * @param DateTime $datetime
+     *
+     * @return array
+     */
+    protected function crawlEventListGroup(Crawler $node, DateTime $datetime): array
+    {
+        return $node->filter('.events-list-item')->each(
+            function (Crawler $node) use ($datetime): Event {
+                $eventNode = $node->filter('.events-list-item-event--title a');
+
+                $url = $this->parseUrl($eventNode);
+
+                if (null === $url) {
+                    throw new CrawlException('Error parsing event id.');
+                }
+
+                $id = (int) preg_replace('/.*\/(\d+)+.*/', '$1', $url);
+
+                if (0 === $id) {
+                    throw new CrawlException('Error parsing event id.');
+                }
+
+                return new Event(
+                    $id,
+                    $this->parseString($eventNode) ?? '',
+                    $datetime,
+                    $url
+                );
+            }
+        );
     }
 
     /**

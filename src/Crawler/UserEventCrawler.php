@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Crawler;
 
-use Core23\LastFm\Exception\CrawlException;
-use Core23\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class UserEventCrawler extends AbstractCrawler implements UserEventCrawlerInterface
@@ -22,14 +20,14 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
      */
     public function getUserYears(string $username): ?array
     {
-        $node = $this->crawlEventList($username);
+        $node = $this->crawlUrl($username);
 
         if (null === $node) {
             return null;
         }
 
         $years = $node->filter('.content-top .secondary-nav-item-link')
-            ->each(function (Crawler $node) {
+            ->each(static function (Crawler $node) {
                 return (int) trim($node->text());
             })
         ;
@@ -45,40 +43,13 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
      */
     public function getEvents(string $username, ?int $year, int $page = 1): ?array
     {
-        $node = $this->crawlEventList($username, $year, $page);
+        $node = $this->crawlUrl($username, $year, $page);
 
         if (null === $node) {
             return null;
         }
 
-        return $node->filter('.events-list-item')->each(function (Crawler $node): Event {
-            $eventNode = $node->filter('.events-list-item-event--title a');
-
-            $url = $this->parseUrl($eventNode);
-
-            if (null === $url) {
-                throw new CrawlException('Error parsing event id.');
-            }
-
-            $id = (int) preg_replace('/.*\/(\d+)+.*/', '$1', $url);
-
-            if (0 === $id) {
-                throw new CrawlException('Error parsing event id.');
-            }
-
-            $datetime = $node->filter('time')->attr('datetime');
-
-            if (null === $datetime) {
-                throw new CrawlException('Error parsing datetime.');
-            }
-
-            return new Event(
-                $id,
-                $this->parseString($eventNode) ?? '',
-                new \DateTime($datetime),
-                $url
-            );
-        });
+        return $this->crawlEventList($node);
     }
 
     /**
@@ -86,7 +57,7 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
      */
     public function getYearPages(string $username, ?int $year): ?int
     {
-        $node = $this->crawlEventList($username, $year);
+        $node = $this->crawlUrl($username, $year);
 
         if (null === $node) {
             return null;
@@ -100,7 +71,7 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
      */
     public function getYearCount(string $username, ?int $year, int $page = 1): ?int
     {
-        $node = $this->crawlEventList($username, $year, $page);
+        $node = $this->crawlUrl($username, $year, $page);
 
         if (null === $node) {
             return null;
@@ -110,7 +81,7 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
         $pages   = $this->countListPages($node);
 
         if ($pages) {
-            $node = $this->crawlEventList($username, $year, $pages);
+            $node = $this->crawlUrl($username, $year, $pages);
 
             if (null === $node) {
                 return $perPage;
@@ -153,7 +124,7 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
      *
      * @return Crawler|null
      */
-    private function crawlEventList(string $username, ?int $year = null, int $page = 1): ?Crawler
+    private function crawlUrl(string $username, ?int $year = null, int $page = 1): ?Crawler
     {
         $url = 'http://www.last.fm/user/'.$username.'/events/'.($year ?: '').'?page='.$page;
 
