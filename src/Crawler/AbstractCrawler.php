@@ -38,7 +38,7 @@ abstract class AbstractCrawler
     }
 
     /**
-     * @param Crawler|null $node
+     * @param Crawler $node
      *
      * @return array
      */

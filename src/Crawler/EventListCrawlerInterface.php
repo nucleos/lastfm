@@ -33,5 +33,5 @@ interface EventListCrawlerInterface
      *
      * @return int
      */
-    public function getPages(GeoLocation $location, $radius = 100): int;
+    public function getPages(GeoLocation $location, $radius = 100): ?int;
 }

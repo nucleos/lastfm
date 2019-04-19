@@ -33,7 +33,7 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
     /**
      * {@inheritdoc}
      */
-    public function getPages(GeoLocation $location, $radius = 100): int
+    public function getPages(GeoLocation $location, $radius = 100): ?int
     {
         $node = $this->crawlUrl($location, $radius);
 
