@@ -12,7 +12,7 @@ namespace Core23\LastFm\Crawler;
 use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 
-interface EventListCrawlerInterface
+interface UserEventCrawlerInterface
 {
     /**
      * @param string $username

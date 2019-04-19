@@ -15,7 +15,7 @@ use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
-final class EventListCrawler extends AbstractCrawler implements EventListCrawlerInterface
+final class UserEventCrawler extends AbstractCrawler implements UserEventCrawlerInterface
 {
     /**
      * {@inheritdoc}
