@@ -131,6 +131,8 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
     {
         $url = 'https://www.last.fm/user/'.$username.'/events/'.($year ?: '');
 
-        return $this->crawl($url);
+        return $this->crawl($url, [
+            'page' => $page,
+        ]);
     }
 }

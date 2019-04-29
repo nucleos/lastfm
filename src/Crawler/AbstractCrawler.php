@@ -44,12 +44,13 @@ abstract class AbstractCrawler
      * Crawles a url.
      *
      * @param string $url
+     * @param array  $params
      *
      * @return Crawler|null
      */
-    final protected function crawl(string $url): ?Crawler
+    final protected function crawl(string $url, array $params = []): ?Crawler
     {
-        if ($content = $this->connection->getPageBody($url)) {
+        if ($content = $this->connection->getPageBody($url, $params)) {
             return new Crawler($content);
         }
 

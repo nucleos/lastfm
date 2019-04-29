@@ -87,12 +87,13 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
     private function crawlUrl(GeoLocation $location, int $radius, int $page = 1): ?Crawler
     {
         $url = static::BASE_URL;
-        $url .= '?location_0=Germany';
-        $url .= '&location_1='.$location->getLatitude();
-        $url .= '&location_2='.$location->getLongitude();
-        $url .= '&radius='.($radius*1000);
-        $url .= '&page='.$page;
 
-        return $this->crawl($url);
+        return $this->crawl($url, [
+            'location_0' => 'Germany',
+            'location_1' => $location->getLatitude(),
+            'location_2' => $location->getLongitude(),
+            'radius'     => $radius*1000,
+            'page'       => $page,
+        ]);
     }
 }

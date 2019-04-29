@@ -15,6 +15,7 @@ use Core23\LastFm\Exception\ApiException;
 use Http\Client\Exception;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 final class HTTPlugConnection implements ConnectionInterface
@@ -51,9 +52,9 @@ final class HTTPlugConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function getPageBody(string $url, string $method = 'GET'): ?string
+    public function getPageBody(string $url, array $params = [], string $method = 'GET'): ?string
     {
-        $request  = $this->messageFactory->createRequest($method, $url);
+        $request  = $this->createRequest($method, $url, $params);
 
         try {
             $response = $this->client->sendRequest($request);
@@ -71,11 +72,10 @@ final class HTTPlugConnection implements ConnectionInterface
     /**
      * {@inheritdoc}
      */
-    public function call(string $method, array $params = [], string $requestMethod = 'GET'): array
+    public function call(string $url, array $params = [], string $method = 'GET'): array
     {
         $params  = array_merge($params, ['format' => 'json']);
-        $data    = $this->buildParameter($params);
-        $request = $this->messageFactory->createRequest($requestMethod, $this->endpoint, [], $data);
+        $request = $this->createRequest($method, $this->endpoint, $params);
 
         try {
             $response = $this->client->sendRequest($request);
@@ -89,6 +89,23 @@ final class HTTPlugConnection implements ConnectionInterface
         } catch (Exception $e) {
             throw new ApiException('Technical error occurred.', $e->getCode(), $e);
         }
+    }
+
+    /**
+     * @param string $method
+     * @param string $url
+     * @param array  $params
+     *
+     * @return RequestInterface
+     */
+    private function createRequest(string $method, string $url, array $params): RequestInterface
+    {
+        if ('POST' === $method) {
+            return $this->messageFactory->createRequest($method, $url, [], $params);
+        }
+        $query = http_build_query($params);
+
+        return $this->messageFactory->createRequest($method, $url.'?'.$query);
     }
 
     /**
@@ -107,17 +124,5 @@ final class HTTPlugConnection implements ConnectionInterface
         }
 
         return $array;
-    }
-
-    /**
-     * Builds request parameter.
-     *
-     * @param array $parameter
-     *
-     * @return string
-     */
-    private function buildParameter(array $parameter): string
-    {
-        return http_build_query($parameter);
     }
 }
