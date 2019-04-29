@@ -100,7 +100,7 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
      */
     private function crawlEvent(int $id): ?Crawler
     {
-        $url = 'http://www.last.fm/de/event/'.$id;
+        $url = 'https://www.last.fm/de/event/'.$id;
 
         return $this->crawl($url);
     }
