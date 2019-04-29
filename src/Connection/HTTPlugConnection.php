@@ -100,10 +100,11 @@ final class HTTPlugConnection implements ConnectionInterface
      */
     private function createRequest(string $method, string $url, array $params): RequestInterface
     {
-        if ('POST' === $method) {
-            return $this->messageFactory->createRequest($method, $url, [], $params);
-        }
         $query = http_build_query($params);
+
+        if ('POST' === $method) {
+            return $this->messageFactory->createRequest($method, $url, [], $query);
+        }
 
         return $this->messageFactory->createRequest($method, $url.'?'.$query);
     }
