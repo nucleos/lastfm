@@ -26,7 +26,7 @@ class GeoServiceTest extends TestCase
     {
         $service = new GeoService($this->client->reveal());
 
-        $this->assertNotNull($service);
+        static::assertNotNull($service);
     }
 
     public function testGetTopArtists(): void
@@ -46,7 +46,7 @@ EOD;
         $service = new GeoService($this->client->reveal());
         $result  = $service->getTopArtists('France');
 
-        $this->assertCount(1, $result);
+        static::assertCount(1, $result);
     }
 
     public function testGetTopTracks(): void
@@ -67,6 +67,6 @@ EOD;
         $service = new GeoService($this->client->reveal());
         $result  = $service->getTopTracks('France');
 
-        $this->assertCount(1, $result);
+        static::assertCount(1, $result);
     }
 }

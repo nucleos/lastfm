@@ -21,7 +21,7 @@ class ArtistTopAlbumsBuilderTest extends TestCase
         $expected = [
             'mbid' => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testForArtist(): void
@@ -31,7 +31,7 @@ class ArtistTopAlbumsBuilderTest extends TestCase
         $expected = [
             'artist' => 'Slipknot',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testAutocorrect(): void
@@ -44,7 +44,7 @@ class ArtistTopAlbumsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 1,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testNoAutocorrect(): void
@@ -57,7 +57,7 @@ class ArtistTopAlbumsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 0,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testLimit(): void
@@ -70,7 +70,7 @@ class ArtistTopAlbumsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'limit'       => 20,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testPage(): void
@@ -83,6 +83,6 @@ class ArtistTopAlbumsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'page'        => 13,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 }
