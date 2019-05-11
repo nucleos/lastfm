@@ -21,7 +21,7 @@ class AlbumTopTagsBuilderTest extends TestCase
         $expected = [
             'mbid' => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testForAlbum(): void
@@ -32,7 +32,7 @@ class AlbumTopTagsBuilderTest extends TestCase
             'artist' => 'Slipknot',
             'album'  => 'IOWA',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testAutocorrect(): void
@@ -45,7 +45,7 @@ class AlbumTopTagsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 1,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testNoAutocorrect(): void
@@ -58,6 +58,6 @@ class AlbumTopTagsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 0,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 }

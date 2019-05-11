@@ -26,7 +26,7 @@ class TrackBuilderTest extends TestCase
             'track'     => 'Before I Forget',
             'timestamp' => $now->getTimestamp(),
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithAlbum(): void
@@ -43,7 +43,7 @@ class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'album'     => 'IOWA',
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithAlbumArtist(): void
@@ -60,7 +60,7 @@ class TrackBuilderTest extends TestCase
             'timestamp'   => $now->getTimestamp(),
             'albumArtist' => 'Slipknot',
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithChosenByUser(): void
@@ -77,7 +77,7 @@ class TrackBuilderTest extends TestCase
             'timestamp'    => $now->getTimestamp(),
             'chosenByUser' => 1,
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithTrackNumber(): void
@@ -94,7 +94,7 @@ class TrackBuilderTest extends TestCase
             'timestamp'   => $now->getTimestamp(),
             'trackNumber' => 11,
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithStreamId(): void
@@ -111,7 +111,7 @@ class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'streamId'  => 11,
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithContext(): void
@@ -128,7 +128,7 @@ class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'context'   => 'Client Version',
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithMbid(): void
@@ -145,7 +145,7 @@ class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'mbid'      => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 
     public function testWithDuration(): void
@@ -162,6 +162,6 @@ class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'duration'  => 183,
         ];
-        $this->assertSame($expected, $builder->getData());
+        static::assertSame($expected, $builder->getData());
     }
 }

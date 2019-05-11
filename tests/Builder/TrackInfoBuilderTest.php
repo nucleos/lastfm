@@ -21,7 +21,7 @@ class TrackInfoBuilderTest extends TestCase
         $expected = [
             'mbid' => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testForArtist(): void
@@ -31,7 +31,7 @@ class TrackInfoBuilderTest extends TestCase
         $expected = [
             'artist' => 'Slipknot',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testForUsername(): void
@@ -44,7 +44,7 @@ class TrackInfoBuilderTest extends TestCase
             'mbid'     => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'username' => 'MyUser',
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testAutocorrect(): void
@@ -57,7 +57,7 @@ class TrackInfoBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 1,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 
     public function testNoAutocorrect(): void
@@ -70,6 +70,6 @@ class TrackInfoBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 0,
         ];
-        $this->assertSame($expected, $builder->getQuery());
+        static::assertSame($expected, $builder->getQuery());
     }
 }

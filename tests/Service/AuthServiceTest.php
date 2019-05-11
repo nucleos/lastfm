@@ -26,7 +26,7 @@ class AuthServiceTest extends TestCase
     {
         $service = new AuthService($this->client->reveal());
 
-        $this->assertNotNull($service);
+        static::assertNotNull($service);
     }
 
     public function testCreateSession(): void
@@ -47,10 +47,10 @@ class AuthServiceTest extends TestCase
 
         $result = $service->createSession('user-token');
 
-        $this->assertNotNull($result);
-        $this->assertSame('FooBar', $result->getName());
-        $this->assertSame('the-key', $result->getKey());
-        $this->assertSame(15, $result->getSubscriber());
+        static::assertNotNull($result);
+        static::assertSame('FooBar', $result->getName());
+        static::assertSame('the-key', $result->getKey());
+        static::assertSame(15, $result->getSubscriber());
     }
 
     public function testCreateToken(): void
@@ -62,7 +62,7 @@ class AuthServiceTest extends TestCase
         ;
 
         $service = new AuthService($this->client->reveal());
-        $this->assertSame('The Token', $service->createToken());
+        static::assertSame('The Token', $service->createToken());
     }
 
     public function testGetAuthUrl(): void
@@ -73,6 +73,6 @@ class AuthServiceTest extends TestCase
 
         $service = new AuthService($this->client->reveal());
 
-        $this->assertSame('http://www.last.fm/api/auth/?api_key=api-key&cb=https://example.org', $service->getAuthUrl('https://example.org'));
+        static::assertSame('http://www.last.fm/api/auth/?api_key=api-key&cb=https://example.org', $service->getAuthUrl('https://example.org'));
     }
 }

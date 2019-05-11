@@ -17,27 +17,27 @@ class SessionTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {
-        $this->assertInstanceOf(SessionInterface::class, new Session('Username', 'key'));
+        static::assertInstanceOf(SessionInterface::class, new Session('Username', 'key'));
     }
 
     public function testGetName(): void
     {
         $session = new Session('Username', 'key');
 
-        $this->assertSame('Username', $session->getName());
+        static::assertSame('Username', $session->getName());
     }
 
     public function testGetKey(): void
     {
         $session = new Session('Username', 'key');
 
-        $this->assertSame('key', $session->getKey());
+        static::assertSame('key', $session->getKey());
     }
 
     public function testGetSubscriber(): void
     {
         $session = new Session('Username', 'key', 32);
 
-        $this->assertSame(32, $session->getSubscriber());
+        static::assertSame(32, $session->getSubscriber());
     }
 }

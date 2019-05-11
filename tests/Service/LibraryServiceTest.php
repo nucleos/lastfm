@@ -26,7 +26,7 @@ class LibraryServiceTest extends TestCase
     {
         $service = new LibraryService($this->client->reveal());
 
-        $this->assertNotNull($service);
+        static::assertNotNull($service);
     }
 
     public function testGetArtists(): void
@@ -46,6 +46,6 @@ EOD;
         $service = new LibraryService($this->client->reveal());
         $result  = $service->getArtists('TheUser');
 
-        $this->assertCount(1, $result);
+        static::assertCount(1, $result);
     }
 }
