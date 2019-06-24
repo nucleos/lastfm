@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Builder;
 use Core23\LastFm\Builder\SimilarArtistBuilder;
 use PHPUnit\Framework\TestCase;
 
-class SimilarArtistBuilderTest extends TestCase
+final class SimilarArtistBuilderTest extends TestCase
 {
     public function testForMbid(): void
     {

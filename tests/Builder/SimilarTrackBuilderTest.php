@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Builder;
 use Core23\LastFm\Builder\SimilarTrackBuilder;
 use PHPUnit\Framework\TestCase;
 
-class SimilarTrackBuilderTest extends TestCase
+final class SimilarTrackBuilderTest extends TestCase
 {
     public function testForMbid(): void
     {

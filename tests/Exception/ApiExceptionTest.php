@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Exception;
 use Core23\LastFm\Exception\ApiException;
 use PHPUnit\Framework\TestCase;
 
-class ApiExceptionTest extends TestCase
+final class ApiExceptionTest extends TestCase
 {
     public function testToString(): void
     {

@@ -13,7 +13,7 @@ use Core23\LastFm\Filter\RangeFilter;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
-class RangeFilterTest extends TestCase
+final class RangeFilterTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

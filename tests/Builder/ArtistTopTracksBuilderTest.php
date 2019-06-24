@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Builder;
 use Core23\LastFm\Builder\ArtistTopTracksBuilder;
 use PHPUnit\Framework\TestCase;
 
-class ArtistTopTracksBuilderTest extends TestCase
+final class ArtistTopTracksBuilderTest extends TestCase
 {
     public function testForMbid(): void
     {
