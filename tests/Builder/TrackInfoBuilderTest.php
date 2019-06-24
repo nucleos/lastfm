@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Builder;
 use Core23\LastFm\Builder\TrackInfoBuilder;
 use PHPUnit\Framework\TestCase;
 
-class TrackInfoBuilderTest extends TestCase
+final class TrackInfoBuilderTest extends TestCase
 {
     public function testForMbid(): void
     {

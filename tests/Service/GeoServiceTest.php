@@ -13,7 +13,7 @@ use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Service\GeoService;
 use PHPUnit\Framework\TestCase;
 
-class GeoServiceTest extends TestCase
+final class GeoServiceTest extends TestCase
 {
     private $client;
 

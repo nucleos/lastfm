@@ -13,7 +13,7 @@ use Core23\LastFm\Session\Session;
 use Core23\LastFm\Session\SessionInterface;
 use PHPUnit\Framework\TestCase;
 
-class SessionTest extends TestCase
+final class SessionTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {

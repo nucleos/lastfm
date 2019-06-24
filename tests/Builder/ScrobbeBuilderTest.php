@@ -14,7 +14,7 @@ use Core23\LastFm\Builder\TrackBuilder;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
-class ScrobbeBuilderTest extends TestCase
+final class ScrobbeBuilderTest extends TestCase
 {
     public function testCreate(): void
     {

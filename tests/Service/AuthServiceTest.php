@@ -13,7 +13,7 @@ use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Service\AuthService;
 use PHPUnit\Framework\TestCase;
 
-class AuthServiceTest extends TestCase
+final class AuthServiceTest extends TestCase
 {
     private $client;
 

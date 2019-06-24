@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Filter;
 use Core23\LastFm\Filter\Period;
 use PHPUnit\Framework\TestCase;
 
-class PeriodTest extends TestCase
+final class PeriodTest extends TestCase
 {
     public function testOverall(): void
     {

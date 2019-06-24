@@ -13,7 +13,7 @@ use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Service\LibraryService;
 use PHPUnit\Framework\TestCase;
 
-class LibraryServiceTest extends TestCase
+final class LibraryServiceTest extends TestCase
 {
     private $client;
 

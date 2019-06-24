@@ -13,7 +13,7 @@ use Core23\LastFm\Builder\TrackBuilder;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
-class TrackBuilderTest extends TestCase
+final class TrackBuilderTest extends TestCase
 {
     public function testCreate(): void
     {

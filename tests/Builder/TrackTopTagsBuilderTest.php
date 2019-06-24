@@ -12,7 +12,7 @@ namespace Core23\LastFm\Tests\Builder;
 use Core23\LastFm\Builder\TrackTopTagsBuilder;
 use PHPUnit\Framework\TestCase;
 
-class TrackTopTagsBuilderTest extends TestCase
+final class TrackTopTagsBuilderTest extends TestCase
 {
     public function testForMbid(): void
     {
