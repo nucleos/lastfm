@@ -59,7 +59,11 @@ final class HTTPlugConnection implements ConnectionInterface
         try {
             $response = $this->client->sendRequest($request);
         } catch (Exception $e) {
-            throw new ApiException('Error fetching page body', $e->getCode(), $e->getMessage());
+            throw new ApiException(
+                sprintf('Error fetching page body for url: %s', (string) $request->getUri()),
+                $e->getCode(),
+                $e
+            );
         }
 
         if ($response->getStatusCode() >= 400) {
