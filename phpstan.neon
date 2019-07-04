@@ -8,4 +8,4 @@ parameters:
         - vendor-bin/test/vendor/autoload.php
 
     ignoreErrors:
-        - '#Parameter \#3 \$previous of class Core23\\LastFm\\Exception\\ApiException constructor expects Throwable\|null, string given.#'
+
