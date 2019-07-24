@@ -23,22 +23,12 @@ final class RangeFilter
      */
     private $end;
 
-    /**
-     * @param DateTime|null $start
-     * @param DateTime|null $end
-     */
     public function __construct(?DateTime $start, ?DateTime $end)
     {
         $this->start = $start;
         $this->end   = $end;
     }
 
-    /**
-     * @param string $startKey
-     * @param string $endKey
-     *
-     * @return array
-     */
     public function getQuery(string $startKey, string $endKey): array
     {
         return [

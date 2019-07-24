@@ -17,9 +17,7 @@ interface EventListCrawlerInterface
     /**
      * Get all future events.
      *
-     * @param GeoLocation $location
-     * @param int         $radius   in KM
-     * @param int         $page
+     * @param int $radius in KM
      *
      * @return Event[]
      */
@@ -28,10 +26,7 @@ interface EventListCrawlerInterface
     /**
      * Gets the number of pages for a event list.
      *
-     * @param GeoLocation $location
-     * @param int         $radius
-     *
-     * @return int
+     * @param int $radius
      */
     public function getPages(GeoLocation $location, $radius = 100): int;
 }

@@ -13,11 +13,6 @@ final class ApiHelper
 {
     /**
      * Cleans the api response, so that you always get a list of elements.
-     *
-     * @param callable $callback
-     * @param array    $data
-     *
-     * @return array
      */
     public static function mapList(callable $callback, array $data): array
     {

@@ -18,10 +18,6 @@ interface LibraryServiceInterface
     /**
      * A paginated list of all the artists in a user's library, with play counts and tag counts.
      *
-     * @param string $user
-     * @param int    $limit
-     * @param int    $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *

@@ -59,15 +59,8 @@ final class ArtistInfo
     private $tags;
 
     /**
-     * @param string      $name
-     * @param string|null $mbid
-     * @param Image[]     $image
-     * @param string|null $url
-     * @param int         $playcount
-     * @param string|null $bioSummary
-     * @param string|null $bioContent
-     * @param int         $tagcount
-     * @param Tag[]       $tags
+     * @param Image[] $image
+     * @param Tag[]   $tags
      */
     public function __construct(
         string $name,
@@ -91,17 +84,11 @@ final class ArtistInfo
         $this->tags       = $tags;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMbid(): ?string
     {
         return $this->mbid;
@@ -115,41 +102,26 @@ final class ArtistInfo
         return $this->image;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return int
-     */
     public function getPlaycount(): int
     {
         return $this->playcount;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBioSummary(): ?string
     {
         return $this->bioSummary;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBioContent(): ?string
     {
         return $this->bioContent;
     }
 
-    /**
-     * @return int
-     */
     public function getTagcount(): int
     {
         return $this->tagcount;
@@ -164,8 +136,6 @@ final class ArtistInfo
     }
 
     /**
-     * @param array $data
-     *
      * @return ArtistInfo
      */
     public static function fromApi(array $data): self
@@ -186,11 +156,6 @@ final class ArtistInfo
         );
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createImagesFromApi(array $data): array
     {
         $images = [];
@@ -204,11 +169,6 @@ final class ArtistInfo
         return $images;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createTagsFromApi(array $data): array
     {
         $tags = [];

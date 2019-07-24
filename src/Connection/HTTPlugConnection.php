@@ -37,10 +37,6 @@ final class HTTPlugConnection implements ConnectionInterface
 
     /**
      * Initialize client.
-     *
-     * @param HttpClient     $client
-     * @param MessageFactory $messageFactory
-     * @param string         $endpoint
      */
     public function __construct(HttpClient $client, MessageFactory $messageFactory, string $endpoint = ConnectionInterface::DEFAULT_ENDPOINT)
     {
@@ -95,13 +91,6 @@ final class HTTPlugConnection implements ConnectionInterface
         }
     }
 
-    /**
-     * @param string $method
-     * @param string $url
-     * @param array  $params
-     *
-     * @return RequestInterface
-     */
     private function createRequest(string $method, string $url, array $params): RequestInterface
     {
         $query = http_build_query($params);
@@ -114,11 +103,7 @@ final class HTTPlugConnection implements ConnectionInterface
     }
 
     /**
-     * @param ResponseInterface $response
-     *
      * @throws ApiException
-     *
-     * @return array
      */
     private function parseResponse(ResponseInterface $response): array
     {

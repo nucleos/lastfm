@@ -22,9 +22,6 @@ final class TrackTopTagsBuilder
     }
 
     /**
-     * @param string $artist
-     * @param string $track
-     *
      * @return TrackTopTagsBuilder
      */
     public static function forTrack(string $artist, string $track): self
@@ -38,8 +35,6 @@ final class TrackTopTagsBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return TrackTopTagsBuilder
      */
     public static function forMbid(string $mbid): self
@@ -52,8 +47,6 @@ final class TrackTopTagsBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return TrackTopTagsBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -63,9 +56,6 @@ final class TrackTopTagsBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

@@ -28,11 +28,6 @@ final class Tag
      */
     private $count;
 
-    /**
-     * @param string      $name
-     * @param string|null $url
-     * @param int|null    $count
-     */
     public function __construct(string $name, ?string $url, ?int $count)
     {
         $this->name  = $name;
@@ -40,33 +35,22 @@ final class Tag
         $this->count = $count;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCount(): ?int
     {
         return $this->count;
     }
 
     /**
-     * @param array $data
-     *
      * @return Tag
      */
     public static function fromApi(array $data): self

@@ -16,9 +16,6 @@ final class Period
      */
     private $value;
 
-    /**
-     * @param string $value
-     */
     private function __construct(string $value)
     {
         $this->value = $value;
@@ -72,9 +69,6 @@ final class Period
         return new self('12month');
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;

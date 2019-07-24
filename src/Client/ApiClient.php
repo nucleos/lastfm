@@ -31,11 +31,6 @@ final class ApiClient implements ApiClientInterface
      */
     private $sharedSecret;
 
-    /**
-     * @param ConnectionInterface $connection
-     * @param string              $apiKey
-     * @param string              $sharedSecret
-     */
     public function __construct(ConnectionInterface $connection, string $apiKey, string $sharedSecret)
     {
         $this->connection   = $connection;
@@ -105,10 +100,6 @@ final class ApiClient implements ApiClientInterface
 
     /**
      * Filter null values.
-     *
-     * @param array $object
-     *
-     * @return array
      */
     private function filterNull(array $object): array
     {
@@ -133,11 +124,6 @@ final class ApiClient implements ApiClientInterface
         return mb_convert_encoding((string) $object, 'UTF-8', 'auto');
     }
 
-    /**
-     * @param array $params
-     *
-     * @return string
-     */
     private function signParams(array $params): string
     {
         ksort($params);
@@ -151,12 +137,6 @@ final class ApiClient implements ApiClientInterface
         return md5($signature);
     }
 
-    /**
-     * @param string $method
-     * @param array  $params
-     *
-     * @return array
-     */
     private function call(string $method, array $params): array
     {
         try {

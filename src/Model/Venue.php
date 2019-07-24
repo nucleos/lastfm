@@ -33,12 +33,6 @@ final class Venue
      */
     private $address;
 
-    /**
-     * @param string       $name
-     * @param string|null  $url
-     * @param string|null  $telephone
-     * @param VenueAddress $address
-     */
     public function __construct(string $name, ?string $url, ?string $telephone, VenueAddress $address)
     {
         $this->name      = $name;
@@ -47,33 +41,21 @@ final class Venue
         $this->address   = $address;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    /**
-     * @return VenueAddress
-     */
     public function getAddress(): VenueAddress
     {
         return $this->address;

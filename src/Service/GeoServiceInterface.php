@@ -19,10 +19,6 @@ interface GeoServiceInterface
     /**
      * Get the most popular artists on Last.fm by country.
      *
-     * @param string $country
-     * @param int    $limit
-     * @param int    $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -33,10 +29,8 @@ interface GeoServiceInterface
     /**
      * Get the most popular tracks on Last.fm last week by country.
      *
-     * @param string $country
      * @param string $location
      * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException

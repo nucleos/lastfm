@@ -38,13 +38,6 @@ final class Event
      */
     private $venue;
 
-    /**
-     * @param int        $eventId
-     * @param string     $title
-     * @param \DateTime  $eventDate
-     * @param string     $url
-     * @param Venue|null $venue
-     */
     public function __construct(int $eventId, string $title, \DateTime $eventDate, string $url, ?Venue $venue)
     {
         $this->eventId   = $eventId;
@@ -54,25 +47,16 @@ final class Event
         $this->venue     = $venue;
     }
 
-    /**
-     * @return int
-     */
     public function getEventId(): int
     {
         return $this->eventId;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getEventDate(): \DateTime
     {
         return $this->eventDate;
@@ -86,9 +70,6 @@ final class Event
         return $this->url;
     }
 
-    /**
-     * @return Venue|null
-     */
     public function getVenue(): ?Venue
     {
         return $this->venue;

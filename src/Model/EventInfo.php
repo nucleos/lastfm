@@ -69,17 +69,7 @@ final class EventInfo
     private $artists;
 
     /**
-     * @param int            $eventId
-     * @param string         $title
-     * @param string|null    $description
-     * @param \DateTime|null $eventDate
-     * @param \DateTime|null $eventEndDate
-     * @param string|null    $eventWebsite
-     * @param Image|null     $image
-     * @param string|null    $url
-     * @param bool           $festival
-     * @param Venue          $venue
-     * @param Artist[]       $artists
+     * @param Artist[] $artists
      */
     public function __construct(
         int $eventId,
@@ -107,81 +97,51 @@ final class EventInfo
         $this->artists      = $artists;
     }
 
-    /**
-     * @return int
-     */
     public function getEventId(): int
     {
         return $this->eventId;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @return \DateTime|null
-     */
     public function getEventDate(): ?\DateTime
     {
         return $this->eventDate;
     }
 
-    /**
-     * @return \DateTime|null
-     */
     public function getEventEndDate(): ?\DateTime
     {
         return $this->eventEndDate;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEventWebsite(): ?string
     {
         return $this->eventWebsite;
     }
 
-    /**
-     * @return Image|null
-     */
     public function getImage(): ?Image
     {
         return $this->image;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return bool
-     */
     public function isFestival(): bool
     {
         return $this->festival;
     }
 
-    /**
-     * @return Venue
-     */
     public function getVenue(): Venue
     {
         return $this->venue;

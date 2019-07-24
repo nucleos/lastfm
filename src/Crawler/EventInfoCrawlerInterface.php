@@ -15,10 +15,6 @@ interface EventInfoCrawlerInterface
 {
     /**
      * Get all event information.
-     *
-     * @param int $id
-     *
-     * @return EventInfo|null
      */
     public function getEventInfo(int $id): ?EventInfo;
 }

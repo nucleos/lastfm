@@ -96,11 +96,6 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         return $perPage;
     }
 
-    /**
-     * @param Crawler $node
-     *
-     * @return int
-     */
     private function countListPages(Crawler $node): int
     {
         $pagination = $this->parseString($node->filter('.pagination .pagination-page')->last());
@@ -108,23 +103,11 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         return $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
     }
 
-    /**
-     * @param Crawler $node
-     *
-     * @return int
-     */
     private function countListEvents(Crawler $node): int
     {
         return $node->filter('.events-list-item')->count();
     }
 
-    /**
-     * @param string   $artist
-     * @param int|null $year
-     * @param int      $page
-     *
-     * @return Crawler|null
-     */
     private function crawlUrl(string $artist, ?int $year = null, int $page = 1): ?Crawler
     {
         $url = 'https://www.last.fm/artist/'.$artist.'/+events/'.($year ?: '');

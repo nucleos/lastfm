@@ -23,9 +23,6 @@ final class GeoService implements GeoServiceInterface
      */
     private $client;
 
-    /**
-     * @param ApiClientInterface $client
-     */
     public function __construct(ApiClientInterface $client)
     {
         $this->client = $client;

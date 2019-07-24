@@ -22,8 +22,6 @@ final class ArtistTopTagsBuilder
     }
 
     /**
-     * @param string $artist
-     *
      * @return ArtistTopTagsBuilder
      */
     public static function forArtist(string $artist): self
@@ -36,8 +34,6 @@ final class ArtistTopTagsBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return ArtistTopTagsBuilder
      */
     public static function forMbid(string $mbid): self
@@ -50,8 +46,6 @@ final class ArtistTopTagsBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return ArtistTopTagsBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -61,9 +55,6 @@ final class ArtistTopTagsBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

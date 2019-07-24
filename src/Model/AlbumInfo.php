@@ -64,16 +64,9 @@ final class AlbumInfo
     private $wikiSummary;
 
     /**
-     * @param string|null $name
-     * @param Artist|null $artist
-     * @param string|null $mbid
-     * @param string|null $url
-     * @param Image[]     $images
-     * @param int         $listeners
-     * @param int         $playcount
-     * @param Song[]      $tracks
-     * @param Tag[]       $tags
-     * @param string|null $wikiSummary
+     * @param Image[] $images
+     * @param Song[]  $tracks
+     * @param Tag[]   $tags
      */
     public function __construct(
         ?string $name,
@@ -99,33 +92,21 @@ final class AlbumInfo
         $this->wikiSummary  = $wikiSummary;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @return Artist|null
-     */
     public function getArtist(): ?Artist
     {
         return $this->artist;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMbid(): ?string
     {
         return $this->mbid;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
@@ -139,17 +120,11 @@ final class AlbumInfo
         return $this->images;
     }
 
-    /**
-     * @return int
-     */
     public function getListeners(): int
     {
         return $this->listeners;
     }
 
-    /**
-     * @return int
-     */
     public function getPlaycount(): int
     {
         return $this->playcount;
@@ -171,17 +146,12 @@ final class AlbumInfo
         return $this->tags;
     }
 
-    /**
-     * @return string|null
-     */
     public function getWikiSummary(): ?string
     {
         return $this->wikiSummary;
     }
 
     /**
-     * @param array $data
-     *
      * @return AlbumInfo
      */
     public static function fromApi(array $data): self
@@ -204,11 +174,6 @@ final class AlbumInfo
         );
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createImagesFromApi(array $data): array
     {
         $images = [];
@@ -222,11 +187,6 @@ final class AlbumInfo
         return $images;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createTracksFromApi(array $data): array
     {
         $tracks = [];
@@ -240,11 +200,6 @@ final class AlbumInfo
         return $tracks;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createTagsFromApi(array $data): array
     {
         $tags = [];

@@ -30,8 +30,6 @@ final class ScrobbeBuilder
     }
 
     /**
-     * @param TrackBuilder $builder
-     *
      * @return ScrobbeBuilder
      */
     public function addTrack(TrackBuilder $builder): self
@@ -41,17 +39,11 @@ final class ScrobbeBuilder
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function count(): int
     {
         return \count($this->tracks);
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         $query = [];

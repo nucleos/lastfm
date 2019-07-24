@@ -32,9 +32,6 @@ abstract class AbstractCrawler
      */
     private $connection;
 
-    /**
-     * @param ConnectionInterface $connection
-     */
     public function __construct(ConnectionInterface $connection)
     {
         $this->connection = $connection;
@@ -42,11 +39,6 @@ abstract class AbstractCrawler
 
     /**
      * Crawles a url.
-     *
-     * @param string $url
-     * @param array  $params
-     *
-     * @return Crawler|null
      */
     final protected function crawl(string $url, array $params = []): ?Crawler
     {
@@ -58,10 +50,7 @@ abstract class AbstractCrawler
     }
 
     /**
-     * @param Crawler  $node
      * @param DateTime $datetime
-     *
-     * @return Event
      */
     final protected function parseEvent(Crawler $node, DateTime $datetime = null): Event
     {
@@ -98,11 +87,6 @@ abstract class AbstractCrawler
         );
     }
 
-    /**
-     * @param Crawler $node
-     *
-     * @return Venue|null
-     */
     final protected function parseVenue(Crawler $node): ?Venue
     {
         $title   = $this->parseString($node->filter('.events-list-item-venue--title'));
@@ -124,11 +108,6 @@ abstract class AbstractCrawler
 
     /**
      * Parses a url node.
-     *
-     * @param Crawler $node
-     * @param string  $attr
-     *
-     * @return string|null
      */
     final protected function parseUrl(Crawler $node, string $attr = 'href'): ?string
     {
@@ -145,10 +124,6 @@ abstract class AbstractCrawler
 
     /**
      * Parses an image node.
-     *
-     * @param Crawler $node
-     *
-     * @return Image|null
      */
     final protected function parseImage(Crawler $node): ?Image
     {
@@ -163,11 +138,6 @@ abstract class AbstractCrawler
 
     /**
      * Parses a string node.
-     *
-     * @param Crawler $node
-     * @param bool    $multiline
-     *
-     * @return string|null
      */
     final protected function parseString(Crawler $node, bool $multiline = false): ?string
     {
@@ -193,10 +163,6 @@ abstract class AbstractCrawler
 
     /**
      * Parses a date note.
-     *
-     * @param Crawler $node
-     *
-     * @return DateTime|null
      */
     final protected function parseDate(Crawler $node): ?DateTime
     {

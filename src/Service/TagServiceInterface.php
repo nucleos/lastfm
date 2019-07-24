@@ -23,20 +23,15 @@ interface TagServiceInterface
     /**
      * Get the metadata for a tag on Last.fm. Includes biography.
      *
-     * @param string $tag
      * @param string $lang
      *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return TagInfo|null
      */
     public function getInfo(string $tag, string $lang = null): ?TagInfo;
 
     /**
      * Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
-     *
-     * @param string $tag
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -48,10 +43,6 @@ interface TagServiceInterface
     /**
      * Get the top albums tagged by this tag, ordered by tag count.
      *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -61,10 +52,6 @@ interface TagServiceInterface
 
     /**
      * Get the top artists tagged by this tag, ordered by tag count.
-     *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -86,10 +73,6 @@ interface TagServiceInterface
     /**
      * Get the top tracks tagged by this tag, ordered by tag count.
      *
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -99,8 +82,6 @@ interface TagServiceInterface
 
     /**
      * Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
-     *
-     * @param string $tag
      *
      * @throws NotFoundException
      * @throws ApiException

@@ -17,10 +17,6 @@ interface AuthServiceInterface
 {
     /**
      * Creates a new session from a token.
-     *
-     * @param string $token
-     *
-     * @return SessionInterface|null
      */
     public function createSession(string $token): ?SessionInterface;
 
@@ -29,17 +25,11 @@ interface AuthServiceInterface
      *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return string|null
      */
     public function createToken(): ?string;
 
     /**
      * Return the auth url.
-     *
-     * @param string $callbackUrl
-     *
-     * @return string
      */
     public function getAuthUrl(string $callbackUrl): string;
 }

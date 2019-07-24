@@ -15,22 +15,16 @@ interface SessionInterface
 {
     /**
      * Returns name.
-     *
-     * @return string
      */
     public function getName(): string;
 
     /**
      * Returns key.
-     *
-     * @return string
      */
     public function getKey(): string;
 
     /**
      * Returns subscriber.
-     *
-     * @return int
      */
     public function getSubscriber(): int;
 }

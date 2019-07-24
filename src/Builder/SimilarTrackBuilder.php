@@ -22,9 +22,6 @@ final class SimilarTrackBuilder
     }
 
     /**
-     * @param string $artist
-     * @param string $track
-     *
      * @return SimilarTrackBuilder
      */
     public static function forTrack(string $artist, string $track): self
@@ -38,8 +35,6 @@ final class SimilarTrackBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return SimilarTrackBuilder
      */
     public static function forMbid(string $mbid): self
@@ -52,8 +47,6 @@ final class SimilarTrackBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return SimilarTrackBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -64,8 +57,6 @@ final class SimilarTrackBuilder
     }
 
     /**
-     * @param int $limit
-     *
      * @return SimilarTrackBuilder
      */
     public function limit(int $limit): self
@@ -75,9 +66,6 @@ final class SimilarTrackBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

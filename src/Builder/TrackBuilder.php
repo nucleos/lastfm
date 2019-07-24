@@ -18,19 +18,12 @@ final class TrackBuilder
      */
     private $data;
 
-    /**
-     * @param array $data
-     */
     private function __construct(array $data)
     {
         $this->data = $data;
     }
 
     /**
-     * @param string   $artist
-     * @param string   $track
-     * @param DateTime $date
-     *
      * @return TrackBuilder
      */
     public static function create(string $artist, string $track, DateTime $date): self
@@ -43,8 +36,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $album
-     *
      * @return TrackBuilder
      */
     public function withAlbum(string $album): self
@@ -55,8 +46,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $context
-     *
      * @return TrackBuilder
      */
     public function withContext(string $context): self
@@ -67,8 +56,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param int $streamId
-     *
      * @return TrackBuilder
      */
     public function withStreamId(int $streamId): self
@@ -79,8 +66,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param bool $choosenByUser
-     *
      * @return TrackBuilder
      */
     public function withChosenByUser(bool $choosenByUser): self
@@ -91,8 +76,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param int $trackNumber
-     *
      * @return TrackBuilder
      */
     public function withTrackNumber(int $trackNumber): self
@@ -103,8 +86,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return TrackBuilder
      */
     public function withMbid(string $mbid): self
@@ -115,8 +96,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param string $albumArtist
-     *
      * @return TrackBuilder
      */
     public function withAlbumArtist(string $albumArtist): self
@@ -127,8 +106,6 @@ final class TrackBuilder
     }
 
     /**
-     * @param int $seconds
-     *
      * @return TrackBuilder
      */
     public function withDuration(int $seconds): self
@@ -138,9 +115,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return $this->data;

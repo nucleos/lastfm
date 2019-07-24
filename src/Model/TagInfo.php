@@ -38,13 +38,6 @@ final class TagInfo
      */
     private $wikiSummary;
 
-    /**
-     * @param string      $name
-     * @param string|null $url
-     * @param int         $total
-     * @param int         $reach
-     * @param string|null $wikiSummary
-     */
     public function __construct(string $name, ?string $url, int $total, int $reach, ?string $wikiSummary)
     {
         $this->name        = $name;
@@ -54,49 +47,32 @@ final class TagInfo
         $this->wikiSummary = $wikiSummary;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @return int
-     */
     public function getTotal(): int
     {
         return $this->total;
     }
 
-    /**
-     * @return int
-     */
     public function getReach(): int
     {
         return $this->reach;
     }
 
-    /**
-     * @return string|null
-     */
     public function getWikiSummary(): ?string
     {
         return $this->wikiSummary;
     }
 
     /**
-     * @param array $data
-     *
      * @return TagInfo
      */
     public static function fromApi(array $data): self

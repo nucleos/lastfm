@@ -22,8 +22,6 @@ final class ArtistInfoBuilder
     }
 
     /**
-     * @param string $artist
-     *
      * @return ArtistInfoBuilder
      */
     public static function forArtist(string $artist): self
@@ -36,8 +34,6 @@ final class ArtistInfoBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return ArtistInfoBuilder
      */
     public static function forMbid(string $mbid): self
@@ -50,8 +46,6 @@ final class ArtistInfoBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return ArtistInfoBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -62,8 +56,6 @@ final class ArtistInfoBuilder
     }
 
     /**
-     * @param string $name
-     *
      * @return ArtistInfoBuilder
      */
     public function language(string $name): self
@@ -74,8 +66,6 @@ final class ArtistInfoBuilder
     }
 
     /**
-     * @param string $name
-     *
      * @return ArtistInfoBuilder
      */
     public function forUsername(string $name): self
@@ -85,9 +75,6 @@ final class ArtistInfoBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;
