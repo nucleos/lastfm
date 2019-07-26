@@ -39,9 +39,6 @@ final class ArtistService implements ArtistServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addTags(SessionInterface $session, string $artist, array $tags): void
     {
         $count = \count($tags);
@@ -65,9 +62,6 @@ final class ArtistService implements ArtistServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCorrection(string $artist): ?Artist
     {
         $response = $this->client->unsignedCall('artist.getCorrection', [
@@ -81,9 +75,6 @@ final class ArtistService implements ArtistServiceInterface
         return Artist::fromApi($response['corrections']['correction']['artist']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getInfo(ArtistInfoBuilder $builder): ?ArtistInfo
     {
         $response = $this->client->unsignedCall('artist.getInfo', $builder->getQuery());
@@ -95,9 +86,6 @@ final class ArtistService implements ArtistServiceInterface
         return ArtistInfo::fromApi($response['artist']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSimilar(SimilarArtistBuilder $builder): array
     {
         $response = $this->client->unsignedCall('artist.getSimilar', $builder->getQuery());
@@ -114,9 +102,6 @@ final class ArtistService implements ArtistServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTags(ArtistTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('artist.getTags', $builder->getQuery());
@@ -133,9 +118,6 @@ final class ArtistService implements ArtistServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopAlbums(ArtistTopAlbumsBuilder $builder): array
     {
         $response =  $this->client->unsignedCall('artist.getTopAlbums', $builder->getQuery());
@@ -152,9 +134,6 @@ final class ArtistService implements ArtistServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(ArtistTopTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('artist.getTopTags', $builder->getQuery());
@@ -171,9 +150,6 @@ final class ArtistService implements ArtistServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTracks(ArtistTopTracksBuilder $builder): array
     {
         $response = $this->client->unsignedCall('artist.getTopTracks', $builder->getQuery());
@@ -190,9 +166,6 @@ final class ArtistService implements ArtistServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeTag(SessionInterface $session, string $artist, string $tag): void
     {
         $this->client->signedCall('artist.removeTag', [
@@ -201,9 +174,6 @@ final class ArtistService implements ArtistServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function search(string $artist, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('artist.search', [

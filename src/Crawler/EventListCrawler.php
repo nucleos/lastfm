@@ -18,9 +18,6 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
 {
     private const BASE_URL = 'https://www.last.fm/events';
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): array
     {
         $node = $this->crawlUrl($location, $radius, $page);
@@ -42,9 +39,6 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         return $resultList;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPages(GeoLocation $location, $radius = 100): int
     {
         $node = $this->crawlUrl($location, $radius);

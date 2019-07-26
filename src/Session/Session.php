@@ -35,25 +35,16 @@ final class Session implements SessionInterface
         $this->subscriber = $subscriber;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getKey(): string
     {
         return $this->key;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSubscriber(): int
     {
         return $this->subscriber;

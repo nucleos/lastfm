@@ -45,9 +45,6 @@ final class HTTPlugConnection implements ConnectionInterface
         $this->endpoint       = $endpoint;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPageBody(string $url, array $params = [], string $method = 'GET'): ?string
     {
         $request  = $this->createRequest($method, $url, $params);
@@ -69,9 +66,6 @@ final class HTTPlugConnection implements ConnectionInterface
         return $response->getBody()->getContents();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function call(string $url, array $params = [], string $method = 'GET'): array
     {
         $params  = array_merge($params, ['format' => 'json']);

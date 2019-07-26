@@ -14,9 +14,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCrawlerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getArtistYears(string $artist): array
     {
         $node = $this->crawlUrl($artist);
@@ -37,9 +34,6 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         return $years;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEvents(string $artist, ?int $year, int $page = 1): array
     {
         $node = $this->crawlUrl($artist, $year, $page);
@@ -53,9 +47,6 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getYearPages(string $artist, ?int $year): int
     {
         $node = $this->crawlUrl($artist, $year);
@@ -67,9 +58,6 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         return $this->countListPages($node);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getYearCount(string $artist, ?int $year, int $page = 1): int
     {
         $node = $this->crawlUrl($artist, $year, $page);

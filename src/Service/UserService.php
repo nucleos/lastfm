@@ -35,9 +35,6 @@ final class UserService implements UserServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array
     {
         $query = null !== $filter ? $filter->getQuery('startTimestamp', 'endTimestamp') : [];
@@ -61,9 +58,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFriends(string $username, bool $recenttracks = false, $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getFriends', [
@@ -85,9 +79,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getInfo(string $username): ?User
     {
         $response =  $this->client->unsignedCall('user.getInfo', [
@@ -101,9 +92,6 @@ final class UserService implements UserServiceInterface
         return User::fromApi($response['user']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLovedTracks(string $username, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getLovedTracks', [
@@ -124,9 +112,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getRecentTracks(string $username, ?RangeFilter $filter = null, $extended = false, $limit = 50, int $page = 1): array
     {
         $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
@@ -151,9 +136,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPersonalTagsForArtist(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
         $response =  $this->client->unsignedCall('user.getPersonalTags', [
@@ -176,9 +158,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPersonalTagsForAlbum(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getPersonalTags', [
@@ -201,9 +180,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPersonalTagsForTracks(string $username, string $tag, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getPersonalTags', [
@@ -226,9 +202,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getTopAlbums', [
@@ -250,9 +223,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getTopArtists', [
@@ -274,9 +244,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(string $username, int $limit = 50): array
     {
         $response = $this->client->unsignedCall('user.getTopTags', [
@@ -296,9 +263,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('user.getTopTracks', [
@@ -320,9 +284,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getWeeklyAlbumChart(string $username, ?RangeFilter $filter = null): array
     {
         $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
@@ -344,9 +305,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getWeeklyArtistChart(string $username, ?RangeFilter $filter = null): array
     {
         $query = null !== $filter ? $filter->getQuery('from', 'to') : [];
@@ -368,9 +326,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getWeeklyChartList(string $username): array
     {
         $response = $this->client->unsignedCall('user.getWeeklyChartList', [
@@ -389,9 +344,6 @@ final class UserService implements UserServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getWeeklyTrackChart(string $username, ?RangeFilter $filter = null): array
     {
         $query = null !== $filter ? $filter->getQuery('from', 'to') : [];

@@ -13,9 +13,6 @@ namespace Core23\LastFm\Exception;
 
 final class ApiException extends \Exception
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         return $this->getCode().': '.$this->getMessage();
