@@ -28,9 +28,6 @@ final class GeoService implements GeoServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopArtists(string $country, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('geo.getTopArtists', [
@@ -51,9 +48,6 @@ final class GeoService implements GeoServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('geo.getTopTracks', [

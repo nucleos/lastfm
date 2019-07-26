@@ -37,9 +37,6 @@ final class TrackService implements TrackServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addTags(SessionInterface $session, string $artist, string $track, array $tags): void
     {
         $count = \count($tags);
@@ -64,9 +61,6 @@ final class TrackService implements TrackServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCorrection(string $artist, string $track): ?Song
     {
         $response = $this->client->unsignedCall('track.getCorrection', [
@@ -81,9 +75,6 @@ final class TrackService implements TrackServiceInterface
         return Song::fromApi($response['corrections']['correction']['track']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getInfo(TrackInfoBuilder $builder): ?SongInfo
     {
         $response = $this->client->unsignedCall('track.getInfo', $builder->getQuery());
@@ -95,9 +86,6 @@ final class TrackService implements TrackServiceInterface
         return SongInfo::fromApi($response['track']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSimilar(SimilarTrackBuilder $builder): array
     {
         $response = $this->client->unsignedCall('track.getSimilar', $builder->getQuery());
@@ -114,9 +102,6 @@ final class TrackService implements TrackServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTags(TrackTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('track.getTags', $builder->getQuery());
@@ -133,9 +118,6 @@ final class TrackService implements TrackServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(TrackTopTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('track.getTopTags', $builder->getQuery());
@@ -152,9 +134,6 @@ final class TrackService implements TrackServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function love(SessionInterface $session, string $artist, string $track): void
     {
         $this->client->signedCall('track.love', [
@@ -163,9 +142,6 @@ final class TrackService implements TrackServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeTag(SessionInterface $session, string $artist, string $track, string $tag): void
     {
         $this->client->signedCall('track.removeTag', [
@@ -175,9 +151,6 @@ final class TrackService implements TrackServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function scrobble(SessionInterface $session, ScrobbeBuilder $builder): void
     {
         $count = $builder->count();
@@ -192,9 +165,6 @@ final class TrackService implements TrackServiceInterface
         $this->client->signedCall('album.scrobble', $builder->getQuery(), $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function search(string $track, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('track.search', [
@@ -215,9 +185,6 @@ final class TrackService implements TrackServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function unlove(SessionInterface $session, string $artist, string $track): void
     {
         $this->client->signedCall('track.love', [
@@ -226,9 +193,6 @@ final class TrackService implements TrackServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void
     {
         $this->client->signedCall('track.updateNowPlaying', $nowPlaying->toArray(), $session, 'POST');

@@ -29,9 +29,6 @@ final class ChartService implements ChartServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopArtists(int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('chart.getTopArtists', [
@@ -51,9 +48,6 @@ final class ChartService implements ChartServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('chart.getTopTags', [
@@ -73,9 +67,6 @@ final class ChartService implements ChartServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTracks(int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('chart.getTopTracks', [

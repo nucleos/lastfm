@@ -34,9 +34,6 @@ final class AlbumService implements AlbumServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addTags(SessionInterface $session, string $artist, string $album, array $tags): void
     {
         $count = \count($tags);
@@ -62,9 +59,6 @@ final class AlbumService implements AlbumServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getInfo(AlbumInfoBuilder $builder): AlbumInfo
     {
         $response = $this->client->unsignedCall('album.getInfo', $builder->getQuery());
@@ -72,9 +66,6 @@ final class AlbumService implements AlbumServiceInterface
         return AlbumInfo::fromApi($response['album']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTags(AlbumTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('album.getTags', $builder->getQuery());
@@ -91,9 +82,6 @@ final class AlbumService implements AlbumServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(AlbumTopTagsBuilder $builder): array
     {
         $response = $this->client->unsignedCall('album.getTopTags', $builder->getQuery());
@@ -110,9 +98,6 @@ final class AlbumService implements AlbumServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeTag(SessionInterface $session, string $artist, string $album, string $tag): void
     {
         $this->client->signedCall('album.removeTag', [
@@ -122,9 +107,6 @@ final class AlbumService implements AlbumServiceInterface
         ], $session, 'POST');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function search(string $album, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('album.search', [

@@ -32,9 +32,6 @@ final class TagService implements TagServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getInfo(string $tag, string $lang = null): ?TagInfo
     {
         $response = $this->client->unsignedCall('tag.getInfo', [
@@ -49,9 +46,6 @@ final class TagService implements TagServiceInterface
         return TagInfo::fromApi($response['tag']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSimilar(string $tag): array
     {
         $response = $this->client->unsignedCall('tag.getSimilar', [
@@ -70,9 +64,6 @@ final class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('tag.getTopAlbums', [
@@ -93,9 +84,6 @@ final class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('tag.getTopArtists', [
@@ -116,9 +104,6 @@ final class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTags(): array
     {
         $response = $this->client->unsignedCall('tag.getTopTags');
@@ -135,9 +120,6 @@ final class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('tag.getTopTracks', [
@@ -158,9 +140,6 @@ final class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getWeeklyChartList(string $tag): array
     {
         $response = $this->client->unsignedCall('tag.getWeeklyChartList', [

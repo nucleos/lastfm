@@ -38,25 +38,16 @@ final class ApiClient implements ApiClientInterface
         $this->sharedSecret = $sharedSecret;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getApiKey(): string
     {
         return $this->apiKey;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSharedSecret(): string
     {
         return $this->sharedSecret;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function signedCall(string $method, array $params = [], SessionInterface $session = null, $requestMethod = 'GET'): array
     {
         // Call parameter
@@ -80,9 +71,6 @@ final class ApiClient implements ApiClientInterface
         return $this->call($method, $params);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function unsignedCall(string $method, array $params = [], string $requestMethod = 'GET'): array
     {
         // Call parameter

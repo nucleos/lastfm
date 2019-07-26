@@ -27,9 +27,6 @@ final class LibraryService implements LibraryServiceInterface
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array
     {
         $response = $this->client->unsignedCall('library.getArtists', [

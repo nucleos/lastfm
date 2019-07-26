@@ -19,9 +19,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawlerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getEventInfo(int $id): ?EventInfo
     {
         $node = $this->crawlEvent($id);

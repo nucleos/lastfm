@@ -41,9 +41,6 @@ final class AuthService implements LoggerAwareInterface, AuthServiceInterface
         $this->logger  = new NullLogger();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createSession(string $token): ?SessionInterface
     {
         try {
@@ -65,9 +62,6 @@ final class AuthService implements LoggerAwareInterface, AuthServiceInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createToken(): ?string
     {
         $response = $this->client->signedCall('auth.getToken');
@@ -75,9 +69,6 @@ final class AuthService implements LoggerAwareInterface, AuthServiceInterface
         return $response['token'] ?? null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAuthUrl(string $callbackUrl): string
     {
         return $this->authUrl.'?api_key='.$this->client->getApiKey().'&cb='.$callbackUrl;

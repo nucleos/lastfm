@@ -16,9 +16,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class UserEventCrawler extends AbstractCrawler implements UserEventCrawlerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getUserYears(string $username): array
     {
         $node = $this->crawlUrl($username);
@@ -39,9 +36,6 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
         return $years;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEvents(string $username, ?int $year, int $page = 1): array
     {
         $node = $this->crawlUrl($username, $year, $page);
@@ -55,9 +49,6 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getYearPages(string $username, ?int $year): int
     {
         $node = $this->crawlUrl($username, $year);
@@ -69,9 +60,6 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
         return $this->countListPages($node);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getYearCount(string $username, ?int $year, int $page = 1): int
     {
         $node = $this->crawlUrl($username, $year, $page);
