@@ -39,11 +39,7 @@ final class Album
     private $images;
 
     /**
-     * @param string|null $name
-     * @param Artist|null $artist
-     * @param string|null $mbid
-     * @param string|null $url
-     * @param Image[]     $images
+     * @param Image[] $images
      */
     public function __construct(?string $name, ?Artist $artist, ?string $mbid, ?string $url, array $images)
     {
@@ -54,33 +50,21 @@ final class Album
         $this->images = $images;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @return Artist|null
-     */
     public function getArtist(): ?Artist
     {
         return $this->artist;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMbid(): ?string
     {
         return $this->mbid;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
@@ -95,8 +79,6 @@ final class Album
     }
 
     /**
-     * @param array $data
-     *
      * @return Album
      */
     public static function fromApi(array $data): self
@@ -112,11 +94,6 @@ final class Album
         );
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createImagesFromApi(array $data): array
     {
         $images = [];

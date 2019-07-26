@@ -22,9 +22,6 @@ final class TrackTagsBuilder
     }
 
     /**
-     * @param string $artist
-     * @param string $track
-     *
      * @return TrackTagsBuilder
      */
     public static function forTrack(string $artist, string $track): self
@@ -38,8 +35,6 @@ final class TrackTagsBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return TrackTagsBuilder
      */
     public static function forMbid(string $mbid): self
@@ -52,8 +47,6 @@ final class TrackTagsBuilder
     }
 
     /**
-     * @param string $name
-     *
      * @return TrackTagsBuilder
      */
     public function forUsername(string $name): self
@@ -64,8 +57,6 @@ final class TrackTagsBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return TrackTagsBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -75,9 +66,6 @@ final class TrackTagsBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

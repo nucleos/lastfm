@@ -48,8 +48,6 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
     }
 
     /**
-     * @param Crawler $node
-     *
      * @return Artist[]
      */
     private function readArtists(Crawler $node): array
@@ -68,11 +66,6 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
         });
     }
 
-    /**
-     * @param Crawler $node
-     *
-     * @return Venue
-     */
     private function readVenues(Crawler $node): Venue
     {
         $venueNode   = $node->filter('.event-detail');
@@ -93,11 +86,6 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
         );
     }
 
-    /**
-     * @param int $id
-     *
-     * @return Crawler|null
-     */
     private function crawlEvent(int $id): ?Crawler
     {
         $url = 'https://www.last.fm/de/event/'.$id;

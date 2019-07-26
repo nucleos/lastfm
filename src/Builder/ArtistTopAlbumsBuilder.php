@@ -22,8 +22,6 @@ final class ArtistTopAlbumsBuilder
     }
 
     /**
-     * @param string $artist
-     *
      * @return ArtistTopAlbumsBuilder
      */
     public static function forArtist(string $artist): self
@@ -36,8 +34,6 @@ final class ArtistTopAlbumsBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return ArtistTopAlbumsBuilder
      */
     public static function forMbid(string $mbid): self
@@ -50,8 +46,6 @@ final class ArtistTopAlbumsBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return ArtistTopAlbumsBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -62,8 +56,6 @@ final class ArtistTopAlbumsBuilder
     }
 
     /**
-     * @param int $limit
-     *
      * @return ArtistTopAlbumsBuilder
      */
     public function limit(int $limit): self
@@ -74,8 +66,6 @@ final class ArtistTopAlbumsBuilder
     }
 
     /**
-     * @param int $page
-     *
      * @return ArtistTopAlbumsBuilder
      */
     public function page(int $page): self
@@ -85,9 +75,6 @@ final class ArtistTopAlbumsBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

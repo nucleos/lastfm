@@ -23,22 +23,9 @@ interface ConnectionInterface
     /**
      * Calls the API.
      *
-     * @param string $url
-     * @param array  $params
-     * @param string $method
-     *
      *@throws ApiException
-     *
-     * @return array
      */
     public function call(string $url, array $params = [], string $method = 'GET'): array;
 
-    /**
-     * @param string $url
-     * @param array  $params
-     * @param string $method
-     *
-     * @return string|null
-     */
     public function getPageBody(string $url, array $params = [], string $method = 'GET'): ?string;
 }

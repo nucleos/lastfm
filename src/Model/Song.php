@@ -28,11 +28,6 @@ final class Song
      */
     private $artist;
 
-    /**
-     * @param string      $name
-     * @param int|null    $duration
-     * @param Artist|null $artist
-     */
     public function __construct(string $name, ?int $duration, ?Artist $artist)
     {
         $this->name     = $name;
@@ -40,33 +35,22 @@ final class Song
         $this->artist   = $artist;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    /**
-     * @return Artist|null
-     */
     public function getArtist(): ?Artist
     {
         return $this->artist;
     }
 
     /**
-     * @param array $data
-     *
      * @return Song
      */
     public static function fromApi(array $data): self

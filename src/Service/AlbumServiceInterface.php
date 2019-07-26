@@ -25,10 +25,7 @@ interface AlbumServiceInterface
     /**
      * Tag an album using a list of user supplied tags.
      *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $album
-     * @param string[]         $tags
+     * @param string[] $tags
      *
      * @throws InvalidArgumentException
      * @throws ApiException
@@ -38,17 +35,11 @@ interface AlbumServiceInterface
 
     /**
      * Get the metadata for an album on Last.fm using the musicbrainz id.
-     *
-     * @param AlbumInfoBuilder $builder
-     *
-     * @return AlbumInfo
      */
     public function getInfo(AlbumInfoBuilder $builder): AlbumInfo;
 
     /**
      * Get the tags applied by an individual user to an album on Last.fm.
-     *
-     * @param AlbumTagsBuilder $builder
      *
      * @return AlbumInfo[]
      */
@@ -57,19 +48,12 @@ interface AlbumServiceInterface
     /**
      * Get the top tags applied to an album on Last.fm.
      *
-     * @param AlbumTopTagsBuilder $builder
-     *
      * @return Tag[]
      */
     public function getTopTags(AlbumTopTagsBuilder $builder): array;
 
     /**
      * Remove a user's tag from an album.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $album
-     * @param string           $tag
      *
      * @throws ApiException
      * @throws NotFoundException
@@ -78,10 +62,6 @@ interface AlbumServiceInterface
 
     /**
      * Search for an album by name. Returns album matches sorted by relevance.
-     *
-     * @param string $album
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException

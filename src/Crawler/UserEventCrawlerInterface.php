@@ -15,18 +15,12 @@ use Core23\LastFm\Model\Event;
 interface UserEventCrawlerInterface
 {
     /**
-     * @param string $username
-     *
      * @return int[]
      */
     public function getUserYears(string $username): array;
 
     /**
      * Get all events of a user.
-     *
-     * @param string   $username
-     * @param int|null $year
-     * @param int      $page
      *
      * @throws CrawlException
      *
@@ -36,22 +30,11 @@ interface UserEventCrawlerInterface
 
     /**
      * Gets the pages for a year.
-     *
-     * @param string   $username
-     * @param int|null $year
-     *
-     * @return int
      */
     public function getYearPages(string $username, ?int $year): int;
 
     /**
      * Gets the event count for a year.
-     *
-     * @param string   $username
-     * @param int|null $year
-     * @param int      $page
-     *
-     * @return int
      */
     public function getYearCount(string $username, ?int $year, int $page = 1): int;
 }

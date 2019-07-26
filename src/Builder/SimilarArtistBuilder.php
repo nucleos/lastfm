@@ -22,8 +22,6 @@ final class SimilarArtistBuilder
     }
 
     /**
-     * @param string $artist
-     *
      * @return SimilarArtistBuilder
      */
     public static function forArtist(string $artist): self
@@ -36,8 +34,6 @@ final class SimilarArtistBuilder
     }
 
     /**
-     * @param string $mbid
-     *
      * @return SimilarArtistBuilder
      */
     public static function forMbid(string $mbid): self
@@ -50,8 +46,6 @@ final class SimilarArtistBuilder
     }
 
     /**
-     * @param bool $autocorrect
-     *
      * @return SimilarArtistBuilder
      */
     public function autocorrect(bool $autocorrect): self
@@ -62,8 +56,6 @@ final class SimilarArtistBuilder
     }
 
     /**
-     * @param int $limit
-     *
      * @return SimilarArtistBuilder
      */
     public function limit(int $limit): self
@@ -73,9 +65,6 @@ final class SimilarArtistBuilder
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getQuery(): array
     {
         return $this->query;

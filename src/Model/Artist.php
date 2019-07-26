@@ -34,10 +34,7 @@ final class Artist
     private $url;
 
     /**
-     * @param string      $name
-     * @param string|null $mbid
-     * @param Image[]     $image
-     * @param string|null $url
+     * @param Image[] $image
      */
     public function __construct(string $name, ?string $mbid, array $image, ?string $url)
     {
@@ -47,17 +44,11 @@ final class Artist
         $this->url   = $url;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMbid(): ?string
     {
         return $this->mbid;
@@ -71,17 +62,12 @@ final class Artist
         return $this->image;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param array $data
-     *
      * @return Artist
      */
     public static function fromApi(array $data): self
@@ -96,11 +82,6 @@ final class Artist
         );
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createImagesFromApi(array $data): array
     {
         $images = [];

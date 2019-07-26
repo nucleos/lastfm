@@ -27,11 +27,6 @@ interface TrackServiceInterface
     /**
      * Tag an track using a list of user supplied tags.
      *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     * @param array            $tags
-     *
      * @throws ApiException
      * @throws NotFoundException
      */
@@ -40,29 +35,18 @@ interface TrackServiceInterface
     /**
      * Check whether the supplied track has a correction to a canonical artist.
      *
-     * @param string $artist
-     * @param string $track
-     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song|null
      */
     public function getCorrection(string $artist, string $track): ?Song;
 
     /**
      * Get the metadata for a track on Last.fm using the artist/track name.
-     *
-     * @param TrackInfoBuilder $builder
-     *
-     * @return SongInfo|null
      */
     public function getInfo(TrackInfoBuilder $builder): ?SongInfo;
 
     /**
      * Get the similar tracks for this track on Last.fm, based on listening data.
-     *
-     * @param SimilarTrackBuilder $builder
      *
      * @return SongInfo[]
      */
@@ -71,8 +55,6 @@ interface TrackServiceInterface
     /**
      * Get the tags applied by an individual user to a track on Last.fm.
      *
-     * @param TrackTagsBuilder $builder
-     *
      * @return Tag[]
      */
     public function getTags(TrackTagsBuilder $builder): array;
@@ -80,18 +62,12 @@ interface TrackServiceInterface
     /**
      * Get the top tags for this track on Last.fm, ordered by tag count.
      *
-     * @param TrackTopTagsBuilder $builder
-     *
      * @return Tag[]
      */
     public function getTopTags(TrackTopTagsBuilder $builder): array;
 
     /**
      * Love a track for a user profile.
-     *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
      *
      * @throws ApiException
      * @throws NotFoundException
@@ -101,11 +77,6 @@ interface TrackServiceInterface
     /**
      * Remove a user's tag from a track.
      *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     * @param string           $tag
-     *
      * @throws ApiException
      * @throws NotFoundException
      */
@@ -113,18 +84,11 @@ interface TrackServiceInterface
 
     /**
      * Share a track twith one or more Last.fm users or other friends.
-     *
-     * @param SessionInterface $session
-     * @param ScrobbeBuilder   $builder
      */
     public function scrobble(SessionInterface $session, ScrobbeBuilder $builder): void;
 
     /**
      * Search for a track by track name. Returns track matches sorted by relevance.
-     *
-     * @param string $track
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -136,10 +100,6 @@ interface TrackServiceInterface
     /**
      * Unlove a track for a user profile.
      *
-     * @param SessionInterface $session
-     * @param string           $artist
-     * @param string           $track
-     *
      * @throws ApiException
      * @throws NotFoundException
      */
@@ -147,9 +107,6 @@ interface TrackServiceInterface
 
     /**
      * Share a track twith one or more Last.fm users or other friends.
-     *
-     * @param SessionInterface $session
-     * @param NowPlaying       $nowPlaying
      */
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void;
 }

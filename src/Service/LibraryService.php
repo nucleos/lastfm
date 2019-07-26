@@ -22,9 +22,6 @@ final class LibraryService implements LibraryServiceInterface
      */
     private $client;
 
-    /**
-     * @param ApiClientInterface $client
-     */
     public function __construct(ApiClientInterface $client)
     {
         $this->client = $client;

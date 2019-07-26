@@ -26,11 +26,6 @@ interface UserServiceInterface
     /**
      * Get a list of tracks by a given artist scrobbled by this user, including scrobble time.
      *
-     * @param string           $username
-     * @param string           $artist
-     * @param RangeFilter|null $filter
-     * @param int              $page
-     *
      * @return Song[]
      */
     public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array;
@@ -38,10 +33,7 @@ interface UserServiceInterface
     /**
      * Get a list of the user's friends on Last.fm.
      *
-     * @param string $username
-     * @param bool   $recenttracks
-     * @param int    $limit
-     * @param int    $page
+     * @param int $limit
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -53,21 +45,13 @@ interface UserServiceInterface
     /**
      * Get information about a user profile.
      *
-     * @param string $username
-     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return User|null
      */
     public function getInfo(string $username): ?User;
 
     /**
      * Get the last 50 tracks loved by a user.
-     *
-     * @param string $username
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -79,11 +63,8 @@ interface UserServiceInterface
     /**
      * Get a list of the recent tracks listened to by this user. Indicates now playing track if the user is currently listening.
      *
-     * @param string           $username
-     * @param RangeFilter|null $filter
-     * @param bool             $extended
-     * @param int              $limit
-     * @param int              $page
+     * @param bool $extended
+     * @param int  $limit
      *
      * @return Song[]
      */
@@ -91,11 +72,6 @@ interface UserServiceInterface
 
     /**
      * Get the user's personal tags.
-     *
-     * @param string $username
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -107,11 +83,6 @@ interface UserServiceInterface
     /**
      * Get the user's personal tags.
      *
-     * @param string $username
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -121,11 +92,6 @@ interface UserServiceInterface
 
     /**
      * Get the user's personal tags.
-     *
-     * @param string $username
-     * @param string $tag
-     * @param int    $limit
-     * @param int    $page
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -137,11 +103,6 @@ interface UserServiceInterface
     /**
      * Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
-     * @param string $username
-     * @param Period $period
-     * @param int    $limit
-     * @param int    $page
-     *
      * @return Album[]
      */
     public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array;
@@ -149,20 +110,12 @@ interface UserServiceInterface
     /**
      * Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
-     * @param string $username
-     * @param Period $period
-     * @param int    $limit
-     * @param int    $page
-     *
      * @return Artist[]
      */
     public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top tags used by this user.
-     *
-     * @param string $username
-     * @param int    $limit
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -174,20 +127,12 @@ interface UserServiceInterface
     /**
      * Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
-     * @param string $username
-     * @param Period $period
-     * @param int    $limit
-     * @param int    $page
-     *
      * @return SongInfo[]
      */
     public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
-     *
-     * @param string           $username
-     * @param RangeFilter|null $filter
      *
      * @return Album[]
      */
@@ -196,17 +141,12 @@ interface UserServiceInterface
     /**
      * Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
      *
-     * @param string           $username
-     * @param RangeFilter|null $filter
-     *
      * @return Artist[]
      */
     public function getWeeklyArtistChart(string $username, ?RangeFilter $filter = null): array;
 
     /**
      * Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
-     *
-     * @param string $username
      *
      * @throws NotFoundException
      * @throws ApiException
@@ -217,9 +157,6 @@ interface UserServiceInterface
 
     /**
      * Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
-     *
-     * @param string           $username
-     * @param RangeFilter|null $filter
      *
      * @return SongInfo[]
      */

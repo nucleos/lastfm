@@ -33,12 +33,6 @@ final class VenueAddress
      */
     private $country;
 
-    /**
-     * @param string|null $street
-     * @param string|null $postalCode
-     * @param string|null $city
-     * @param string|null $country
-     */
     public function __construct(?string $street, ?string $postalCode, ?string $city, ?string $country)
     {
         $this->street     = $street;
@@ -47,33 +41,21 @@ final class VenueAddress
         $this->country    = $country;
     }
 
-    /**
-     * @return string|null
-     */
     public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCity(): ?string
     {
         return $this->city;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCountry(): ?string
     {
         return $this->country;

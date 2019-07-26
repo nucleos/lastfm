@@ -20,9 +20,6 @@ interface ChartServiceInterface
     /**
      * Get the most popular artists on Last.fm.
      *
-     * @param int $limit
-     * @param int $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -33,9 +30,6 @@ interface ChartServiceInterface
     /**
      * Get the most popular tags on Last.fm last week.
      *
-     * @param int $limit
-     * @param int $page
-     *
      * @throws NotFoundException
      * @throws ApiException
      *
@@ -45,9 +39,6 @@ interface ChartServiceInterface
 
     /**
      * Get the most popular tracks on Last.fm last week.
-     *
-     * @param int $limit
-     * @param int $page
      *
      * @throws NotFoundException
      * @throws ApiException

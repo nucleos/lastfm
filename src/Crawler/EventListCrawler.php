@@ -62,12 +62,6 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         return (int) $lastNode->text();
     }
 
-    /**
-     * @param Crawler  $node
-     * @param DateTime $datetime
-     *
-     * @return array
-     */
     private function crawlEventListGroup(Crawler $node, DateTime $datetime): array
     {
         return $node->filter('.events-list-item')->each(
@@ -77,13 +71,6 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         );
     }
 
-    /**
-     * @param GeoLocation $location
-     * @param int         $radius
-     * @param int         $page
-     *
-     * @return Crawler|null
-     */
     private function crawlUrl(GeoLocation $location, int $radius, int $page = 1): ?Crawler
     {
         $url = static::BASE_URL;

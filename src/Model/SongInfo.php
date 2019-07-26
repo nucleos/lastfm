@@ -49,13 +49,7 @@ final class SongInfo
     private $topTags;
 
     /**
-     * @param string      $name
-     * @param string|null $mbid
-     * @param int|null    $duration
-     * @param Artist|null $artist
-     * @param int         $listeners
-     * @param int         $playcount
-     * @param Tag[]       $topTags
+     * @param Tag[] $topTags
      */
     public function __construct(
         string $name,
@@ -75,49 +69,31 @@ final class SongInfo
         $this->topTags   = $topTags;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMbid(): ?string
     {
         return $this->mbid;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    /**
-     * @return Artist|null
-     */
     public function getArtist(): ?Artist
     {
         return $this->artist;
     }
 
-    /**
-     * @return int
-     */
     public function getListeners(): int
     {
         return $this->listeners;
     }
 
-    /**
-     * @return int
-     */
     public function getPlaycount(): int
     {
         return $this->playcount;
@@ -132,8 +108,6 @@ final class SongInfo
     }
 
     /**
-     * @param array $data
-     *
      * @return SongInfo
      */
     public static function fromApi(array $data): self
@@ -161,11 +135,6 @@ final class SongInfo
         );
     }
 
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     private static function createTagsFromApi(array $data): array
     {
         $tags = [];

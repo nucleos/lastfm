@@ -53,67 +53,42 @@ final class NowPlaying
      */
     private $albumArtist;
 
-    /**
-     * @param string $artist
-     * @param string $track
-     */
     public function __construct(string $artist, string $track)
     {
         $this->artist = $artist;
         $this->track  = $track;
     }
 
-    /**
-     * @param string $album
-     */
     public function setAlbum(string $album): void
     {
         $this->album = $album;
     }
 
-    /**
-     * @param int|null $trackNumber
-     */
     public function setTrackNumber(?int $trackNumber): void
     {
         $this->trackNumber = $trackNumber;
     }
 
-    /**
-     * @param string|null $context
-     */
     public function setContext(?string $context): void
     {
         $this->context = $context;
     }
 
-    /**
-     * @param string|null $mbid
-     */
     public function setMbid(?string $mbid): void
     {
         $this->mbid = $mbid;
     }
 
-    /**
-     * @param string|null $duration
-     */
     public function setDuration(?string $duration): void
     {
         $this->duration = $duration;
     }
 
-    /**
-     * @param string|null $albumArtist
-     */
     public function setAlbumArtist(?string $albumArtist): void
     {
         $this->albumArtist = $albumArtist;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return [

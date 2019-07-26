@@ -28,11 +28,6 @@ final class Session implements SessionInterface
      */
     private $subscriber;
 
-    /**
-     * @param string $name
-     * @param string $key
-     * @param int    $subscriber
-     */
     public function __construct(string $name, string $key, int $subscriber = 0)
     {
         $this->name       = $name;

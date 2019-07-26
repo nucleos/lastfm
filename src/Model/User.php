@@ -43,14 +43,6 @@ final class User
      */
     private $url;
 
-    /**
-     * @param string      $name
-     * @param string|null $country
-     * @param int|null    $age
-     * @param string|null $gender
-     * @param int         $playcount
-     * @param string|null $url
-     */
     public function __construct(
         string $name,
         ?string $country,
@@ -67,57 +59,37 @@ final class User
         $this->url       = $url;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCountry(): ?string
     {
         return $this->country;
     }
 
-    /**
-     * @return int|null
-     */
     public function getAge(): ?int
     {
         return $this->age;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGender(): ?string
     {
         return $this->gender;
     }
 
-    /**
-     * @return int
-     */
     public function getPlaycount(): int
     {
         return $this->playcount;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param array $data
-     *
      * @return User
      */
     public static function fromApi(array $data): self

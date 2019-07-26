@@ -32,9 +32,6 @@ final class TrackService implements TrackServiceInterface
      */
     private $client;
 
-    /**
-     * @param ApiClientInterface $client
-     */
     public function __construct(ApiClientInterface $client)
     {
         $this->client = $client;
