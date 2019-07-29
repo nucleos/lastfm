@@ -17,7 +17,7 @@ final class LibraryServiceTest extends TestCase
 {
     private $client;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client =  $this->prophesize(ApiClientInterface::class);
     }
