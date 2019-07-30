@@ -17,7 +17,12 @@ final class RangeFilterTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {
-        static::assertNotNull(new RangeFilter(null, null));
+        $filter = new RangeFilter(null, null);
+
+        static::assertSame([
+            'foo' => null,
+            'bar' => null,
+        ], $filter->getQuery('foo', 'bar'));
     }
 
     public function testGetQuery(): void

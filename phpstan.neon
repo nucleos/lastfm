@@ -3,4 +3,8 @@ parameters:
         - vendor-bin/test/vendor/autoload.php
 
     ignoreErrors:
+        # PHPUnit
+        -
+            message: '#Property .*::\$.* has no typehint specified.#'
+            path: tests/
 

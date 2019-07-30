@@ -22,13 +22,6 @@ final class LibraryServiceTest extends TestCase
         $this->client =  $this->prophesize(ApiClientInterface::class);
     }
 
-    public function testItIsInstantiable(): void
-    {
-        $service = new LibraryService($this->client->reveal());
-
-        static::assertNotNull($service);
-    }
-
     public function testGetArtists(): void
     {
         $rawResponse = <<<'EOD'

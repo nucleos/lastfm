@@ -22,13 +22,6 @@ final class AuthServiceTest extends TestCase
         $this->client =  $this->prophesize(ApiClientInterface::class);
     }
 
-    public function testItIsInstantiable(): void
-    {
-        $service = new AuthService($this->client->reveal());
-
-        static::assertNotNull($service);
-    }
-
     public function testCreateSession(): void
     {
         $this->client->signedCall('auth.getSession', [

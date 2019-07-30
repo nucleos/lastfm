@@ -10,16 +10,10 @@
 namespace Core23\LastFm\Tests\Session;
 
 use Core23\LastFm\Session\Session;
-use Core23\LastFm\Session\SessionInterface;
 use PHPUnit\Framework\TestCase;
 
 final class SessionTest extends TestCase
 {
-    public function testItIsInstantiable(): void
-    {
-        static::assertInstanceOf(SessionInterface::class, new Session('Username', 'key'));
-    }
-
     public function testGetName(): void
     {
         $session = new Session('Username', 'key');

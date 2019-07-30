@@ -22,13 +22,6 @@ final class GeoServiceTest extends TestCase
         $this->client =  $this->prophesize(ApiClientInterface::class);
     }
 
-    public function testItIsInstantiable(): void
-    {
-        $service = new GeoService($this->client->reveal());
-
-        static::assertNotNull($service);
-    }
-
     public function testGetTopArtists(): void
     {
         $rawResponse = <<<'EOD'
