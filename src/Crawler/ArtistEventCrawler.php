@@ -69,26 +69,22 @@ final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCra
         $perPage = $this->countListEvents($node);
         $pages   = $this->countListPages($node);
 
-        if ($pages) {
-            $node = $this->crawlUrl($artist, $year, $pages);
+        $node = $this->crawlUrl($artist, $year, $pages);
 
-            if (null === $node) {
-                return $perPage;
-            }
-
-            $count = $this->countListEvents($node);
-
-            return ($pages - 1) * $perPage + $count;
+        if (null === $node) {
+            return $perPage;
         }
 
-        return $perPage;
+        $count = $this->countListEvents($node);
+
+        return ($pages - 1) * $perPage + $count;
     }
 
     private function countListPages(Crawler $node): int
     {
         $pagination = $this->parseString($node->filter('.pagination .pagination-page')->last());
 
-        return $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
+        return null !== $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
     }
 
     private function countListEvents(Crawler $node): int

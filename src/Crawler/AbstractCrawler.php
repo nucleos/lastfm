@@ -42,7 +42,7 @@ abstract class AbstractCrawler
      */
     final protected function crawl(string $url, array $params = []): ?Crawler
     {
-        if ($content = $this->connection->getPageBody($url, $params)) {
+        if (null !== $content = $this->connection->getPageBody($url, $params)) {
             return new Crawler($content);
         }
 
@@ -115,7 +115,7 @@ abstract class AbstractCrawler
             return null;
         }
 
-        if ($url = $node->attr($attr)) {
+        if (null !== $url = $node->attr($attr)) {
             return preg_replace('/^\//', static::URL_PREFIX.'/', $url);
         }
 
@@ -129,7 +129,7 @@ abstract class AbstractCrawler
     {
         $src = $this->parseUrl($node, 'src');
 
-        if (!$src) {
+        if (null === $src) {
             return null;
         }
 

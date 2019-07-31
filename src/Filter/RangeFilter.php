@@ -32,8 +32,8 @@ final class RangeFilter
     public function getQuery(string $startKey, string $endKey): array
     {
         return [
-            $startKey => $this->start ? $this->start->getTimestamp() : null,
-            $endKey   => $this->end ? $this->end->getTimestamp() : null,
+            $startKey => null !== $this->start ? $this->start->getTimestamp() : null,
+            $endKey   => null !== $this->end ? $this->end->getTimestamp() : null,
         ];
     }
 }

@@ -71,26 +71,22 @@ final class UserEventCrawler extends AbstractCrawler implements UserEventCrawler
         $perPage = $this->countListEvents($node);
         $pages   = $this->countListPages($node);
 
-        if ($pages) {
-            $node = $this->crawlUrl($username, $year, $pages);
+        $node = $this->crawlUrl($username, $year, $pages);
 
-            if (null === $node) {
-                return $perPage;
-            }
-
-            $count = $this->countListEvents($node);
-
-            return ($pages - 1) * $perPage + $count;
+        if (null === $node) {
+            return $perPage;
         }
 
-        return $perPage;
+        $count = $this->countListEvents($node);
+
+        return ($pages - 1) * $perPage + $count;
     }
 
     private function countListPages(Crawler $node): int
     {
         $pagination = $this->parseString($node->filter('.pagination .pages'));
 
-        return $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
+        return null !== $pagination ? (int) preg_replace('/.* of /', '', $pagination) : 1;
     }
 
     private function countListEvents(Crawler $node): int
