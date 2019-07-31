@@ -17,16 +17,9 @@ final class LibraryServiceTest extends TestCase
 {
     private $client;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client =  $this->prophesize(ApiClientInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $service = new LibraryService($this->client->reveal());
-
-        static::assertNotNull($service);
     }
 
     public function testGetArtists(): void

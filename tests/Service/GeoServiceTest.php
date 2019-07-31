@@ -17,16 +17,9 @@ final class GeoServiceTest extends TestCase
 {
     private $client;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client =  $this->prophesize(ApiClientInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $service = new GeoService($this->client->reveal());
-
-        static::assertNotNull($service);
     }
 
     public function testGetTopArtists(): void

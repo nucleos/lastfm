@@ -57,7 +57,7 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
             return new Artist(
                 $this->parseString($node->filter('.grid-items-item-main-text')) ?? '',
                 null,
-                $image ? [$image] : [],
+                null !== $image ? [$image] : [],
                 $this->parseUrl($node->filter('.grid-items-item-main-text a'))
             );
         });
