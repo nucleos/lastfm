@@ -9,6 +9,7 @@
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\Event;
 use Core23\LastFm\Model\GeoLocation;
 
@@ -19,6 +20,8 @@ interface EventListCrawlerInterface
      *
      * @param int $radius in KM
      *
+     * @throws CrawlException
+     *
      * @return Event[]
      */
     public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): array;
@@ -27,6 +30,8 @@ interface EventListCrawlerInterface
      * Gets the number of pages for a event list.
      *
      * @param int $radius
+     *
+     * @throws CrawlException
      */
     public function getPages(GeoLocation $location, $radius = 100): int;
 }

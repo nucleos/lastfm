@@ -26,6 +26,9 @@ interface UserServiceInterface
     /**
      * Get a list of tracks by a given artist scrobbled by this user, including scrobble time.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Song[]
      */
     public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array;
@@ -66,6 +69,9 @@ interface UserServiceInterface
      * @param bool $extended
      * @param int  $limit
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Song[]
      */
     public function getRecentTracks(string $username, ?RangeFilter $filter = null, $extended = false, $limit = 50, int $page = 1): array;
@@ -103,12 +109,18 @@ interface UserServiceInterface
     /**
      * Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Album[]
      */
     public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Artist[]
      */
@@ -127,6 +139,9 @@ interface UserServiceInterface
     /**
      * Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return SongInfo[]
      */
     public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array;
@@ -134,12 +149,18 @@ interface UserServiceInterface
     /**
      * Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Album[]
      */
     public function getWeeklyAlbumChart(string $username, ?RangeFilter $filter = null): array;
 
     /**
      * Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Artist[]
      */
@@ -157,6 +178,9 @@ interface UserServiceInterface
 
     /**
      * Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return SongInfo[]
      */

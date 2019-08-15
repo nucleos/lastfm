@@ -48,11 +48,17 @@ interface ArtistServiceInterface
 
     /**
      * Get the metadata for an artist on Last.fm. Includes biography.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function getInfo(ArtistInfoBuilder $builder): ?ArtistInfo;
 
     /**
      * Get all the artists similar to this artist.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Artist[]
      */
@@ -61,12 +67,18 @@ interface ArtistServiceInterface
     /**
      * Get the tags applied by an individual user to an artist on Last.fm.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Tag[]
      */
     public function getTags(ArtistTagsBuilder $builder): array;
 
     /**
      * Get the top albums for an artist on Last.fm, ordered by popularity.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Album[]
      */
@@ -75,12 +87,18 @@ interface ArtistServiceInterface
     /**
      * Get the top tags for an artist on Last.fm, ordered by popularity.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Tag[]
      */
     public function getTopTags(ArtistTopTagsBuilder $builder): array;
 
     /**
      * Get the top tracks by an artist on Last.fm, ordered by popularity.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Song[]
      */
