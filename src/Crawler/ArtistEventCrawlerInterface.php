@@ -15,6 +15,8 @@ use Core23\LastFm\Model\Event;
 interface ArtistEventCrawlerInterface
 {
     /**
+     * @throws CrawlException
+     *
      * @return int[]
      */
     public function getArtistYears(string $artist): array;
@@ -30,11 +32,15 @@ interface ArtistEventCrawlerInterface
 
     /**
      * Gets the pages for a year.
+     *
+     * @throws CrawlException
      */
     public function getYearPages(string $artist, ?int $year): int;
 
     /**
      * Gets the event count for a year.
+     *
+     * @throws CrawlException
      */
     public function getYearCount(string $artist, ?int $year, int $page = 1): int;
 }

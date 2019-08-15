@@ -35,11 +35,17 @@ interface AlbumServiceInterface
 
     /**
      * Get the metadata for an album on Last.fm using the musicbrainz id.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function getInfo(AlbumInfoBuilder $builder): AlbumInfo;
 
     /**
      * Get the tags applied by an individual user to an album on Last.fm.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return AlbumInfo[]
      */
@@ -47,6 +53,9 @@ interface AlbumServiceInterface
 
     /**
      * Get the top tags applied to an album on Last.fm.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Tag[]
      */

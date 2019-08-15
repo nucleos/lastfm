@@ -17,6 +17,9 @@ interface AuthServiceInterface
 {
     /**
      * Creates a new session from a token.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function createSession(string $token): ?SessionInterface;
 

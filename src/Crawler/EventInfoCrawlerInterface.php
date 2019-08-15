@@ -9,12 +9,15 @@
 
 namespace Core23\LastFm\Crawler;
 
+use Core23\LastFm\Exception\CrawlException;
 use Core23\LastFm\Model\EventInfo;
 
 interface EventInfoCrawlerInterface
 {
     /**
      * Get all event information.
+     *
+     * @throws CrawlException
      */
     public function getEventInfo(int $id): ?EventInfo;
 }

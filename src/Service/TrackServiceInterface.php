@@ -21,6 +21,7 @@ use Core23\LastFm\Model\Song;
 use Core23\LastFm\Model\SongInfo;
 use Core23\LastFm\Model\Tag;
 use Core23\LastFm\Session\SessionInterface;
+use InvalidArgumentException;
 
 interface TrackServiceInterface
 {
@@ -42,11 +43,17 @@ interface TrackServiceInterface
 
     /**
      * Get the metadata for a track on Last.fm using the artist/track name.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function getInfo(TrackInfoBuilder $builder): ?SongInfo;
 
     /**
      * Get the similar tracks for this track on Last.fm, based on listening data.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return SongInfo[]
      */
@@ -55,12 +62,18 @@ interface TrackServiceInterface
     /**
      * Get the tags applied by an individual user to a track on Last.fm.
      *
+     * @throws NotFoundException
+     * @throws ApiException
+     *
      * @return Tag[]
      */
     public function getTags(TrackTagsBuilder $builder): array;
 
     /**
      * Get the top tags for this track on Last.fm, ordered by tag count.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      *
      * @return Tag[]
      */
@@ -84,6 +97,10 @@ interface TrackServiceInterface
 
     /**
      * Share a track twith one or more Last.fm users or other friends.
+     *
+     * @throws InvalidArgumentException
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function scrobble(SessionInterface $session, ScrobbeBuilder $builder): void;
 
@@ -107,6 +124,9 @@ interface TrackServiceInterface
 
     /**
      * Share a track twith one or more Last.fm users or other friends.
+     *
+     * @throws NotFoundException
+     * @throws ApiException
      */
     public function updateNowPlaying(SessionInterface $session, NowPlaying $nowPlaying): void;
 }
