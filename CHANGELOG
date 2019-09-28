@@ -1,3 +1,57 @@
+28/09/2019 21:01  2.0.0  Use builder for api requests
+317b930 [BUILD] Simplify rmt config
+958075b [BUILD] Remove nightly build from Travis
+1619440 [PATCH] Added missing throws to PHPDoc
+047ecfe [BUILD] Added project specific phpstan settings
+2298bf7 [BUILD] Use phpunit 8
+6749dc4 [TEST] Fixed phpstan findings
+0cfebe0 [PATCH] Use more precise null and type checks
+1fa1399 [TEST] Added return type to setUp method
+8e4266b [BUILD] Remove include from phpstan config
+e603fd7 [BUILD] Added more strict phpstan rules
+f041d81 [BUILD] Added more strict phpstan rules
+ba93de2 [PATCH] Removed superfluous PHPDoc
+b3febae [PATCH] Updated CS config
+d67f87c [BUILD] Added kodiak config (#26)
+805efdd [BUILD] Include phpstan-prophecy extension
+e87513e [BUILD] Removed superfluous phpdoc
+10816f4 [BUILD] Added more phpstan checks
+789129e [PATCH] Added url to ApiException
+f982b87 [PATCH] Make test classes final
+b0bf54f [BUILD] Added deprecation listener
+379f7fe [BUILD] Replaced deprecated "weak_vendors" option
+3df6920 Added GitHub sponsoring information
+2636821 [MINOR] Added new crawler for artist events
+4cd66a6 [TEST] Increased test coverage
+4722085 [PATCH] Fixed CS
+f7f1f67 [BUILD] Updated export-ignore files
+7741ae8 [PATCH] Fixed wrong parameter type
+fc68458 [MINOR] Split connection methods to support array parameters
+85dc4d4 [MINOR] Use https urls for crawling
+c9e94e7 [MINOR] Catch empty nodes
+42701de [MINOR] Switched latitude and longitude parameter
+0fa3d65 [PATCH] Fixed user event crawler selectors
+0af228e [MINOR] Read venue when crawling event lists
+df4839d [MINOR] Removed null returns from crawlers
+d3ba3f0 [PATCH] Fixed phpstan findings
+90d7a85 [BUILD] Fixed wrong branch alias
+dc3becf [MINOR] Added new crawler for events
+1a43691 [MAJOR] Renamed EventListCrawler to UserEventCrawler
+f85b825 [MINOR] Use latest Httplug version
+c70e882 [BUILD] Updated build tools
+909c289 [MAJOR] Refactored client
+6256743 [TEST] Increased test coverage
+7250daa [PATCH] Fixed mapping response with only one item
+7084a31 [PATCH] Fixed wrong API signature
+3b63895 [BUILD] Removed dependency stage from build matrix
+668d6bc [TEST] Increased test coverage
+7d20c27 [PATCH] Fixed CS
+f60278f [MAJOR] Use Builder when calling LastFm API
+1cc9f93 [PATCH] Reduced cognitive complexity
+e30cbf4 [MAJOR] Use Builder when calling LastFm API
+d300a4d [MINOR] Throw exception when saving invalid tags
+58bba6c [PATCH] Fixed CS
+9810908 [BUILD] Removed current copyright date
 23/03/2019 14:38  1.0.0  First stable release
 4783075 [BUILD] Sort composer dependencies
 eb39772 [MINOR] Fixed "Removed hard HTTPlug dependency"
