@@ -1,6 +1,6 @@
 {
     "require": {
-        "ekino/phpstan-banned-code": "^0.1",
+        "ekino/phpstan-banned-code": "^0.2",
         "jangregor/phpstan-prophecy": "^0.4",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.11",
