@@ -21,6 +21,8 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pcre": "*",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
         "psr/http-message": "^1.0",
         "psr/log": "^1.0",
         "symfony/css-selector": "^4.2 || ^5.0",
@@ -28,16 +30,12 @@
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.2",
-        "php-http/client-implementation": "*",
-        "php-http/httplug": "^2.0",
-        "php-http/message-factory": "^1.0",
-        "php-http/mock-client": "^1.3",
-        "sllh/composer-lint": "^1.0"
+        "nyholm/psr7": "^1.0",
+        "sllh/composer-lint": "^1.0",
+        "symfony/http-client": "^4.4 || ^5.0"
     },
     "suggest": {
-        "php-http/buzz-adapter": "Buzz HTTP client implementation",
-        "php-http/cache-plugin": "Cache plugin to reduce API usage",
-        "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
+      "symfony/http-client": "Symfony HTTP client implementation"
     },
     "config": {
         "sort-packages": true

@@ -21,23 +21,21 @@ Open a command console, enter your project directory and execute the following c
 
 ```
 composer require core23/lastfm-api
-composer require php-http/guzzle6-adapter # if you want to use HTTPlug with Guzzle
+# To define a default http client and message factory
+composer require symfony/http-client nyholm/psr7
 ```
 
 ## Usage
 
 ```php
-// Get HTTPlug client and message factory
-$client         = \Http\Discovery\HttpClientDiscovery::find();
-$messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
-
 // Create connection
-$connection = new \Core23\LastFm\Connection\HTTPlugConnection($client, $messageFactory);
+$connection = new \Core23\LastFm\Connection\PsrClientConnection($httpClient, $requestFactory);
 
 // Auth user to get a token
 // http://www.last.fm/api/auth/?api_key=API_KEY
 
 // Create a session (with generated token)
+$token = 'API token';
 $authApi = new \Core23\LastFm\Service\AuthService($connection);
 $session = $authApi->createSession($token);
 

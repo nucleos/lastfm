@@ -12,23 +12,23 @@ declare(strict_types=1);
 namespace Core23\LastFm\Connection;
 
 use Core23\LastFm\Exception\ApiException;
-use Http\Client\Exception;
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-final class HTTPlugConnection implements ConnectionInterface
+final class PsrClientConnection implements ConnectionInterface
 {
     /**
-     * @var HttpClient
+     * @var ClientInterface
      */
     private $client;
 
     /**
-     * @var MessageFactory
+     * @var RequestFactoryInterface
      */
-    private $messageFactory;
+    private $requestFactory;
 
     /**
      * @var string
@@ -38,10 +38,10 @@ final class HTTPlugConnection implements ConnectionInterface
     /**
      * Initialize client.
      */
-    public function __construct(HttpClient $client, MessageFactory $messageFactory, string $endpoint = ConnectionInterface::DEFAULT_ENDPOINT)
+    public function __construct(ClientInterface $client, RequestFactoryInterface $messageFactory, string $endpoint = ConnectionInterface::DEFAULT_ENDPOINT)
     {
         $this->client         = $client;
-        $this->messageFactory = $messageFactory;
+        $this->requestFactory = $messageFactory;
         $this->endpoint       = $endpoint;
     }
 
@@ -51,10 +51,10 @@ final class HTTPlugConnection implements ConnectionInterface
 
         try {
             $response = $this->client->sendRequest($request);
-        } catch (Exception $e) {
+        } catch (ClientExceptionInterface $e) {
             throw new ApiException(
                 sprintf('Error fetching page body for url: %s', (string) $request->getUri()),
-                $e->getCode(),
+                500,
                 $e
             );
         }
@@ -80,8 +80,8 @@ final class HTTPlugConnection implements ConnectionInterface
             throw $e;
         } catch (\Exception $e) {
             throw new ApiException('Technical error occurred.', 500, $e);
-        } catch (Exception $e) {
-            throw new ApiException('Technical error occurred.', $e->getCode(), $e);
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException('Technical error occurred.', 500, $e);
         }
     }
 
@@ -90,10 +90,13 @@ final class HTTPlugConnection implements ConnectionInterface
         $query = http_build_query($params);
 
         if ('POST' === $method) {
-            return $this->messageFactory->createRequest($method, $url, [], $query);
+            $request = $this->requestFactory->createRequest($method, $url);
+            $request->getBody()->write($query);
+
+            return $request;
         }
 
-        return $this->messageFactory->createRequest($method, $url.'?'.$query);
+        return $this->requestFactory->createRequest($method, $url.'?'.$query);
     }
 
     /**
