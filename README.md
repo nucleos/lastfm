@@ -8,10 +8,8 @@ Last.fm PHP library
 [![Monthly Downloads](https://poser.pugx.org/core23/lastfm-api/d/monthly)](https://packagist.org/packages/core23/lastfm-api)
 [![Daily Downloads](https://poser.pugx.org/core23/lastfm-api/d/daily)](https://packagist.org/packages/core23/lastfm-api)
 
-[![Build Status](https://travis-ci.org/core23/lastfm-php-api.svg)](http://travis-ci.org/core23/lastfm-php-api)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/lastfm-php-api/badges/quality-score.png)](https://scrutinizer-ci.com/g/core23/lastfm-php-api/)
-[![Code Climate](https://codeclimate.com/github/core23/lastfm-php-api/badges/gpa.svg)](https://codeclimate.com/github/core23/lastfm-php-api)
-[![Coverage Status](https://coveralls.io/repos/core23/lastfm-php-api/badge.svg)](https://coveralls.io/r/core23/lastfm-php-api)
+[![Continuous Integration](https://github.com/core23/lastfm-php-api/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/lastfm-php-api/actions)
+[![Code Coverage](https://codecov.io/gh/core23/lastfm-php-api/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/lastfm-php-api)
 
 This library provides a wrapper for using the [Last.fm API] inside PHP.
 
