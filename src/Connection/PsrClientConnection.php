@@ -89,13 +89,6 @@ final class PsrClientConnection implements ConnectionInterface
     {
         $query = http_build_query($params);
 
-        if ('POST' === $method) {
-            $request = $this->requestFactory->createRequest($method, $url);
-            $request->getBody()->write($query);
-
-            return $request;
-        }
-
         return $this->requestFactory->createRequest($method, $url.'?'.$query);
     }
 
