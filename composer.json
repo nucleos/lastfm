@@ -1,11 +1,12 @@
 {
   "name": "core23/lastfm-api",
   "type": "library",
-  "description": "Last.fm webservice client for php",
+  "description": "Last.fm webservice client for php.",
   "keywords": [
     "last.fm",
     "api",
     "crawler",
+    "spider",
     "webservice client"
   ],
   "homepage": "https://core23.de",
