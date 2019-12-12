@@ -3,7 +3,7 @@
 _extends: .github
 
 repository:
-  name: LastFm
+  name: lastfm-php-api
   description: 🔌 Last.fm webservice client for php.
   homepage: https://core23.de
   topics: php, library, lastfm, api, webservice-client, crawler, spider
