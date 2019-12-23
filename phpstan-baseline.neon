@@ -1,0 +1,18 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\AuthServiceTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Service/AuthServiceTest.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\GeoServiceTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Service/GeoServiceTest.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\LibraryServiceTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Service/LibraryServiceTest.php
+
+
