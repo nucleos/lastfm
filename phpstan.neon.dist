@@ -1,3 +1,6 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     level: max
 
@@ -8,9 +11,5 @@ parameters:
     autoload_files:
         - vendor-bin/test/vendor/autoload.php
 
-    ignoreErrors:
-        # PHPUnit
-        -
-            message: '#Property .*::\$.* has no typehint specified.#'
-            path: tests/
-
+    excludes_analyse:
+        - tests/bootstrap.php
