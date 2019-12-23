@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Model;
 
+use DateTime;
+
 final class EventInfo
 {
     /**
@@ -29,12 +31,12 @@ final class EventInfo
     private $description;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $eventDate;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $eventEndDate;
 
@@ -75,8 +77,8 @@ final class EventInfo
         int $eventId,
         string $title,
         ?string $description,
-        ?\DateTime $eventDate,
-        ?\DateTime $eventEndDate,
+        ?DateTime $eventDate,
+        ?DateTime $eventEndDate,
         ?string $eventWebsite,
         ?Image $image,
         ?string $url,
@@ -112,12 +114,12 @@ final class EventInfo
         return $this->description;
     }
 
-    public function getEventDate(): ?\DateTime
+    public function getEventDate(): ?DateTime
     {
         return $this->eventDate;
     }
 
-    public function getEventEndDate(): ?\DateTime
+    public function getEventEndDate(): ?DateTime
     {
         return $this->eventEndDate;
     }

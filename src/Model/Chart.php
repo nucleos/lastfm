@@ -12,31 +12,32 @@ declare(strict_types=1);
 namespace Core23\LastFm\Model;
 
 use Core23\LastFm\Exception\ApiException;
+use DateTime;
 
 final class Chart
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $from;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $to;
 
-    public function __construct(\DateTime $from, \DateTime $to)
+    public function __construct(DateTime $from, DateTime $to)
     {
         $this->from = $from;
         $this->to   = $to;
     }
 
-    public function getFrom(): \DateTime
+    public function getFrom(): DateTime
     {
         return $this->from;
     }
 
-    public function getTo(): \DateTime
+    public function getTo(): DateTime
     {
         return $this->to;
     }
@@ -48,13 +49,13 @@ final class Chart
      */
     public static function fromApi(array $data): self
     {
-        $fromDate = \DateTime::createFromFormat('U', $data['from']);
+        $fromDate = DateTime::createFromFormat('U', $data['from']);
 
         if (false === $fromDate) {
             throw new ApiException('Error fetching from date');
         }
 
-        $toDate = \DateTime::createFromFormat('U', $data['to']);
+        $toDate = DateTime::createFromFormat('U', $data['to']);
 
         if (false === $toDate) {
             throw new ApiException('Error fetching to date');

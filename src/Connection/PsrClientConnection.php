@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\LastFm\Connection;
 
 use Core23\LastFm\Exception\ApiException;
+use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -78,7 +79,7 @@ final class PsrClientConnection implements ConnectionInterface
             return $this->parseResponse($response);
         } catch (ApiException $e) {
             throw $e;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new ApiException('Technical error occurred.', 500, $e);
         } catch (ClientExceptionInterface $e) {
             throw new ApiException('Technical error occurred.', 500, $e);
