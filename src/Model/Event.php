@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\LastFm\Model;
 
+use DateTime;
+
 final class Event
 {
     /**
@@ -24,7 +26,7 @@ final class Event
     private $title;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $eventDate;
 
@@ -38,7 +40,7 @@ final class Event
      */
     private $venue;
 
-    public function __construct(int $eventId, string $title, \DateTime $eventDate, string $url, ?Venue $venue)
+    public function __construct(int $eventId, string $title, DateTime $eventDate, string $url, ?Venue $venue)
     {
         $this->eventId   = $eventId;
         $this->title     = $title;
@@ -57,7 +59,7 @@ final class Event
         return $this->title;
     }
 
-    public function getEventDate(): \DateTime
+    public function getEventDate(): DateTime
     {
         return $this->eventDate;
     }
