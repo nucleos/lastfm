@@ -14,9 +14,13 @@ namespace Core23\LastFm\Tests\Service;
 use Core23\LastFm\Client\ApiClientInterface;
 use Core23\LastFm\Service\LibraryService;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Prophecy\ObjectProphecy;
 
 final class LibraryServiceTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $client;
 
     protected function setUp(): void
