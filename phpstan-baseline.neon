@@ -1,17 +1,17 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\AuthServiceTest\\:\\:\\$client has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$connection of class Core23\\\\LastFm\\\\Service\\\\AuthService constructor expects Core23\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
+			count: 3
 			path: tests/Service/AuthServiceTest.php
 
 		-
-			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\GeoServiceTest\\:\\:\\$client has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$client of class Core23\\\\LastFm\\\\Service\\\\GeoService constructor expects Core23\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
+			count: 2
 			path: tests/Service/GeoServiceTest.php
 
 		-
-			message: "#^Property Core23\\\\LastFm\\\\Tests\\\\Service\\\\LibraryServiceTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$client of class Core23\\\\LastFm\\\\Service\\\\LibraryService constructor expects Core23\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
 			count: 1
 			path: tests/Service/LibraryServiceTest.php
 
