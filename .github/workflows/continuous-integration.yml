@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.2.0
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.0
         with:
           coverage: none
           extensions: "mbstring, json"
@@ -75,10 +75,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.2.0
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.0
         with:
           coverage: none
           extensions: "mbstring, json"
@@ -116,10 +116,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.2.0
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.0
         with:
           coverage: none
           extensions: "mbstring, json"
@@ -156,10 +156,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.2.0
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.0
         with:
           coverage: pcov
           extensions: "mbstring, json"
@@ -196,10 +196,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.2.0
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.0
         with:
           coverage: pcov
           extensions: "mbstring"
