@@ -1,6 +1,671 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\AlbumInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumInfoBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\AlbumInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumInfoBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\AlbumTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\AlbumTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumTagsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\AlbumTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumTopTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\AlbumTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/AlbumTopTagsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ArtistInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistInfoBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ArtistInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistInfoBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ArtistTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ArtistTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTagsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ArtistTopAlbumsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopAlbumsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ArtistTopAlbumsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopAlbumsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ArtistTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ArtistTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopTagsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ArtistTopTracksBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopTracksBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ArtistTopTracksBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ArtistTopTracksBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\ScrobbeBuilder\\:\\:\\$tracks type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ScrobbeBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\ScrobbeBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/ScrobbeBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\SimilarArtistBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/SimilarArtistBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\SimilarArtistBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/SimilarArtistBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\SimilarTrackBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/SimilarTrackBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\SimilarTrackBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/SimilarTrackBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\TrackInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackInfoBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\TrackInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackInfoBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\TrackTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\TrackTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackTagsBuilder.php
+
+		-
+			message: "#^Property Core23\\\\LastFm\\\\Builder\\\\TrackTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackTopTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Builder\\\\TrackTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackTopTagsBuilder.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:filterNull\\(\\) has parameter \\$object with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:filterNull\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"bool\"\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signParams\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClientInterface\\:\\:signedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClientInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClientInterface\\:\\:signedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClientInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClientInterface\\:\\:unsignedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClientInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Client\\\\ApiClientInterface\\:\\:unsignedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClientInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\ConnectionInterface\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/ConnectionInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\ConnectionInterface\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/ConnectionInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\ConnectionInterface\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/ConnectionInterface.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/HTTPlugConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/HTTPlugConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/HTTPlugConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:createRequest\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/HTTPlugConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:parseResponse\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/HTTPlugConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:createRequest\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:parseResponse\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Crawler\\\\AbstractCrawler\\:\\:crawl\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Crawler/AbstractCrawler.php
+
+		-
+			message: "#^Parameter \\#1 \\$time of class DateTime constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Crawler/AbstractCrawler.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"int\"\\.$#"
+			count: 1
+			path: src/Crawler/ArtistEventCrawler.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: src/Crawler/ArtistEventCrawler.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
+			count: 1
+			path: src/Crawler/EventListCrawler.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Crawler\\\\EventListCrawler\\:\\:crawlEventListGroup\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Crawler/EventListCrawler.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"int\"\\.$#"
+			count: 1
+			path: src/Crawler/UserEventCrawler.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: src/Crawler/UserEventCrawler.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Filter\\\\RangeFilter\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Filter/RangeFilter.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Album\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Album.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Album\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Album.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Album\\:\\:createImagesFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Album.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createImagesFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTagsFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTagsFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Artist\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Artist.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Artist\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Artist.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Artist\\:\\:createImagesFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Artist.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:createImagesFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:createTagsFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:createTagsFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Chart\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Chart.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\NowPlaying\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/NowPlaying.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Song\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Song.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\SongInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/SongInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\SongInfo\\:\\:createTagsFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/SongInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\SongInfo\\:\\:createTagsFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/SongInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\Tag\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/Tag.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\TagInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/TagInfo.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Model\\\\User\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/User.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
+			count: 1
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
+			count: 1
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Result of \\|\\| is always false\\.$#"
+			count: 1
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 2
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Album\"\\.$#"
+			count: 1
+			path: src/Service/AlbumService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Result of \\|\\| is always false\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
+			count: 2
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 2
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Album\"\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Song\"\\.$#"
+			count: 1
+			path: src/Service/ArtistService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\ArtistInfo\"\\.$#"
+			count: 1
+			path: src/Service/ChartService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 1
+			path: src/Service/ChartService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Song\"\\.$#"
+			count: 1
+			path: src/Service/ChartService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
+			count: 1
+			path: src/Service/GeoService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Song\"\\.$#"
+			count: 1
+			path: src/Service/GeoService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\ArtistInfo\"\\.$#"
+			count: 1
+			path: src/Service/LibraryService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 2
+			path: src/Service/TagService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Album\"\\.$#"
+			count: 1
+			path: src/Service/TagService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
+			count: 1
+			path: src/Service/TagService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Song\"\\.$#"
+			count: 1
+			path: src/Service/TagService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Chart\"\\.$#"
+			count: 1
+			path: src/Service/TagService.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Service\\\\TrackService\\:\\:addTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/TrackService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
+			count: 1
+			path: src/Service/TrackService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\SongInfo\"\\.$#"
+			count: 2
+			path: src/Service/TrackService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 2
+			path: src/Service/TrackService.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Service\\\\TrackServiceInterface\\:\\:addTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/TrackServiceInterface.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Song\"\\.$#"
+			count: 3
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\User\"\\.$#"
+			count: 1
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
+			count: 3
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Album\"\\.$#"
+			count: 3
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\SongInfo\"\\.$#"
+			count: 3
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
+			count: 1
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Anonymous function should have native return typehint \"Core23\\\\LastFm\\\\Model\\\\Chart\"\\.$#"
+			count: 1
+			path: src/Service/UserService.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Util\\\\ApiHelper\\:\\:mapList\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Util/ApiHelper.php
+
+		-
+			message: "#^Method Core23\\\\LastFm\\\\Util\\\\ApiHelper\\:\\:mapList\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Util/ApiHelper.php
+
+		-
 			message: "#^Parameter \\#1 \\$connection of class Core23\\\\LastFm\\\\Service\\\\AuthService constructor expects Core23\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
 			count: 3
 			path: tests/Service/AuthServiceTest.php
@@ -14,5 +679,4 @@ parameters:
 			message: "#^Parameter \\#1 \\$client of class Core23\\\\LastFm\\\\Service\\\\LibraryService constructor expects Core23\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
 			count: 1
 			path: tests/Service/LibraryServiceTest.php
-
 
