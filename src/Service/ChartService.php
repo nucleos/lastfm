@@ -41,7 +41,7 @@ final class ChartService implements ChartServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): ArtistInfo {
                 return ArtistInfo::fromApi($data);
             },
             $response['artists']['artist']
@@ -60,7 +60,7 @@ final class ChartService implements ChartServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['tags']['tag']
@@ -79,7 +79,7 @@ final class ChartService implements ChartServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['tracks']['track']

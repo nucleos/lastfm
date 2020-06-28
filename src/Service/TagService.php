@@ -57,7 +57,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['similartags']['tag']
@@ -77,7 +77,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Album {
                 return Album::fromApi($data);
             },
             $response['albums']['album']
@@ -97,7 +97,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['topartists']['artist']
@@ -113,7 +113,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['toptags']['tag']
@@ -133,7 +133,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['tracks']['track']
@@ -151,7 +151,7 @@ final class TagService implements TagServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Chart {
                 return Chart::fromApi($data);
             },
             $response['weeklychartlist']['chart']

@@ -51,7 +51,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['artisttracks']['track']
@@ -72,7 +72,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): User {
                 return User::fromApi($data);
             },
             $response['friends']['user']
@@ -105,7 +105,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['lovedtracks']['track']
@@ -129,7 +129,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['recenttracks']['track']
@@ -151,7 +151,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['taggings']['artists']['artist']
@@ -173,7 +173,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Album {
                 return Album::fromApi($data);
             },
             $response['taggings']['albums']['album']
@@ -195,7 +195,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): SongInfo {
                 return SongInfo::fromApi($data);
             },
             $response['taggings']['tracks']['track']
@@ -216,7 +216,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Album {
                 return Album::fromApi($data);
             },
             $response['topalbums']['album']
@@ -237,7 +237,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['topartists']['artist']
@@ -256,7 +256,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['toptags']['tag']
@@ -277,7 +277,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): SongInfo {
                 return SongInfo::fromApi($data);
             },
             $response['toptracks']['track']
@@ -298,7 +298,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Album {
                 return Album::fromApi($data);
             },
             $response['weeklyalbumchart']['album']
@@ -319,7 +319,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['weeklyartistchart']['artist']
@@ -337,7 +337,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Chart {
                 return Chart::fromApi($data);
             },
             $response['weeklychartlist']['chart']
@@ -358,7 +358,7 @@ final class UserService implements UserServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): SongInfo {
                 return SongInfo::fromApi($data);
             },
             $response['weeklytrackchart']['track']

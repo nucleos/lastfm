@@ -41,7 +41,7 @@ final class GeoService implements GeoServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['topartists']['artist']
@@ -62,7 +62,7 @@ final class GeoService implements GeoServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['tracks']['track']

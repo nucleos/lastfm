@@ -93,7 +93,7 @@ final class ApiClient implements ApiClientInterface
      */
     private function filterNull(array $object): array
     {
-        return array_filter($object, static function ($val) {
+        return array_filter($object, static function ($val): bool {
             return null !== $val;
         });
     }
