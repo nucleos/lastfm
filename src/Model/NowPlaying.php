@@ -24,7 +24,7 @@ final class NowPlaying
     private $track;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $album;
 
