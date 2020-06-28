@@ -9,7 +9,7 @@ Last.fm PHP library
 [![Daily Downloads](https://poser.pugx.org/nucleos/lastfm/d/daily)](https://packagist.org/packages/nucleos/lastfm)
 
 [![Continuous Integration](https://github.com/nucleos/lastfm/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/lastfm/actions)
-[![Code Coverage](https://codecov.io/gh/nucleos/lastfm/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/lastfm)
+[![Code Coverage](https://codecov.io/gh/nucleos/lastfm/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/lastfm)
 
 This library provides a wrapper for using the [Last.fm API] inside PHP.
 

@@ -9,7 +9,7 @@ repository:
   topics: php, library, lastfm, api, webservice-client, crawler, spider
 
 branches:
-  - name: master
+  - name: main
     protection:
       enforce_admins: false
       required_status_checks:
