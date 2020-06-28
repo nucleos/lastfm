@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Crawler;
 
-use DateTime;
+use DateTimeImmutable;
 use Nucleos\LastFm\Model\Event;
 use Nucleos\LastFm\Model\GeoLocation;
 use Symfony\Component\DomCrawler\Crawler;
@@ -33,7 +33,7 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         $node->filter('.page-content section')->each(function (Crawler $node) use (&$resultList) {
             $headingNode = $node->filter('.group-heading');
 
-            $datetime = new DateTime(trim($headingNode->text()));
+            $datetime = new DateTimeImmutable(trim($headingNode->text()));
 
             $resultList = array_merge($resultList, $this->crawlEventListGroup($node, $datetime));
         });
@@ -58,7 +58,7 @@ final class EventListCrawler extends AbstractCrawler implements EventListCrawler
         return (int) $lastNode->text();
     }
 
-    private function crawlEventListGroup(Crawler $node, DateTime $datetime): array
+    private function crawlEventListGroup(Crawler $node, DateTimeImmutable $datetime): array
     {
         return $node->filter('.events-list-item')->each(
             function (Crawler $node) use ($datetime): Event {

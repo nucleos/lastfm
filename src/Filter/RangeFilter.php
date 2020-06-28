@@ -11,21 +11,24 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Filter;
 
-use DateTime;
+use DateTimeImmutable;
 
+/**
+ * @psalm-immutable
+ */
 final class RangeFilter
 {
     /**
-     * @var DateTime|null
+     * @var DateTimeImmutable|null
      */
     private $start;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeImmutable|null
      */
     private $end;
 
-    public function __construct(?DateTime $start, ?DateTime $end)
+    public function __construct(?DateTimeImmutable $start, ?DateTimeImmutable $end)
     {
         $this->start = $start;
         $this->end   = $end;

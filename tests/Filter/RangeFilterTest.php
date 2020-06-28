@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Tests\Filter;
 
-use DateTime;
+use DateTimeImmutable;
 use Nucleos\LastFm\Filter\RangeFilter;
 use PHPUnit\Framework\TestCase;
 
@@ -29,8 +29,8 @@ final class RangeFilterTest extends TestCase
 
     public function testGetQuery(): void
     {
-        $start = new DateTime();
-        $end   = new DateTime('tomorrow');
+        $start = new DateTimeImmutable();
+        $end   = new DateTimeImmutable('tomorrow');
 
         $filter = new RangeFilter($start, $end);
 

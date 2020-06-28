@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Crawler;
 
-use DateTime;
+use DateTimeImmutable;
 use Exception;
 use Nucleos\LastFm\Connection\ConnectionInterface;
 use Nucleos\LastFm\Exception\CrawlException;
@@ -50,9 +50,9 @@ abstract class AbstractCrawler
     }
 
     /**
-     * @param DateTime $datetime
+     * @param DateTimeImmutable $datetime
      */
-    final protected function parseEvent(Crawler $node, DateTime $datetime = null): Event
+    final protected function parseEvent(Crawler $node, DateTimeImmutable $datetime = null): Event
     {
         $eventNode = $node->filter('.events-list-item-event--title a');
 
@@ -76,7 +76,7 @@ abstract class AbstractCrawler
                     throw new CrawlException('Date information cannot be found');
                 }
 
-                $datetime = new DateTime($dateAttr);
+                $datetime = new DateTimeImmutable($dateAttr);
             } catch (Exception $exception) {
                 throw new CrawlException('Error reading event date', (int) $exception->getCode(), $exception);
             }
@@ -170,12 +170,12 @@ abstract class AbstractCrawler
     /**
      * Parses a date note.
      */
-    final protected function parseDate(Crawler $node): ?DateTime
+    final protected function parseDate(Crawler $node): ?DateTimeImmutable
     {
         $content = $this->parseString($node);
 
         if (null !== $content) {
-            return new DateTime($content);
+            return new DateTimeImmutable($content);
         }
 
         return null;
