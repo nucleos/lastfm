@@ -27,7 +27,11 @@ composer require symfony/http-client nyholm/psr7
 
 ```php
 // Create connection
-use Core23\LastFm\Service\AuthService;use Core23\LastFm\Service\ChartService;use Core23\LastFm\Service\PsrClientConnection;$connection = new PsrClientConnection($httpClient, $requestFactory);
+use Nucleos\LastFm\Service\AuthService;
+use Nucleos\LastFm\Service\ChartService;
+use Nucleos\LastFm\Service\PsrClientConnection;
+
+$connection = new PsrClientConnection($httpClient, $requestFactory);
 
 // Auth user to get a token
 // http://www.last.fm/api/auth/?api_key=API_KEY
