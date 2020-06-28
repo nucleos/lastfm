@@ -241,31 +241,6 @@ parameters:
 			path: src/Connection/ConnectionInterface.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/HTTPlugConnection.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/HTTPlugConnection.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/HTTPlugConnection.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:createRequest\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/HTTPlugConnection.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\HTTPlugConnection\\:\\:parseResponse\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/HTTPlugConnection.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Connection/PsrClientConnection.php
