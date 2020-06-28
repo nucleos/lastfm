@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Model;
+namespace Nucleos\LastFm\Model;
 
-use Core23\LastFm\Exception\ApiException;
 use DateTime;
+use Nucleos\LastFm\Exception\ApiException;
 
 final class Chart
 {

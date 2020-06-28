@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Filter;
+namespace Nucleos\LastFm\Tests\Filter;
 
-use Core23\LastFm\Filter\Period;
+use Nucleos\LastFm\Filter\Period;
 use PHPUnit\Framework\TestCase;
 
 final class PeriodTest extends TestCase

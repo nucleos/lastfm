@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Session;
+namespace Nucleos\LastFm\Tests\Session;
 
-use Core23\LastFm\Session\Session;
+use Nucleos\LastFm\Session\Session;
 use PHPUnit\Framework\TestCase;
 
 final class SessionTest extends TestCase

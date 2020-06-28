@@ -9,19 +9,19 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Client\ApiClientInterface;
-use Core23\LastFm\Filter\Period;
-use Core23\LastFm\Filter\RangeFilter;
-use Core23\LastFm\Model\Album;
-use Core23\LastFm\Model\Artist;
-use Core23\LastFm\Model\Chart;
-use Core23\LastFm\Model\Song;
-use Core23\LastFm\Model\SongInfo;
-use Core23\LastFm\Model\Tag;
-use Core23\LastFm\Model\User;
-use Core23\LastFm\Util\ApiHelper;
+use Nucleos\LastFm\Client\ApiClientInterface;
+use Nucleos\LastFm\Filter\Period;
+use Nucleos\LastFm\Filter\RangeFilter;
+use Nucleos\LastFm\Model\Album;
+use Nucleos\LastFm\Model\Artist;
+use Nucleos\LastFm\Model\Chart;
+use Nucleos\LastFm\Model\Song;
+use Nucleos\LastFm\Model\SongInfo;
+use Nucleos\LastFm\Model\Tag;
+use Nucleos\LastFm\Model\User;
+use Nucleos\LastFm\Util\ApiHelper;
 
 final class UserService implements UserServiceInterface
 {

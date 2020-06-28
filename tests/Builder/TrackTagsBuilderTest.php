@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Builder;
+namespace Nucleos\LastFm\Tests\Builder;
 
-use Core23\LastFm\Builder\TrackTagsBuilder;
+use Nucleos\LastFm\Builder\TrackTagsBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class TrackTagsBuilderTest extends TestCase

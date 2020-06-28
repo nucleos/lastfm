@@ -1,15 +1,15 @@
 Last.fm PHP library
 ===================
-[![Latest Stable Version](https://poser.pugx.org/core23/lastfm-api/v/stable)](https://packagist.org/packages/core23/lastfm-api)
-[![Latest Unstable Version](https://poser.pugx.org/core23/lastfm-api/v/unstable)](https://packagist.org/packages/core23/lastfm-api)
-[![License](https://poser.pugx.org/core23/lastfm-api/license)](LICENSE.md)
+[![Latest Stable Version](https://poser.pugx.org/nucleos/lastfm/v/stable)](https://packagist.org/packages/nucleos/lastfm)
+[![Latest Unstable Version](https://poser.pugx.org/nucleos/lastfm/v/unstable)](https://packagist.org/packages/nucleos/lastfm)
+[![License](https://poser.pugx.org/nucleos/lastfm/license)](LICENSE.md)
 
-[![Total Downloads](https://poser.pugx.org/core23/lastfm-api/downloads)](https://packagist.org/packages/core23/lastfm-api)
-[![Monthly Downloads](https://poser.pugx.org/core23/lastfm-api/d/monthly)](https://packagist.org/packages/core23/lastfm-api)
-[![Daily Downloads](https://poser.pugx.org/core23/lastfm-api/d/daily)](https://packagist.org/packages/core23/lastfm-api)
+[![Total Downloads](https://poser.pugx.org/nucleos/lastfm/downloads)](https://packagist.org/packages/nucleos/lastfm)
+[![Monthly Downloads](https://poser.pugx.org/nucleos/lastfm/d/monthly)](https://packagist.org/packages/nucleos/lastfm)
+[![Daily Downloads](https://poser.pugx.org/nucleos/lastfm/d/daily)](https://packagist.org/packages/nucleos/lastfm)
 
-[![Continuous Integration](https://github.com/core23/lastfm-php-api/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/lastfm-php-api/actions)
-[![Code Coverage](https://codecov.io/gh/core23/lastfm-php-api/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/lastfm-php-api)
+[![Continuous Integration](https://github.com/nucleos/lastfm/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/lastfm/actions)
+[![Code Coverage](https://codecov.io/gh/nucleos/lastfm/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/lastfm)
 
 This library provides a wrapper for using the [Last.fm API] inside PHP.
 
@@ -18,7 +18,7 @@ This library provides a wrapper for using the [Last.fm API] inside PHP.
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this library:
 
 ```
-composer require core23/lastfm-api
+composer require nucleos/lastfm
 # To define a default http client and message factory
 composer require symfony/http-client nyholm/psr7
 ```
@@ -27,23 +27,23 @@ composer require symfony/http-client nyholm/psr7
 
 ```php
 // Create connection
-$connection = new \Core23\LastFm\Connection\PsrClientConnection($httpClient, $requestFactory);
+use Core23\LastFm\Service\AuthService;use Core23\LastFm\Service\ChartService;use Core23\LastFm\Service\PsrClientConnection;$connection = new PsrClientConnection($httpClient, $requestFactory);
 
 // Auth user to get a token
 // http://www.last.fm/api/auth/?api_key=API_KEY
 
 // Create a session (with generated token)
 $token = 'API token';
-$authApi = new \Core23\LastFm\Service\AuthService($connection);
+$authApi = new AuthService($connection);
 $session = $authApi->createSession($token);
 
-$chartApi = new \Core23\LastFm\Service\ChartService($connection);
+$chartApi = new ChartService($connection);
 $tags = $chartApi->getTopTags(10);
 ```
 
 ## Limitations
 
-Last.fm removed some of their favorite APIs due their relaunch in March 2016. Some of the following removed methods are available via a webcrawler. Please have a look at the `Core23\LastFm\Crawler` package.
+Last.fm removed some of their favorite APIs due their relaunch in March 2016. Some of the following removed methods are available via a webcrawler. Please have a look at the `Nucleos\LastFm\Crawler` package.
 
 ```
     Album

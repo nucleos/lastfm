@@ -9,23 +9,23 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Builder\ArtistInfoBuilder;
-use Core23\LastFm\Builder\ArtistTagsBuilder;
-use Core23\LastFm\Builder\ArtistTopAlbumsBuilder;
-use Core23\LastFm\Builder\ArtistTopTagsBuilder;
-use Core23\LastFm\Builder\ArtistTopTracksBuilder;
-use Core23\LastFm\Builder\SimilarArtistBuilder;
-use Core23\LastFm\Client\ApiClientInterface;
-use Core23\LastFm\Model\Album;
-use Core23\LastFm\Model\Artist;
-use Core23\LastFm\Model\ArtistInfo;
-use Core23\LastFm\Model\Song;
-use Core23\LastFm\Model\Tag;
-use Core23\LastFm\Session\SessionInterface;
-use Core23\LastFm\Util\ApiHelper;
 use InvalidArgumentException;
+use Nucleos\LastFm\Builder\ArtistInfoBuilder;
+use Nucleos\LastFm\Builder\ArtistTagsBuilder;
+use Nucleos\LastFm\Builder\ArtistTopAlbumsBuilder;
+use Nucleos\LastFm\Builder\ArtistTopTagsBuilder;
+use Nucleos\LastFm\Builder\ArtistTopTracksBuilder;
+use Nucleos\LastFm\Builder\SimilarArtistBuilder;
+use Nucleos\LastFm\Client\ApiClientInterface;
+use Nucleos\LastFm\Model\Album;
+use Nucleos\LastFm\Model\Artist;
+use Nucleos\LastFm\Model\ArtistInfo;
+use Nucleos\LastFm\Model\Song;
+use Nucleos\LastFm\Model\Tag;
+use Nucleos\LastFm\Session\SessionInterface;
+use Nucleos\LastFm\Util\ApiHelper;
 
 final class ArtistService implements ArtistServiceInterface
 {

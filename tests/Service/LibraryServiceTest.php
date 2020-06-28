@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Service;
+namespace Nucleos\LastFm\Tests\Service;
 
-use Core23\LastFm\Client\ApiClientInterface;
-use Core23\LastFm\Service\LibraryService;
+use Nucleos\LastFm\Client\ApiClientInterface;
+use Nucleos\LastFm\Service\LibraryService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 

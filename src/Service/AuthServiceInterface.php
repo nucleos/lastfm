@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
-use Core23\LastFm\Session\SessionInterface;
+use Nucleos\LastFm\Exception\ApiException;
+use Nucleos\LastFm\Exception\NotFoundException;
+use Nucleos\LastFm\Session\SessionInterface;
 
 interface AuthServiceInterface
 {
