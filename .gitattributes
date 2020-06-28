@@ -1,7 +1,10 @@
-.*               export-ignore
-Makefile         export-ignore
-Jenkinsfile      export-ignore
-phpstan.neon     export-ignore
-phpunit.xml.dist export-ignore
-/tests           export-ignore
-/vendor-bin      export-ignore
+.*                      export-ignore
+Makefile                export-ignore
+Jenkinsfile             export-ignore
+phpstan.neon            export-ignore
+phpunit.xml.dist        export-ignore
+phpstan-baseline.neon   export-ignore
+psalm-baseline.xml      export-ignore
+psalm.xml               export-ignore
+/tests                  export-ignore
+/vendor-bin             export-ignore
