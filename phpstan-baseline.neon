@@ -186,11 +186,6 @@ parameters:
 			path: src/Client/ApiClient.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between null and array will always evaluate to true\\.$#"
-			count: 1
-			path: src/Client/ApiClient.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signParams\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
@@ -267,11 +262,6 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Crawler\\\\AbstractCrawler\\:\\:crawl\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Crawler/AbstractCrawler.php
-
-		-
-			message: "#^Parameter \\#1 \\$time of class DateTime constructor expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Crawler/AbstractCrawler.php
 

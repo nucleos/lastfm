@@ -70,7 +70,13 @@ abstract class AbstractCrawler
 
         if (null === $datetime) {
             try {
-                $datetime = new DateTime($node->filter('time')->attr('datetime'));
+                $dateAttr = $node->filter('time')->attr('datetime');
+
+                if (null === $dateAttr) {
+                    throw new CrawlException('Date information cannot be found');
+                }
+
+                $datetime = new DateTime($dateAttr);
             } catch (Exception $exception) {
                 throw new CrawlException('Error reading event date', (int) $exception->getCode(), $exception);
             }
