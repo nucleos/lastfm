@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Filter;
 
+/**
+ * @psalm-immutable
+ */
 final class Period
 {
     /**

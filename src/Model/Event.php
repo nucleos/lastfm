@@ -11,8 +11,11 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Model;
 
-use DateTime;
+use DateTimeImmutable;
 
+/**
+ * @psalm-immutable
+ */
 final class Event
 {
     /**
@@ -26,7 +29,7 @@ final class Event
     private $title;
 
     /**
-     * @var DateTime
+     * @var DateTimeImmutable
      */
     private $eventDate;
 
@@ -40,7 +43,7 @@ final class Event
      */
     private $venue;
 
-    public function __construct(int $eventId, string $title, DateTime $eventDate, string $url, ?Venue $venue)
+    public function __construct(int $eventId, string $title, DateTimeImmutable $eventDate, string $url, ?Venue $venue)
     {
         $this->eventId   = $eventId;
         $this->title     = $title;
@@ -59,7 +62,7 @@ final class Event
         return $this->title;
     }
 
-    public function getEventDate(): DateTime
+    public function getEventDate(): DateTimeImmutable
     {
         return $this->eventDate;
     }

@@ -11,6 +11,9 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Model;
 
+/**
+ * @psalm-immutable
+ */
 final class Tag
 {
     /**

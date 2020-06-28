@@ -40,7 +40,7 @@ final class LibraryService implements LibraryServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): ArtistInfo {
                 return ArtistInfo::fromApi($data);
             },
             $response['artists']['artist']

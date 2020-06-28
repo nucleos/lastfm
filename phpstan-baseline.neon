@@ -186,11 +186,6 @@ parameters:
 			path: src/Client/ApiClient.php
 
 		-
-			message: "#^Anonymous function should have native return typehint \"bool\"\\.$#"
-			count: 1
-			path: src/Client/ApiClient.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signParams\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
@@ -267,11 +262,6 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Crawler\\\\AbstractCrawler\\:\\:crawl\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Crawler/AbstractCrawler.php
-
-		-
-			message: "#^Parameter \\#1 \\$time of class DateTime constructor expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Crawler/AbstractCrawler.php
 
@@ -446,189 +436,14 @@ parameters:
 			path: src/Model/User.php
 
 		-
-			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Result of \\|\\| is always false\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 2
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Album\"\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Result of \\|\\| is always false\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
-			count: 2
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 2
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Album\"\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Song\"\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\ArtistInfo\"\\.$#"
-			count: 1
-			path: src/Service/ChartService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 1
-			path: src/Service/ChartService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Song\"\\.$#"
-			count: 1
-			path: src/Service/ChartService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
-			count: 1
-			path: src/Service/GeoService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Song\"\\.$#"
-			count: 1
-			path: src/Service/GeoService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\ArtistInfo\"\\.$#"
-			count: 1
-			path: src/Service/LibraryService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 2
-			path: src/Service/TagService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Album\"\\.$#"
-			count: 1
-			path: src/Service/TagService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
-			count: 1
-			path: src/Service/TagService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Song\"\\.$#"
-			count: 1
-			path: src/Service/TagService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Chart\"\\.$#"
-			count: 1
-			path: src/Service/TagService.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Service\\\\TrackService\\:\\:addTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Service/TrackService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
-			count: 1
-			path: src/Service/TrackService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\SongInfo\"\\.$#"
-			count: 2
-			path: src/Service/TrackService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 2
 			path: src/Service/TrackService.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Service\\\\TrackServiceInterface\\:\\:addTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Service/TrackServiceInterface.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Song\"\\.$#"
-			count: 3
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\User\"\\.$#"
-			count: 1
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Artist\"\\.$#"
-			count: 3
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Album\"\\.$#"
-			count: 3
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\SongInfo\"\\.$#"
-			count: 3
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Tag\"\\.$#"
-			count: 1
-			path: src/Service/UserService.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"Nucleos\\\\LastFm\\\\Model\\\\Chart\"\\.$#"
-			count: 1
-			path: src/Service/UserService.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Util\\\\ApiHelper\\:\\:mapList\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"

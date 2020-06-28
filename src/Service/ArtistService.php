@@ -50,12 +50,6 @@ final class ArtistService implements ArtistServiceInterface
             throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        array_filter($tags, static function ($tag) {
-            if (null === $tag || !\is_string($tag)) {
-                throw new InvalidArgumentException(sprintf('Invalid tag given'));
-            }
-        });
-
         $this->client->signedCall('artist.addTags', [
             'artist' => $artist,
             'tags'   => implode(',', $tags),
@@ -95,7 +89,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['similarartists']['artist']
@@ -111,7 +105,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['tags']['tag']
@@ -127,7 +121,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Album {
                 return Album::fromApi($data);
             },
             $response['topalbums']['album']
@@ -143,7 +137,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Tag {
                 return Tag::fromApi($data);
             },
             $response['toptags']['tag']
@@ -159,7 +153,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Song {
                 return Song::fromApi($data);
             },
             $response['toptracks']['track']
@@ -187,7 +181,7 @@ final class ArtistService implements ArtistServiceInterface
         }
 
         return ApiHelper::mapList(
-            static function ($data) {
+            static function (array $data): Artist {
                 return Artist::fromApi($data);
             },
             $response['results']['artistmatches']['artist']

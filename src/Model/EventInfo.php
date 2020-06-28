@@ -11,8 +11,11 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Model;
 
-use DateTime;
+use DateTimeImmutable;
 
+/**
+ * @psalm-immutable
+ */
 final class EventInfo
 {
     /**
@@ -31,12 +34,12 @@ final class EventInfo
     private $description;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeImmutable|null
      */
     private $eventDate;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeImmutable|null
      */
     private $eventEndDate;
 
@@ -77,8 +80,8 @@ final class EventInfo
         int $eventId,
         string $title,
         ?string $description,
-        ?DateTime $eventDate,
-        ?DateTime $eventEndDate,
+        ?DateTimeImmutable $eventDate,
+        ?DateTimeImmutable $eventEndDate,
         ?string $eventWebsite,
         ?Image $image,
         ?string $url,
@@ -114,12 +117,12 @@ final class EventInfo
         return $this->description;
     }
 
-    public function getEventDate(): ?DateTime
+    public function getEventDate(): ?DateTimeImmutable
     {
         return $this->eventDate;
     }
 
-    public function getEventEndDate(): ?DateTime
+    public function getEventEndDate(): ?DateTimeImmutable
     {
         return $this->eventEndDate;
     }

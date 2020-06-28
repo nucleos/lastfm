@@ -11,33 +11,36 @@ declare(strict_types=1);
 
 namespace Nucleos\LastFm\Model;
 
-use DateTime;
+use DateTimeImmutable;
 use Nucleos\LastFm\Exception\ApiException;
 
+/**
+ * @psalm-immutable
+ */
 final class Chart
 {
     /**
-     * @var DateTime
+     * @var DateTimeImmutable
      */
     private $from;
 
     /**
-     * @var DateTime
+     * @var DateTimeImmutable
      */
     private $to;
 
-    public function __construct(DateTime $from, DateTime $to)
+    public function __construct(DateTimeImmutable $from, DateTimeImmutable $to)
     {
         $this->from = $from;
         $this->to   = $to;
     }
 
-    public function getFrom(): DateTime
+    public function getFrom(): DateTimeImmutable
     {
         return $this->from;
     }
 
-    public function getTo(): DateTime
+    public function getTo(): DateTimeImmutable
     {
         return $this->to;
     }
@@ -49,13 +52,13 @@ final class Chart
      */
     public static function fromApi(array $data): self
     {
-        $fromDate = DateTime::createFromFormat('U', $data['from']);
+        $fromDate = DateTimeImmutable::createFromFormat('U', $data['from']);
 
         if (false === $fromDate) {
             throw new ApiException('Error fetching from date');
         }
 
-        $toDate = DateTime::createFromFormat('U', $data['to']);
+        $toDate = DateTimeImmutable::createFromFormat('U', $data['to']);
 
         if (false === $toDate) {
             throw new ApiException('Error fetching to date');

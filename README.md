@@ -10,6 +10,7 @@ Last.fm PHP library
 
 [![Continuous Integration](https://github.com/nucleos/lastfm/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/lastfm/actions)
 [![Code Coverage](https://codecov.io/gh/nucleos/lastfm/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/lastfm)
+[![Type Coverage](https://shepherd.dev/github/nucleos/lastfm/coverage.svg)](https://shepherd.dev/github/nucleos/lastfm)
 
 This library provides a wrapper for using the [Last.fm API] inside PHP.
 
