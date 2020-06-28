@@ -3,7 +3,7 @@
 _extends: .github
 
 repository:
-  name: nucleos-lastfm
+  name: lastfm
   description: 🔌 Last.fm webservice client for php.
   homepage: https://nucleos.rocks
   topics: php, library, lastfm, api, webservice-client, crawler, spider
