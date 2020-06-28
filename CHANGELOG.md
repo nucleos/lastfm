@@ -33,6 +33,10 @@
   ```
 
   to delete backup files created in the previous step.
+  
+## 🚀 Features
+
+- Add psalm @core23 (#72)
 
 # 2.1.0
 
