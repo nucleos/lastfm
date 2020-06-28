@@ -9,21 +9,21 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Builder\ScrobbeBuilder;
-use Core23\LastFm\Builder\SimilarTrackBuilder;
-use Core23\LastFm\Builder\TrackInfoBuilder;
-use Core23\LastFm\Builder\TrackTagsBuilder;
-use Core23\LastFm\Builder\TrackTopTagsBuilder;
-use Core23\LastFm\Client\ApiClientInterface;
-use Core23\LastFm\Model\NowPlaying;
-use Core23\LastFm\Model\Song;
-use Core23\LastFm\Model\SongInfo;
-use Core23\LastFm\Model\Tag;
-use Core23\LastFm\Session\SessionInterface;
-use Core23\LastFm\Util\ApiHelper;
 use InvalidArgumentException;
+use Nucleos\LastFm\Builder\ScrobbeBuilder;
+use Nucleos\LastFm\Builder\SimilarTrackBuilder;
+use Nucleos\LastFm\Builder\TrackInfoBuilder;
+use Nucleos\LastFm\Builder\TrackTagsBuilder;
+use Nucleos\LastFm\Builder\TrackTopTagsBuilder;
+use Nucleos\LastFm\Client\ApiClientInterface;
+use Nucleos\LastFm\Model\NowPlaying;
+use Nucleos\LastFm\Model\Song;
+use Nucleos\LastFm\Model\SongInfo;
+use Nucleos\LastFm\Model\Tag;
+use Nucleos\LastFm\Session\SessionInterface;
+use Nucleos\LastFm\Util\ApiHelper;
 
 final class TrackService implements TrackServiceInterface
 {

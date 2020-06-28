@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Filter;
+namespace Nucleos\LastFm\Tests\Filter;
 
-use Core23\LastFm\Filter\RangeFilter;
 use DateTime;
+use Nucleos\LastFm\Filter\RangeFilter;
 use PHPUnit\Framework\TestCase;
 
 final class RangeFilterTest extends TestCase

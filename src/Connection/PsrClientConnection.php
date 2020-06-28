@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Connection;
+namespace Nucleos\LastFm\Connection;
 
-use Core23\LastFm\Exception\ApiException;
 use Exception;
+use Nucleos\LastFm\Exception\ApiException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;

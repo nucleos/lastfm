@@ -9,12 +9,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Client;
+namespace Nucleos\LastFm\Client;
 
-use Core23\LastFm\Connection\ConnectionInterface;
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
-use Core23\LastFm\Session\SessionInterface;
+use Nucleos\LastFm\Connection\ConnectionInterface;
+use Nucleos\LastFm\Exception\ApiException;
+use Nucleos\LastFm\Exception\NotFoundException;
+use Nucleos\LastFm\Session\SessionInterface;
 
 final class ApiClient implements ApiClientInterface
 {

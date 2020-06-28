@@ -1,5 +1,5 @@
 {
-    "name": "core23/lastfm-api",
+    "name": "nucleos/lastfm",
     "type": "library",
     "description": "Last.fm webservice client for php.",
     "keywords": [
@@ -9,7 +9,7 @@
         "spider",
         "webservice client"
     ],
-    "homepage": "https://core23.de",
+    "homepage": "https://nucleos.rocks",
     "license": "MIT",
     "authors": [
         {
@@ -46,17 +46,17 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
     },
     "autoload": {
         "psr-4": {
-            "Core23\\LastFm\\": "src/"
+            "Nucleos\\LastFm\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Core23\\LastFm\\Tests\\": "tests/"
+            "Nucleos\\LastFm\\Tests\\": "tests/"
         }
     },
     "scripts": {

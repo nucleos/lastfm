@@ -9,16 +9,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
-use Core23\LastFm\Model\Album;
-use Core23\LastFm\Model\Artist;
-use Core23\LastFm\Model\Chart;
-use Core23\LastFm\Model\Song;
-use Core23\LastFm\Model\Tag;
-use Core23\LastFm\Model\TagInfo;
+use Nucleos\LastFm\Exception\ApiException;
+use Nucleos\LastFm\Exception\NotFoundException;
+use Nucleos\LastFm\Model\Album;
+use Nucleos\LastFm\Model\Artist;
+use Nucleos\LastFm\Model\Chart;
+use Nucleos\LastFm\Model\Song;
+use Nucleos\LastFm\Model\Tag;
+use Nucleos\LastFm\Model\TagInfo;
 
 interface TagServiceInterface
 {

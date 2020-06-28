@@ -9,16 +9,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Crawler;
+namespace Nucleos\LastFm\Crawler;
 
-use Core23\LastFm\Connection\ConnectionInterface;
-use Core23\LastFm\Exception\CrawlException;
-use Core23\LastFm\Model\Event;
-use Core23\LastFm\Model\Image;
-use Core23\LastFm\Model\Venue;
-use Core23\LastFm\Model\VenueAddress;
 use DateTime;
 use Exception;
+use Nucleos\LastFm\Connection\ConnectionInterface;
+use Nucleos\LastFm\Exception\CrawlException;
+use Nucleos\LastFm\Model\Event;
+use Nucleos\LastFm\Model\Image;
+use Nucleos\LastFm\Model\Venue;
+use Nucleos\LastFm\Model\VenueAddress;
 use Symfony\Component\DomCrawler\Crawler;
 
 abstract class AbstractCrawler

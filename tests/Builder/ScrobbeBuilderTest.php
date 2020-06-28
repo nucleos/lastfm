@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Builder;
+namespace Nucleos\LastFm\Tests\Builder;
 
-use Core23\LastFm\Builder\ScrobbeBuilder;
-use Core23\LastFm\Builder\TrackBuilder;
 use DateTime;
+use Nucleos\LastFm\Builder\ScrobbeBuilder;
+use Nucleos\LastFm\Builder\TrackBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class ScrobbeBuilderTest extends TestCase

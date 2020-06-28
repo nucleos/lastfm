@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Crawler;
+namespace Nucleos\LastFm\Crawler;
 
-use Core23\LastFm\Model\Event;
+use Nucleos\LastFm\Model\Event;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class ArtistEventCrawler extends AbstractCrawler implements ArtistEventCrawlerInterface

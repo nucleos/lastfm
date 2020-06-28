@@ -9,18 +9,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Builder\AlbumInfoBuilder;
-use Core23\LastFm\Builder\AlbumTagsBuilder;
-use Core23\LastFm\Builder\AlbumTopTagsBuilder;
-use Core23\LastFm\Exception\ApiException;
-use Core23\LastFm\Exception\NotFoundException;
-use Core23\LastFm\Model\Album;
-use Core23\LastFm\Model\AlbumInfo;
-use Core23\LastFm\Model\Tag;
-use Core23\LastFm\Session\SessionInterface;
 use InvalidArgumentException;
+use Nucleos\LastFm\Builder\AlbumInfoBuilder;
+use Nucleos\LastFm\Builder\AlbumTagsBuilder;
+use Nucleos\LastFm\Builder\AlbumTopTagsBuilder;
+use Nucleos\LastFm\Exception\ApiException;
+use Nucleos\LastFm\Exception\NotFoundException;
+use Nucleos\LastFm\Model\Album;
+use Nucleos\LastFm\Model\AlbumInfo;
+use Nucleos\LastFm\Model\Tag;
+use Nucleos\LastFm\Session\SessionInterface;
 
 interface AlbumServiceInterface
 {

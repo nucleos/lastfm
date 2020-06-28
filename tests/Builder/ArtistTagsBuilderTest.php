@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Builder;
+namespace Nucleos\LastFm\Tests\Builder;
 
-use Core23\LastFm\Builder\ArtistTagsBuilder;
+use Nucleos\LastFm\Builder\ArtistTagsBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class ArtistTagsBuilderTest extends TestCase

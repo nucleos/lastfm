@@ -9,12 +9,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Connection;
+namespace Nucleos\LastFm\Connection;
 
-use Core23\LastFm\Exception\ApiException;
 use Http\Client\Exception;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
+use Nucleos\LastFm\Exception\ApiException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

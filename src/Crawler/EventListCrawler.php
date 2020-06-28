@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Crawler;
+namespace Nucleos\LastFm\Crawler;
 
-use Core23\LastFm\Model\Event;
-use Core23\LastFm\Model\GeoLocation;
 use DateTime;
+use Nucleos\LastFm\Model\Event;
+use Nucleos\LastFm\Model\GeoLocation;
 use Symfony\Component\DomCrawler\Crawler;
 
 final class EventListCrawler extends AbstractCrawler implements EventListCrawlerInterface

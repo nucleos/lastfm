@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Service;
+namespace Nucleos\LastFm\Service;
 
-use Core23\LastFm\Client\ApiClientInterface;
-use Core23\LastFm\Model\ArtistInfo;
-use Core23\LastFm\Util\ApiHelper;
+use Nucleos\LastFm\Client\ApiClientInterface;
+use Nucleos\LastFm\Model\ArtistInfo;
+use Nucleos\LastFm\Util\ApiHelper;
 
 final class LibraryService implements LibraryServiceInterface
 {

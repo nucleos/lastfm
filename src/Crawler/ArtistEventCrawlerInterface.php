@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Crawler;
+namespace Nucleos\LastFm\Crawler;
 
-use Core23\LastFm\Exception\CrawlException;
-use Core23\LastFm\Model\Event;
+use Nucleos\LastFm\Exception\CrawlException;
+use Nucleos\LastFm\Model\Event;
 
 interface ArtistEventCrawlerInterface
 {

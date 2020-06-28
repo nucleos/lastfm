@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\LastFm\Tests\Builder;
+namespace Nucleos\LastFm\Tests\Builder;
 
-use Core23\LastFm\Builder\AlbumInfoBuilder;
+use Nucleos\LastFm\Builder\AlbumInfoBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class AlbumInfoBuilderTest extends TestCase
