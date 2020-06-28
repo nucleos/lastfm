@@ -446,52 +446,7 @@ parameters:
 			path: src/Model/User.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function array_filter expects callable\\(mixed, mixed\\)\\: bool, Closure\\(mixed\\)\\: void given\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Result of \\|\\| is always false\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
-			count: 1
-			path: src/Service/AlbumService.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function array_filter expects callable\\(mixed, mixed\\)\\: bool, Closure\\(mixed\\)\\: void given\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Result of \\|\\| is always false\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between null and string will always evaluate to false\\.$#"
-			count: 1
-			path: src/Service/ArtistService.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Service\\\\TrackService\\:\\:addTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Service/TrackService.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function array_filter expects callable\\(mixed, mixed\\)\\: bool, Closure\\(mixed\\)\\: void given\\.$#"
 			count: 1
 			path: src/Service/TrackService.php
 

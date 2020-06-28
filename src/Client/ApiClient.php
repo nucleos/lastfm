@@ -133,7 +133,7 @@ final class ApiClient implements ApiClientInterface
             return $this->connection->call($method, $params);
         } catch (ApiException $e) {
             if (6 === (int) $e->getCode()) {
-                throw new NotFoundException('No entity was found for your request.', $e->getCode(), $e);
+                throw new NotFoundException('No entity was found for your request.', (int) $e->getCode(), $e);
             }
 
             throw $e;

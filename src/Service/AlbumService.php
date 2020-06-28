@@ -46,12 +46,6 @@ final class AlbumService implements AlbumServiceInterface
             throw new InvalidArgumentException('A maximum of 10 tags is allowed');
         }
 
-        array_filter($tags, static function ($tag): void {
-            if (null === $tag || !\is_string($tag)) {
-                throw new InvalidArgumentException(sprintf('Invalid tag given'));
-            }
-        });
-
         $this->client->signedCall('album.addTags', [
             'artist' => $artist,
             'album'  => $album,

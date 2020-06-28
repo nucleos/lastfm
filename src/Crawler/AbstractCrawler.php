@@ -72,7 +72,7 @@ abstract class AbstractCrawler
             try {
                 $datetime = new DateTime($node->filter('time')->attr('datetime'));
             } catch (Exception $exception) {
-                throw new CrawlException('Error reading event date', $exception->getCode(), $exception);
+                throw new CrawlException('Error reading event date', (int) $exception->getCode(), $exception);
             }
         }
 
