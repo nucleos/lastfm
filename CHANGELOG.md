@@ -1,3 +1,11 @@
+# 3.0.1
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Clean broken address data @core23 (#77)
+
 # 3.0.0
 
 ## Changes
