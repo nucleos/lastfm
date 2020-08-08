@@ -68,10 +68,17 @@ final class EventInfoCrawler extends AbstractCrawler implements EventInfoCrawler
         $venueNode   = $node->filter('.event-detail');
         $addressNode = $venueNode->filter('.event-detail-address');
 
-        $adress = new VenueAddress(
+        $cityName   = $this->parseString($addressNode->filter('[itemprop="addressLocality"]'));
+        $postalCode = $this->parseString($addressNode->filter('[itemprop="postalCode"]'));
+
+        if (null !== $postalCode && null !== $cityName && \strlen($postalCode) > 3) {
+            $cityName = trim(str_replace($postalCode, '', $cityName));
+        }
+
+        $adress     = new VenueAddress(
             $this->parseString($addressNode->filter('[itemprop="streetAddress"]')),
-            $this->parseString($addressNode->filter('[itemprop="postalCode"]')),
-            $this->parseString($addressNode->filter('[itemprop="addressLocality"]')),
+            $postalCode,
+            $cityName,
             $this->parseString($addressNode->filter('[itemprop="addressCountry"]'))
         );
 
