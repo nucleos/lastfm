@@ -19,7 +19,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 final class LibraryServiceTest extends TestCase
 {
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<ApiClientInterface>
      */
     private $client;
 
