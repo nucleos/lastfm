@@ -455,18 +455,3 @@ parameters:
 			count: 1
 			path: src/Util/ApiHelper.php
 
-		-
-			message: "#^Parameter \\#1 \\$connection of class Nucleos\\\\LastFm\\\\Service\\\\AuthService constructor expects Nucleos\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
-			count: 3
-			path: tests/Service/AuthServiceTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$client of class Nucleos\\\\LastFm\\\\Service\\\\GeoService constructor expects Nucleos\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
-			count: 2
-			path: tests/Service/GeoServiceTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$client of class Nucleos\\\\LastFm\\\\Service\\\\LibraryService constructor expects Nucleos\\\\LastFm\\\\Client\\\\ApiClientInterface, object given\\.$#"
-			count: 1
-			path: tests/Service/LibraryServiceTest.php
-
