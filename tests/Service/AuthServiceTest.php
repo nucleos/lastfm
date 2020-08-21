@@ -14,10 +14,13 @@ namespace Nucleos\LastFm\Tests\Service;
 use Nucleos\LastFm\Client\ApiClientInterface;
 use Nucleos\LastFm\Service\AuthService;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 final class AuthServiceTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<ApiClientInterface>
      */

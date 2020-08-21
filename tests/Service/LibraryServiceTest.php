@@ -14,10 +14,13 @@ namespace Nucleos\LastFm\Tests\Service;
 use Nucleos\LastFm\Client\ApiClientInterface;
 use Nucleos\LastFm\Service\LibraryService;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 final class LibraryServiceTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<ApiClientInterface>
      */

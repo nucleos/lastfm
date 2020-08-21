@@ -14,10 +14,13 @@ namespace Nucleos\LastFm\Tests\Service;
 use Nucleos\LastFm\Client\ApiClientInterface;
 use Nucleos\LastFm\Service\GeoService;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 final class GeoServiceTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<ApiClientInterface>
      */
