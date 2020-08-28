@@ -102,7 +102,7 @@ jobs:
         run: vendor/bin/psalm --config=psalm.xml --diff --diff-methods --shepherd --show-info=false --stats --threads=4
 
   tests:
-    name: "Tests"
+    name: "Test (PHP ${{ matrix.php-version }}, ${{ matrix.dependencies }})"
 
     runs-on: ubuntu-latest
 

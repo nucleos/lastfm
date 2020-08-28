@@ -16,10 +16,10 @@ branches:
         contexts:
           - "Coding Standards (7.4)"
           - "Static Code Analysis (7.4)"
-          - "Tests (7.3, lowest)"
-          - "Tests (7.3, highest)"
-          - "Tests (7.4, lowest)"
-          - "Tests (7.4, highest)"
+          - "Test (PHP 7.3, lowest)"
+          - "Test (PHP 7.3, highest)"
+          - "Test (PHP 7.4, lowest)"
+          - "Test (PHP 7.4, highest)"
           - "Code Coverage (7.4)"
           - "Mutation Tests (7.4)"
         strict: true
