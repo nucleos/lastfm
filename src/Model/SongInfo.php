@@ -13,6 +13,8 @@ namespace Nucleos\LastFm\Model;
 
 /**
  * @psalm-immutable
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  */
 final class SongInfo
 {
@@ -115,17 +117,8 @@ final class SongInfo
      */
     public static function fromApi(array $data): self
     {
-        $tags = self::createTagsFromApi($data);
-
-        $artist = null;
-
-        if (isset($data['artist'])) {
-            if (\is_array($data['artist'])) {
-                $artist = Artist::fromApi($data['artist']);
-            } else {
-                $artist = new Artist($data['artist'], null, [], null);
-            }
-        }
+        $tags   = self::createTagsFromApi($data);
+        $artist = self::createArtistFromApi($data);
 
         return new self(
             $data['name'],
@@ -136,6 +129,24 @@ final class SongInfo
             isset($data['playcount']) ? (int) $data['playcount'] : 0,
             $tags
         );
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     */
+    private static function createArtistFromApi(array $data): ?Artist
+    {
+        $artist = null;
+
+        if (isset($data['artist'])) {
+            if (\is_array($data['artist'])) {
+                $artist = Artist::fromApi($data['artist']);
+            } else {
+                $artist = new Artist($data['artist'], null, [], null);
+            }
+        }
+
+        return $artist;
     }
 
     private static function createTagsFromApi(array $data): array

@@ -15,6 +15,8 @@ use DateTimeImmutable;
 
 /**
  * @psalm-immutable
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  */
 final class EventInfo
 {
