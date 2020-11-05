@@ -69,17 +69,7 @@ abstract class AbstractCrawler
         }
 
         if (null === $datetime) {
-            try {
-                $dateAttr = $node->filter('time')->attr('datetime');
-
-                if (null === $dateAttr) {
-                    throw new CrawlException('Date information cannot be found');
-                }
-
-                $datetime = new DateTimeImmutable($dateAttr);
-            } catch (Exception $exception) {
-                throw new CrawlException('Error reading event date', (int) $exception->getCode(), $exception);
-            }
+            $datetime = $this->parseTime($node);
         }
 
         $venue = $this->parseVenue($node->filter('.events-list-item-venue'));
@@ -179,5 +169,25 @@ abstract class AbstractCrawler
         }
 
         return null;
+    }
+
+    /**
+     * @throws CrawlException
+     */
+    private function parseTime(Crawler $node): DateTimeImmutable
+    {
+        try {
+            $dateAttr = $node->filter('time')->attr('datetime');
+
+            if (null === $dateAttr) {
+                throw new CrawlException('Date information cannot be found');
+            }
+
+            $datetime = new DateTimeImmutable($dateAttr);
+        } catch (Exception $exception) {
+            throw new CrawlException('Error reading event date', (int) $exception->getCode(), $exception);
+        }
+
+        return $datetime;
     }
 }
