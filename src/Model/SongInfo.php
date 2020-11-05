@@ -13,6 +13,8 @@ namespace Nucleos\LastFm\Model;
 
 /**
  * @psalm-immutable
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  */
 final class SongInfo
 {

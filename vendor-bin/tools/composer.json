@@ -16,7 +16,8 @@
         "phpunit/phpunit": "^8.5 || ^9.0",
         "psalm/plugin-phpunit": "^0.12",
         "symfony/phpunit-bridge": "^5.1",
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^3.11",
+        "phpmd/phpmd": "^2.9"
     },
     "config": {
         "platform": {
