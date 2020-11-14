@@ -8,7 +8,7 @@ Last.fm PHP library
 [![Monthly Downloads](https://poser.pugx.org/nucleos/lastfm/d/monthly)](https://packagist.org/packages/nucleos/lastfm)
 [![Daily Downloads](https://poser.pugx.org/nucleos/lastfm/d/daily)](https://packagist.org/packages/nucleos/lastfm)
 
-[![Continuous Integration](https://github.com/nucleos/lastfm/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/lastfm/actions)
+[![Continuous Integration](https://github.com/nucleos/lastfm/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/lastfm/actions?query=workflow%3A"Continuous+Integration"+branch%3Amain)
 [![Code Coverage](https://codecov.io/gh/nucleos/lastfm/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/lastfm)
 [![Type Coverage](https://shepherd.dev/github/nucleos/lastfm/coverage.svg)](https://shepherd.dev/github/nucleos/lastfm)
 
