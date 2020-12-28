@@ -7,6 +7,7 @@
         "jangregor/phpstan-prophecy": "^0.8",
         "maglnet/composer-require-checker": "^2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
+        "phpmd/phpmd": "^2.9",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12",
@@ -16,8 +17,8 @@
         "phpunit/phpunit": "^8.5 || ^9.0",
         "psalm/plugin-phpunit": "^0.12",
         "symfony/phpunit-bridge": "^5.1",
-        "vimeo/psalm": "^3.11",
-        "phpmd/phpmd": "^2.9"
+        "symplify/changelog-linker": "^9.0",
+        "vimeo/psalm": "^3.11"
     },
     "config": {
         "platform": {
