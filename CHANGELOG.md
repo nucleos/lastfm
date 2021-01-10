@@ -1,3 +1,12 @@
+# 3.1.0
+
+## Changes
+
+## 📦 Dependencies
+
+- Add support for PHP 8 @core23 (#151)
+- Drop support for PHP 7.2 @core23 (#83)
+
 # 3.0.1
 
 ## Changes
