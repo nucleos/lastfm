@@ -4,8 +4,8 @@
 
 ## 📦 Dependencies
 
-- Add support for PHP 8 @core23 (#151)
-- Drop support for PHP 7.2 @core23 (#83)
+- Add support for PHP 8 [@core23] ([#151])
+- Drop support for PHP 7.2 [@core23] ([#83])
 
 # 3.0.1
 
@@ -79,3 +79,5 @@
 [#36]: https://github.com/nucleos/lastfm/pull/36
 [@nucleos]: https://github.com/nucleos
 [@core23]: https://github.com/core23
+[#151]: https://github.com/nucleos/lastfm/pull/151
+[#83]: https://github.com/nucleos/lastfm/pull/83
