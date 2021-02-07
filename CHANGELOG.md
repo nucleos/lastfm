@@ -1,23 +1,50 @@
-# 3.1.0
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 📦 Dependencies
+## 3.2.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
+## 3.1.0
+
+### Changes
+
+### 📦 Dependencies
 
 - Add support for PHP 8 [@core23] ([#151])
 - Drop support for PHP 7.2 [@core23] ([#83])
 
-# 3.0.1
+## 3.0.1
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Clean broken address data [@core23] ([#77])
 
-# 3.0.0
+## 3.0.0
 
-## Changes
+### Changes
 
 - Renamed namespace `Nucleos\LastFm` to `Nucleos\LastFm` after move to [@nucleos]
 
@@ -50,23 +77,23 @@
   ```
 
   to delete backup files created in the previous step.
-  
-## 🚀 Features
+
+### 🚀 Features
 
 - Add psalm [@core23] ([#72])
 
-# 2.1.0
+## 2.1.0
 
-## Changes
+### Changes
 
 - Add missing strict file header [@core23] ([#47])
 
-## 🚀 Features
+### 🚀 Features
 
 - Add support for symfony 5 [@core23] ([#36])
 - Add support for PSR http client [@core23] ([#41] [#57])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Fix calling psr request factory [@core23] ([#44])
 
