@@ -41,11 +41,6 @@
     "config": {
         "sort-packages": true
     },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "3.x-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Nucleos\\LastFm\\": "src/"
