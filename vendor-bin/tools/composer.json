@@ -17,7 +17,6 @@
         "phpunit/phpunit": "^8.5 || ^9.0",
         "psalm/plugin-phpunit": "^0.12",
         "symfony/phpunit-bridge": "^5.1",
-        "symplify/changelog-linker": "^9.0",
         "vimeo/psalm": "^3.11"
     },
     "config": {
