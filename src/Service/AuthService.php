@@ -17,12 +17,15 @@ use Nucleos\LastFm\Exception\NotFoundException;
 use Nucleos\LastFm\Session\Session;
 use Nucleos\LastFm\Session\SessionInterface;
 use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 final class AuthService implements LoggerAwareInterface, AuthServiceInterface
 {
-    use LoggerAwareTrait;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * @var string
@@ -39,6 +42,11 @@ final class AuthService implements LoggerAwareInterface, AuthServiceInterface
         $this->client  = $connection;
         $this->authUrl = $authUrl;
         $this->logger  = new NullLogger();
+    }
+
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
     }
 
     public function createSession(string $token): ?SessionInterface
