@@ -1713,20 +1713,20 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "58ef9e746a1ab50ad3360d5d301e1229ed2612cb"
+                "reference": "bd5ef43d1dcaf7272605027c959c1c5ff3761f7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/58ef9e746a1ab50ad3360d5d301e1229ed2612cb",
-                "reference": "58ef9e746a1ab50ad3360d5d301e1229ed2612cb",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/bd5ef43d1dcaf7272605027c959c1c5ff3761f7a",
+                "reference": "bd5ef43d1dcaf7272605027c959c1c5ff3761f7a",
                 "shasum": ""
             },
             "require": {
-                "composer/xdebug-handler": "^1.0",
+                "composer/xdebug-handler": "^1.0 || ^2.0",
                 "ext-xml": "*",
                 "pdepend/pdepend": "^2.9.1",
                 "php": ">=5.3.9"
@@ -1784,7 +1784,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/phpmd",
                 "issues": "https://github.com/phpmd/phpmd/issues",
-                "source": "https://github.com/phpmd/phpmd/tree/2.10.0"
+                "source": "https://github.com/phpmd/phpmd/tree/2.10.1"
             },
             "funding": [
                 {
@@ -1792,7 +1792,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-26T18:44:44+00:00"
+            "time": "2021-05-11T17:16:16+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -2771,16 +2771,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -2804,7 +2804,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -2815,9 +2815,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.3"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -3785,16 +3785,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v5.2.4",
+            "version": "v5.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "212d54675bf203ff8aef7d8cee8eecfb72f4a263"
+                "reference": "8dfa5f8adea9cd5155920069224beb04f11d6b7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/212d54675bf203ff8aef7d8cee8eecfb72f4a263",
-                "reference": "212d54675bf203ff8aef7d8cee8eecfb72f4a263",
+                "url": "https://api.github.com/repos/symfony/config/zipball/8dfa5f8adea9cd5155920069224beb04f11d6b7e",
+                "reference": "8dfa5f8adea9cd5155920069224beb04f11d6b7e",
                 "shasum": ""
             },
             "require": {
@@ -3843,7 +3843,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v5.2.4"
+                "source": "https://github.com/symfony/config/tree/v5.2.8"
             },
             "funding": [
                 {
@@ -3859,7 +3859,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-23T23:58:19+00:00"
+            "time": "2021-05-07T13:41:16+00:00"
         },
         {
             "name": "symfony/console",
@@ -3960,16 +3960,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v5.2.6",
+            "version": "v5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "1e66194bed2a69fa395d26bf1067e5e34483afac"
+                "reference": "2761ca2f7e2f41af3a45951e1ce8c01f121245eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/1e66194bed2a69fa395d26bf1067e5e34483afac",
-                "reference": "1e66194bed2a69fa395d26bf1067e5e34483afac",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/2761ca2f7e2f41af3a45951e1ce8c01f121245eb",
+                "reference": "2761ca2f7e2f41af3a45951e1ce8c01f121245eb",
                 "shasum": ""
             },
             "require": {
@@ -4027,7 +4027,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v5.2.6"
+                "source": "https://github.com/symfony/dependency-injection/tree/v5.2.9"
             },
             "funding": [
                 {
@@ -4043,7 +4043,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-22T11:10:24+00:00"
+            "time": "2021-05-16T13:07:46+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4278,16 +4278,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8c86a82f51658188119e62cff0a050a12d09836f"
+                "reference": "056e92acc21d977c37e6ea8e97374b2a6c8551b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8c86a82f51658188119e62cff0a050a12d09836f",
-                "reference": "8c86a82f51658188119e62cff0a050a12d09836f",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/056e92acc21d977c37e6ea8e97374b2a6c8551b0",
+                "reference": "056e92acc21d977c37e6ea8e97374b2a6c8551b0",
                 "shasum": ""
             },
             "require": {
@@ -4320,7 +4320,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v5.2.6"
+                "source": "https://github.com/symfony/filesystem/tree/v5.2.7"
             },
             "funding": [
                 {
@@ -4336,7 +4336,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-28T14:30:26+00:00"
+            "time": "2021-04-01T10:42:13+00:00"
         },
         {
             "name": "symfony/finder",
@@ -4553,16 +4553,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.22.1",
+            "version": "v1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e"
+                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/c6c942b1ac76c82448322025e084cadc56048b4e",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/46cd95797e9df938fdd2b03693b5fca5e64b01ce",
+                "reference": "46cd95797e9df938fdd2b03693b5fca5e64b01ce",
                 "shasum": ""
             },
             "require": {
@@ -4574,7 +4574,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.23-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4612,7 +4612,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.1"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
             },
             "funding": [
                 {
@@ -4628,7 +4628,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2021-02-19T12:13:01+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
@@ -5100,16 +5100,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.22.1",
+            "version": "v1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "dc3063ba22c2a1fd2f45ed856374d79114998f91"
+                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/dc3063ba22c2a1fd2f45ed856374d79114998f91",
-                "reference": "dc3063ba22c2a1fd2f45ed856374d79114998f91",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/eca0bf41ed421bed1b57c4958bab16aa86b757d0",
+                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0",
                 "shasum": ""
             },
             "require": {
@@ -5118,7 +5118,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.23-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -5163,7 +5163,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.1"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.0"
             },
             "funding": [
                 {
@@ -5179,7 +5179,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2021-02-19T12:13:01+00:00"
         },
         {
             "name": "symfony/process",
