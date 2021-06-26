@@ -36,6 +36,19 @@ final class TrackInfoBuilderTest extends TestCase
         static::assertSame($expected, $builder->getQuery());
     }
 
+    public function testForTrack(): void
+    {
+        $builder = TrackInfoBuilder::forArtist('Slipknot');
+        $builder->forTrack('Duality');
+
+        $expected = [
+            'artist' => 'Slipknot',
+            'track'  => 'Duality',
+        ];
+
+        static::assertSame($expected, $builder->getQuery());
+    }
+
     public function testForUsername(): void
     {
         $builder = TrackInfoBuilder::forMbid('a466c2a2-6517-42fb-a160-1087c3bafd9f')
