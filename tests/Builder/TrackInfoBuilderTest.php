@@ -43,7 +43,7 @@ final class TrackInfoBuilderTest extends TestCase
 
         $expected = [
             'artist' => 'Slipknot',
-            'track'  => 'Duality'
+            'track'  => 'Duality',
         ];
 
         static::assertSame($expected, $builder->getQuery());
