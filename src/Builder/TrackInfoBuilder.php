@@ -50,6 +50,16 @@ final class TrackInfoBuilder
     /**
      * @return TrackInfoBuilder
      */
+    public function forTrack(string $track): self
+    {
+        $this->query['track'] = $track;
+
+        return $this;
+    }
+
+    /**
+     * @return TrackInfoBuilder
+     */
     public function forUsername(string $name): self
     {
         $this->query['username'] = $name;
