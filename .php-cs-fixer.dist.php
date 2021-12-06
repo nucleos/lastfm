@@ -11,7 +11,7 @@ $finder = PhpCsFixer\Finder::create()
     ->in([ __DIR__.'/src',  __DIR__.'/tests'])
 ;
 
-$config = PhpCsFixer\Config::create()
+$config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -35,7 +35,10 @@ $config = PhpCsFixer\Config::create()
         ],
         'php_unit_internal_class' => false,
         'php_unit_test_class_requires_covers' => false,
-        'no_superfluous_phpdoc_tags' => true,
+        'no_superfluous_phpdoc_tags' => [
+            'allow_mixed' => true,
+            'remove_inheritdoc' => true,
+        ],
         'static_lambda' => true,
         'global_namespace_import' => [
            'import_classes' => true,
