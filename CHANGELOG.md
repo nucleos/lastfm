@@ -2,28 +2,31 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.2.0 - TBD
+## 3.2.0 - 2021-12-06
 
-### Added
 
-- Nothing.
 
-### Changed
+-----
 
-- Nothing.
+### Release Notes for [3.2.0](https://github.com/nucleos/lastfm/milestone/1)
 
-### Deprecated
 
-- Nothing.
 
-### Removed
+### 3.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **1**
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [334: Drop symfony 4 support](https://github.com/nucleos/lastfm/pull/334) thanks to @core23
+ - [328: Drop PHP 7 support](https://github.com/nucleos/lastfm/pull/328) thanks to @core23
 
+#### Enhancement
+
+ - [333: Update tools and use make to run them](https://github.com/nucleos/lastfm/pull/333) thanks to @core23
+ - [277: Remove LoggerAwareTrait to resolve null error](https://github.com/nucleos/lastfm/pull/277) thanks to @core23
 
 ## 3.1.0
 
