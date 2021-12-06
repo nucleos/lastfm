@@ -266,29 +266,14 @@ parameters:
 			path: src/Crawler/AbstractCrawler.php
 
 		-
-			message: "#^Anonymous function should have native return typehint \"int\"\\.$#"
-			count: 1
-			path: src/Crawler/ArtistEventCrawler.php
-
-		-
 			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
 			count: 1
 			path: src/Crawler/ArtistEventCrawler.php
 
 		-
-			message: "#^Anonymous function should have native return typehint \"void\"\\.$#"
-			count: 1
-			path: src/Crawler/EventListCrawler.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Crawler\\\\EventListCrawler\\:\\:crawlEventListGroup\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Crawler/EventListCrawler.php
-
-		-
-			message: "#^Anonymous function should have native return typehint \"int\"\\.$#"
-			count: 1
-			path: src/Crawler/UserEventCrawler.php
 
 		-
 			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
