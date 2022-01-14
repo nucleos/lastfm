@@ -2,27 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.3.0 - TBD
+## 3.3.0 - 2022-01-14
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.3.0](https://github.com/nucleos/lastfm/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **2**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [348: Use shared pipelines](https://github.com/nucleos/lastfm/pull/348) thanks to @core23
+ - [338: Remove composer-bin plugin](https://github.com/nucleos/lastfm/pull/338) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [335: Update psr/log requirement from ^1.0 to ^1.0 || ^2.0 || ^3.0](https://github.com/nucleos/lastfm/pull/335) thanks to @dependabot[bot]
 
 ## 3.2.0 - 2021-12-06
 
