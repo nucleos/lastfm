@@ -2,27 +2,20 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.0 - TBD
+## 3.4.0 - 2022-01-14
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.0](https://github.com/nucleos/lastfm/milestone/6)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.4.0
 
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **0**
+- Total contributors: **0**
 
 ## 3.3.0 - 2022-01-14
 
