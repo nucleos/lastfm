@@ -15,7 +15,7 @@ use Exception;
 
 final class ApiException extends Exception
 {
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getCode().': '.$this->getMessage();
     }
