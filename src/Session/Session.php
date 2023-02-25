@@ -13,20 +13,11 @@ namespace Nucleos\LastFm\Session;
 
 final class Session implements SessionInterface
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string
-     */
-    private $key;
+    private string $key;
 
-    /**
-     * @var int
-     */
-    private $subscriber;
+    private int $subscriber;
 
     public function __construct(string $name, string $key, int $subscriber = 0)
     {

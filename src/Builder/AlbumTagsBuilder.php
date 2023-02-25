@@ -13,19 +13,13 @@ namespace Nucleos\LastFm\Builder;
 
 final class AlbumTagsBuilder
 {
-    /**
-     * @var array
-     */
-    private $query;
+    private array $query;
 
     private function __construct()
     {
         $this->query = [];
     }
 
-    /**
-     * @return AlbumTagsBuilder
-     */
     public static function forAlbum(string $artist, string $album): self
     {
         $builder = new static();
@@ -36,9 +30,6 @@ final class AlbumTagsBuilder
         return $builder;
     }
 
-    /**
-     * @return AlbumTagsBuilder
-     */
     public static function forMbid(string $mbid): self
     {
         $builder = new static();
@@ -48,9 +39,6 @@ final class AlbumTagsBuilder
         return $builder;
     }
 
-    /**
-     * @return AlbumTagsBuilder
-     */
     public function forUsername(string $name): self
     {
         $this->query['user'] = $name;
@@ -58,9 +46,6 @@ final class AlbumTagsBuilder
         return $this;
     }
 
-    /**
-     * @return AlbumTagsBuilder
-     */
     public function autocorrect(bool $autocorrect): self
     {
         $this->query['autocorrect'] =  $autocorrect ? 1 : 0;

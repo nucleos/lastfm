@@ -13,45 +13,21 @@ namespace Nucleos\LastFm\Model;
 
 final class NowPlaying
 {
-    /**
-     * @var string
-     */
-    private $artist;
+    private string $artist;
 
-    /**
-     * @var string
-     */
-    private $track;
+    private string $track;
 
-    /**
-     * @var string|null
-     */
-    private $album;
+    private ?string $album = null;
 
-    /**
-     * @var int|null
-     */
-    private $trackNumber;
+    private ?int $trackNumber = null;
 
-    /**
-     * @var string|null
-     */
-    private $context;
+    private ?string $context = null;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid = null;
 
-    /**
-     * @var string|null
-     */
-    private $duration;
+    private ?string $duration = null;
 
-    /**
-     * @var string|null
-     */
-    private $albumArtist;
+    private ?string $albumArtist = null;
 
     public function __construct(string $artist, string $track)
     {

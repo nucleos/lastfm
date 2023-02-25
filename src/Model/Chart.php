@@ -19,15 +19,9 @@ use Nucleos\LastFm\Exception\ApiException;
  */
 final class Chart
 {
-    /**
-     * @var DateTimeImmutable
-     */
-    private $from;
+    private DateTimeImmutable $from;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $to;
+    private DateTimeImmutable $to;
 
     public function __construct(DateTimeImmutable $from, DateTimeImmutable $to)
     {
@@ -47,8 +41,6 @@ final class Chart
 
     /**
      * @throws ApiException
-     *
-     * @return Chart
      */
     public static function fromApi(array $data): self
     {

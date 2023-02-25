@@ -16,20 +16,11 @@ namespace Nucleos\LastFm\Model;
  */
 final class Song
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var int|null
-     */
-    private $duration;
+    private ?int $duration;
 
-    /**
-     * @var Artist|null
-     */
-    private $artist;
+    private ?Artist $artist;
 
     public function __construct(string $name, ?int $duration, ?Artist $artist)
     {
@@ -53,9 +44,6 @@ final class Song
         return $this->artist;
     }
 
-    /**
-     * @return Song
-     */
     public static function fromApi(array $data): self
     {
         $artist = isset($data['artist']) ? Artist::fromApi($data['artist']) : null;

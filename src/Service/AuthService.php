@@ -25,17 +25,11 @@ final class AuthService implements LoggerAwareInterface, AuthServiceInterface
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface|NullLogger $logger;
 
-    /**
-     * @var string
-     */
-    private $authUrl;
+    private string $authUrl;
 
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $connection, string $authUrl = 'http://www.last.fm/api/auth/')
     {

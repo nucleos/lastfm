@@ -27,10 +27,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class TrackService implements TrackServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

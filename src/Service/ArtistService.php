@@ -29,10 +29,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class ArtistService implements ArtistServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

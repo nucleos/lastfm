@@ -22,10 +22,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class TagService implements TagServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

@@ -18,40 +18,22 @@ namespace Nucleos\LastFm\Model;
  */
 final class SongInfo
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid;
 
-    /**
-     * @var int|null
-     */
-    private $duration;
+    private ?int $duration;
 
-    /**
-     * @var Artist|null
-     */
-    private $artist;
+    private ?Artist $artist;
 
-    /**
-     * @var int
-     */
-    private $listeners;
+    private int $listeners;
 
-    /**
-     * @var int
-     */
-    private $playcount;
+    private int $playcount;
 
     /**
      * @var Tag[]
      */
-    private $topTags;
+    private array $topTags;
 
     /**
      * @param Tag[] $topTags
@@ -112,9 +94,6 @@ final class SongInfo
         return $this->topTags;
     }
 
-    /**
-     * @return SongInfo
-     */
     public static function fromApi(array $data): self
     {
         $tags   = self::createTagsFromApi($data);

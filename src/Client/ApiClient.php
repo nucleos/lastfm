@@ -18,20 +18,11 @@ use Nucleos\LastFm\Session\SessionInterface;
 
 final class ApiClient implements ApiClientInterface
 {
-    /**
-     * @var ConnectionInterface
-     */
-    private $connection;
+    private ConnectionInterface $connection;
 
-    /**
-     * @var string
-     */
-    private $apiKey;
+    private string $apiKey;
 
-    /**
-     * @var string
-     */
-    private $sharedSecret;
+    private string $sharedSecret;
 
     public function __construct(ConnectionInterface $connection, string $apiKey, string $sharedSecret)
     {

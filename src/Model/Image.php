@@ -16,10 +16,7 @@ namespace Nucleos\LastFm\Model;
  */
 final class Image
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
 
     public function __construct(string $url)
     {

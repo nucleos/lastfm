@@ -18,15 +18,9 @@ use DateTimeImmutable;
  */
 final class RangeFilter
 {
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $start;
+    private ?DateTimeImmutable $start;
 
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $end;
+    private ?DateTimeImmutable $end;
 
     public function __construct(?DateTimeImmutable $start, ?DateTimeImmutable $end)
     {

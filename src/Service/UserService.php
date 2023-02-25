@@ -25,10 +25,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class UserService implements UserServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

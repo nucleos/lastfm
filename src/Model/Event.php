@@ -18,30 +18,15 @@ use DateTimeImmutable;
  */
 final class Event
 {
-    /**
-     * @var int
-     */
-    private $eventId;
+    private int $eventId;
 
-    /**
-     * @var string
-     */
-    private $title;
+    private string $title;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $eventDate;
+    private DateTimeImmutable $eventDate;
 
-    /**
-     * @var string
-     */
-    private $url;
+    private string $url;
 
-    /**
-     * @var Venue|null
-     */
-    private $venue;
+    private ?Venue $venue;
 
     public function __construct(int $eventId, string $title, DateTimeImmutable $eventDate, string $url, ?Venue $venue)
     {

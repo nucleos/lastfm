@@ -15,19 +15,13 @@ use DateTime;
 
 final class TrackBuilder
 {
-    /**
-     * @var array
-     */
-    private $data;
+    private array $data;
 
     private function __construct(array $data)
     {
         $this->data = $data;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public static function create(string $artist, string $track, DateTime $date): self
     {
         return new static([
@@ -37,9 +31,6 @@ final class TrackBuilder
         ]);
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withAlbum(string $album): self
     {
         $this->data['album'] = $album;
@@ -47,9 +38,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withContext(string $context): self
     {
         $this->data['context'] = $context;
@@ -57,9 +45,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withStreamId(int $streamId): self
     {
         $this->data['streamId'] = $streamId;
@@ -67,9 +52,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withChosenByUser(bool $choosenByUser): self
     {
         $this->data['chosenByUser'] = $choosenByUser ? 1 : 0;
@@ -77,9 +59,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withTrackNumber(int $trackNumber): self
     {
         $this->data['trackNumber'] = $trackNumber;
@@ -87,9 +66,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withMbid(string $mbid): self
     {
         $this->data['mbid'] = $mbid;
@@ -97,9 +73,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withAlbumArtist(string $albumArtist): self
     {
         $this->data['albumArtist'] = $albumArtist;
@@ -107,9 +80,6 @@ final class TrackBuilder
         return $this;
     }
 
-    /**
-     * @return TrackBuilder
-     */
     public function withDuration(int $seconds): self
     {
         $this->data['duration'] = $seconds;

@@ -18,55 +18,34 @@ namespace Nucleos\LastFm\Model;
  */
 final class AlbumInfo
 {
-    /**
-     * @var string|null
-     */
-    private $name;
+    private ?string $name;
 
-    /**
-     * @var Artist|null
-     */
-    private $artist;
+    private ?Artist $artist;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
     /**
      * @var Image[]
      */
-    private $images;
+    private array $images;
 
-    /**
-     * @var int
-     */
-    private $listeners;
+    private int $listeners;
 
-    /**
-     * @var int
-     */
-    private $playcount;
+    private int $playcount;
 
     /**
      * @var Song[]
      */
-    private $tracks;
+    private array $tracks;
 
     /**
      * @var Tag[]
      */
-    private $tags;
+    private array $tags;
 
-    /**
-     * @var string|null
-     */
-    private $wikiSummary;
+    private ?string $wikiSummary;
 
     /**
      * @param Image[] $images
@@ -156,9 +135,6 @@ final class AlbumInfo
         return $this->wikiSummary;
     }
 
-    /**
-     * @return AlbumInfo
-     */
     public static function fromApi(array $data): self
     {
         $images = self::createImagesFromApi($data);
@@ -169,7 +145,7 @@ final class AlbumInfo
             $data['name'],
             new Artist($data['artist'], null, [], null),
             $data['mbid'] ?? null,
-            $data['url'] ?? null,
+            $data['url']  ?? null,
             $images,
             $data['listeners'] ?? 0,
             $data['playcount'] ?? 0,

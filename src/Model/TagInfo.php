@@ -16,30 +16,15 @@ namespace Nucleos\LastFm\Model;
  */
 final class TagInfo
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
-    /**
-     * @var int
-     */
-    private $total;
+    private int $total;
 
-    /**
-     * @var int
-     */
-    private $reach;
+    private int $reach;
 
-    /**
-     * @var string|null
-     */
-    private $wikiSummary;
+    private ?string $wikiSummary;
 
     public function __construct(string $name, ?string $url, int $total, int $reach, ?string $wikiSummary)
     {
@@ -75,9 +60,6 @@ final class TagInfo
         return $this->wikiSummary;
     }
 
-    /**
-     * @return TagInfo
-     */
     public static function fromApi(array $data): self
     {
         return new self(

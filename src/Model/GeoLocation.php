@@ -16,15 +16,9 @@ namespace Nucleos\LastFm\Model;
  */
 final class GeoLocation
 {
-    /**
-     * @var float
-     */
-    private $longitude;
+    private float $longitude;
 
-    /**
-     * @var float
-     */
-    private $latitude;
+    private float $latitude;
 
     public function __construct(float $longitude, float $latitude)
     {
