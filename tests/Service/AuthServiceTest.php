@@ -13,27 +13,24 @@ namespace Nucleos\LastFm\Tests\Service;
 
 use Nucleos\LastFm\Client\ApiClientInterface;
 use Nucleos\LastFm\Service\AuthService;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 
 final class AuthServiceTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<ApiClientInterface>
+     * @var MockObject&ApiClientInterface
      */
-    private ApiClientInterface|ObjectProphecy $client;
+    private ApiClientInterface $client;
 
     protected function setUp(): void
     {
-        $this->client =  $this->prophesize(ApiClientInterface::class);
+        $this->client =  $this->createMock(ApiClientInterface::class);
     }
 
     public function testCreateSession(): void
     {
-        $this->client->signedCall('auth.getSession', [
+        $this->client->method('signedCall')->with('auth.getSession', [
             'token' => 'user-token',
         ])
             ->willReturn([
@@ -45,7 +42,7 @@ final class AuthServiceTest extends TestCase
             ])
         ;
 
-        $service = new AuthService($this->client->reveal());
+        $service = new AuthService($this->client);
 
         $result = $service->createSession('user-token');
 
@@ -57,23 +54,23 @@ final class AuthServiceTest extends TestCase
 
     public function testCreateToken(): void
     {
-        $this->client->signedCall('auth.getToken')
+        $this->client->method('signedCall')->with('auth.getToken')
             ->willReturn([
                 'token' => 'The Token',
             ])
         ;
 
-        $service = new AuthService($this->client->reveal());
+        $service = new AuthService($this->client);
         static::assertSame('The Token', $service->createToken());
     }
 
     public function testGetAuthUrl(): void
     {
-        $this->client->getApiKey()
+        $this->client->method('getApiKey')
             ->willReturn('api-key')
         ;
 
-        $service = new AuthService($this->client->reveal());
+        $service = new AuthService($this->client);
 
         static::assertSame('http://www.last.fm/api/auth/?api_key=api-key&cb=https://example.org', $service->getAuthUrl('https://example.org'));
     }
