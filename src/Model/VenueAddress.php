@@ -16,25 +16,13 @@ namespace Nucleos\LastFm\Model;
  */
 final class VenueAddress
 {
-    /**
-     * @var string|null
-     */
-    private $street;
+    private ?string $street;
 
-    /**
-     * @var string|null
-     */
-    private $postalCode;
+    private ?string $postalCode;
 
-    /**
-     * @var string|null
-     */
-    private $city;
+    private ?string $city;
 
-    /**
-     * @var string|null
-     */
-    private $country;
+    private ?string $country;
 
     public function __construct(?string $street, ?string $postalCode, ?string $city, ?string $country)
     {

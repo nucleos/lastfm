@@ -18,10 +18,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class GeoService implements GeoServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

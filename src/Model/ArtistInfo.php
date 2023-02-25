@@ -16,50 +16,29 @@ namespace Nucleos\LastFm\Model;
  */
 final class ArtistInfo
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid;
 
     /**
      * @var Image[]
      */
-    private $image;
+    private array $image;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
-    /**
-     * @var int
-     */
-    private $playcount;
+    private int $playcount;
 
-    /**
-     * @var string|null
-     */
-    private $bioSummary;
+    private ?string $bioSummary;
 
-    /**
-     * @var string|null
-     */
-    private $bioContent;
+    private ?string $bioContent;
 
-    /**
-     * @var int
-     */
-    private $tagcount;
+    private int $tagcount;
 
     /**
      * @var Tag[]
      */
-    private $tags;
+    private array $tags;
 
     /**
      * @param Image[] $image
@@ -138,9 +117,6 @@ final class ArtistInfo
         return $this->tags;
     }
 
-    /**
-     * @return ArtistInfo
-     */
     public static function fromApi(array $data): self
     {
         $images = self::createImagesFromApi($data);

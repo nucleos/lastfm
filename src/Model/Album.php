@@ -16,30 +16,18 @@ namespace Nucleos\LastFm\Model;
  */
 final class Album
 {
-    /**
-     * @var string|null
-     */
-    private $name;
+    private ?string $name;
 
-    /**
-     * @var Artist|null
-     */
-    private $artist;
+    private ?Artist $artist;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
     /**
      * @var Image[]
      */
-    private $images;
+    private array $images;
 
     /**
      * @param Image[] $images
@@ -81,9 +69,6 @@ final class Album
         return $this->images;
     }
 
-    /**
-     * @return Album
-     */
     public static function fromApi(array $data): self
     {
         $images = self::createImagesFromApi($data);
@@ -92,7 +77,7 @@ final class Album
             $data['name'],
             $data['artist'] ? Artist::fromApi($data['artist']) : null,
             $data['mbid'] ?? null,
-            $data['url'] ?? null,
+            $data['url']  ?? null,
             $images
         );
     }

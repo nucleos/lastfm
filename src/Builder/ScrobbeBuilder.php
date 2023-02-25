@@ -13,27 +13,18 @@ namespace Nucleos\LastFm\Builder;
 
 final class ScrobbeBuilder
 {
-    /**
-     * @var array
-     */
-    private $tracks;
+    private array $tracks;
 
     private function __construct()
     {
         $this->tracks = [];
     }
 
-    /**
-     * @return ScrobbeBuilder
-     */
     public static function create(): self
     {
         return new static();
     }
 
-    /**
-     * @return ScrobbeBuilder
-     */
     public function addTrack(TrackBuilder $builder): self
     {
         $this->tracks[] = $builder->getData();

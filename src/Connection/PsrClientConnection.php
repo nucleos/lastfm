@@ -21,20 +21,11 @@ use Psr\Http\Message\ResponseInterface;
 
 final class PsrClientConnection implements ConnectionInterface
 {
-    /**
-     * @var ClientInterface
-     */
-    private $client;
+    private ClientInterface $client;
 
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
-    /**
-     * @var string
-     */
-    private $endpoint;
+    private string $endpoint;
 
     /**
      * Initialize client.

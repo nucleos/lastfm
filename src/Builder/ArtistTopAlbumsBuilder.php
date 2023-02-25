@@ -13,19 +13,13 @@ namespace Nucleos\LastFm\Builder;
 
 final class ArtistTopAlbumsBuilder
 {
-    /**
-     * @var array
-     */
-    private $query;
+    private array $query;
 
     private function __construct()
     {
         $this->query = [];
     }
 
-    /**
-     * @return ArtistTopAlbumsBuilder
-     */
     public static function forArtist(string $artist): self
     {
         $builder = new static();
@@ -35,9 +29,6 @@ final class ArtistTopAlbumsBuilder
         return $builder;
     }
 
-    /**
-     * @return ArtistTopAlbumsBuilder
-     */
     public static function forMbid(string $mbid): self
     {
         $builder = new static();
@@ -47,9 +38,6 @@ final class ArtistTopAlbumsBuilder
         return $builder;
     }
 
-    /**
-     * @return ArtistTopAlbumsBuilder
-     */
     public function autocorrect(bool $autocorrect): self
     {
         $this->query['autocorrect'] =  $autocorrect ? 1 : 0;
@@ -57,9 +45,6 @@ final class ArtistTopAlbumsBuilder
         return $this;
     }
 
-    /**
-     * @return ArtistTopAlbumsBuilder
-     */
     public function limit(int $limit): self
     {
         $this->query['limit'] = $limit;
@@ -67,9 +52,6 @@ final class ArtistTopAlbumsBuilder
         return $this;
     }
 
-    /**
-     * @return ArtistTopAlbumsBuilder
-     */
     public function page(int $page): self
     {
         $this->query['page'] = $page;

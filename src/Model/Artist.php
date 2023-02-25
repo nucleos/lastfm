@@ -16,25 +16,16 @@ namespace Nucleos\LastFm\Model;
  */
 final class Artist
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $mbid;
+    private ?string $mbid;
 
     /**
      * @var Image[]
      */
-    private $image;
+    private array $image;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
     /**
      * @param Image[] $image
@@ -70,9 +61,6 @@ final class Artist
         return $this->url;
     }
 
-    /**
-     * @return Artist
-     */
     public static function fromApi(array $data): self
     {
         $images = self::createImagesFromApi($data);

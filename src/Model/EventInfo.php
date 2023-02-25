@@ -20,60 +20,30 @@ use DateTimeImmutable;
  */
 final class EventInfo
 {
-    /**
-     * @var int
-     */
-    private $eventId;
+    private int $eventId;
 
-    /**
-     * @var string
-     */
-    private $title;
+    private string $title;
 
-    /**
-     * @var string|null
-     */
-    private $description;
+    private ?string $description;
 
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $eventDate;
+    private ?DateTimeImmutable $eventDate;
 
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $eventEndDate;
+    private ?DateTimeImmutable $eventEndDate;
 
-    /**
-     * @var string|null
-     */
-    private $eventWebsite;
+    private ?string $eventWebsite;
 
-    /**
-     * @var Image|null
-     */
-    private $image;
+    private ?Image $image;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
-    /**
-     * @var bool
-     */
-    private $festival;
+    private bool $festival;
 
-    /**
-     * @var Venue
-     */
-    private $venue;
+    private Venue $venue;
 
     /**
      * @var Artist[]
      */
-    private $artists;
+    private array $artists;
 
     /**
      * @param Artist[] $artists

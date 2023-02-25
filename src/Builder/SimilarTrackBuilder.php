@@ -13,19 +13,13 @@ namespace Nucleos\LastFm\Builder;
 
 final class SimilarTrackBuilder
 {
-    /**
-     * @var array
-     */
-    private $query;
+    private array $query;
 
     private function __construct()
     {
         $this->query = [];
     }
 
-    /**
-     * @return SimilarTrackBuilder
-     */
     public static function forTrack(string $artist, string $track): self
     {
         $builder = new static();
@@ -36,9 +30,6 @@ final class SimilarTrackBuilder
         return $builder;
     }
 
-    /**
-     * @return SimilarTrackBuilder
-     */
     public static function forMbid(string $mbid): self
     {
         $builder = new static();
@@ -48,9 +39,6 @@ final class SimilarTrackBuilder
         return $builder;
     }
 
-    /**
-     * @return SimilarTrackBuilder
-     */
     public function autocorrect(bool $autocorrect): self
     {
         $this->query['autocorrect'] =  $autocorrect ? 1 : 0;
@@ -58,9 +46,6 @@ final class SimilarTrackBuilder
         return $this;
     }
 
-    /**
-     * @return SimilarTrackBuilder
-     */
     public function limit(int $limit): self
     {
         $this->query['limit'] = $limit;

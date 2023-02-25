@@ -19,10 +19,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class ChartService implements ChartServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

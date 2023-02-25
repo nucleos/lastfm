@@ -24,7 +24,7 @@ final class LibraryServiceTest extends TestCase
     /**
      * @var ObjectProphecy<ApiClientInterface>
      */
-    private $client;
+    private ApiClientInterface|ObjectProphecy $client;
 
     protected function setUp(): void
     {

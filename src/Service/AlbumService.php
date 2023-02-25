@@ -24,10 +24,7 @@ use Nucleos\LastFm\Util\ApiHelper;
 
 final class AlbumService implements AlbumServiceInterface
 {
-    /**
-     * @var ApiClientInterface
-     */
-    private $client;
+    private ApiClientInterface $client;
 
     public function __construct(ApiClientInterface $client)
     {

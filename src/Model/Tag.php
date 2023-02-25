@@ -16,20 +16,11 @@ namespace Nucleos\LastFm\Model;
  */
 final class Tag
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
-    /**
-     * @var int|null
-     */
-    private $count;
+    private ?int $count;
 
     public function __construct(string $name, ?string $url, ?int $count)
     {
@@ -53,9 +44,6 @@ final class Tag
         return $this->count;
     }
 
-    /**
-     * @return Tag
-     */
     public static function fromApi(array $data): self
     {
         return new self(

@@ -16,35 +16,17 @@ namespace Nucleos\LastFm\Model;
  */
 final class User
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string|null
-     */
-    private $country;
+    private ?string $country;
 
-    /**
-     * @var int|null
-     */
-    private $age;
+    private ?int $age;
 
-    /**
-     * @var string|null
-     */
-    private $gender;
+    private ?string $gender;
 
-    /**
-     * @var int
-     */
-    private $playcount;
+    private int $playcount;
 
-    /**
-     * @var string|null
-     */
-    private $url;
+    private ?string $url;
 
     public function __construct(
         string $name,
@@ -92,9 +74,6 @@ final class User
         return $this->url;
     }
 
-    /**
-     * @return User
-     */
     public static function fromApi(array $data): self
     {
         return new self(

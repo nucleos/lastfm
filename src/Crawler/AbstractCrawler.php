@@ -27,10 +27,7 @@ abstract class AbstractCrawler
 
     public const NEWLINE = "\n";
 
-    /**
-     * @var ConnectionInterface
-     */
-    private $connection;
+    private ConnectionInterface $connection;
 
     public function __construct(ConnectionInterface $connection)
     {
