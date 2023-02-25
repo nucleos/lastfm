@@ -7,7 +7,6 @@
         "jangregor/phpstan-prophecy": "^1.0",
         "maglnet/composer-require-checker": "^4.0",
         "phpmd/phpmd": "^2.10",
-        "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
