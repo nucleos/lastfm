@@ -11,7 +11,7 @@
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.0",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^10.0",
         "psalm/plugin-phpunit": "^0.18",
         "vimeo/psalm": "^5.0"
     },
