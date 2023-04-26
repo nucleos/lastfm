@@ -35,60 +35,60 @@ interface TagServiceInterface
     /**
      * Search for tags similar to this one. Returns tags ranked by similarity, based on listening data.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getSimilar(string $tag): array;
 
     /**
      * Get the top albums tagged by this tag, ordered by tag count.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function getTopAlbums(string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top artists tagged by this tag, ordered by tag count.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getTopArtists(string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Fetches the top global tags on Last.fm, sorted by popularity (number of times used).
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(): array;
 
     /**
      * Get the top tracks tagged by this tag, ordered by tag count.
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getTopTracks(string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Get a list of available charts for this tag, expressed as date ranges which can be sent to the chart services.
      *
+     * @return Chart[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Chart[]
      */
     public function getWeeklyChartList(string $tag): array;
 }

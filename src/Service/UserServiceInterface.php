@@ -28,10 +28,10 @@ interface UserServiceInterface
     /**
      * Get a list of tracks by a given artist scrobbled by this user, including scrobble time.
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getArtistTracks(string $username, string $artist, ?RangeFilter $filter = null, int $page = 1): array;
 
@@ -40,10 +40,10 @@ interface UserServiceInterface
      *
      * @param int $limit
      *
+     * @return User[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return User[]
      */
     public function getFriends(string $username, bool $recenttracks = false, $limit = 50, int $page = 1): array;
 
@@ -58,10 +58,10 @@ interface UserServiceInterface
     /**
      * Get the last 50 tracks loved by a user.
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getLovedTracks(string $username, int $limit = 50, int $page = 1): array;
 
@@ -71,120 +71,120 @@ interface UserServiceInterface
      * @param bool $extended
      * @param int  $limit
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getRecentTracks(string $username, ?RangeFilter $filter = null, $extended = false, $limit = 50, int $page = 1): array;
 
     /**
      * Get the user's personal tags.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getPersonalTagsForArtist(string $username, string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the user's personal tags.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function getPersonalTagsForAlbum(string $username, string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the user's personal tags.
      *
+     * @return SongInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return SongInfo[]
      */
     public function getPersonalTagsForTracks(string $username, string $tag, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function getTopAlbums(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getTopArtists(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get the top tags used by this user.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(string $username, int $limit = 50): array;
 
     /**
      * Get the top tracks listened to by a user. You can stipulate a time period. Sends the overall chart by default.
      *
+     * @return SongInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return SongInfo[]
      */
     public function getTopTracks(string $username, Period $period, int $limit = 50, int $page = 1): array;
 
     /**
      * Get an album chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent album chart for this user.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function getWeeklyAlbumChart(string $username, ?RangeFilter $filter = null): array;
 
     /**
      * Get an artist chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent artist chart for this user.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getWeeklyArtistChart(string $username, ?RangeFilter $filter = null): array;
 
     /**
      * Get a list of available charts for this user, expressed as date ranges which can be sent to the chart services.
      *
+     * @return Chart[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Chart[]
      */
     public function getWeeklyChartList(string $username): array;
 
     /**
      * Get a track chart for a user profile, for a given date range. If no date range is supplied, it will return the most recent track chart for this user.
      *
+     * @return SongInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return SongInfo[]
      */
     public function getWeeklyTrackChart(string $username, ?RangeFilter $filter = null): array;
 }

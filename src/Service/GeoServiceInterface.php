@@ -21,10 +21,10 @@ interface GeoServiceInterface
     /**
      * Get the most popular artists on Last.fm by country.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getTopArtists(string $country, int $limit = 50, int $page = 1): array;
 
@@ -34,10 +34,10 @@ interface GeoServiceInterface
      * @param string $location
      * @param int    $limit
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getTopTracks(string $country, string $location = null, $limit = 50, int $page = 1): array;
 }

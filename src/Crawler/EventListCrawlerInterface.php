@@ -22,9 +22,9 @@ interface EventListCrawlerInterface
      *
      * @param int $radius in KM
      *
-     * @throws CrawlException
-     *
      * @return Event[]
+     *
+     * @throws CrawlException
      */
     public function getEvents(GeoLocation $location, $radius = 100, int $page = 1): array;
 

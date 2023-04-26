@@ -54,30 +54,30 @@ interface TrackServiceInterface
     /**
      * Get the similar tracks for this track on Last.fm, based on listening data.
      *
+     * @return SongInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return SongInfo[]
      */
     public function getSimilar(SimilarTrackBuilder $builder): array;
 
     /**
      * Get the tags applied by an individual user to a track on Last.fm.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTags(TrackTagsBuilder $builder): array;
 
     /**
      * Get the top tags for this track on Last.fm, ordered by tag count.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(TrackTopTagsBuilder $builder): array;
 
@@ -109,10 +109,10 @@ interface TrackServiceInterface
     /**
      * Search for a track by track name. Returns track matches sorted by relevance.
      *
+     * @return SongInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return SongInfo[]
      */
     public function search(string $track, int $limit = 50, int $page = 1): array;
 

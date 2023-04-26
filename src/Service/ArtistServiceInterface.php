@@ -59,50 +59,50 @@ interface ArtistServiceInterface
     /**
      * Get all the artists similar to this artist.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function getSimilar(SimilarArtistBuilder $builder): array;
 
     /**
      * Get the tags applied by an individual user to an artist on Last.fm.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTags(ArtistTagsBuilder $builder): array;
 
     /**
      * Get the top albums for an artist on Last.fm, ordered by popularity.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function getTopAlbums(ArtistTopAlbumsBuilder $builder): array;
 
     /**
      * Get the top tags for an artist on Last.fm, ordered by popularity.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(ArtistTopTagsBuilder $builder): array;
 
     /**
      * Get the top tracks by an artist on Last.fm, ordered by popularity.
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getTopTracks(ArtistTopTracksBuilder $builder): array;
 
@@ -117,10 +117,10 @@ interface ArtistServiceInterface
     /**
      * Search for an artist by name. Returns artist matches sorted by relevance.
      *
+     * @return Artist[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Artist[]
      */
     public function search(string $artist, int $limit = 50, int $page = 1): array;
 }
