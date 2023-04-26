@@ -22,30 +22,30 @@ interface ChartServiceInterface
     /**
      * Get the most popular artists on Last.fm.
      *
+     * @return ArtistInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return ArtistInfo[]
      */
     public function getTopArtists(int $limit = 50, int $page = 1): array;
 
     /**
      * Get the most popular tags on Last.fm last week.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(int $limit = 50, int $page = 1): array;
 
     /**
      * Get the most popular tracks on Last.fm last week.
      *
+     * @return Song[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Song[]
      */
     public function getTopTracks(int $limit = 50, int $page = 1): array;
 }

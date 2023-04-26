@@ -17,18 +17,18 @@ use Nucleos\LastFm\Model\Event;
 interface UserEventCrawlerInterface
 {
     /**
-     * @throws CrawlException
-     *
      * @return int[]
+     *
+     * @throws CrawlException
      */
     public function getUserYears(string $username): array;
 
     /**
      * Get all events of a user.
      *
-     * @throws CrawlException
-     *
      * @return Event[]
+     *
+     * @throws CrawlException
      */
     public function getEvents(string $username, ?int $year, int $page = 1): array;
 

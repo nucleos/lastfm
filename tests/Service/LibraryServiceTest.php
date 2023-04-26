@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 final class LibraryServiceTest extends TestCase
 {
     /**
-     * @var MockObject&ApiClientInterface
+     * @var ApiClientInterface&MockObject
      */
     private ApiClientInterface $client;
 

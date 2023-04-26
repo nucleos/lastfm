@@ -20,10 +20,10 @@ interface LibraryServiceInterface
     /**
      * A paginated list of all the artists in a user's library, with play counts and tag counts.
      *
+     * @return AlbumInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return AlbumInfo[]
      */
     public function getArtists(string $user, int $limit = 50, int $page = 1): array;
 }

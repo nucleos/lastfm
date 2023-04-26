@@ -17,18 +17,18 @@ use Nucleos\LastFm\Model\Event;
 interface ArtistEventCrawlerInterface
 {
     /**
-     * @throws CrawlException
-     *
      * @return int[]
+     *
+     * @throws CrawlException
      */
     public function getArtistYears(string $artist): array;
 
     /**
      * Get all events of an artist.
      *
-     * @throws CrawlException
-     *
      * @return Event[]
+     *
+     * @throws CrawlException
      */
     public function getEvents(string $artist, ?int $year, int $page = 1): array;
 

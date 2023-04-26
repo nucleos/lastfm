@@ -46,20 +46,20 @@ interface AlbumServiceInterface
     /**
      * Get the tags applied by an individual user to an album on Last.fm.
      *
+     * @return AlbumInfo[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return AlbumInfo[]
      */
     public function getTags(AlbumTagsBuilder $builder): array;
 
     /**
      * Get the top tags applied to an album on Last.fm.
      *
+     * @return Tag[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Tag[]
      */
     public function getTopTags(AlbumTopTagsBuilder $builder): array;
 
@@ -74,10 +74,10 @@ interface AlbumServiceInterface
     /**
      * Search for an album by name. Returns album matches sorted by relevance.
      *
+     * @return Album[]
+     *
      * @throws NotFoundException
      * @throws ApiException
-     *
-     * @return Album[]
      */
     public function search(string $album, int $limit = 50, int $page = 1): array;
 }
