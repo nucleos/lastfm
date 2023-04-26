@@ -2,27 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.5.0 - TBD
+## 3.5.0 - 2023-04-26
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.5.0](https://github.com/nucleos/lastfm/milestone/8)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.5.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [417: Update build tools](https://github.com/nucleos/lastfm/pull/417) thanks to @core23
+ - [415: Remove phpspec/prophecy-phpunit](https://github.com/nucleos/lastfm/pull/415) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [416: Update dependency psr/http-message to ^1.0 || ^2.0](https://github.com/nucleos/lastfm/pull/416) thanks to @renovate[bot]
+ - [414: Drop support for PHP 8.0](https://github.com/nucleos/lastfm/pull/414) thanks to @core23
 
 ## 3.4.0 - 2022-01-14
 
