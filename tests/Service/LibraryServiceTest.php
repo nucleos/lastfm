@@ -45,6 +45,6 @@ EOD;
         $service = new LibraryService($this->client);
         $result  = $service->getArtists('TheUser');
 
-        static::assertCount(1, $result);
+        self::assertCount(1, $result);
     }
 }

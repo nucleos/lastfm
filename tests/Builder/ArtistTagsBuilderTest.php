@@ -23,7 +23,7 @@ final class ArtistTagsBuilderTest extends TestCase
         $expected = [
             'mbid' => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testForArtist(): void
@@ -33,7 +33,7 @@ final class ArtistTagsBuilderTest extends TestCase
         $expected = [
             'artist' => 'Slipknot',
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testForUsername(): void
@@ -46,7 +46,7 @@ final class ArtistTagsBuilderTest extends TestCase
             'mbid'     => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'user'     => 'MyUser',
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testAutocorrect(): void
@@ -59,7 +59,7 @@ final class ArtistTagsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 1,
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testNoAutocorrect(): void
@@ -72,6 +72,6 @@ final class ArtistTagsBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 0,
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 }

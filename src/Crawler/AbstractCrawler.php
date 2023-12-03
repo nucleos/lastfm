@@ -46,9 +46,6 @@ abstract class AbstractCrawler
         return null;
     }
 
-    /**
-     * @param DateTimeImmutable $datetime
-     */
     final protected function parseEvent(Crawler $node, DateTimeImmutable $datetime = null): Event
     {
         $eventNode = $node->filter('.events-list-item-event--title a');

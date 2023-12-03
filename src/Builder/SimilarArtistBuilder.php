@@ -22,7 +22,7 @@ final class SimilarArtistBuilder
 
     public static function forArtist(string $artist): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['artist'] = $artist;
 
@@ -31,7 +31,7 @@ final class SimilarArtistBuilder
 
     public static function forMbid(string $mbid): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['mbid'] = $mbid;
 

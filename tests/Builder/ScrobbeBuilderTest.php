@@ -24,14 +24,14 @@ final class ScrobbeBuilderTest extends TestCase
 
         $expected = [
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testCount(): void
     {
         $builder = ScrobbeBuilder::create();
 
-        static::assertSame(0, $builder->count());
+        self::assertSame(0, $builder->count());
     }
 
     public function testAddTrack(): void
@@ -52,7 +52,7 @@ final class ScrobbeBuilderTest extends TestCase
             'track[1]'     => 'Yesterday',
             'timestamp[1]' => $yesterday->getTimestamp(),
         ];
-        static::assertSame($expected, $builder->getQuery());
-        static::assertSame(2, $builder->count());
+        self::assertSame($expected, $builder->getQuery());
+        self::assertSame(2, $builder->count());
     }
 }

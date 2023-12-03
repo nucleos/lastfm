@@ -22,7 +22,7 @@ final class SimilarTrackBuilder
 
     public static function forTrack(string $artist, string $track): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['artist'] = $artist;
         $builder->query['track']  = $track;
@@ -32,7 +32,7 @@ final class SimilarTrackBuilder
 
     public static function forMbid(string $mbid): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['mbid'] = $mbid;
 

@@ -28,7 +28,7 @@ final class TrackBuilderTest extends TestCase
             'track'     => 'Before I Forget',
             'timestamp' => $now->getTimestamp(),
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithAlbum(): void
@@ -45,7 +45,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'album'     => 'IOWA',
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithAlbumArtist(): void
@@ -62,7 +62,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp'   => $now->getTimestamp(),
             'albumArtist' => 'Slipknot',
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithChosenByUser(): void
@@ -79,7 +79,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp'    => $now->getTimestamp(),
             'chosenByUser' => 1,
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithTrackNumber(): void
@@ -96,7 +96,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp'   => $now->getTimestamp(),
             'trackNumber' => 11,
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithStreamId(): void
@@ -113,7 +113,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'streamId'  => 11,
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithContext(): void
@@ -130,7 +130,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'context'   => 'Client Version',
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithMbid(): void
@@ -147,7 +147,7 @@ final class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'mbid'      => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 
     public function testWithDuration(): void
@@ -164,6 +164,6 @@ final class TrackBuilderTest extends TestCase
             'timestamp' => $now->getTimestamp(),
             'duration'  => 183,
         ];
-        static::assertSame($expected, $builder->getData());
+        self::assertSame($expected, $builder->getData());
     }
 }

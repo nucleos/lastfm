@@ -18,31 +18,31 @@ final class PeriodTest extends TestCase
 {
     public function testOverall(): void
     {
-        static::assertSame('overall', Period::overall()->getValue());
+        self::assertSame('overall', Period::overall()->getValue());
     }
 
     public function testWeek(): void
     {
-        static::assertSame('7day', Period::week()->getValue());
+        self::assertSame('7day', Period::week()->getValue());
     }
 
     public function testMonth(): void
     {
-        static::assertSame('1month', Period::month()->getValue());
+        self::assertSame('1month', Period::month()->getValue());
     }
 
     public function testQuarterYear(): void
     {
-        static::assertSame('3month', Period::quarterYear()->getValue());
+        self::assertSame('3month', Period::quarterYear()->getValue());
     }
 
     public function testHalfYear(): void
     {
-        static::assertSame('6month', Period::halfYear()->getValue());
+        self::assertSame('6month', Period::halfYear()->getValue());
     }
 
     public function testYear(): void
     {
-        static::assertSame('12month', Period::year()->getValue());
+        self::assertSame('12month', Period::year()->getValue());
     }
 }

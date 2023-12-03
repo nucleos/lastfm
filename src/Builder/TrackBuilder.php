@@ -24,7 +24,7 @@ final class TrackBuilder
 
     public static function create(string $artist, string $track, DateTime $date): self
     {
-        return new static([
+        return new self([
             'artist'    => $artist,
             'track'     => $track,
             'timestamp' => $date->getTimestamp(),
