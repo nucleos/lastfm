@@ -23,7 +23,7 @@ final class SimilarTrackBuilderTest extends TestCase
         $expected = [
             'mbid' => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testForTrack(): void
@@ -34,7 +34,7 @@ final class SimilarTrackBuilderTest extends TestCase
             'artist' => 'Slipknot',
             'track'  => 'Before I Forget',
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testAutocorrect(): void
@@ -47,7 +47,7 @@ final class SimilarTrackBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 1,
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testNoAutocorrect(): void
@@ -60,7 +60,7 @@ final class SimilarTrackBuilderTest extends TestCase
             'mbid'        => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'autocorrect' => 0,
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 
     public function testLimit(): void
@@ -73,6 +73,6 @@ final class SimilarTrackBuilderTest extends TestCase
             'mbid'     => 'a466c2a2-6517-42fb-a160-1087c3bafd9f',
             'limit'    => 13,
         ];
-        static::assertSame($expected, $builder->getQuery());
+        self::assertSame($expected, $builder->getQuery());
     }
 }

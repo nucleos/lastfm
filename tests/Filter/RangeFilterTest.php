@@ -21,7 +21,7 @@ final class RangeFilterTest extends TestCase
     {
         $filter = new RangeFilter(null, null);
 
-        static::assertSame([
+        self::assertSame([
             'foo' => null,
             'bar' => null,
         ], $filter->getQuery('foo', 'bar'));
@@ -34,7 +34,7 @@ final class RangeFilterTest extends TestCase
 
         $filter = new RangeFilter($start, $end);
 
-        static::assertSame([
+        self::assertSame([
             'foo' => $start->getTimestamp(),
             'bar' => $end->getTimestamp(),
         ], $filter->getQuery('foo', 'bar'));

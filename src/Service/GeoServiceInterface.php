@@ -31,8 +31,7 @@ interface GeoServiceInterface
     /**
      * Get the most popular tracks on Last.fm last week by country.
      *
-     * @param string $location
-     * @param int    $limit
+     * @param int $limit
      *
      * @return Song[]
      *

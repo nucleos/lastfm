@@ -22,7 +22,7 @@ final class TrackInfoBuilder
 
     public static function forArtist(string $name): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['artist'] = $name;
 
@@ -31,7 +31,7 @@ final class TrackInfoBuilder
 
     public static function forMbid(string $mbid): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['mbid'] = $mbid;
 

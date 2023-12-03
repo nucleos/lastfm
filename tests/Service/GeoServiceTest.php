@@ -45,7 +45,7 @@ EOD;
         $service = new GeoService($this->client);
         $result  = $service->getTopArtists('France');
 
-        static::assertCount(1, $result);
+        self::assertCount(1, $result);
     }
 
     public function testGetTopTracks(): void
@@ -66,6 +66,6 @@ EOD;
         $service = new GeoService($this->client);
         $result  = $service->getTopTracks('France');
 
-        static::assertCount(1, $result);
+        self::assertCount(1, $result);
     }
 }

@@ -20,6 +20,6 @@ final class ApiExceptionTest extends TestCase
     {
         $exception = new ApiException('My error', 304);
 
-        static::assertSame('304: My error', $exception->__toString());
+        self::assertSame('304: My error', $exception->__toString());
     }
 }

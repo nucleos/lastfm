@@ -23,7 +23,7 @@ interface ConnectionInterface
     /**
      * Calls the API.
      *
-     *@throws ApiException
+     * @throws ApiException
      */
     public function call(string $url, array $params = [], string $method = 'GET'): array;
 

@@ -52,9 +52,6 @@ final class Event
         return $this->eventDate;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): ?string
     {
         return $this->url;

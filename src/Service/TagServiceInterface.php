@@ -25,8 +25,6 @@ interface TagServiceInterface
     /**
      * Get the metadata for a tag on Last.fm. Includes biography.
      *
-     * @param string $lang
-     *
      * @throws NotFoundException
      * @throws ApiException
      */

@@ -22,7 +22,7 @@ final class AlbumTagsBuilder
 
     public static function forAlbum(string $artist, string $album): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['artist'] = $artist;
         $builder->query['album']  = $album;
@@ -32,7 +32,7 @@ final class AlbumTagsBuilder
 
     public static function forMbid(string $mbid): self
     {
-        $builder = new static();
+        $builder = new self();
 
         $builder->query['mbid'] = $mbid;
 

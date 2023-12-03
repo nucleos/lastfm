@@ -1,19 +1,14 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Builder/AlbumInfoBuilder.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\AlbumInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Builder/AlbumInfoBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/AlbumTagsBuilder.php
+			path: src/Builder/AlbumInfoBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\AlbumTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -21,9 +16,9 @@ parameters:
 			path: src/Builder/AlbumTagsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/AlbumTopTagsBuilder.php
+			path: src/Builder/AlbumTagsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\AlbumTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -31,9 +26,9 @@ parameters:
 			path: src/Builder/AlbumTopTagsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\AlbumTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ArtistInfoBuilder.php
+			path: src/Builder/AlbumTopTagsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ArtistInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -41,9 +36,9 @@ parameters:
 			path: src/Builder/ArtistInfoBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ArtistTagsBuilder.php
+			path: src/Builder/ArtistInfoBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ArtistTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -51,9 +46,9 @@ parameters:
 			path: src/Builder/ArtistTagsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopAlbumsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ArtistTopAlbumsBuilder.php
+			path: src/Builder/ArtistTagsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopAlbumsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -61,9 +56,9 @@ parameters:
 			path: src/Builder/ArtistTopAlbumsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopAlbumsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ArtistTopTagsBuilder.php
+			path: src/Builder/ArtistTopAlbumsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -71,9 +66,9 @@ parameters:
 			path: src/Builder/ArtistTopTagsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTracksBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ArtistTopTracksBuilder.php
+			path: src/Builder/ArtistTopTagsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTracksBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -81,9 +76,9 @@ parameters:
 			path: src/Builder/ArtistTopTracksBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ScrobbeBuilder\\:\\:\\$tracks type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ArtistTopTracksBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/ScrobbeBuilder.php
+			path: src/Builder/ArtistTopTracksBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\ScrobbeBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -91,9 +86,9 @@ parameters:
 			path: src/Builder/ScrobbeBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\SimilarArtistBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\ScrobbeBuilder\\:\\:\\$tracks type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/SimilarArtistBuilder.php
+			path: src/Builder/ScrobbeBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\SimilarArtistBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -101,9 +96,9 @@ parameters:
 			path: src/Builder/SimilarArtistBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\SimilarTrackBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\SimilarArtistBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/SimilarTrackBuilder.php
+			path: src/Builder/SimilarArtistBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\SimilarTrackBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -111,9 +106,9 @@ parameters:
 			path: src/Builder/SimilarTrackBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\SimilarTrackBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/TrackBuilder.php
+			path: src/Builder/SimilarTrackBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -126,9 +121,9 @@ parameters:
 			path: src/Builder/TrackBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackBuilder\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/TrackInfoBuilder.php
+			path: src/Builder/TrackBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\TrackInfoBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -136,9 +131,9 @@ parameters:
 			path: src/Builder/TrackInfoBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackInfoBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/TrackTagsBuilder.php
+			path: src/Builder/TrackInfoBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\TrackTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -146,9 +141,9 @@ parameters:
 			path: src/Builder/TrackTagsBuilder.php
 
 		-
-			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Builder/TrackTopTagsBuilder.php
+			path: src/Builder/TrackTagsBuilder.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Builder\\\\TrackTopTagsBuilder\\:\\:getQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -156,22 +151,17 @@ parameters:
 			path: src/Builder/TrackTopTagsBuilder.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			message: "#^Property Nucleos\\\\LastFm\\\\Builder\\\\TrackTopTagsBuilder\\:\\:\\$query type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Builder/TrackTopTagsBuilder.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Client/ApiClient.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Client/ApiClient.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
 
@@ -191,12 +181,22 @@ parameters:
 			path: src/Client/ApiClient.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:call\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:signedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Client/ApiClient.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Client\\\\ApiClient\\:\\:unsignedCall\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Client/ApiClient.php
 
@@ -236,11 +236,6 @@ parameters:
 			path: src/Connection/ConnectionInterface.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Connection/PsrClientConnection.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:call\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Connection/PsrClientConnection.php
@@ -252,6 +247,11 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:createRequest\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Connection/PsrClientConnection.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Connection\\\\PsrClientConnection\\:\\:getPageBody\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Connection/PsrClientConnection.php
 
@@ -286,11 +286,6 @@ parameters:
 			path: src/Filter/RangeFilter.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Album\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/Album.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Album\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/Album.php
@@ -301,9 +296,9 @@ parameters:
 			path: src/Model/Album.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Album\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Model/AlbumInfo.php
+			path: src/Model/Album.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -312,16 +307,6 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createImagesFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/AlbumInfo.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/AlbumInfo.php
-
-		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/AlbumInfo.php
 
@@ -336,9 +321,19 @@ parameters:
 			path: src/Model/AlbumInfo.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Artist\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Model/Artist.php
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:createTracksFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\AlbumInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/AlbumInfo.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Artist\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -351,9 +346,9 @@ parameters:
 			path: src/Model/Artist.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Artist\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Model/ArtistInfo.php
+			path: src/Model/Artist.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:createImagesFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -376,6 +371,11 @@ parameters:
 			path: src/Model/ArtistInfo.php
 
 		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\ArtistInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/ArtistInfo.php
+
+		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\Chart\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/Chart.php
@@ -391,17 +391,17 @@ parameters:
 			path: src/Model/Song.php
 
 		-
-			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\SongInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/SongInfo.php
-
-		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\SongInfo\\:\\:createTagsFromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/SongInfo.php
 
 		-
 			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\SongInfo\\:\\:createTagsFromApi\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Model/SongInfo.php
+
+		-
+			message: "#^Method Nucleos\\\\LastFm\\\\Model\\\\SongInfo\\:\\:fromApi\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/SongInfo.php
 

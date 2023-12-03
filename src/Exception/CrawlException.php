@@ -13,6 +13,4 @@ namespace Nucleos\LastFm\Exception;
 
 use Exception;
 
-final class CrawlException extends Exception
-{
-}
+final class CrawlException extends Exception {}
