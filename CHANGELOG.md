@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.6.0 - TBD
+## 3.6.0 - 2023-12-21
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.6.0](https://github.com/nucleos/lastfm/milestone/10)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.6.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [421: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/lastfm/pull/421) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [419: Update tools ](https://github.com/nucleos/lastfm/pull/419) thanks to @core23
 
 ## 3.5.0 - 2023-04-26
 
