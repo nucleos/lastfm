@@ -12,8 +12,9 @@ declare(strict_types=1);
 namespace Nucleos\LastFm\Exception;
 
 use Exception;
+use Stringable;
 
-final class ApiException extends Exception
+final class ApiException extends Exception implements Stringable
 {
     public function __toString(): string
     {
