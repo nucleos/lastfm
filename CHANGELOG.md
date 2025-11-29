@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.8.0 - TBD
+## 3.8.0 - 2025-11-29
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.8.0](https://github.com/nucleos/lastfm/milestone/14)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.8.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [434: Add support for symfony 8](https://github.com/nucleos/lastfm/pull/434) thanks to @core23
 
 ## 3.7.0 - 2025-10-12
 
