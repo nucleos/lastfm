@@ -30,9 +30,10 @@ final class AuthServiceTest extends TestCase
 
     public function testCreateSession(): void
     {
-        $this->client->method('signedCall')->with('auth.getSession', [
-            'token' => 'user-token',
-        ])
+        $this->client->expects(self::once())->method('signedCall')
+            ->with('auth.getSession', [
+                'token' => 'user-token',
+            ])
             ->willReturn([
                 'session' => [
                     'name'       => 'FooBar',
@@ -54,7 +55,8 @@ final class AuthServiceTest extends TestCase
 
     public function testCreateToken(): void
     {
-        $this->client->method('signedCall')->with('auth.getToken')
+        $this->client->expects(self::once())->method('signedCall')
+            ->with('auth.getToken')
             ->willReturn([
                 'token' => 'The Token',
             ])
